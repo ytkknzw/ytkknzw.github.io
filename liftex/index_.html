@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+function hasGetUserMedia() {
+  // Note: Opera builds are unprefixed.
+  // console.log();
+  return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia || navigator.msGetUserMedia);
+}
+
+if (hasGetUserMedia()) {
+  // Good to go!
+} else {
+  alert('getUserMedia() is not supported in your browser');
+}
+		
+	</script>
+</head>
+<body>
+
+	<div>
+		<label for="m0">image/*;capture=camera</label>
+		<input type="file" id="m0" accept="image/*;capture=camera">
+	</div>
+	<div>
+		<label for="m1">video/*;capture=camcorder</label>
+		<input type="file" id="m1" accept="video/*;capture=camcorder">
+	</div>
+	<div>
+		<label for="m2">audio/*;capture=microphone</label>
+		<input type="file" id="m2" accept="audio/*;capture=microphone">
+	</div>
+	
+	<device type="media" onchange="update(this.data)"></device>
+	<video autoplay></video>
+	<script>
+		function update(stream) {
+			document.querySelector('video').src = stream.url;
+		}
+	</script>
+
+	<script>
+		console.log(navigator);
+		// let arr = [navigator.getUserMedia, navigator.webkitGetUserMedia, navigator.mozGetUserMedia, navigator.msGetUserMedia];
+		// arr.forEach(n => {
+		// 	document.write(n + '<br/>');
+		// });
+		document.write('<table>');
+		for(var n in window) {
+			document.write('<tr><td>' + n + '</td><td>' + window[n] + '</td></tr>');
+		}
+		document.write('</table>');
+
+		document.write('<table>');
+		for(var o in navigator) {
+			document.write('<tr><td>' + o + '</td><td>' + navigator[o] + '</td></tr>');
+		}
+		document.write('</table>');
+
+		document.write('<p>!!true : ' + !!true + '</p>');
+		document.write('<p>!!false : ' + !!false + '</p>');
+		document.write('<p>!!null : ' + !!null + '</p>');
+		document.write('<p>!!undefined : ' + !!undefined + '</p>');
+		document.write('<p>!!{} : ' + !!{} + '</p>');
+		document.write('<p>!true : ' + !true + '</p>');
+		document.write('<p>!false : ' + !false + '</p>');
+		document.write('<p>!null : ' + !null + '</p>');
+		document.write('<p>!undefined : ' + !undefined + '</p>');
+		document.write('<p>!{} : ' + !{} + '</p>');
+		document.write('<p>true : ' + true + '</p>');
+		document.write('<p>false : ' + false + '</p>');
+		document.write('<p>null : ' + null + '</p>');
+		document.write('<p>undefined : ' + undefined + '</p>');
+		document.write('<p>{} : ' + {} + '</p>');
+		// document.write('<p>!!true : ' + !!true + '</p>');
+	</script>
+
+</body>
+</html>

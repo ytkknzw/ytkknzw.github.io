@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="CEGB HR" /> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<title>Document</title>
+	<link rel="stylesheet" href="bs-3.3.7/css/bootstrap.css">
+	<!-- <link rel="stylesheet" href="../styles.css"> -->
+	<style>
+  .w1024.auto {
+    width: auto;
+    margin: 0 auto;    
+  }
+  .w1024 {
+    width: 1024px;
+    margin: 0 auto;    
+  }
+  .side-close {
+    display: none;
+  }
+	</style>
+
+	<script src="jquery-3.1.0.min.js"></script>
+	<script src="./bs-3.3.7/js/bootstrap.min.js"></script>
+	<script>
+	var App = {
+		showPage: function(obj) {
+      if($.type(obj) !== 'object' && $.type(obj) !== 'string') {
+        console.log('showPage arg needs to be object or string');
+        return;
+      }
+			var paths = location.hash.split('/');
+			console.log(paths);
+			if(paths.length > 1) {
+				console.log('./pages/' + paths[2] + '.html');
+				$.ajax({
+					url: './pages/' + paths[2] + '.html',
+					error: function(err, dat){
+						$('#content').html(JSON.stringify(err));
+					},
+					success: function(html, res, req) {
+						$('#content').html(html);
+					}
+				});
+			} else {
+
+			}
+		}
+	};
+
+	window.onhashchange = App.showPage;
+
+  function setFullWidth(b) {
+    (b ? $('.w1024').addClass('auto') : $('.w1024').removeClass('auto'))
+  }
+
+  function toggleLeft() {
+    // alert('left');
+    // var w = $('.w1024')
+    var left = $('#side-bar');
+    if(left.hasClass('side-close')){  /* open */
+      left.removeClass('side-close');
+    } else {
+      left.addClass('side-close');
+    }
+  }
+  document.ontouchmove = function(event){
+      event.preventDefault();
+  }
+	</script>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+  <div class="container w1024">
+    <!-- <a class="navbar-brand active" href="#">CEGB Admin</a> -->
+    <a class="navbar-brand active" href="#"><i class="glyphicon glyphicon-heart"></i> CEGB Admin</a>
+    <ul class="nav navbar-nav" style="display: block;">
+      <span style="color: #fff; line-height: 44px; padding-left: 16px;">
+        <!-- <i class="glyphicon glyphicon-home"></i> -->
+        Home
+        &nbsp;&raquo;&nbsp; shared &nbsp;&raquo;&nbsp; organization &nbsp;/&nbsp; service div. service sec. service group
+        <span class="caret"></span></span>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a class="btn btn-link" onclick="setFullWidth(true)"><i class="glyphicon glyphicon-exclamation-sign"></i> +</a></li>
+      <li><a class="btn btn-link" onclick="setFullWidth(false)"><i class="glyphicon glyphicon-exclamation-sign"></i> -</a></li>
+      <li><a class="btn btn-link" onclick="location.reload();"><i class="glyphicon glyphicon-cog"></i></a></li>
+      <li><a class="btn btn-link" href="#"><i class="glyphicon glyphicon-user"></i></a></li>
+    </ul>
+  </div>
+</nav>
+
+<div id="content" style="padding-top: 44px;">
+</div>
+
+  <a class="btn btn-primary" onclick="App.showPage('#/a/index')">#</a>
+  <a class="btn btn-primary" href="#/a/index">#/a/index</a>
+
+</body>
+</html>

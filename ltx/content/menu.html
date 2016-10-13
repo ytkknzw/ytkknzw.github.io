@@ -1,0 +1,98 @@
+<style>
+.menu-item {
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    padding: 0 12px;
+    line-height: 42px;
+    font-size: 15px;
+    float: left;
+    border-radius: 4px;
+    border: solid 1px #999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #333;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.25s ease-in;
+}
+.menu-item:hover {
+    background-color: #eee;
+}
+</style>
+
+
+<div id="menu-pane" class="scroll-content scheme conntainer">
+    <div id="menu-body" class=""></div>
+    <div style="clear: both; height: 0px"></div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam ipsa amet vitae, ad laboriosam qui animi ea. Eaque quos illo vero nostrum quia voluptate, asperiores unde, reprehenderit repudiandae fuga dignissimos.</p>
+</div>
+
+<div class="header-bar">
+    <div class="header-buttons left">
+    </div>
+    <div class="header-title">Menu</div>
+    <div class="header-buttons right">
+        <!-- <button onclick="App.logout()">Log Out</button> -->
+        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+          LOG OUT
+        </button>
+    </div>
+</div>
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Log Out</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure to LOG OUT?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="logout-logout">LOG OUT</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(app){
+    console.log('menu');
+    var fnSuccess = function(dat) {
+        if(dat.error) {
+            return false;
+        }
+        App.pages = dat.value;
+        var html = '', s = 0, r = 0;
+        for(var i=0, l = App.pages.length; i<l; i++) {
+            var m = App.pages[i];
+            html += '<h4>' + m.label;
+            html += (m.description !== '' ? '<small style="color: #666;"> &nbsp; - &nbsp;' + m.description + '</small>' : '');
+            html += '</h4>';
+            html += '<div class="row">';
+            // for(let p of m.contents) {
+            for(var j=0, len = m.contents.length; j<len; j++) {
+                var p = m.contents[j];
+                html += '<div class="col-md-3 col-sm-4"><div class="menu-item btn-block" onclick="App.showPage(' + s + ',' + (r++) + ')">' + p.label + '</div></div>';
+            }
+            html += '</div>';
+            s++;
+            r = 0;
+        }
+        $("#menu-body").html(html);
+    };
+    // $.ajax(App.base + "/menu.json").done(fnSuccess).fail(App.ajaxError);
+    fnSuccess(App.meta);
+
+    $('#logout-logout').on('click', function(){
+        App.logout();
+    });
+    $('#myModal').on('shown.bs.modal', function () {
+        // $('#myInput').focus()
+    });
+})(App);
+    
+</script>

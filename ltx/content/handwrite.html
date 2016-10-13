@@ -1,0 +1,45 @@
+<script src="lib/sketch.min.js"></script>
+
+<div class="content scheme">
+	<h1>Handwrite</h1>
+
+	<div id="colors_demo">
+		<div class="tools">
+		  <a class="btn btn-primary" href="#colors_sketch" data-download="png">Download</a> 
+		  &nbsp; &nbsp; Color :&nbsp;
+		</div>
+		<br/>
+		<canvas id="colors_sketch" width="768" height="400" style="border: solid 1px #ddd;"></canvas>
+	</div>
+
+</div>
+
+<div class="header-bar">
+    <div class="header-buttons left">
+        <button onclick="App.back()">&lt; Back</button>
+    </div>
+    <div class="header-title">Handwrite</div>
+    <div class="header-buttons right">
+    </div>
+</div>
+
+
+<script>
+(function() {
+
+	var area = $('#colors_demo .tools');
+
+    $.each(['#f00', '#ff0', '#0f0', '#0ff', '#00f', '#f0f', '#000', '#fff'], function() {
+      area.append("<a class='btn btn-default' href='#colors_sketch' data-color='" + this + "' style='background: " + this + ";'>&nbsp;</a> ");
+    });
+
+    area.append("&nbsp; &nbsp; &nbsp; Size :&nbsp;");
+
+    $.each([3, 5, 10, 15], function() {
+      area.append("<a class='btn btn-default' href='#colors_sketch' data-size='" + this + "' style='background: #ccc'>" + this + "</a> ");
+    });
+
+    $('#colors_sketch').sketch();
+
+})(jQuery);
+</script>

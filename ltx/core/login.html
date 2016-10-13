@@ -1,0 +1,40 @@
+<style>
+	.scheme {
+		padding: 0;
+		margin: 0 auto;
+		width: 300px;
+	}
+</style>
+
+<div class="scheme">
+  <h1>App Title</h1>
+  <br/>
+  <div class="form-group">
+    <!-- <label for="account">Account</label> -->
+    <input id="account" class="form-control" type="text" placeholder="Account">
+  </div>
+  <div class="form-group">
+    <!-- <label for="password">Password</label> -->
+    <input id="password" class="form-control" type="password" placeholder="Password">
+  </div>
+  <div class="form-group checkbox">
+    <label>
+      <input type="checkbox"> Remember Me
+    </label>
+  </div>
+  <br/>
+  <div class="form-group">
+    <button id="btn_login" class="btn btn-primary btn-block" onclick="App.login()">LOG IN</button>
+  </div>
+  <div class="form-group">
+    <label for="language">Language</label>
+    <select id="language" class="form-control">
+      <option>English</option>
+      <option>日本語</option>
+      <option>中文（簡体）</option>
+      <option>中文（繁体）</option>
+    </select>
+  </div>
+  <br/>
+  <a href="#">Register</a> &nbsp;| &nbsp;<a href="#">Forgot Password</a>
+</div>

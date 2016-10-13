@@ -1,0 +1,119 @@
+<script src="lib/d3-4.2.1/d3.min.js"></script>
+<style>
+
+.axis {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis--x path {
+  display: none;
+}
+
+.line-x {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+.line-y {
+  fill: none;
+  stroke: green;
+  stroke-width: 1.5px;
+}
+.line-z {
+  fill: none;
+  stroke: red;
+  stroke-width: 1.5px;
+}
+
+</style>
+
+<div class="content scheme">
+	<h1>Motion Page</h1>
+
+	<div id="chart"></div>
+</div>
+
+<div class="header-bar">
+    <div class="header-buttons left">
+        <button onclick="App.back()">&lt; Back</button>
+    </div>
+    <div class="header-title">Page</div>
+    <div class="header-buttons right">
+    </div>
+</div>
+
+<script>
+// (function(){
+var margin	= {top: 20, right: 20, bottom: 30, left: 50},
+    width	= 960 - margin.left - margin.right,
+    height	= 200 - margin.top  - margin.bottom;
+
+var parseTime = d3.timeParse("%d-%b-%y");
+
+var x = d3.scaleTime().range([0, width]);
+var y = d3.scaleLinear().range([height, 0]);
+
+var lineX = d3.line().x((d) => x(d.date)).y((d) => y(d.x)),
+	lineY = d3.line().x((d) => x(d.date)).y((d) => y(d.y)),
+	lineZ = d3.line().x((d) => x(d.date)).y((d) => y(d.z));
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.tsv("./data/data.tsv", type, function(error, data) {
+  if (error) throw error;
+
+  x.domain(d3.extent(data, function(d) { return d.date; }));
+  y.domain(d3.extent(data, function(d) { return d.x; }));
+
+  svg.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  svg.append("g")
+      .attr("class", "axis axis--y")
+      .call(d3.axisLeft(y))
+    .append("text")
+      .attr("class", "axis-title")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Price ($)");
+
+  svg.append("path")
+      .datum(data)
+      .attr("class", "line-x")
+      .attr("d", lineX);
+  svg.append("path")
+      .datum(data)
+      .attr("class", "line-y")
+      .attr("d", lineY);
+  svg.append("path")
+      .datum(data)
+      .attr("class", "line-z")
+      .attr("d", lineZ);
+});
+
+function type(d) {
+  d.date = parseTime(d.date);
+  d.x = +d.x;
+  d.y = +d.y;
+  d.z = +d.z;
+  return d;
+}
+
+
+// })();
+</script>
