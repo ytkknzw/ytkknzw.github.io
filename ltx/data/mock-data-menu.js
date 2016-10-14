@@ -9,12 +9,6 @@ var mock_data_menu = {
     "description" : "good-bye world.",
     "icon" : "",
     "items" : [{
-      "key" : "components",
-      "title" : "UI Components",
-      "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      "template" : "components.html",
-      "controller" : "components.js"
-    }, {
       "key" : "map",
       "title" : "Google Map",
       "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
@@ -32,12 +26,6 @@ var mock_data_menu = {
       "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
       "template" : "calendar.html",
       "controller" : "calendar.js"
-    }, {
-      "key" : "tree-view",
-      "title" : "Tree View",
-      "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      "template" : "tree-view.html",
-      "controller" : "tree-view.js"
     }, {
       "key" : "handwrite",
       "title" : "Handwrite",
@@ -60,6 +48,12 @@ var mock_data_menu = {
       "title" : "3D View",
       "template" : "3d-view.html",
       "controller" : "3d-view.js"
+    }, {
+      "key" : "components",
+      "title" : "UI Components",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      "template" : "components.html",
+      "controller" : "components.js"
     }]
   }, {
     "key" : "operation",

@@ -34,20 +34,12 @@
 
 </style>
 
-<div class="content scheme">
-	<h1>Motion Page</h1>
+<div class="w1024">
+	<h2>Motion Graph <small>- D3.js</small></h2>
 
 	<div id="chart"></div>
 </div>
 
-<div class="header-bar">
-    <div class="header-buttons left">
-        <button onclick="App.back()">&lt; Back</button>
-    </div>
-    <div class="header-title">Page</div>
-    <div class="header-buttons right">
-    </div>
-</div>
 
 <script>
 // (function(){
@@ -64,7 +56,7 @@ var lineX = d3.line().x((d) => x(d.date)).y((d) => y(d.x)),
 	lineY = d3.line().x((d) => x(d.date)).y((d) => y(d.y)),
 	lineZ = d3.line().x((d) => x(d.date)).y((d) => y(d.z));
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#chart").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
