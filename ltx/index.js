@@ -91,6 +91,9 @@ var App = {
     if (navigator.appVersion.indexOf("Linux"  )!=-1) OSName="Linux";
     if (navigator.appVersion.indexOf("Android")!=-1) OSName="Android";
 
+    var w = (window.screen.availHeight > window.screen.availWidth ? window.screen.availHeight : window.screen.availWidth)
+    var screenType = (w < 440 ? 'phone' : 440 < w && w <= 1024 ? 'tablet' : 'desktop')
+
     App.platform = {
       OsName      : OSName,
       BrowserName : browserName,
@@ -100,7 +103,8 @@ var App = {
       AppVersion  : navigator.appVersion,
       UserAgent   : navigator.userAgent,
       Height      : window.screen.availHeight,
-      Width       : window.screen.availWidth
+      Width       : window.screen.availWidth,
+      ScreenType  : screenType
     };
     console.log('platform : ', App.platform);
 
@@ -163,7 +167,11 @@ var App = {
   buildMenu: function() {
     if(!App.pages.menu) {
       // var h = '<div id="menu-message" class="alert alert-danger"></div>';
-      var h = '<div class="w1024" style="padding-bottom: 300px;">';
+      var h = '<div class="w1024" style="padding-bottom: 300px;">'
+            + '<div class="menu">'
+            + '<a class="btn btn-primary pull-right" href="javascript:App.showLogoutDialog()"><i class="glyphicon glyphicon-off"></i> Log Out</a>'
+            + '<a class="btn btn-default pull-right" href="#/settings" style="margin: 0 8px;"><i class="glyphicon glyphicon-cog"></i> Settings</a>'
+            + '</div>'
       for (let i=0, l=App.contents.length; i<l; i++) {
         var cat = App.contents[i];
         h += '<div class="menu">'
@@ -175,6 +183,7 @@ var App = {
             h += ''
               + '<div class="col-md-3 col-sm-4">'
                 + '<a class="menu-item" href="#/' + cat.key + '/' + item.key + '">'
+                  + '<i class="glyphicon glyphicon-chevron-right"></i>'
                   + '<span class="menu-item-title"></i>' + item.title + '</span>'
                 + '</a>'
               + '</div>';
@@ -290,3 +299,14 @@ var App = {
 
 window.onload = App.init;
 window.onhashchange = App.showPage;
+
+/*
+  1240 / 4 = 310
+  1240 / 5 = 248
+
+  1024 / 4 = 256
+  1024 / 5 = 204.8
+
+   768 / 3 = 256
+   768 / 4 = 192
+*/

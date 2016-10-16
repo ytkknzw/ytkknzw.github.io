@@ -1,0 +1,45 @@
+<header class="header" style="text-align: center;">
+  CEGB <b>Admin</b>
+</header>
+
+<div id="content-pane" class="w1024">
+  <div class="menu">
+
+    <a class="btn btn-primary pull-right" href="javascript:App.showLogoutDialog()"><i class="glyphicon glyphicon-off"></i> Log Out</a>
+    <a class="btn btn-default pull-right" href="#//settings" style="margin: 0 8px;"><i class="glyphicon glyphicon-cog"></i> Settings</a>
+    <span class="pull-right"><img id="img-user" src="../assets/img/square_male.png"/> y.kanazawa@cegb.co.jp</span>
+
+    <div style="clear: both;"></div>
+  </div>
+  <div id="page-main"></div>
+</div>
+
+<script>
+$(function(){
+  if (!App.pages.menu) {
+    var h = ''
+    for (let i=0, l=App.contents.length; i<l; i++) {
+      var cat = App.contents[i]
+      h += '<div class="menu">'
+        + '<span class="menu-title">' + cat.title + '</span> &nbsp;'
+        + '<span class="menu-desc">' + cat.description + '</span>'
+        + '<div class="row">'
+        for (let j=0, m=cat.items.length; j<m; j++) {
+          var item = cat.items[j]
+          h += ''
+            + '<div class="col-md-3 col-sm-4">'
+              + '<a class="menu-item" href="#/' + cat.key + '/' + item.key + '">'
+                + '<i class="glyphicon glyphicon-chevron-right"></i>'
+                + '<span class="menu-item-title"></i>' + item.title + '</span>'
+              + '</a>'
+            + '</div>';
+        }
+      h += '</div>'
+        + '</div>'
+    }
+    h += '</div>'
+    App.pages.menu = h
+  }
+  $('#page-main').html(App.pages.menu)
+})
+</script>
