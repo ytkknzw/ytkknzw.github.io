@@ -9,6 +9,12 @@ var mock_data_menu = {
     "description" : "good-bye world.",
     "icon" : "",
     "items" : [{
+      "key" : "forms",
+      "title" : "Forms",
+      "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+      "template" : "forms.html",
+      "controller" : "forms.js"
+    }, {
       "key" : "map",
       "title" : "Google Map",
       "description" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
