@@ -8,57 +8,25 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<title>Ons2</title>
-	<link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
-	<link rel="stylesheet" href="lib/onsenui/css/onsen-css-components-sunshine-theme.css">
+	<link rel="stylesheet" href="lib/onsenui/css/onsenui.min.css">
+	<link rel="stylesheet" href="lib/onsenui/css/onsen-css-components-custom.css">
 	<script src="lib/onsenui/js/onsenui.min.js"></script>
 </head>
 <body>
-  <ons-navigator animation="slide" id="my-navigator">
-	<ons-page id="page1">
-	  <ons-toolbar>
-	    <div class="left">
-	      <ons-back-button>Back</ons-back-button>
-	    </div>
-	    <div class="center">Title</div>
-	    <div class="right">
-	      <ons-toolbar-button>
-	        <ons-icon icon="md-menu"></ons-icon>
-	      </ons-toolbar-button>
-	    </div>
-	  </ons-toolbar>
-	  <div style="text-align: center; margin-top: 30px;">
-	    <p><ons-input type="text" placeholder="Username" float></ons-input></p>
-	    <p><ons-input type="password" placeholder="Password" float></ons-input></p>
-	    <p><ons-button>Sign in</ons-button></p>
-	    <div style="height: 1000px;">
 
-	    </div>
-	    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur blanditiis magni laborum cupiditate, corporis illo optio possimus illum dignissimos tempora molestiae quisquam exercitationem minima repellendus alias recusandae quae quos neque.</p>
-	  </div>
-	</ons-page>
-  </ons-navigator>
-
-
-<ons-template id="page2">
-<ons-page>
-  <ons-toolbar>
-    <div class="center">Form</div>
-  </ons-toolbar>
-  <div style="text-align: center; margin-top: 30px;">
-    <p><ons-input type="text" placeholder="Username" float></ons-input></p>
-    <p><ons-input type="password" placeholder="Password" float></ons-input></p>
-    <p><ons-button>Sign in</ons-button></p>
-  </div>
-</ons-page>
-</ons-template>
+<ons-navigator animation="slide" id="my-navigator" page="content/page1.html">
+</ons-navigator>
 
 <script>
-document.addEventListener('init', function(event) {
-  if (event.target.matches('#page1')) {
-    ons.notification.alert('Page 1 is initiated.');
-    // Set up content...
-  }
-}, false);
+// document.addEventListener('init', function(event) {
+//   if (event.target.matches('#page1')) {
+//     ons.notification.alert('ons.platform:' + JSON.stringify(ons.platform));
+//   }
+// }, false);
+function gotoPage2() {
+	var nav = document.getElementById('my-navigator')
+	nav.pushPage('content/page2.html');
+}
 </script>
 
 </body>
