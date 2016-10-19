@@ -5,22 +5,35 @@
 </style>
 
 <header class="header">
-  some more Experimental <b>Forms</b> some more
+  Experimental <b>Forms</b>
 </header>
 
 <div class="float-lt">
-    <a class="btn btn-link" href="javascript:history.back()"><i class="glyphicon glyphicon-chevron-left"></i><span class="hidden-xs"> Back</span></a>
-    <a class="btn btn-link" href="javascript:history.back()"><i class="glyphicon glyphicon-menu-hamburger"></i><span class="hidden-xs"> Sidebar</span></a>
-</div>
-<div class="float-rt hidden-md hidden-lg">
-    <!-- <a class="btn btn-link" href="javascript:history.back()">Sidebar</a> -->
-    <a class="btn btn-link" href="javascript:history.back()"><i class="glyphicon glyphicon-option-vertical"></i><span class="hidden-xs"> Action Menu</span></a>
+    <a class="btn btn-link" href="javascript:history.back()">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        <span class="hidden-xs"> Back</span>
+    </a>
+    <a class="btn btn-link" href="javascript:history.back()">
+        <i class="glyphicon glyphicon-menu-hamburger"></i>
+        <span class="hidden-xs"> Page</span>
+    </a>
 </div>
 <div class="float-rt hidden-sm hidden-xs">
-    <!-- <a class="btn btn-link" href="javascript:history.back()">Sidebar</a> -->
     <a class="btn btn-link" href="javascript:history.back()">Action 1</a>
     <a class="btn btn-link" href="javascript:history.back()">Action 2</a>
     <a class="btn btn-link" href="javascript:history.back()">Action 3</a>
+</div>
+<div class="float-rt btn-group hidden-md hidden-lg">
+    <a class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+        <i class="glyphicon glyphicon-option-vertical"></i>
+        <span class="hidden-xs"> Action Menu</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right">
+        <a class="btn btn-primary btn-block" href="#">Action</a>
+        <a class="btn btn-primary btn-block" href="#">Another action</a>
+        <a class="btn btn-primary btn-block" href="#">Something else here</a>
+        <a class="btn btn-primary btn-block" href="#">Separated link</a>
+    </div>
 </div>
 
 <div style="padding: 50px 8px; box-sizing: border-box;">
@@ -72,7 +85,7 @@
     </div>
 </div>
 
-<div style="position: fixed; left: 0; bottom: 0; width: 100%; height: 44px; max-height: 44px; overflow: scroll; white-space: nowrap; border-top: solid 1px #ccc;">
+<div style="position: fixed; left: 0; top: 44px; width: 100%; height: 44px; max-height: 44px; overflow: scroll; white-space: nowrap; border-bottom: solid 1px #ccc; background-color: #fff;">
     <a class="btn btn-link" href="javascript:history.back()"><i class="glyphicon glyphicon-chevron-left"></i> Action 0</a>
     <a class="btn btn-link" href="javascript:history.back()"><i class="glyphicon glyphicon-menu-hamburger"></i> Action 1</a>
     <a class="btn btn-link" href="javascript:history.back()">Action 2</a>
