@@ -1974,21 +1974,21 @@ $.mobile.widget = $.Widget;
 
 })(jQuery);
 
-	(function( $, undefined ) {
-		var support = {
-			touch: "ontouchend" in document
-		};
+(function( $, undefined ) {
+	var support = {
+		touch: "ontouchend" in document
+	};
 
-		$.mobile.support = $.mobile.support || {};
-		$.extend( $.support, support );
-		$.extend( $.mobile.support, support );
-	}( jQuery ));
+	$.mobile.support = $.mobile.support || {};
+	$.extend( $.support, support );
+	$.extend( $.mobile.support, support );
+}( jQuery ));
 
-	(function( $, undefined ) {
-		$.extend( $.support, {
-			orientation: "orientation" in window && "onorientationchange" in window
-		});
-	}( jQuery ));
+(function( $, undefined ) {
+	$.extend( $.support, {
+		orientation: "orientation" in window && "onorientationchange" in window
+	});
+}( jQuery ));
 
 (function( $, undefined ) {
 
