@@ -5,6 +5,9 @@
 .close {
     display: none;
 }
+.form-focus {
+    position: absolute !important;
+}
 </style>
 
 <header class="header">
@@ -26,7 +29,8 @@
     <a class="btn btn-link" href="javascript:history.back()">Action 2</a>
     <a class="btn btn-link" href="javascript:history.back()">Action 3</a>
 </div>
-<div class="float-rt btn-group hidden-md hidden-lg">
+
+ <div class="float-rt btn-group hidden-md hidden-lg">
     <a class="btn btn-link dropdown-toggle" data-toggle="dropdown">
         <i class="glyphicon glyphicon-option-vertical"></i>
         <span class="hidden-xs"> Action Menu</span>
@@ -39,9 +43,9 @@
     </div>
 </div>
 
-<div style="padding: 50px 8px; box-sizing: border-box;">
+<div class="w1024" style="padding: 50px 8px 8px 8px; box-sizing: border-box;">
     <h3>Forms</h3>
-    <div>
+    <div style="border: solid 1px #eee; border-radius: 2px; background-color: #f9f9f9; padding: 6px;">
 
         <select class="form-control" name="sel" id="sel">
             <option value="">Option 1</option>
@@ -77,6 +81,10 @@
         <div class="form-group">
             <label>form 1</label>
             <input class="form-control input-form" value="" placeholder="Form">
+        </div>
+        <div class="form-group">
+            <label>form 1</label>
+            <textarea class="form-control input-form" value="" placeholder="Form"></textarea>
         </div>
 
         <select class="form-control" name="sel2" id="sel2">
@@ -120,6 +128,10 @@
 </div>
  -->
 <script>
+    $('input, textarea')
+    .focusin(function(){ $('header').addClass('form-focus'); })
+    .focusout(function(){ $('header').removeClass('form-focus'); })
+
 function toggleOption() {
     var $opt = $('#layer-test')
     console.log($opt.hasClass);
@@ -128,6 +140,5 @@ function toggleOption() {
 }
 
 (function(){
-
 })();
 </script>
