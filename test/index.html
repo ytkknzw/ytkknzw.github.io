@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>5M</title>
+	<link rel="stylesheet" href="../assets/lib/bs-3.3.7/css/bootstrap.min.css">
+	<script src="../assets/lib/jquery-3.1.1.min.js"></script>
+	<script>
+
+	function test(m) {
+		var $result = $('#result');
+		var s = Date.now();
+		console.log(s);
+		$.ajax('./' + m + '.html')
+		.done(function() {
+			var e = Date.now();
+			var t = e - s;
+			console.log(s, e, t);
+			$result.html('start:' + s + 'ms<br/>end:' + e + 'ms<br/>span:' + t + 'ms');
+		})
+		.fail(function(err) {
+			$result.html(err);
+		})
+	}
+	</script>
+</head>
+<body style="padding: 16px;">
+	<div class="panel">
+		<button class="btn btn-default" onclick="test('5m')">5M</button>
+		<button class="btn btn-default" onclick="test('10m')">10M</button>
+		<button class="btn btn-default" onclick="test('20m')">20M</button>
+	</div>
+	<div class="well" style="font-family: monospace; text-align: right; font-size: 32px;" id="result"></div>
+</body>
+</html>
