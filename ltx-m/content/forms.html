@@ -11,54 +11,125 @@
 </style>
 
 <header class="header">
-  Experimental <b>Forms</b>
+    <div class="header-title">
+        Experimental <b>Forms</b>
+    </div>
+    <div class="header-left">
+        <a class="btn btn-link" href="javascript:history.back()">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+            <span class="hidden-xs"> Back</span>
+        </a>
+        <a class="btn btn-link" href="javascript:toggleOption()">
+            <i class="glyphicon glyphicon-menu-hamburger"></i>
+            <span class="hidden-xs"> Options</span>
+        </a>
+    </div>
+    <div class="header-right hidden-sm hidden-xs">
+        <a class="btn btn-link" href="javascript:void(0)">Action 1</a>
+        <a class="btn btn-link" href="javascript:void(0)">Action 2</a>
+        <a class="btn btn-link" href="javascript:void(0)">Action 3</a>
+    </div>
+    <div class="header-right btn-group hidden-md hidden-lg">
+        <a class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+            <i class="glyphicon glyphicon-option-vertical"></i>
+            <span class="hidden-xs"> Action Menu</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right">
+            <a class="btn btn-primary btn-block" href="#">Action</a>
+            <a class="btn btn-primary btn-block" href="#">Another action</a>
+            <a class="btn btn-primary btn-block" href="#">Something else here</a>
+            <a class="btn btn-primary btn-block" href="#">Separated link</a>
+        </div>
+    </div>
 </header>
 
-<div class="float-lt">
-    <a class="btn btn-link" href="javascript:history.back()">
-        <i class="glyphicon glyphicon-chevron-left"></i>
-        <span class="hidden-xs"> Back</span>
-    </a>
-    <a class="btn btn-link" href="javascript:toggleOption()">
-        <i class="glyphicon glyphicon-menu-hamburger"></i>
-        <span class="hidden-xs"> Page</span>
-    </a>
-</div>
-<div class="float-rt hidden-sm hidden-xs">
-    <a class="btn btn-link" href="javascript:history.back()">Action 1</a>
-    <a class="btn btn-link" href="javascript:history.back()">Action 2</a>
-    <a class="btn btn-link" href="javascript:history.back()">Action 3</a>
-</div>
 
- <div class="float-rt btn-group hidden-md hidden-lg">
-    <a class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-        <i class="glyphicon glyphicon-option-vertical"></i>
-        <span class="hidden-xs"> Action Menu</span>
-    </a>
-    <div class="dropdown-menu dropdown-menu-right">
-        <a class="btn btn-primary btn-block" href="#">Action</a>
-        <a class="btn btn-primary btn-block" href="#">Another action</a>
-        <a class="btn btn-primary btn-block" href="#">Something else here</a>
-        <a class="btn btn-primary btn-block" href="#">Separated link</a>
-    </div>
-</div>
 
 <div class="w1024" style="padding: 50px 8px 8px 8px; box-sizing: border-box;">
     <h3>Forms</h3>
     <div style="border: solid 1px #eee; border-radius: 2px; background-color: #f9f9f9; padding: 6px;">
 
-        <select class="form-control" name="sel" id="sel">
-            <option value="">Option 1</option>
-            <option value="">Option 2</option>
-            <option value="">Option 3</option>
-        </select>
-        <br/>
-        <div>
-            <input class="form-control input-form" value="" placeholder="Form">
-        </div>
-        <div class="form-group">
-            <label>form 1</label>
-            <input class="form-control input-form" value="" placeholder="Form">
+        <div class="row" style="padding: 16px;">
+            <div class="form-group col-md-3 col-sm-4">
+                <label>select</label>
+                <select class="form-control" name="sel" id="sel">
+                    <option value="">Option 1</option>
+                    <option value="">Option 2</option>
+                    <option value="">Option 3</option>
+                </select>
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>Text</label>
+                <input class="form-control input-form" type="text">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>datetime</label>
+                <input class="form-control input-form" type="datetime">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>datetime-local</label>
+                <input class="form-control input-form" type="datetime-local">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>date</label>
+                <input class="form-control input-form" type="date">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>month</label>
+                <input class="form-control input-form" type="month">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>week</label>
+                <input class="form-control input-form" type="week">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>time</label>
+                <input class="form-control input-form" type="time">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>url</label>
+                <input class="form-control input-form" type="url">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>email</label>
+                <input class="form-control input-form" type="email">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>tel</label>
+                <input class="form-control input-form" type="tel">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>number</label>
+                <input class="form-control input-form" type="number">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>file</label>
+                <input class="form-control input-form" type="file">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>search</label>
+                <input class="form-control input-form" type="search">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>range</label>
+                <input class="form-control input-form" type="range">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>color</label>
+                <input class="form-control input-form" type="color">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>checkbox</label>
+                <input class="form-control input-form" type="checkbox">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>radio</label>
+                <input class="form-control input-form" type="radio">
+            </div>
+            <div class="form-group col-md-3 col-sm-4">
+                <label>form 1</label>
+                <textarea class="form-control input-form"></textarea>
+            </div>
         </div>
 
         <p style="padding: 100px 0;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt soluta, aperiam laudantium. Quibusdam omnis eaque quaerat illo! Tempore dolorem ratione inventore excepturi. Aperiam maxime reprehenderit eius quisquam deserunt id sapiente.</p>
@@ -128,9 +199,9 @@
 </div>
  -->
 <script>
-    $('input, textarea')
-    .focusin(function(){ $('header').addClass('form-focus'); })
-    .focusout(function(){ $('header').removeClass('form-focus'); })
+    // $('input, textarea')
+    // .focusin(function(){ $('header').addClass('form-focus'); })
+    // .focusout(function(){ $('header').removeClass('form-focus'); })
 
 function toggleOption() {
     var $opt = $('#layer-test')

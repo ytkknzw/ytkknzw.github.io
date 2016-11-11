@@ -37,24 +37,53 @@ a:hover, a:link {
   text-overflow: ellipsis;
   overflow: hidden;
 }
-.float-lt {
-  position: fixed;
+.header a {
+  display: inline-block;
+  line-height: 44px;
+  text-align: center;
+  color: #fff;
+  padding: 0 8px;
+  white-space: nowrap;
+}
+.header-title {
+  position: absolute;
   top: 0;
   left: 0;
-  z-index: 11;
-  padding: 4px;
+  width: 100%;
+  text-align: center;
+  background-color: inherit;
+  color: #fff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+}
+.header-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: inherit;
+  color: #fff;
+}
+.header-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: inherit;
+  color: #fff;
+}
+.title {
+  padding: 0 16px;
+  background-color: inherit;
+  color: #fff;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 44px;
 }
 .float-lb {
   position: fixed;
   bottom: 0;
   left: 0;
-  z-index: 11;
-  padding: 4px;
-}
-.float-rt {
-  position: fixed;
-  top: 0;
-  right: 0;
   z-index: 11;
   padding: 4px;
 }
@@ -64,10 +93,6 @@ a:hover, a:link {
   right: 0;
   z-index: 11;
   padding: 4px;
-}
-.float-lt .btn-link,
-.float-rt .btn-link {
-  color: #fff !important;
 }
 
 #content-pane {
