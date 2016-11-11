@@ -27,7 +27,9 @@
 </div>
 
 <script>
-$(function(){
+(function(){
+  "use strict"
+  console.log('home', App.pages);
   if (!App.pages.menu) {
     var h = ''
     for (let i=0, l=App.contents.length; i<l; i++) {
@@ -53,5 +55,5 @@ $(function(){
     App.pages.menu = h
   }
   $('#page-main').html(App.pages.menu)
-})
+})();
 </script>
