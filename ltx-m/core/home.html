@@ -32,13 +32,13 @@
   console.log('home', App.pages);
   if (!App.pages.menu) {
     var h = ''
-    for (let i=0, l=App.contents.length; i<l; i++) {
+    for (var i=0, l=App.contents.length; i<l; i++) {
       var cat = App.contents[i]
       h += '<div class="menu">'
         + '<span class="menu-title">' + cat.title + '</span> &nbsp;'
         + '<span class="menu-desc">' + cat.description + '</span>'
         + '<div class="row">'
-        for (let j=0, m=cat.items.length; j<m; j++) {
+        for (var j=0, m=cat.items.length; j<m; j++) {
           var item = cat.items[j]
           h += ''
             + '<div class="col-md-3 col-sm-4">'
