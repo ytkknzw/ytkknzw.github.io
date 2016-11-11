@@ -83,37 +83,61 @@
 </head>
 <body>
 
-<header>
+<header class="hidden-xs">
   <div class="header-title">
-  <!-- &nbsp; -->
-  <i class="glyphicon glyphicon-home"></i>
-   Home &raquo; Operation
-  <i class="glyphicon glyphicon-triangle-bottom"></i>
-<!--    Home &raquo; Operation &raquo; Time Management / Yutaka Kanazawa / 2016-12
-  <i class="glyphicon glyphicon-triangle-bottom"></i>
- -->  </div>
+    <i class="glyphicon glyphicon-home"></i>
+     Home &raquo; Operation &raquo; Time Management / Yutaka Kanazawa / 2016-12
+    <i class="glyphicon glyphicon-triangle-bottom"></i>
+  </div>
   <div class="header-left">
     <a href="#"><i class="glyphicon glyphicon-chevron-left"></i> Back</a>
     <a href="#"><i class="glyphicon glyphicon-menu-hamburger"></i> Options</a>
-    <!-- <span style="padding: 0 16px;"><i class="glyphicon glyphicon-home"></i> &raquo; Page Title</span> -->
-    <!-- <span class="title"><i class="glyphicon glyphicon-home"></i> &raquo; Operation &raquo; Time Management - Yutaka Kanazawa</span> -->
-    <!-- <span class="title"><i class="glyphicon glyphicon-home"></i> &raquo; Operation &raquo; Page Title Page Title Page Title Page Title Page Title Page Title Page Title Page Title Page Title</span> -->
   </div>
   <div class="header-right">
     <a href="#"><i class="glyphicon glyphicon-option-vertical"></i> Actions</a>
   </div>
 </header>
 
+<header class="visible-xs">
+  <div class="header-title">
+    &nbsp;
+  </div>
+  <div class="header-left">
+    <a href="#"><i class="glyphicon glyphicon-chevron-left"></i></a>
+    <!-- <i class="glyphicon glyphicon-home"></i> -->
+     Time Management
+  </div>
+  <div class="header-right">
+    <a href="#"><i class="glyphicon glyphicon-menu-hamburger"></i></a>
+    <a href="#"><i class="glyphicon glyphicon-option-vertical"></i></a>
+  </div>
+</header>
+
 <section class="page">
   <div class="visible-xs" style="padding: 8px; border-bottom: solid 1px #ccc; background-color: #fff;">
+    Date Time
+    <input class="form-control" type="datetime">
+    Date Time Local
+    <input class="form-control" type="datetime-local">
     Date
     <input class="form-control" type="date">
+    Month
+    <input class="form-control" type="month">
+    Week
+    <input class="form-control" type="week">
+    Time
+    <input class="form-control" type="time">
+    Text
+    <input class="form-control" type="text">
     Member
     <select class="form-control">
       <option>abc</option>
       <option>def</option>
       <option>ghi</option>
     </select>
+    <hr/>
+    <button class="btn btn-default">Cancel</button>
+    <button class="btn btn-primary pull-right">Change</button>
   </div>
   <div class="sidebar hidden-xs">
     
