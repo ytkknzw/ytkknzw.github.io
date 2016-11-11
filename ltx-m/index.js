@@ -118,7 +118,7 @@ var App = {
   },
 
   hasPermission: function(path) {
-    const [,cat,page] = path.split('/')
+    const [_,cat,page] = path.split('/')
     var b = false;
     for (var i = App.contents.length - 1; i >= 0; i--) {
       var c = App.contents[i];
