@@ -138,10 +138,10 @@ var App = {
 
   login: function() {
     localStorage.setItem('jwt', 'jwt');
-    $.get('./core/home.html', html => {
-      $('body').html(html)
+    $.get('./core/home.html', function(html) {
+      $('body').html(html);
       App.showPage();
-    })
+    });
   },
 
   showLogoutDialog: function() {
@@ -163,7 +163,9 @@ var App = {
 
   logout: function() {
     localStorage.removeItem('jwt');
-    $.get('./core/login.html', html => $('body').html(html))
+    $.get('./core/login.html', function(html){
+      $('body').html(html);
+    });
   },
 
 	showPage: function(obj) {
@@ -171,7 +173,8 @@ var App = {
     // if($.type(obj) !== 'object') {
     //   console.log('App.showPage arg0 must be object');
     // } else {
-      const [, category, content] = location.hash.split('/');
+      var lh = location.hash.split('/');
+      var category = lh[1], content = lh[2];
       if (content === undefined) {
         console.log('showPage: content undefined');
       }
@@ -219,7 +222,9 @@ var App = {
 					}
 				});
 			} else {
-        $.get('./core/not-found.html', html => $('#content-pane').html(html))
+        $.get('./core/not-found.html', function(html){
+          $('#content-pane').html(html);
+        });
         // $('#content').css({display: 'none'});
         // $('#menu-pane').css({display: 'block'});
       }
