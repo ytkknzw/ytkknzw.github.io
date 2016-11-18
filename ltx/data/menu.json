@@ -1,0 +1,55 @@
+[{
+    "key": "experimental",
+    "title": "Experimental",
+    "items": [
+        { "key": "map", "route": "ex-map", "title": "Google Map" },
+        { "key": "svg", "route": "ex-svg", "title": "SVG Map" },
+        { "key": "calendar", "route": "ex-calendar", "title": "Calendar" },
+        { "key": "andwrite", "route": "ex-handwrite", "title": "Handwrite" },
+        { "key": "", "route": "ex-charts", "title": "Charts" },
+        { "key": "", "route": "ex-motion", "title": "Motion" },
+        { "key": "", "route": "ex-3d-view", "title": "3D View" },
+        { "key": "", "route": "ex-components", "title": "UI Components" }
+    ]
+}, {
+    "key": "operation",
+    "title": "Operation",
+    "items": [
+        { "key": "", "route": "tm-time-management", "title": "HR - Time Management" },
+        { "key": "", "route": "acc-account", "title": "Accounting" },
+        { "key": "", "route": "crm-crm", "title": "CRM" },
+        { "key": "", "route": "scm-scm", "title": "SCM" }
+    ]
+}, {
+    "key": "personal",
+    "title": "Personal",
+    "items": [
+        { "key": "", "route": "tm-time-management", "title": "Time Management" },
+        { "key": "", "route": "wf-workflow", "title": "Workflow" },
+        { "key": "", "route": "acc-business-trip", "title": "Business Trip" },
+        { "key": "", "route": "acc-traffic-fee", "title": "Traffic Fee" }
+    ]
+}, {
+    "key": "management",
+    "title": "Management",
+    "items": [
+        { "key": "", "route": "tm-time-management", "title": "Time Management" },
+        { "key": "", "route": "wf-workflow", "title": "Workflow" }
+    ]
+}, {
+    "key": "shared",
+    "title": "Shared",
+    "items": [
+        { "key": "", "route": "org-organization", "title": "Organization Information" },
+        { "key": "", "route": "shared-book-shelf", "title": "Book Shelf" }
+    ]
+}, {
+    "key": "admin",
+    "title": "Administration",
+    "items": [
+        { "key": "", "route": "admin-contents", "title": "Contents Management" },
+        { "key": "", "route": "admin-permission", "title": "Permission Management" },
+        { "key": "", "route": "admin-users", "title": "Users Management" },
+        { "key": "", "route": "admin-organization", "title": "Organization Management" }
+    ]
+}]

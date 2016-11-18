@@ -1,300 +1,272 @@
+var MENUES = [
+  {
+      "key": "experimental",
+      "title": "Experimental",
+      "items": [{
+          "title": "UI Forms",
+          "key": "forms",
+          "url": "ex/ex-ui-forms.html"
+      }, {
+          "title": "Google Map",
+          "key": "map",
+          "url": "ex/ex-map.html"
+      }, {
+          "title": "SVG Map",
+          "key": "svg",
+          "url": "ex/ex-map-svg.html"
+      }, {
+          "title": "Calendar",
+          "key": "calendar",
+          "url": "ex/ex-calendar.html"
+      }, {
+          "title": "Handwrite",
+          "key": "handwrite",
+          "url": "ex/ex-handwrite.html"
+      }, {
+          "title": "Charts",
+          "key": "charts",
+          "url": "ex/ex-charts.html"
+      }, {
+          "title": "Motion",
+          "key": "motion",
+          "url": "ex/ex-motion.html"
+      }, {
+          "title": "3D View",
+          "key": "3d-view",
+          "url": "ex/ex-3d-view.html"
+      }, {
+          "title": "UI Components",
+          "key": "ui-components",
+          "url": "ex/ex-ui-components.html"
+      }]
+  }, {
+      "key": "operation",
+      "title": "Operation",
+      "description": "",
+      "icon": "",
+      "items": [{
+          "title": "HR - Users Management",
+          "key": "users",
+          "url": "hr/hr-user.html"
+      }, {
+          "title": "HR - Organization Management",
+          "key": "organization",
+          "url": "hr/hr-organization.html"
+      }, {
+          "title": "HR - Employees",
+          "key": "employee",
+          "url": "hr/hr-employee.html"
+      }, {
+          "title": "HR - Time Management",
+          "key": "time-management",
+          "url": "hr/hr-tm.html"
+      }, {
+          "title": "Accounting",
+          "key": "account",
+          "url": "acc/acc-accounting.html"
+      }, {
+          "title": "CRM",
+          "key": "crm",
+          "url": "crm-crm.html"
+      }, {
+          "title": "SCM",
+          "key": "scm",
+          "url": "scm-scm.html"
+      }, {
+          "title": "Something More 01",
+          "key": "app01",
+          "url": "app-not-found.html"
+      }, {
+          "title": "Something More 02",
+          "key": "app02",
+          "url": "app-not-found.html"
+      }, {
+          "title": "Something More 03",
+          "key": "app03",
+          "url": "app-not-found.html"
+      }, {
+          "title": "Something More 04",
+          "key": "app04",
+          "url": "app-not-found.html"
+      }, {
+          "title": "Something More 05",
+          "key": "app05",
+          "url": "app-not-found.html"
+      }]
+  }, {
+      "key": "personal",
+      "title": "Personal",
+      "description": "hello world",
+      "icon": "",
+      "items": [{
+          "title": "Time Management",
+          "key": "time-management",
+          "url": "hr/hr-tm.html"
+      }, {
+          "title": "Workflow",
+          "key": "workflow",
+          "url": "wf-workflow.html"
+      }, {
+          "title": "Business Trip",
+          "key": "business-trip",
+          "url": "acc/acc-business-trip.html"
+      }, {
+          "title": "Traffic Fee",
+          "key": "traffic-fee",
+          "url": "acc/acc-traffic-fee.html"
+      }]
+  }, {
+      "key": "management",
+      "title": "Management",
+      "description": "",
+      "icon": "",
+      "items": [{
+          "title": "Time Management",
+          "key": "time-management",
+          "url": "hr/hr-tm.html"
+      }, {
+          "title": "Workflow",
+          "key": "workflow",
+          "url": "wf-workflow.html"
+      }]
+  }, {
+      "key": "shared",
+      "title": "Shared",
+      "description": "",
+      "icon": "",
+      "items": [{
+          "title": "Organization Information",
+          "key": "organization",
+          "url": "org-organization.html"
+      }, {
+          "title": "Book Shelf",
+          "key": "book-shelf",
+          "url": "shared-book-shelf.html"
+      }]
+  }, {
+      "key": "admin",
+      "title": "Administration",
+      "description": "admin limited.",
+      "icon": "",
+      "items": [{
+          "title": "Contents Management",
+          "key": "contents",
+          "url": "admin/admin-contents.html"
+      }, {
+          "title": "Permission Management",
+          "key": "permission",
+          "url": "admin/admin-permission.html"
+      }]
+  }
+];
+
 var App = {
 
-  base: '',
+  menu: MENUES,
 
-  locale: 'ja-JP',
-  contents: mock_data_menu.value,
-  pages: {},
-
-  platform: {},
+  loadHash: function() { return localStorage.getItem('hash'); },
+  saveHash: function(hash) { localStorage.setItem('hash', hash); },
 
   init: function() {
-    App.detectPlatform();
-    if (localStorage.getItem('jwt') && App.contents) {
-      $.get('./core/home.html', html => {
-        $('body').html(html);
-        App.showPage();
-      })
-    } else {
-      App.logout();
-    }
+    var hash = App.loadHash();
+    console.log('+++++ init app', hash);
+    App.loadPage((hash ? hash : ''));
   },
 
-  setupApplication: function() {
-
+  showPage: function() {
+    console.log('try load page', location.hash);
+    App.loadPage(location.hash);
   },
 
-  detectPlatform: function() {
-    var nVer = navigator.appVersion;
-    var nAgt = navigator.userAgent;
-    var browserName  = navigator.appName;
-    var fullVersion  = '' + parseFloat(navigator.appVersion); 
-    var majorVersion = parseInt(navigator.appVersion, 10);
-    var nameOffset, verOffset, ix;
-
-    // In Opera, the true version is after "Opera" or after "Version"
-    if ((verOffset=nAgt.indexOf("Opera"))!=-1) {
-     browserName = "Opera";
-     fullVersion = nAgt.substring(verOffset+6);
-     if ((verOffset=nAgt.indexOf("Version"))!=-1) 
-       fullVersion = nAgt.substring(verOffset+8);
-    }
-    // In MSIE, the true version is after "MSIE" in userAgent
-    else if ((verOffset=nAgt.indexOf("MSIE"))!=-1) {
-     browserName = "Microsoft Internet Explorer";
-     fullVersion = nAgt.substring(verOffset+5);
-    }
-    // In Chrome, the true version is after "Chrome" 
-    else if ((verOffset=nAgt.indexOf("Chrome"))!=-1) {
-     browserName = "Chrome";
-     fullVersion = nAgt.substring(verOffset+7);
-    }
-    // In Safari, the true version is after "Safari" or after "Version" 
-    else if ((verOffset=nAgt.indexOf("Safari"))!=-1) {
-     browserName = "Safari";
-     fullVersion = nAgt.substring(verOffset+7);
-     if ((verOffset=nAgt.indexOf("Version"))!=-1) 
-       fullVersion = nAgt.substring(verOffset+8);
-    }
-    // In Firefox, the true version is after "Firefox" 
-    else if ((verOffset=nAgt.indexOf("Firefox"))!=-1) {
-     browserName = "Firefox";
-     fullVersion = nAgt.substring(verOffset+8);
-    }
-    // In most other browsers, "name/version" is at the end of userAgent 
-    else if ( (nameOffset=nAgt.lastIndexOf(' ')+1) < 
-              (verOffset=nAgt.lastIndexOf('/')) ) 
-    {
-     browserName = nAgt.substring(nameOffset,verOffset);
-     fullVersion = nAgt.substring(verOffset+1);
-     if (browserName.toLowerCase()==browserName.toUpperCase()) {
-      browserName = navigator.appName;
-     }
-    }
-    // trim the fullVersion string at semicolon/space if present
-    if ((ix=fullVersion.indexOf(";"))!=-1)
-       fullVersion=fullVersion.substring(0,ix);
-    if ((ix=fullVersion.indexOf(" "))!=-1)
-       fullVersion=fullVersion.substring(0,ix);
-
-    majorVersion = parseInt(''+fullVersion,10);
-    if (isNaN(majorVersion)) {
-     fullVersion  = ''+parseFloat(navigator.appVersion); 
-     majorVersion = parseInt(navigator.appVersion,10);
-    }
-
-    var OSName="Unknown OS";
-    if (navigator.appVersion.indexOf("Win"    )!=-1) OSName="Windows";
-    if (navigator.appVersion.indexOf("Mac"    )!=-1) OSName="MacOS";
-    if (navigator.appVersion.indexOf("iPad"   )!=-1) OSName="iOS";
-    if (navigator.appVersion.indexOf("X11"    )!=-1) OSName="UNIX";
-    if (navigator.appVersion.indexOf("Linux"  )!=-1) OSName="Linux";
-    if (navigator.appVersion.indexOf("Android")!=-1) OSName="Android";
-
-    var w = (window.screen.availHeight > window.screen.availWidth ? window.screen.availHeight : window.screen.availWidth)
-    var screenType = (w < 440 ? 'phone' : 440 < w && w <= 1024 ? 'tablet' : 'desktop')
-
-    App.platform = {
-      OsName      : OSName,
-      BrowserName : browserName,
-      FullVersion : fullVersion,
-      MajorVersion: majorVersion,
-      AppName     : navigator.appName,
-      AppVersion  : navigator.appVersion,
-      UserAgent   : navigator.userAgent,
-      Height      : window.screen.availHeight,
-      Width       : window.screen.availWidth,
-      ScreenType  : screenType
-    };
-    console.log('platform : ', App.platform);
-
-    var locale = (navigator.languages != undefined ? navigator.languages[0] : navigator.language);
-    console.log('locale : ', locale);
-  },
-
-  changeLocale: function(locale) {
-    App.locale = locale;
-  },
-
-  hasPermission: function(path) {
-    const [,cat,page] = path.split('/')
-    var b = false;
-    for (var i = App.contents.length - 1; i >= 0; i--) {
-      var c = App.contents[i];
-      if (c.key === cat) {
-        for (var j = c.items.length - 1; j >= 0; j--) {
-          if (c.items[j].key === page) {
-            b = true;
+  loadPage: function(hash) {
+    var p = hash.split('/');
+    var url = 'app-home.html';
+    for (var i = 0, ml = MENUES.length; i < ml; i++) {
+      if(MENUES[i].key == p[1]) {
+        for (var j = 0, il = MENUES[i].items.length; j < il; j++) {
+          if(MENUES[i].items[j].key == p[2]) {
+            url = MENUES[i].items[j].url;
             break;
           }
         }
       }
     }
-    console.log('hasPermission:' + b);
-    return b;
+    console.log('target url :', url);
+    $.ajax({
+      url: './page/' + url,
+      error: function(err, dat){
+        console.log('load page error', err, dat);
+        var html = '<div style="padding: 32px;">' + JSON.stringify(err)
+          + '<hr/><a class="btn btn-primary" href="javascript:history.back();">Go Back</a></div>';
+        $('body').html(html);
+      },
+      success: function(html, res, req) {
+        console.log('load page success');
+        scroll(0, 0);
+        App.saveHash(hash);
+        $('body').html(html);
+      }
+    });
   },
 
-  login: function() {
-    localStorage.setItem('jwt', 'jwt');
-    $.get('./core/home.html', html => {
-      $('body').html(html)
-      App.showPage();
-    })
-  },
+  modal: {
 
-  showLogoutDialog: function() {
-    App.showModal({
-      size: 'sm',
-      animation: 'fade',
-      title: 'LOG OUT',
-      message: 'Are you sure to log out?',
-      buttons: [{
-        title: 'Cancel'
-      },{
+    showLogoutDialog: function() {
+      App.modal.showModal({
+        size: 'sm',
+        animation: 'fade',
         title: 'LOG OUT',
-        action: function() {
-          App.logout();
-        }
-      }]
-    })
-  },
-
-  logout: function() {
-    localStorage.removeItem('jwt');
-    $.get('./core/login.html', html => $('body').html(html))
-  },
-
-  buildMenu: function() {
-    if(!App.pages.menu) {
-      // var h = '<div id="menu-message" class="alert alert-danger"></div>';
-      var h = '<div class="w1024" style="padding-bottom: 300px;">'
-            + '<div class="menu">'
-            + '<a class="btn btn-primary pull-right" href="javascript:App.showLogoutDialog()"><i class="glyphicon glyphicon-off"></i> Log Out</a>'
-            + '<a class="btn btn-default pull-right" href="#/settings" style="margin: 0 8px;"><i class="glyphicon glyphicon-cog"></i> Settings</a>'
-            + '</div>'
-      for (let i=0, l=App.contents.length; i<l; i++) {
-        var cat = App.contents[i];
-        h += '<div class="menu">'
-          + '<span class="menu-title">' + cat.title + '</span> &nbsp;'
-          + '<span class="menu-desc">' + cat.description + '</span>'
-          + '<div class="row">';
-          for (let j=0, m=cat.items.length; j<m; j++) {
-            var item = cat.items[j];
-            h += ''
-              + '<div class="col-md-3 col-sm-4">'
-                + '<a class="menu-item" href="#/' + cat.key + '/' + item.key + '">'
-                  + '<i class="glyphicon glyphicon-chevron-right"></i>'
-                  + '<span class="menu-item-title"></i>' + item.title + '</span>'
-                + '</a>'
-              + '</div>';
+        message: 'Are you sure to log out?',
+        buttons: [{
+          title: 'Cancel'
+        },{
+          title: 'LOG OUT',
+          action: function() {
+            location.href = '#/app-login.html';
           }
-        h += '</div>'
-          + '</div>';
+        }]
+      })
+    },
+
+    showModal: function(prmObj) {
+      var h = '<div class="modal" id="myModal" tabindex="-1">'
+        + '<div class="modal-dialog">'
+          + '<div class="modal-content">';
+      if(prmObj.title) {
+         h += '<div class="modal-header">'
+              + '<span class="modal-title">' + prmObj.title + '</span>'
+            + '</div>';
       }
-      h += '</div>';
-      App.pages.menu = h;
-    }
-    $('#content-pane').html(App.pages.menu);
-    App.setContentPath('Menu');
-  },
-
-	showPage: function(obj) {
-    console.log('showPage : ', obj);
-    // if($.type(obj) !== 'object') {
-    //   console.log('App.showPage arg0 must be object');
-    // } else {
-      const [, category, content] = location.hash.split('/');
-      if (content === undefined) {
-        console.log('showPage: content undefined');
+         h += '<div class="modal-body">' + prmObj.message + '</div>';
+         h += '<div class="modal-footer">'
+              + '<button class="btn btn-default" data-dismiss="modal">'
+                + prmObj.buttons[0].title 
+              + '</button>';
+      if(prmObj.buttons.length>1) {
+           h += '<button class="btn btn-primary">' + prmObj.buttons[1].title + '</button>';
       }
-      if(category === '' || category === undefined || category === 'menu') {
-        console.log('build menu');
-        App.buildMenu();
-        // localStorage.setItem('currentPath', location.hash);
-      } else if(category !== undefined) {
-        if (App.hasPermission(location.hash)) {
-          // localStorage.setItem('currentPath', location.hash);
-          console.log('Has Permission:'+location.hash);
-        } else {
-          console.log('No permission:'+location.hash);
-          return;
-        }
-				$.ajax({
-					url: './content/' + content + '.html',
-					error: function(err, dat){
-            $.get('./core/not-found.html', html => $('#content-pane').html(html))
-						// $('#menu-message').html(JSON.stringify(err));
-					},
-					success: function(html, res, req) {
-            scroll(0, 0);
-						$('#content-pane').html(html);
-            App.setContentPath('Menu &raquo; ' + category + ' &raquo; ' + content);
-					}
-				});
-			} else {
-        $.get('./core/not-found.html', html => $('#content-pane').html(html))
-        // $('#content').css({display: 'none'});
-        // $('#menu-pane').css({display: 'block'});
-      }
-    // }
-	},
-
-  setContentPath: function(path) {
-    $('#content-path').html(path);
-  },
-
-  setFullWidth: function setFullWidth(b) {
-    (b ? $('.w1024').addClass('auto') : $('.w1024').removeClass('auto'))
-  },
-
-  toggleLeft: function toggleLeft() {
-    // alert('left');
-    // var w = $('.w1024')
-    var left = $('#side-bar');
-    if(left.hasClass('side-close')){  /* open */
-      left.removeClass('side-close');
-    } else {
-      left.addClass('side-close');
-    }
-  },
-
-  showModal: function(prmObj) {
-    var h = '<div class="modal" id="myModal" tabindex="-1">'
-      + '<div class="modal-dialog">'
-        + '<div class="modal-content">';
-    if(prmObj.title) {
-       h += '<div class="modal-header">'
-            + '<span class="modal-title">' + prmObj.title + '</span>'
-          + '</div>';
-    }
-       h += '<div class="modal-body">' + prmObj.message + '</div>';
-       h += '<div class="modal-footer">'
-            + '<button class="btn btn-default" data-dismiss="modal">'
-              + prmObj.buttons[0].title 
-            + '</button>';
-    if(prmObj.buttons.length>1) {
-         h += '<button class="btn btn-primary">' + prmObj.buttons[1].title + '</button>';
-    }
-       h += '</div>'
+         h += '</div>'
+          + '</div>'
         + '</div>'
-      + '</div>'
-    + '</div>';
-    var modal = $(h);
-    if(prmObj.buttons.length>1) {
-      modal.find('.btn-primary').on('click', function(){
-        $('#myModal').modal('hide');
-        prmObj.buttons[1].action();
-      });
+      + '</div>';
+      var modal = $(h);
+      if(prmObj.buttons.length>1) {
+        modal.find('.btn-primary').on('click', function(){
+          $('#myModal').modal('hide');
+          prmObj.buttons[1].action();
+        });
+      }
+      if(prmObj.animation) {
+        modal.find('.modal').addClass(prmObj.animation);
+      }
+      if(prmObj.size){
+        modal.find('.modal-dialog').addClass('modal-' + prmObj.size);
+      }
+      $('body').append(modal);
+      $('#myModal').modal('show');
     }
-    if(prmObj.animation) {
-      modal.find('.modal').addClass(prmObj.animation);
-    }
-    if(prmObj.size){
-      modal.find('.modal-dialog').addClass('modal-' + prmObj.size);
-    }
-    $('body').append(modal);
-    $('#myModal').modal('show');
   }
+
 };
 
 window.onload = App.init;

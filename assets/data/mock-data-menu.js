@@ -72,6 +72,11 @@ var mock_data_menu = {
       "template" : "time-management.html",
       "controller" : "time-management.js"
     }, {
+      "key" : "employees",
+      "title" : "HR - Employees",
+      "template" : "employees.html",
+      "controller" : "time-management.js"
+    }, {
       "key" : "account",
       "title" : "Accounting",
       "template" : "accounting.html",

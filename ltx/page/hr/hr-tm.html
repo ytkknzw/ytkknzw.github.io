@@ -1,0 +1,184 @@
+<link rel="stylesheet" media="screen" href="lib/handsontable/handsontable.full.css">
+<script src="lib/handsontable/handsontable.full.js"></script>
+
+<style>
+table.my-tbl {
+	width: 100% !important;
+	border-collapse: collapse;
+	border: solid 1px #ccc;
+}
+.my-tbl th {
+	border: solid 1px #ccc;
+	background: #eee;
+  padding: 3px 0;
+  /*height: 24px;*/
+  font-size: 13px;
+  font-weight: normal;
+  text-align: center;
+}
+.my-tbl td {
+	box-sizing: border-box;
+  padding: 3px 8px;
+	border-left: solid 1px #ccc;
+}
+.my-tbl tr:nth-child(even) {
+	background: #eee;
+}
+.t-r {
+  text-align: right;
+  width: 10% !important;
+}
+.fl {
+  float: left;
+}
+.lh {
+  line-height: 32px;
+  padding-right: 8px;
+}
+
+.ht_master tr:nth-of-type(odd) > td {
+  background-color: #ffffff;
+}
+.ht_master tr:nth-of-type(even) > td {
+  background-color: #f9f9f9;
+}
+.ht_master tr > td {
+  border-bottom: 0px solid #F00;
+}
+
+</style>
+
+<div class="header">
+    <div class="header-title">Time Management</div>
+    <div class="header-left">
+    <a class="btn btn-link" href="javascript:history.back();">Back</a>
+    </div>
+    <div class="header-right">
+    </div>
+</div>
+
+<div class="page">
+    <table class="cust pull-left my-tbl">
+      <thead>
+          <tr>
+              <th>就業時間</th>
+              <th>残業</th>
+              <th>深夜残業</th>
+              <th>法休就業</th>
+              <th>法休深夜</th>
+              <th>控除</th>
+              <th>有給残り</th>
+              <th>残業上限</th>
+              <th>上限追加</th>
+              <th>上限残り</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td class="t-r">0 h</td>
+              <td class="t-r">0 h</td>
+              <td class="t-r">0 h</td>
+              <td class="t-r">0 h</td>
+              <td class="t-r">0 h</td>
+              <td class="t-r">0 h</td>
+              <td class="t-r">0 日</td>
+              <td class="t-r">0 h</td>
+              <td class="t-r">0 h</td>
+              <td class="t-r">0 h</td>
+          </tr>
+      </tbody>
+    </table>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+  <div id="example" style="border: solid 0px #156; overflow: hidden; width: 100%; box-sizing: border-box;"></div>
+</div>
+
+<!-- <div style="height: 1000px"></div> -->
+
+
+<div class="toolbar">
+  <!-- <div style="background-color: #f9f9f9; border-bottom: solid 1px #ccc; line-height: 44px;"> -->
+    <div class="w1024">
+      <button class="btn btn-primary">Side Bar</button>
+      &nbsp;|&nbsp; <b>Member</b> :&nbsp;
+      <select class="btn btn-primary" style="height: 32px;">
+        <option>001001 - John Doe</option>
+        <option>001002 - John Smith</option>
+        <option>001003 - Mary Doe</option>
+      </select>
+      &nbsp; <b>Target</b> :&nbsp;
+      <select class="btn btn-sm btn-primary" style="height: 32px;">
+        <option>2015 - 01</option>
+        <option>2015 - 02</option>
+        <option>2015 - 03</option>
+        <option>2015 - 04</option>
+      </select>
+      &nbsp;  | &nbsp;
+      <button class="btn btn-default" (click)="showApply()">確定</button> &nbsp;
+      <button class="btn btn-warning" (click)="showDecline()">却下</button> &nbsp; |
+      <button class="btn btn-info pull-right" style="margin: 6px 0 0 0;" (click)="showWorkflow()">ワークフロー <icon name="arrow-dropdown"></icon></button>
+    </div>
+  <!-- </div> -->
+</div>
+
+<script>
+// (function() {
+
+// var data = function () {
+//   return Handsontable.helper.createSpreadsheetData(31, 10);
+// };
+
+// var data = [];
+
+// var container = document.getElementById('example');
+
+
+// $.ajax('data/tm.json')
+// .done(function(dat){
+//   var hot1 = new Handsontable(document.getElementById('example'), {
+//     data: dat,
+//     minSpareCols: 0,
+//     minSpareRows: 0,
+//     rowHeaders: false,
+//     colHeaders: true,
+//     contextMenu: false,
+//     colHeaders: ['日', '祝', '勤怠区分', '出勤', '外出', '再入', '退勤', '昼', '夕', '夜', '時間', '遅早', '事由', '備考'],
+//     colWidths: [32, 32, 100, 55, 55, 55, 55, 40, 40, 40, 45, 40, 40, 380],
+//     columns: [
+//       { data: 'date', type: 'numeric' }, 
+//       { data: 'date', type: 'numeric'}, 
+//       { data: 'type', type: 'text' }, 
+//       { data: 'd0', type: 'time', format: 'hh:mm' }, 
+//       { data: 'd1', type: 'time', format: 'hh:mm' }, 
+//       { data: 'd2', type: 'time', format: 'hh:mm' }, 
+//       { data: 'd3', type: 'time', format: 'hh:mm' }, 
+//       { data: 'd4', type: 'time', format: 'hh:mm' }, 
+//       { data: 'd5', type: 'time', format: 'hh:mm' }, 
+//       { data: 'd6', type: 'time', format: 'hh:mm' }, 
+//       { data: 'd7', type: 'time', format: 'hh:mm' }, 
+//       { data: 'd8', type: 'time', format: 'hh:mm' }, 
+//       { data: 'd9', type: 'time', format: 'hh:mm' },
+//       { data: 'd10', type: 'time', format: 'hh:mm' }
+//     ],
+//     rowHeights: [32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32],
+//     manualColumnMove: true,
+//     manualColumnResize: true,
+//     columnSorting: true,
+//     sortIndicator: true,
+//     // height: 768,
+//     width: 1008
+//     // width: 1024
+//     // width: 768
+//   });
+//   $('#example').css('height', (App.platform.Height - 180) + 'px')
+//   // hot1.render();
+//   console.log((App.platform.Height - 180) + 'px', hot1);
+// })
+// .fail(function(err){
+//   console.log(err);
+// });
+
+// })();
+</script>

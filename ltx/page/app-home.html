@@ -1,0 +1,109 @@
+<style>
+  .menu {
+    box-sizing: border-box;
+    padding: 16px;
+  }
+  .menu-title {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .menu-description {
+    padding-left: 16px;
+  }
+  .menu-item {
+    box-sizing: border-box;
+    display: block;
+    border: solid 1px rgba(0, 48, 80, .3);
+    border-radius: 3px;
+    padding: 0px 8px;
+    margin: 8px 0;
+    font-size: 15px;
+    line-height: 40px;
+    height: 40px;
+  }
+  .menu-item:hover {
+    background-color: #135;
+    /*background-color: #f3f3f3;*/
+    text-decoration: none;
+    color: #fff;
+    border: solid 1px rgba(0, 48, 80, 1);
+  }
+  .menu-item-title {
+    float: left;
+    line-height: 40px;
+    width: calc(100% - 16px);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .menu-item-desc {
+    display: none;
+    float: right;
+    line-height: 40px;
+  }
+  .menu-item:hover .menu-item-desc {
+    display: block;
+  }
+</style>
+
+<div class="header">
+  <div class="header-title">Menu</div>
+  <div class="header-left">
+  </div>
+  <div class="header-right">
+  </div>
+</div>
+
+<div class="page">
+  <div class="padding">
+    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+      LOG OUT
+    </button>
+    <div id="menu-body" class=""></div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Log Out</h4>
+      </div>
+      <div class="modal-body">
+        Are you sure to LOG OUT?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="logout-logout">LOG OUT</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(app){
+    var dat = App.menu;
+    var html = '', s = 0, r = 0;
+    for(var i=0, l = dat.length; i<l; i++) {
+        var m = dat[i];
+        html += '<h4>' + m.title + '</h4>';
+        html += '<div class="row">';
+        for(var j=0, len = m.items.length; j<len; j++) {
+            var p = m.items[j];
+            html += '<div class="col-md-3 col-sm-4"><a class="menu-item btn-block" '
+            html += 'href="#/' + m.key + '/' + p.key + '">' + p.title + '</a></div>';
+        }
+        html += '</div>';
+    }
+    $("#menu-body").html(html);
+})(App);
+
+$('#logout-logout').on('click', function(){
+    App.logout();
+});
+$('#myModal').on('shown.bs.modal', function () {
+    // $('#myInput').focus()
+});
+</script>
+
+
