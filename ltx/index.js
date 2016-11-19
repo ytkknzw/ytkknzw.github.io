@@ -180,7 +180,7 @@ var App = {
 
   loadPage: function(hash) {
     var p = hash.split('/');
-    var url = 'app-home.html';
+    var url = '';
     for (var i = 0, ml = MENUES.length; i < ml; i++) {
       if(MENUES[i].key == p[1]) {
         for (var j = 0, il = MENUES[i].items.length; j < il; j++) {
@@ -190,6 +190,13 @@ var App = {
           }
         }
       }
+    }
+    if(url === '') {
+      url = {
+        '': 'app-home.html',
+        'home': 'app-home.html',
+        'login': 'app-login.html'
+      }[p[1]];
     }
     console.log('target url :', url);
     $.ajax({
