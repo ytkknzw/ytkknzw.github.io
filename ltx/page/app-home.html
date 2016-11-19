@@ -48,23 +48,15 @@
 
 <div class="header">
   <div class="header-title">Menu</div>
-  <div class="header-left">
-  </div>
-  <div class="header-right">
-  </div>
 </div>
 
-<div class="page">
-  <div class="padding">
-    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
-      LOG OUT
-    </button>
-    <div id="menu-body" class=""></div>
-  </div>
+<div class="page-padding page-w">
+  <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">LOG OUT</button>
+  <div id="menu-body" style="margin-bottom: 256px;"></div>
 </div>
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-sm" role="document">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" id="myModalLabel">Log Out</h4>
@@ -90,8 +82,11 @@
         html += '<div class="row">';
         for(var j=0, len = m.items.length; j<len; j++) {
             var p = m.items[j];
-            html += '<div class="col-md-3 col-sm-4"><a class="menu-item btn-block" '
-            html += 'href="#/' + m.key + '/' + p.key + '">' + p.title + '</a></div>';
+            html += '<div class="col-md-3 col-sm-4">';
+            html += '<a class="btn-block menu-item" href="#/' + m.key + '/' + p.key + '">';
+            html += '<i class="glyphicon glyphicon-chevron-right"></i>';
+            html += '<span class="menu-item-title">' + p.title + '</span>';
+            html += '</a></div>';
         }
         html += '</div>';
     }

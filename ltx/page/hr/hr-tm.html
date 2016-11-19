@@ -1,63 +1,90 @@
-<link rel="stylesheet" media="screen" href="lib/handsontable/handsontable.full.css">
-<script src="lib/handsontable/handsontable.full.js"></script>
-
+<link rel="stylesheet" href="../assets/lib/handsontable/handsontable.full.min.css">
 <style>
-table.my-tbl {
-	width: 100% !important;
-	border-collapse: collapse;
-	border: solid 1px #ccc;
-}
-.my-tbl th {
-	border: solid 1px #ccc;
-	background: #eee;
-  padding: 3px 0;
-  /*height: 24px;*/
-  font-size: 13px;
-  font-weight: normal;
-  text-align: center;
-}
-.my-tbl td {
-	box-sizing: border-box;
-  padding: 3px 8px;
-	border-left: solid 1px #ccc;
-}
-.my-tbl tr:nth-child(even) {
-	background: #eee;
-}
-.t-r {
-  text-align: right;
-  width: 10% !important;
-}
-.fl {
-  float: left;
-}
-.lh {
-  line-height: 32px;
-  padding-right: 8px;
-}
+  table.my-tbl {
+  	width: 100% !important;
+  	border-collapse: collapse;
+  	border: solid 1px #ccc;
+  }
+  .my-tbl th {
+  	border: solid 1px #ccc;
+  	background: #eee;
+    padding: 3px 0;
+    /*height: 24px;*/
+    font-size: 13px;
+    font-weight: normal;
+    text-align: center;
+  }
+  .my-tbl td {
+  	box-sizing: border-box;
+    padding: 2px 4px;
+  	border-left: solid 1px #ccc;
+  }
+  .my-tbl tr:nth-child(even) {
+  	background: #eee;
+  }
+  .t-r {
+    text-align: right;
+    width: 10% !important;
+  }
+  .lh {
+    line-height: 32px;
+    padding-right: 8px;
+  }
 
-.ht_master tr:nth-of-type(odd) > td {
-  background-color: #ffffff;
-}
-.ht_master tr:nth-of-type(even) > td {
-  background-color: #f9f9f9;
-}
-.ht_master tr > td {
-  border-bottom: 0px solid #F00;
-}
+  .ht_master tr > td {
+    vertical-align: middle !important;
+  }
 
+  /*.ht_master tr:nth-of-type(odd) > td {*/
+    /*background-color: #ffffff;*/
+  /*}*/
+  /*.ht_master tr:nth-of-type(even) > td {*/
+    /*background-color: #f9f9f9;*/
+  /*}*/
+  .ht-current-row {
+    background-color: #f3f3f3 !important;
+  }
 </style>
 
 <div class="header">
-    <div class="header-title">Time Management</div>
+    <div class="header-title">勤怠管理 &raquo; 金澤　豊 2016/12</div>
     <div class="header-left">
-    <a class="btn btn-link" href="javascript:history.back();">Back</a>
+      <a class="btn btn-link" href="javascript:history.back();">Back</a>
+      <a class="btn btn-link" href="javascript:history.back();">Option</a>
     </div>
     <div class="header-right">
+      <a class="btn btn-link" >確定</a>
+      <a class="btn btn-link" >却下</a>
+      <a class="btn btn-link">ワークフロー</a>
     </div>
 </div>
 
 <div class="page">
+  <div id="sidebar" style="position: fixed; top: 44px; bottom: 0; width: 256px; background-color: #eee; z-index: 200;">
+    <div class="padding">
+      <h5>Target</h5>
+      <input class="form-control input-sm" type="month" value="2015-12">
+      <br/>
+      <h5>Member</h5>
+      <div class="list-group">
+        <a class="list-group-item" href="#">aaaaaaaa</a>
+        <a class="list-group-item" href="#">aaaaaaaa</a>
+        <a class="list-group-item" href="#">aaaaaaaa</a>
+        <a class="list-group-item" href="#">aaaaaaaa</a>
+      </div>
+    </div>
+  </div>
+  <div id="page-main" class="padding" style="position: fixed; top: 44px; bottom: 0; right: 0; left: 254px;">
+<!--     <span class="page-title">勤怠管理 - </span>
+    <span class="page-subtitle">金澤　豊 2016/12</span>
+      <a class="btn btn-primary pull-right" >確定</a>
+      <a class="btn btn-default pull-right" >却下</a>
+      <a class="btn btn-info pull-right">ワークフロー</a>
+ -->    <!-- <div style="font-size: 28px;">Time Management - y.kanazawa 2016/12</div> -->
+    <div id="wf-history" style="display: none; border: solid 1px #ddd; background-color: #eee; padding: 8px;">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat ratione quidem eum ipsam, dignissimos nemo libero provident itaque, non sapiente culpa, ut repellendus doloribus fuga quam? Quod dolorum itaque quis.</p>
+    </div>
+    <!-- <div style="height: 8px;"></div> -->
     <table class="cust pull-left my-tbl">
       <thead>
           <tr>
@@ -88,97 +115,73 @@ table.my-tbl {
           </tr>
       </tbody>
     </table>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-  <div id="example" style="border: solid 0px #156; overflow: hidden; width: 100%; box-sizing: border-box;"></div>
+    <div style="clear: both; height: 8px;"></div>
+    <div id="example" style=""></div>
 </div>
 
-<!-- <div style="height: 1000px"></div> -->
 
-
-<div class="toolbar">
-  <!-- <div style="background-color: #f9f9f9; border-bottom: solid 1px #ccc; line-height: 44px;"> -->
-    <div class="w1024">
-      <button class="btn btn-primary">Side Bar</button>
-      &nbsp;|&nbsp; <b>Member</b> :&nbsp;
-      <select class="btn btn-primary" style="height: 32px;">
-        <option>001001 - John Doe</option>
-        <option>001002 - John Smith</option>
-        <option>001003 - Mary Doe</option>
-      </select>
-      &nbsp; <b>Target</b> :&nbsp;
-      <select class="btn btn-sm btn-primary" style="height: 32px;">
-        <option>2015 - 01</option>
-        <option>2015 - 02</option>
-        <option>2015 - 03</option>
-        <option>2015 - 04</option>
-      </select>
-      &nbsp;  | &nbsp;
-      <button class="btn btn-default" (click)="showApply()">確定</button> &nbsp;
-      <button class="btn btn-warning" (click)="showDecline()">却下</button> &nbsp; |
-      <button class="btn btn-info pull-right" style="margin: 6px 0 0 0;" (click)="showWorkflow()">ワークフロー <icon name="arrow-dropdown"></icon></button>
-    </div>
-  <!-- </div> -->
-</div>
-
+<script src="../assets/lib/handsontable/handsontable.full.min.js"></script>
 <script>
-// (function() {
+(function() { "use strict"
 
-// var data = function () {
-//   return Handsontable.helper.createSpreadsheetData(31, 10);
-// };
+  var paths = location.hash.split('/');
+  var category = paths[1];
+  console.log('category', category);
 
-// var data = [];
+  var container = document.getElementById('example');
 
-// var container = document.getElementById('example');
+  $.ajax('data/tm.json')
+  .done(function(dat){
 
+    var fnRowHeader = function(row) {
+      return '<button class="btn btn-link" onclick="alert()">Edit</button>';
+    };
 
-// $.ajax('data/tm.json')
-// .done(function(dat){
-//   var hot1 = new Handsontable(document.getElementById('example'), {
-//     data: dat,
-//     minSpareCols: 0,
-//     minSpareRows: 0,
-//     rowHeaders: false,
-//     colHeaders: true,
-//     contextMenu: false,
-//     colHeaders: ['日', '祝', '勤怠区分', '出勤', '外出', '再入', '退勤', '昼', '夕', '夜', '時間', '遅早', '事由', '備考'],
-//     colWidths: [32, 32, 100, 55, 55, 55, 55, 40, 40, 40, 45, 40, 40, 380],
-//     columns: [
-//       { data: 'date', type: 'numeric' }, 
-//       { data: 'date', type: 'numeric'}, 
-//       { data: 'type', type: 'text' }, 
-//       { data: 'd0', type: 'time', format: 'hh:mm' }, 
-//       { data: 'd1', type: 'time', format: 'hh:mm' }, 
-//       { data: 'd2', type: 'time', format: 'hh:mm' }, 
-//       { data: 'd3', type: 'time', format: 'hh:mm' }, 
-//       { data: 'd4', type: 'time', format: 'hh:mm' }, 
-//       { data: 'd5', type: 'time', format: 'hh:mm' }, 
-//       { data: 'd6', type: 'time', format: 'hh:mm' }, 
-//       { data: 'd7', type: 'time', format: 'hh:mm' }, 
-//       { data: 'd8', type: 'time', format: 'hh:mm' }, 
-//       { data: 'd9', type: 'time', format: 'hh:mm' },
-//       { data: 'd10', type: 'time', format: 'hh:mm' }
-//     ],
-//     rowHeights: [32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32, 32],
-//     manualColumnMove: true,
-//     manualColumnResize: true,
-//     columnSorting: true,
-//     sortIndicator: true,
-//     // height: 768,
-//     width: 1008
-//     // width: 1024
-//     // width: 768
-//   });
-//   $('#example').css('height', (App.platform.Height - 180) + 'px')
-//   // hot1.render();
-//   console.log((App.platform.Height - 180) + 'px', hot1);
-// })
-// .fail(function(err){
-//   console.log(err);
-// });
+    var $container = $('#example');
+    var offset = $container.offset();
+    console.log($container.offset().top, $container.position(), window.innerHeight);
+    $container.handsontable({
+    // var hot1 = new Handsontable(container, {
+      stretchH: 'last',
+      currentRowClassName: 'ht-current-row',
+      height: window.innerHeight - offset.top - 16,
+      width: window.innerWidth - offset.left - 16,
+      data: dat,
+      minSpareCols: 0,
+      minSpareRows: 0,
+      rowHeaders: fnRowHeader,
+      colHeaders: true,
+      contextMenu: false,
+      colHeaders: ['日', '祝', '勤怠区分', '出勤', '外出', '再入', '退勤', '昼', '夕', '夜', '時間', '遅早', '事由', '備考'],
+      colWidths: [32, 32, 100, 55, 55, 55, 55, 40, 40, 40, 45, 40, 40, ],
+      columns: [
+        { data: 'date', type: 'numeric' }, 
+        { data: 'date', type: 'numeric'}, 
+        { data: 'type', type: 'text' }, 
+        { data: 'd0', type: 'time', timeFormat: 'hh:mm' }, 
+        { data: 'd1', type: 'time', timeFormat: 'hh:mm' }, 
+        { data: 'd2', type: 'time', timeFormat: 'hh:mm' }, 
+        { data: 'd3', type: 'time', timeFormat: 'hh:mm' }, 
+        { data: 'd4', type: 'numeric', format: '0.0' }, 
+        { data: 'd5', type: 'numeric', format: '0.0' }, 
+        { data: 'd6', type: 'numeric', format: '0.0' }, 
+        { data: 'd7', type: 'time', timeFormat: 'hh:mm', readOnly: true }, 
+        { data: 'd8', type: 'time', format: 'hh:mm' }, 
+        { data: 'd9', type: 'time', format: 'hh:mm' },
+        { data: 'd10', type: 'time', format: 'hh:mm' }
+      ],
+      manualColumnMove: true,
+      manualColumnResize: true,
+      columnSorting: true,
+      sortIndicator: true,
+    });
+    // $('#example').css('height', (App.platform.Height - 180) + 'px')
+    // hot1.render();
+    // console.log((App.platform.Height - 180) + 'px', hot1);
+  })
+  .fail(function(err){
+    console.log(err);
+  });
 
-// })();
+})();
 </script>

@@ -40,12 +40,7 @@ a:hover, a:link {
 .header a {
   color: #fff;
   font-size: 15px;
-/*  display: inline-block;
-  line-height: 44px;
-  text-align: center;
-  padding: 0 8px;
-  white-space: nowrap;
-*/}
+}
 .header-title {
   position: absolute;
   top: 0;
@@ -81,50 +76,40 @@ a:hover, a:link {
   overflow: hidden;
   height: 44px;
 }
-.float-lt {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 11;
-  padding: 4px;
-}
-.float-lb {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 11;
-  padding: 4px;
-}
-.float-rt {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 11;
-  padding: 4px;
-}
-.float-rb {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  z-index: 11;
-  padding: 4px;
-}
-.float-lt .btn-link,
-.float-rt .btn-link {
-  color: #fff !important;
-}
 
 .page {
   box-sizing: border-box;
-  /*margin-top: 44px;*/
   padding: 44px 0 0 0;
   height: 100%;
+  background-color: inherit;
 }
 .padding {
   box-sizing: border-box;
-  padding: 8px;
+  padding: 16px;
   height: 100%;
+  background-color: inherit;
 }
+.page-padding {
+  box-sizing: border-box;
+  margin-top: 44px;
+  padding: 16px;
+  height: 100%;
+  background-color: inherit;
+}
+.page-w {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1024px;
+}
+.page-title {
+  font-size: 28px;
+}
+.page-subtitle {
+  font-size: 22px;
+  color: #666;
+}
+
+
 .menu-dd-item {
   line-height: 32px !important;
 }
