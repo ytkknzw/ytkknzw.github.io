@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var tm_service_1 = require('./tm.service');
-var app_service_1 = require('../../_core/app.service');
+var app_service_1 = require('../../app-core/app.service');
 var TimeManagementComponent = (function () {
     function TimeManagementComponent(tmSvc, appSvc) {
         this.tmSvc = tmSvc;

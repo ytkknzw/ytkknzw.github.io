@@ -1,5 +1,5 @@
 "use strict";
-var app_component_1 = require('../_core/app.component');
+var app_component_1 = require('../app-core/app.component');
 var testing_1 = require('@angular/core/testing');
 var platform_browser_1 = require('@angular/platform-browser');
 describe('Smoke test', function () {

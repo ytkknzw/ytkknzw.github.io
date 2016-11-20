@@ -56,7 +56,7 @@
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
       app: {
-        main: './_core/app-'+ type + '.main.js',
+        main: './app-core/app-' + type + '.main.js',
         defaultExtension: 'js'
       },
       rxjs:         { defaultExtension: 'js' },

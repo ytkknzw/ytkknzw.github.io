@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
-var app_service_1 = require('../../_core/app.service');
+var app_service_1 = require('../../app-core/app.service');
 var employees_service_1 = require('./employees.service');
 var EmployeesListComponent = (function () {
     function EmployeesListComponent(location, empService, appSvc) {

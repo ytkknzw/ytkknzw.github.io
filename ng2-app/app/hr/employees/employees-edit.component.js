@@ -12,7 +12,7 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var common_1 = require('@angular/common');
 require('rxjs/add/operator/switchMap');
-var app_service_1 = require('../../_core/app.service');
+var app_service_1 = require('../../app-core/app.service');
 var employees_service_1 = require('./employees.service');
 var EmployeesEditComponent = (function () {
     function EmployeesEditComponent(route, location, empService, appSvc) {
