@@ -14,26 +14,29 @@
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
 
   <script src="lib/onsenui/js/onsenui.min.js"></script>
-  <script type="text/javascript" src="grid.js"></script>
-  <script type="text/javascript" src="version.js"></script>
-  <script type="text/javascript" src="detector.js"></script>
-  <script type="text/javascript" src="formatinf.js"></script>
-  <script type="text/javascript" src="errorlevel.js"></script>
-  <script type="text/javascript" src="bitmat.js"></script>
-  <script type="text/javascript" src="datablock.js"></script>
-  <script type="text/javascript" src="bmparser.js"></script>
-  <script type="text/javascript" src="datamask.js"></script>
-  <script type="text/javascript" src="rsdecoder.js"></script>
-  <script type="text/javascript" src="gf256poly.js"></script>
-  <script type="text/javascript" src="gf256.js"></script>
-  <script type="text/javascript" src="decoder.js"></script>
-  <script type="text/javascript" src="qrcode.js"></script>
-  <script type="text/javascript" src="findpat.js"></script>
-  <script type="text/javascript" src="alignpat.js"></script>
-  <script type="text/javascript" src="databr.js"></script>
+  <script type="text/javascript" src="lib/qrcode/grid.js"></script>
+  <script type="text/javascript" src="lib/qrcode/version.js"></script>
+  <script type="text/javascript" src="lib/qrcode/detector.js"></script>
+  <script type="text/javascript" src="lib/qrcode/formatinf.js"></script>
+  <script type="text/javascript" src="lib/qrcode/errorlevel.js"></script>
+  <script type="text/javascript" src="lib/qrcode/bitmat.js"></script>
+  <script type="text/javascript" src="lib/qrcode/datablock.js"></script>
+  <script type="text/javascript" src="lib/qrcode/bmparser.js"></script>
+  <script type="text/javascript" src="lib/qrcode/datamask.js"></script>
+  <script type="text/javascript" src="lib/qrcode/rsdecoder.js"></script>
+  <script type="text/javascript" src="lib/qrcode/gf256poly.js"></script>
+  <script type="text/javascript" src="lib/qrcode/gf256.js"></script>
+  <script type="text/javascript" src="lib/qrcode/decoder.js"></script>
+  <script type="text/javascript" src="lib/qrcode/qrcode.js"></script>
+  <script type="text/javascript" src="lib/qrcode/findpat.js"></script>
+  <script type="text/javascript" src="lib/qrcode/alignpat.js"></script>
+  <script type="text/javascript" src="lib/qrcode/databr.js"></script>
   <style>
     .btn {
       margin: 8px 0;
+    }
+    .t-r {
+      text-align: right;
     }
   </style>
 </head>
@@ -169,8 +172,32 @@
     </ons-toolbar>
     <ons-list>
       <ons-list-item>
-        <div class="center">Icon and switch</div>
-        <div class="right"><ons-switch></ons-switch></div>
+        <label class="center" for="text-1">Apple</label>
+        <lable class="right"><ons-input class="t-r" id="text-1"></ons-input></lable>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">Text</div>
+        <div class="right"><ons-input id="password" type="password" placeholder=""></ons-input></div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">datetime-local</div>
+        <div class="right"><ons-input class="t-r" type="datetime-local" placeholder=""></ons-input></div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">date-local</div>
+        <div class="right"><ons-input class="t-r" type="date-local" placeholder=""></ons-input></div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">date</div>
+        <div class="right"><ons-input class="t-r" type="date" placeholder=""></ons-input></div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">month</div>
+        <div class="right"><ons-input class="t-r" type="month" placeholder=""></ons-input></div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">time</div>
+        <div class="right"><ons-input class="t-r" type="time" placeholder=""></ons-input></div>
       </ons-list-item>
       <ons-list-item>
         <div class="center">Icon and switch</div>
@@ -183,6 +210,32 @@
       <ons-list-item>
         <div class="center">Icon and switch</div>
         <div class="right"><ons-switch></ons-switch></div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">Icon and switch</div>
+        <div class="right"><ons-switch></ons-switch></div>
+      </ons-list-item>
+      <ons-list-header>Checkboxes</ons-list-header>
+      <ons-list-item tappable>
+        <label class="center" for="check-1">Apple</label>
+        <label class="right"><ons-input type="checkbox" input-id="check-1"></ons-input></label>
+      </ons-list-item>
+      <ons-list-item tappable>
+        <label class="center" for="check-2">Banana</label>
+        <label class="right"><ons-input type="checkbox" input-id="check-2"></ons-input></label>
+      </ons-list-item>
+      <ons-list-header>Radio buttons</ons-list-header>
+      <ons-list-item tappable>
+        <label class="center" for="radio-1">Red</label>
+        <label class="right"><ons-input name="color" type="radio" input-id="radio-1" checked></ons-input></label>
+      </ons-list-item>
+      <ons-list-item tappable>
+        <label class="center" for="radio-2">Blue</label>
+        <label class="right"><ons-input name="color" type="radio" input-id="radio-2"></ons-input></label>
+      </ons-list-item>
+      <ons-list-item tappable>
+        <label class="center" for="radio-3">Green</label>
+        <label class="right"><ons-input name="color" type="radio" input-id="radio-3"></ons-input></label>
       </ons-list-item>
     </ons-list>
   </ons-page>
