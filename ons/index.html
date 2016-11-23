@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Code</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="LTX-A" /> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+  <script type="text/javascript" src="grid.js"></script>
+  <script type="text/javascript" src="version.js"></script>
+  <script type="text/javascript" src="detector.js"></script>
+  <script type="text/javascript" src="formatinf.js"></script>
+  <script type="text/javascript" src="errorlevel.js"></script>
+  <script type="text/javascript" src="bitmat.js"></script>
+  <script type="text/javascript" src="datablock.js"></script>
+  <script type="text/javascript" src="bmparser.js"></script>
+  <script type="text/javascript" src="datamask.js"></script>
+  <script type="text/javascript" src="rsdecoder.js"></script>
+  <script type="text/javascript" src="gf256poly.js"></script>
+  <script type="text/javascript" src="gf256.js"></script>
+  <script type="text/javascript" src="decoder.js"></script>
+  <script type="text/javascript" src="qrcode.js"></script>
+  <script type="text/javascript" src="findpat.js"></script>
+  <script type="text/javascript" src="alignpat.js"></script>
+  <script type="text/javascript" src="databr.js"></script>
+  <style>
+    .btn {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<ons-navigator id="myNavigator" page="home.html"></ons-navigator>
+
+<ons-template id="home.html">
+  <ons-page id="home">
+    <ons-toolbar>
+      <div class="center">Home</div>
+      <div class="right">
+        <ons-toolbar-button>Settings</ons-toolbar-button>
+      </div>
+    </ons-toolbar>
+
+    <ons-list>
+      <ons-list-item>
+        <div class="center">bbbbb</div>
+        <div class="right">aaaaa</div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">bbbbb</div>
+        <div class="right">aaaaa</div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">bbbbb</div>
+        <div class="right">aaaaa</div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">bbbbb</div>
+        <div class="right">aaaaa</div>
+      </ons-list-item>
+    </ons-list>
+
+    <section style="padding: 8px;">
+      <ons-button class="btn" modifier="large" data-href="list.html">List</ons-button>
+      <ons-button class="btn" modifier="large" data-href="detail.html">Detail</ons-button>
+      <ons-button class="btn" modifier="large" data-href="edit.html">Edit</ons-button>
+      <ons-button class="btn" modifier="large" data-href="signature.html">signature</ons-button>
+    </section>
+
+    <section style="padding: 8px;">
+      <ons-button modifier="large">SCAN</ons-button>
+    </section>
+
+  </ons-page>
+</ons-template>
+
+<ons-template id="list.html">
+  <ons-page id="list">
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Back</ons-back-button></div>
+      <div class="center">List</div>
+    </ons-toolbar>
+
+    <ons-list>
+      <ons-list-header>Thumbnails and titles</ons-list-header>
+      <ons-list-item>
+        <div class="left">
+          <img class="list__item__thumbnail" src="">
+        </div>
+        <div class="center">
+          <span class="list__item__title">Cutest kitty</span>
+          <span class="list__item__subtitle">On the Internet</span>
+        </div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="left">
+          <ons-icon icon="md-face" class="list__item__icon"></ons-icon>
+        </div>
+        <div class="center">
+          Icon and switch
+        </div>
+        <div class="right">
+          <ons-switch></ons-switch>
+        </div>
+      </ons-list-item>
+      <ons-list-header>Data</ons-list-header>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+      <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+    </ons-list>
+  </ons-page>
+</ons-template>
+
+
+<ons-template id="detail.html">
+  <ons-page id="detail">
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Back</ons-back-button></div>
+      <div class="center">Detail</div>
+    </ons-toolbar>
+    <ons-list>
+      <ons-list-item>
+        <div class="left">
+          <img class="list__item__thumbnail" src="">
+        </div>
+        <div class="center">
+          <span class="list__item__title">Cutest kitty</span>
+          <span class="list__item__subtitle">On the Internet</span>
+        </div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="left"><ons-icon icon="md-face" class="list__item__icon"></ons-icon></div>
+        <div class="center">Icon and switch</div>
+        <div class="right"><ons-switch></ons-switch></div>
+      </ons-list-item>
+
+    </ons-list>
+  </ons-page>
+</ons-template>
+
+
+<ons-template id="edit.html">
+  <ons-page id="edit">
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Back</ons-back-button></div>
+      <div class="center">Edit</div>
+    </ons-toolbar>
+    <ons-list>
+      <ons-list-item>
+        <div class="center">Icon and switch</div>
+        <div class="right"><ons-switch></ons-switch></div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">Icon and switch</div>
+        <div class="right"><ons-switch></ons-switch></div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">Icon and switch</div>
+        <div class="right"><ons-switch></ons-switch></div>
+      </ons-list-item>
+      <ons-list-item>
+        <div class="center">Icon and switch</div>
+        <div class="right"><ons-switch></ons-switch></div>
+      </ons-list-item>
+    </ons-list>
+  </ons-page>
+</ons-template>
+
+
+<ons-template id="signature.html">
+  <ons-page id="signature">
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Back</ons-back-button></div>
+      <div class="center">Signature</div>
+      <div class="right">
+        <ons-toolbar-button><ons-icon icon="file"></ons-icon></ons-toolbar-button>
+        <ons-toolbar-button><ons-icon icon="cog"></ons-icon></ons-toolbar-button>
+      </div>
+    </ons-toolbar>
+
+    <p>This is the second page.</p>
+  </ons-page>
+</ons-template>
+
+
+
+<script>
+
+var nav = document.querySelector('#myNavigator');
+
+document.addEventListener('init', function(event) {
+  var page = event.target;
+
+  if (page.id === 'home') {
+    page.querySelectorAll('.btn').forEach(function(btn) {
+      btn.onclick = function(evt) {
+        var to = evt.target.attributes['data-href'].value;
+        nav.pushPage(to, {data: {title: 'Page 2'}});
+      };
+    });
+  } else if(page.id === 'list') {
+    //  <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
+    page.querySelectorAll('.row').forEach(function(row) {
+      row.onclick = function(evt) {
+        nav.pushPage('edit.html', {data: {title: 'Page Edit'}});
+      };
+    });
+  } else {
+    // page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
+  }
+});
+
+</script>
+</body>
+</html>
