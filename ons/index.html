@@ -14,7 +14,8 @@
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
 
   <script src="lib/onsenui/js/onsenui.min.js"></script>
-  <script type="text/javascript" src="lib/qrcode/grid.js"></script>
+  <script src="lib/QrCode.bundle.js"></script>
+<!--   <script type="text/javascript" src="lib/qrcode/grid.js"></script>
   <script type="text/javascript" src="lib/qrcode/version.js"></script>
   <script type="text/javascript" src="lib/qrcode/detector.js"></script>
   <script type="text/javascript" src="lib/qrcode/formatinf.js"></script>
@@ -31,14 +32,18 @@
   <script type="text/javascript" src="lib/qrcode/findpat.js"></script>
   <script type="text/javascript" src="lib/qrcode/alignpat.js"></script>
   <script type="text/javascript" src="lib/qrcode/databr.js"></script>
-  <style>
-    .btn {
-      margin: 8px 0;
+ -->  <style>
+    .c-6 {
+      box-sizing: border-box;
+      display: inline-block;
+      width: 49.2%;
+      padding: 4px;
     }
     .t-r {
       text-align: right !important;
-      width: 200px !important;
-      background-color: #eee !important;
+      min-width: 190px !important;
+      background-color: #f3f3f3 !important;
+      border: solid 1px #dcdcdc !important;
     }
   </style>
 </head>
@@ -52,7 +57,7 @@
     <ons-toolbar>
       <div class="center">Home</div>
       <div class="right">
-        <ons-toolbar-button>Settings</ons-toolbar-button>
+        <ons-toolbar-button onclick="fromTemplate();"><ons-icon icon="cog"></ons-icon></ons-toolbar-button>
       </div>
     </ons-toolbar>
 
@@ -62,38 +67,51 @@
         <div class="right">aaaaa</div>
       </ons-list-item>
       <ons-list-item>
-        <div class="center">bbbbb</div>
-        <div class="right">aaaaa</div>
+        <div class="center">Import</div>
+        <div class="right">2015/12/31 23:59:59</div>
       </ons-list-item>
       <ons-list-item>
-        <div class="center">bbbbb</div>
-        <div class="right">aaaaa</div>
+        <div class="center">Signature</div>
+        <div class="right"><img class="list__item__thumbnail" src=""></div>
       </ons-list-item>
       <ons-list-item>
-        <div class="center">bbbbb</div>
-        <div class="right">aaaaa</div>
+        AAAAAAA
       </ons-list-item>
     </ons-list>
 
-    <section style="padding: 8px;">
-      <ons-button class="btn" modifier="large" data-href="list.html">List</ons-button>
-      <ons-button class="btn" modifier="large" data-href="detail.html">Detail</ons-button>
-      <ons-button class="btn" modifier="large" data-href="edit.html">Edit</ons-button>
-      <ons-button class="btn" modifier="large" data-href="signature.html">signature</ons-button>
-    </section>
+    <div style="padding: 16px 4px;">
+      <div class="c-6">
+        <ons-button class="btn" modifier="large" onclick="goToPage('list')">List</ons-button>
+      </div>
+      <div class="c-6">
+        <ons-button class="btn" modifier="large" onclick="goToPage('detail')">Detail</ons-button>
+      </div>
+      <div class="c-6">
+        <ons-button class="btn" modifier="large" onclick="goToPage('edit')">Edit</ons-button>
+      </div>
+      <div class="c-6">
+        <ons-button class="btn" modifier="large" onclick="goToPage('signature')">signature</ons-button>
+      </div>
+    </div>
 
-    <section style="padding: 8px;">
+    <div style="padding: 0 8px;">
       <ons-button modifier="large">SCAN</ons-button>
-    </section>
+    </div>
 
   </ons-page>
 </ons-template>
+
 
 <ons-template id="list.html">
   <ons-page id="list">
     <ons-toolbar>
       <div class="left"><ons-back-button>Back</ons-back-button></div>
       <div class="center">List</div>
+      <div class="right">
+        <!-- <ons-toolbar-button><ons-icon icon="cog"></ons-icon></ons-toolbar-button> -->
+        <ons-toolbar-button>O</ons-toolbar-button>
+        <ons-toolbar-button>F</ons-toolbar-button>
+      </div>
     </ons-toolbar>
 
     <ons-list>
@@ -179,7 +197,7 @@
       </ons-list-item>
       <ons-list-item>
         <div class="center">Password</div>
-        <div class="right"><ons-input id="password" type="password" placeholder=""></ons-input></div>
+        <div class="right"><ons-input class="t-r" id="password" type="password" placeholder=""></ons-input></div>
       </ons-list-item>
       <ons-list-item>
         <div class="center">datetime-local</div>
@@ -200,14 +218,6 @@
       <ons-list-item>
         <div class="center">time</div>
         <div class="right"><ons-input class="t-r" type="time" placeholder=""></ons-input></div>
-      </ons-list-item>
-      <ons-list-item>
-        <div class="center">Icon and switch</div>
-        <div class="right"><ons-switch></ons-switch></div>
-      </ons-list-item>
-      <ons-list-item>
-        <div class="center">Icon and switch</div>
-        <div class="right"><ons-switch></ons-switch></div>
       </ons-list-item>
       <ons-list-item>
         <div class="center">Icon and switch</div>
@@ -239,6 +249,7 @@
         <label class="center" for="radio-3">Green</label>
         <label class="right"><ons-input name="color" type="radio" input-id="radio-3"></ons-input></label>
       </ons-list-item>
+      <div style="height: 200px;"></div>
     </ons-list>
   </ons-page>
 </ons-template>
@@ -261,6 +272,23 @@
 
 
 
+<ons-template id="dialog.html">
+  <ons-dialog id="dialog-3">
+    <div style="text-align: center; padding: 10px;">
+      <p style="max-height: 384px; overflow: auto;">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
+      <p>
+      <ons-button onclick="hideDialog('dialog-3')">Close</ons-button>
+    </div>
+  </ons-dialog>
+</ons-template>
+
+
 <script>
 
 var nav = document.querySelector('#myNavigator');
@@ -269,14 +297,7 @@ document.addEventListener('init', function(event) {
   var page = event.target;
 
   if (page.id === 'home') {
-    page.querySelectorAll('.btn').forEach(function(btn) {
-      btn.onclick = function(evt) {
-        var to = evt.target.attributes['data-href'].value;
-        nav.pushPage(to, {data: {title: 'Page 2'}});
-      };
-    });
   } else if(page.id === 'list') {
-    //  <ons-list-item modifier="longdivider chevron" tappable class="row">Chevron</ons-list-item>
     page.querySelectorAll('.row').forEach(function(row) {
       row.onclick = function(evt) {
         nav.pushPage('edit.html', {data: {title: 'Page Edit'}});
@@ -287,6 +308,19 @@ document.addEventListener('init', function(event) {
   }
 });
 
+var goToPage    = function(pageId) { nav.pushPage(pageId + '.html'); };
+var showDialog  = function(id) { document.getElementById(id).show(); };
+var hideDialog  = function(id) { document.getElementById(id).hide(); };
+var fromTemplate = function() {
+  var dialog = document.getElementById('dialog-3');
+  if (dialog) {
+    dialog.show();
+  } else {
+    ons.createDialog('dialog.html').then(function(dialog) {
+      dialog.show();
+    });
+  }
+};
 </script>
 </body>
 </html>
