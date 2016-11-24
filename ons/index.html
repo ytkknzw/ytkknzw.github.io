@@ -216,7 +216,10 @@
       </ons-list-item>
       <ons-list-item>
         <div class="center">file</div>
-        <div class="right"><ons-input class="t-r" type="file" placeholder=""></ons-input></div>
+        <div class="right">
+          <ons-input class="t-r" type="file" placeholder="" onchange="app.changeFile()"></ons-input>
+          <img id="img" src=""/>
+        </div>
       </ons-list-item>
       <ons-list-item>
         <div class="center">Icon and switch</div>
@@ -346,6 +349,21 @@ var app = {
         }
     };
     new Chart(document.getElementById("myChart"), conf);
+  },
+  changeFile : function(evt) {
+    var files = event.target.files;
+    var elImg = document.getElementById('img');
+    try {
+      var imgURL = URL.createObjectURL(files[0]);
+      elImg.src = imgURL;
+      // URL.revokeObjectURL(imgURL);
+    } catch(e) {
+      var fr = new FileReader();
+      fr.onload = function(evt) {
+        elImg.src = evt.target.result;
+      }
+      fr.readAsDataURL(files[0]);
+    }
   }
 };
 
