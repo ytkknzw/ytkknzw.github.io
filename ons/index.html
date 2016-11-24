@@ -215,6 +215,10 @@
         <div class="right"><ons-input class="t-r" type="time" placeholder=""></ons-input></div>
       </ons-list-item>
       <ons-list-item>
+        <div class="center">file</div>
+        <div class="right"><ons-input class="t-r" type="file" placeholder=""></ons-input></div>
+      </ons-list-item>
+      <ons-list-item>
         <div class="center">Icon and switch</div>
         <div class="right"><ons-switch></ons-switch></div>
       </ons-list-item>
@@ -321,7 +325,7 @@ var app = {
   },
   drawChart : function() {
     var conf = {
-        type: 'doughnut',
+        type: ['bar','line','pie','doughnut'][3],
         data: {
             labels: ["Done", "Not Yet", "Added"],
             datasets: [{
