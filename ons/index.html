@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
 
   <script src="lib/onsenui/js/onsenui.min.js"></script>
+  <script src="lib/Chart.bundle.min.js"></script>
   <script src="lib/QrCode.bundle.js"></script>
 <!--   <script type="text/javascript" src="lib/qrcode/grid.js"></script>
   <script type="text/javascript" src="lib/qrcode/version.js"></script>
@@ -44,6 +45,8 @@
       min-width: 190px !important;
       background-color: #f3f3f3 !important;
       border: solid 1px #dcdcdc !important;
+      height: 32px;
+      margin: -8px;
     }
   </style>
 </head>
@@ -57,7 +60,7 @@
     <ons-toolbar>
       <div class="center">Home</div>
       <div class="right">
-        <ons-toolbar-button onclick="fromTemplate();"><ons-icon icon="cog"></ons-icon></ons-toolbar-button>
+        <ons-toolbar-button onclick="app.fromTemplate();"><ons-icon icon="cog"></ons-icon></ons-toolbar-button>
       </div>
     </ons-toolbar>
 
@@ -75,27 +78,19 @@
         <div class="right"><img class="list__item__thumbnail" src=""></div>
       </ons-list-item>
       <ons-list-item>
-        AAAAAAA
+        <canvas id="myChart">
+        </canvas>
       </ons-list-item>
     </ons-list>
 
     <div style="padding: 16px 4px;">
-      <div class="c-6">
-        <ons-button class="btn" modifier="large" onclick="goToPage('list')">List</ons-button>
-      </div>
-      <div class="c-6">
-        <ons-button class="btn" modifier="large" onclick="goToPage('detail')">Detail</ons-button>
-      </div>
-      <div class="c-6">
-        <ons-button class="btn" modifier="large" onclick="goToPage('edit')">Edit</ons-button>
-      </div>
-      <div class="c-6">
-        <ons-button class="btn" modifier="large" onclick="goToPage('signature')">signature</ons-button>
-      </div>
+      <div class="c-6"><ons-button class="btn" modifier="large" onclick="app.goToPage('list')">List</ons-button></div>
+      <div class="c-6"><ons-button class="btn" modifier="large" onclick="app.goToPage('detail')">Detail</ons-button></div>
+      <div class="c-6"><ons-button class="btn" modifier="large" onclick="app.goToPage('edit')">Edit</ons-button></div>
+      <div class="c-6"><ons-button class="btn" modifier="large" onclick="app.goToPage('signature')">signature</ons-button></div>
     </div>
-
     <div style="padding: 0 8px;">
-      <ons-button modifier="large">SCAN</ons-button>
+      <ons-button modifier="large" onclick="ons.notification.alert('Hello, world')">SCAN</ons-button>
     </div>
 
   </ons-page>
@@ -265,8 +260,9 @@
         <ons-toolbar-button><ons-icon icon="cog"></ons-icon></ons-toolbar-button>
       </div>
     </ons-toolbar>
-
-    <p>This is the second page.</p>
+    <div style="touch-action: none;">
+      <p>This is the second page.</p>
+    </div>
   </ons-page>
 </ons-template>
 
@@ -283,7 +279,7 @@
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
       <p>
-      <ons-button onclick="hideDialog('dialog-3')">Close</ons-button>
+      <ons-button onclick="app.hideDialog('dialog-3')">Close</ons-button>
     </div>
   </ons-dialog>
 </ons-template>
@@ -297,6 +293,7 @@ document.addEventListener('init', function(event) {
   var page = event.target;
 
   if (page.id === 'home') {
+    app.drawChart();
   } else if(page.id === 'list') {
     page.querySelectorAll('.row').forEach(function(row) {
       row.onclick = function(evt) {
@@ -308,19 +305,46 @@ document.addEventListener('init', function(event) {
   }
 });
 
-var goToPage    = function(pageId) { nav.pushPage(pageId + '.html'); };
-var showDialog  = function(id) { document.getElementById(id).show(); };
-var hideDialog  = function(id) { document.getElementById(id).hide(); };
-var fromTemplate = function() {
-  var dialog = document.getElementById('dialog-3');
-  if (dialog) {
-    dialog.show();
-  } else {
-    ons.createDialog('dialog.html').then(function(dialog) {
+var app = {
+  goToPage    : function(pageId) { nav.pushPage(pageId + '.html'); },
+  showDialog  : function(id) { document.getElementById(id).show(); },
+  hideDialog  : function(id) { document.getElementById(id).hide(); },
+  fromTemplate : function() {
+    var dialog = document.getElementById('dialog-3');
+    if (dialog) {
       dialog.show();
-    });
+    } else {
+      ons.createDialog('dialog.html').then(function(dialog) {
+        dialog.show();
+      });
+    }
+  },
+  drawChart : function() {
+    var conf = {
+        type: 'doughnut',
+        data: {
+            labels: ["Done", "Not Yet", "Added"],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 5],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255,99,132,1)',
+                    'rgba(54,162,235,1)',
+                    'rgba(255,206,86,1)'
+                ],
+                borderWidth: 1
+            }]
+        }
+    };
+    new Chart(document.getElementById("myChart"), conf);
   }
 };
+
 </script>
 </body>
 </html>
