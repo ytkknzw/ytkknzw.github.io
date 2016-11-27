@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
+	<title>Playground</title>
+	<style>
+		* {
+			font-family: Arial;
+		}
+		.lbl {
+			display: inline-block;
+			min-width: 70px;
+			text-align: right;
+			font-weight: bold;
+		}
+		div {
+			line-height: 28px;
+		}
+		button {
+			padding: 8px 12px;
+			border-radius: 4px;
+			border: solid 1px #ccc;
+			background-color: #ddd;
+		}
+	</style>
+</head>
+<body>
+
+<div style="padding: 12px;">
+	<div><span class="lbl">Demension :&nbsp;</span><span id="t_demension"></span></div>
+	<div><span class="lbl">Name : &nbsp;</span><span id="t_name"></span></div>
+	<div><span class="lbl">Type : &nbsp;</span><span id="t_type"></span></div>
+	<div><span class="lbl">Size : &nbsp;</span><span id="t_size"></span></div>
+	<div><span class="lbl">Resize : &nbsp;</span><span id="t_resize"></span></div>
+	<div><span class="lbl">Scale : &nbsp;</span><span id="t_scale"></span></div>
+	<div><span class="lbl">Text : &nbsp;</span><span id="t_text"></span></div>
+	<div><span class="lbl">Time : &nbsp;</span><span id="t_time"></span></div>
+	<div><span class="lbl">Error : &nbsp;</span><span id="t_error"></span></div>
+	<button onclick="app.clear()">Clear</button>
+	<br/><br/>
+	<div><input type="file" accept="image/*" onchange="app.handleFile(0,this.files[0])"><span>Local : &nbsp;</span></div>
+	<div><input type="file" accept="image/*" onchange="app.handleFile(1,this.files[0])"><span>Server : &nbsp;</span></div>
+	<div><input type="file" accept="image/*" onchange="app.handleFile(2,this.files[0])"><span>Hermite : &nbsp;</span></div>
+	<div><input type="file" accept="image/*" onchange="app.handleFile(3,this.files[0])"><span>Resample C : &nbsp;</span></div>
+	<div id="preview"></div>
+	<canvas id="canvas" style="display: none;"></canvas>
+</div>
+
+<script src="jquery-3.1.1.min.js"></script>
+<script src="jsqrcode-combined.min.js"></script>
+<script src="hermite.js"></script>
+<script>
+
+var el = function(key) { return document.getElementById(key); },
+	el_demension= el('t_demension'),
+	el_name 	= el('t_name'),
+	el_type 	= el('t_type'),
+	el_size 	= el('t_size'),
+	el_resize 	= el('t_resize'),
+	el_scale 	= el('t_scale'),
+	el_text 	= el('t_text'),
+	el_time 	= el('t_time'),
+	el_error 	= el('t_error'),
+	el_preview	= el('preview'),
+	s, e;
+
+var app = {
+
+	clear : function () {
+		el_demension.innerHTML = '';
+		el_name		.innerHTML = '';
+		el_type		.innerHTML = '';
+		el_size		.innerHTML = '';
+		el_resize	.innerHTML = '';
+		el_scale	.innerHTML = '';
+		el_text		.innerHTML = '';
+		el_time		.innerHTML = '';
+		el_error	.innerHTML = '';
+		el_preview	.innerHTML = '';
+	},
+	
+	formatBytes : function (bytes, decimals) {
+		if(bytes == 0) return '0 Byte';
+		var k = 1024;
+		var dm = decimals + 1 || 3;
+		var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+		var i = Math.floor(Math.log(bytes) / Math.log(k));
+		return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+	},
+
+	handleFile : function (index, file) {
+		if(!file) return;
+		app.clear();
+		console.log(file);
+
+		el_name.innerHTML = file.name;
+		el_type.innerHTML = file.type;
+		el_size.innerHTML = Math.round(file.size/1024) + ' kb';
+
+		if(file.type.split('/')[0] != 'image'){
+			el_error.innerHTML = 'file type must be image !';
+			return;
+		}
+
+		switch(index) {
+			case 0 : app.decode_local(file); break;
+			case 1 : app.decode_server(file); break;
+			case 2 : app.resample_hermite(file); break;
+			case 3 : app.resample_canvas(file); break;
+			default: break;
+		}
+	},
+
+	decode_local : function (file) {
+		s = Date.now();
+		qrcode.callback = function(text) {
+			e = Date.now();
+			el_text.innerHTML = text;
+			el_time.innerHTML = (e-s) + ' ms';
+		};
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			qrcode.decode(e.target.result);
+		};
+		reader.readAsDataURL(file);
+	},
+
+	decode_server : function (file) {
+		if(file.size > 1024*1024*1.9) {
+			el_error = 'file size too big !';
+			return;
+		}
+		s = Date.now();
+		var fd = new FormData();
+		fd.append('file', file);
+
+		$.ajax({
+			url : 'https://php7-my3rd.rhcloud.com/api/qrcode',
+			type : 'POST',
+			dataType : 'text',
+			data : fd,
+			processData : false,
+			contentType : false
+		})
+		.done(function(text){
+			e = Date.now();
+			var t0 = e - s;
+			el_time.innerHTML = 'total: ' + t0 + ' ms';
+			el_text.innerHTML = JSON.parse(text).text;
+			console.log(text);
+		})
+		.fail(function(err) {
+			e = Date.now();
+			el_time.innerHTML = (e - s) + ' ms';
+			res.innerHTML = 'Server Error';
+		});
+	},
+
+	resample_hermite : function (file) {
+		s = Date.now();
+        var img = new Image();
+        img.onload = function () {
+        	el_demension.innerHTML = 'w:' + img.width + " h:" + img.height;
+			var hermite = Hermite.init('hermite-worker.js');
+			hermite.resize({
+				source: img,
+				// source: document.getElementById('image'), // any canvas or image elements, jQuery or native
+				width: img.width/8, //400,
+				height: img.height/8, //600,
+				// output: 'image', // [optional] `image` or `canvas`. If not entered output is same as input element.
+				quality: 0.5, // [optional] applicable for `image` output only
+			}, function(output) {
+				//your callback
+				e = Date.now();
+				el_time.innerHTML = (e - s) + 'ms';
+				el_resize.innerHTML = Math.round(output.src.length/1024) + ' kb';
+				el_preview.appendChild(output);
+				console.log(output, output.width, output.height);
+			});
+        };
+        img.src = URL.createObjectURL(file);
+	},
+
+	resample_canvas : function (file) {
+		s = Date.now();
+		var canvas = el("canvas");
+		var img = document.createElement("img");
+		img.onload = function() {
+			var MAX_WIDTH = 800;
+			var MAX_HEIGHT = 600;
+			var width = img.width;
+			var height = img.height;
+			if (width > height) {
+				if (width > MAX_WIDTH) {
+					height *= MAX_WIDTH / width;
+					width = MAX_WIDTH;
+				}
+			} else {
+				if (height > MAX_HEIGHT) {
+					width *= MAX_HEIGHT / height;
+					height = MAX_HEIGHT;
+				}
+			}
+			canvas.width = width;
+			canvas.height = height;
+			var ctx = canvas.getContext("2d");
+			ctx.drawImage(img, 0, 0, width, height);
+
+			var imgData = ctx.createImageData(width, height);
+			var data = imgData.data;
+			var pixels = ctx.getImageData(0, 0, width, height);
+
+			for (var i = 0, ii = pixels.data.length; i < ii; i += 4) {
+				var r = pixels.data[i + 0];
+				var g = pixels.data[i + 1];
+				var b = pixels.data[i + 2];
+				data[i + 0] = (r * .393) + (g *.769) + (b * .189);
+				data[i + 1] = (r * .349) + (g *.686) + (b * .168);
+				data[i + 2] = (r * .272) + (g *.534) + (b * .131);
+				data[i + 3] = 255;
+			}
+			ctx.putImageData(imgData, 0, 0);
+			var dataurl = canvas.toDataURL("image/png");
+			console.log(imgData, pixels, dataurl);
+
+			e = Date.now();
+			el_time.innerHTML = (e-s) + ' ms';
+			el_resize.innerHTML = (dataurl.length/1024) + ' kb';
+		}
+		img.src = URL.createObjectURL(file);
+	}
+};
+</script>
+</body>
+</html>

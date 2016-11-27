@@ -4,9 +4,7 @@
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
-
-	<title>Apps</title>
-
+	<title>Playground</title>
 	<style>
 		* {
 			font-family: Arial;
@@ -16,9 +14,12 @@
 			min-width: 70px;
 			text-align: right;
 			font-weight: bold;
-			line-height: 26px;
+		}
+		div {
+			line-height: 28px;
 		}
 		button {
+			padding: 8px 12px;
 			border-radius: 4px;
 			border: solid 1px #ccc;
 			background-color: #ddd;
@@ -27,51 +28,88 @@
 </head>
 <body>
 
-
 <div style="padding: 12px;">
-
-	<div><span class="lbl">Demension :&nbsp;</span><span id="wh"></span></div>
-	<div><span class="lbl">Name : &nbsp;</span><span id="fname"></span></div>
-	<div><span class="lbl">Type : &nbsp;</span><span id="type"></span></div>
-	<div><span class="lbl">Size : &nbsp;</span><span id="size"></span></div>
-	<div><span class="lbl">resize : &nbsp;</span><span id="resize"></span></div>
-	<div><span class="lbl">scale : &nbsp;</span><span id="scale"></span></div>
-	<div><span class="lbl">Time : &nbsp;</span><span id="time"></span></div>
-	<br/>
-	<!-- <img id="image" src="S__18644996.jpg" style="width: 300px;"/> -->
-	<input type="file" accept="image/*" onchange="handleFile(this.files[0])">
-	<button onclick="hermite_resize(640, 480)">RESIZE TEST</button>
-	<div id="frame"></div>
+	<div><span class="lbl">Demension :&nbsp;</span><span id="t_demension"></span></div>
+	<div><span class="lbl">Name : &nbsp;</span><span id="t_name"></span></div>
+	<div><span class="lbl">Type : &nbsp;</span><span id="t_type"></span></div>
+	<div><span class="lbl">Size : &nbsp;</span><span id="t_size"></span></div>
+	<div><span class="lbl">Resize : &nbsp;</span><span id="t_resize"></span></div>
+	<div><span class="lbl">Scale : &nbsp;</span><span id="t_scale"></span></div>
+	<div><span class="lbl">Text : &nbsp;</span><span id="t_text"></span></div>
+	<div><span class="lbl">Time : &nbsp;</span><span id="t_time"></span></div>
+	<div><span class="lbl">Error : &nbsp;</span><span id="t_error"></span></div>
+	<button onclick="clear()">Clear</button>
+	<br/><br/>
+	<div><input type="file" accept="image/*" onchange="app.handleFile(0,this.files[0])"><span>Local : &nbsp;</span></div>
+	<div><input type="file" accept="image/*" onchange="app.handleFile(1,this.files[0])"><span>Server : &nbsp;</span></div>
+	<div><input type="file" accept="image/*" onchange="app.handleFile(2,this.files[0])"><span>Resample : &nbsp;</span></div>
+	<div id="preview"></div>
 </div>
 
 <script src="hermite.js"></script>
 <script>
+var el = function(key) { return document.getElementById(key); },
+	el_demension= el('t_demension'),
+	el_name 	= el('t_name'),
+	el_type 	= el('t_type'),
+	el_size 	= el('t_size'),
+	el_resize 	= el('t_resize'),
+	el_scale 	= el('t_scale'),
+	el_text 	= el('t_text'),
+	el_time 	= el('t_time'),
+	el_error 	= el('t_error'),
+	s, e;
 
-	var el = function(key) { return document.getElementById(key); };
-	var result 	= el('result'),
-		ms 		= el('time'),
-		fname 	= el('fname'),
-		size 	= el('size'),
-		resize 	= el('resize'),
-		scale 	= el('scale'),
-		type 	= el('type'),
-		wh		= el('wh');
-	var s, e;
+var app = {
 
-	function handleFile(file) {
+	clear : function () {
+		el_demention.innerHTML	= '';
+		el_fname	.innerHTML	= '';
+		el_type		.innerHTML 	= '';
+		el_size		.innerHTML 	= '';
+		el_resize	.innerHTML	= '';
+		el_scale	.innerHTML 	= '';
+		el_text		.innerHTML 	= '';
+		el_time		.innerHTML 	= '';
+		el_error	.innerHTML	= '';
+	},
+
+	handleFile : function (index, file) {
+		app.clear();
 		console.log(file);
-		fname.innerHTML = file.name;
-		type.innerHTML = file.type;
+		el_fname.innerHTML = file.name;
+		el_type.innerHTML  = file.type;
+		el_size.innerHTML  = Math.round(file.size/1024) + ' kb';
+
 		if(file.type.split('/')[0] != 'image'){
-			alert(file.type + ' !');
+			el_error.innerHTML = 'file type must be image !';
 			return;
 		}
-		size.innerHTML = Math.round(file.size/1024) + ' kb';
-		var b = (file.size > 1024*1024);
 
+		switch(index) {
+			case 0 : app.decode_local(file); break;
+			case 1 : app.decode_server(file); break;
+			case 2 : app.resample(file); break;
+			default: break;
+		}
+	},
+
+	decode_local : function (file) {
         var img = new Image();
         img.onload = function () {
-        	wh.innerHTML = 'w:' + img.width + " h:" + img.height;
+        	el_demension.innerHTML = 'w:' + img.width + " h:" + img.height;
+        	hermite_resize(img);
+        };
+        img.src = URL.createObjectURL(file);
+	},
+
+	decode_server : function (file) {
+	},
+
+	resample : function (file) {
+        var img = new Image();
+        img.onload = function () {
+        	el_demension.innerHTML = 'w:' + img.width + " h:" + img.height;
         	// var s = file.size / (1024*1024);
         	// var s = (img.width > img.height ? img.width : img.height) / (320 - 34);
         	// console.log('scale', s);
@@ -79,9 +117,9 @@
         	hermite_resize(img);
         };
         img.src = URL.createObjectURL(file);
-	}
+	},
 
-	function hermite_resize(img) {
+	hermite_resize : function (img) {
 		s = Date.now();
 		var hermite = Hermite.init('hermite-worker.js');
 		hermite.resize({
@@ -94,14 +132,14 @@
 		}, function(output) {
 			//your callback
 			e = Date.now();
-			time.innerHTML = (e - s) + 'ms';
-			resize.innerHTML = Math.round(output.src.length/1024) + ' kb';
+			el_time.innerHTML = (e - s) + 'ms';
+			el_resize.innerHTML = Math.round(output.src.length/1024) + ' kb';
 			console.log(output, output.width, output.height);
-			document.getElementById('frame').innerHTML = '';
-			document.getElementById('frame').appendChild(output);
+			text('preview') = '';
+			el('preview').appendChild(output);
 		});
 	}
-
+};
 </script>
 </body>
 </html>
