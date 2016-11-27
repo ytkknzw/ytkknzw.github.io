@@ -29,11 +29,11 @@
 <body>
 
 <div style="padding: 12px;">
-	<div><span class="lbl">Demension :&nbsp;</span><span id="t_demension"></span></div>
 	<div><span class="lbl">Name : &nbsp;</span><span id="t_name"></span></div>
 	<div><span class="lbl">Type : &nbsp;</span><span id="t_type"></span></div>
 	<div><span class="lbl">Size : &nbsp;</span><span id="t_size"></span></div>
 	<div><span class="lbl">Resize : &nbsp;</span><span id="t_resize"></span></div>
+	<div><span class="lbl">Demension :&nbsp;</span><span id="t_demension"></span></div>
 	<div><span class="lbl">Scale : &nbsp;</span><span id="t_scale"></span></div>
 	<div><span class="lbl">Text : &nbsp;</span><span id="t_text"></span></div>
 	<div><span class="lbl">Time : &nbsp;</span><span id="t_time"></span></div>
@@ -43,7 +43,7 @@
 	<div><input type="file" accept="image/*" onchange="app.handleFile(0,this.files[0])"><span>Local : &nbsp;</span></div>
 	<div><input type="file" accept="image/*" onchange="app.handleFile(1,this.files[0])"><span>Server : &nbsp;</span></div>
 	<div><input type="file" accept="image/*" onchange="app.handleFile(2,this.files[0])"><span>Hermite : &nbsp;</span></div>
-	<div><input type="file" accept="image/*" onchange="app.handleFile(3,this.files[0])"><span>Resample C : &nbsp;</span></div>
+	<div><input type="file" accept="image/*" onchange="app.handleFile(3,this.files[0])"><span>resample : &nbsp;</span></div>
 	<div id="preview"></div>
 	<canvas id="canvas" style="display: none;"></canvas>
 </div>
@@ -64,7 +64,7 @@ var el = function(key) { return document.getElementById(key); },
 	el_time 	= el('t_time'),
 	el_error 	= el('t_error'),
 	el_preview	= el('preview'),
-	s, e;
+	img, s, e;
 
 var app = {
 
@@ -129,7 +129,7 @@ var app = {
 
 	decode_server : function (file) {
 		if(file.size > 1024*1024*1.9) {
-			el_error = 'file size too big !';
+			el_error.innerHTML = 'file size too big !';
 			return;
 		}
 		s = Date.now();
@@ -138,29 +138,29 @@ var app = {
 
 		$.ajax({
 			url : 'https://php7-my3rd.rhcloud.com/api/qrcode',
-			type : 'POST',
+			method : 'POST',
 			dataType : 'text',
 			data : fd,
 			processData : false,
-			contentType : false
-		})
-		.done(function(text){
-			e = Date.now();
-			var t0 = e - s;
-			el_time.innerHTML = 'total: ' + t0 + ' ms';
-			el_text.innerHTML = JSON.parse(text).text;
-			console.log(text);
-		})
-		.fail(function(err) {
-			e = Date.now();
-			el_time.innerHTML = (e - s) + ' ms';
-			res.innerHTML = 'Server Error';
+			// contentType : false,
+			error: function(err) {
+				e = Date.now();
+				el_time.innerHTML = (e - s) + ' ms';
+				el_error.innerHTML = '<b style="color:red;">Server Error</b>';
+				console.log(err);
+			},
+			success: function(text){
+				console.log(text);
+				e = Date.now();
+				el_time.innerHTML = (e - s) + ' ms';
+				el_text.innerHTML = JSON.parse(text).text;
+			}
 		});
 	},
 
 	resample_hermite : function (file) {
 		s = Date.now();
-        var img = new Image();
+        img = new Image();
         img.onload = function () {
         	el_demension.innerHTML = 'w:' + img.width + " h:" + img.height;
 			var hermite = Hermite.init('hermite-worker.js');
@@ -185,9 +185,10 @@ var app = {
 
 	resample_canvas : function (file) {
 		s = Date.now();
-		var canvas = el("canvas");
-		var img = document.createElement("img");
+		var canvas = document.createElement('canvas');
+		img = new Image();
 		img.onload = function() {
+			el_demension.innerHTML = 'w:' + img.width + ' h:' + img.height;
 			var MAX_WIDTH = 800;
 			var MAX_HEIGHT = 600;
 			var width = img.width;
@@ -205,14 +206,15 @@ var app = {
 			}
 			canvas.width = width;
 			canvas.height = height;
+			el_scale.innerHTML = 'w:' + width + ' h:' + height;
+
 			var ctx = canvas.getContext("2d");
 			ctx.drawImage(img, 0, 0, width, height);
-
 			var imgData = ctx.createImageData(width, height);
+			var pixels  = ctx.getImageData(0, 0, width, height);
 			var data = imgData.data;
-			var pixels = ctx.getImageData(0, 0, width, height);
 
-			for (var i = 0, ii = pixels.data.length; i < ii; i += 4) {
+			for (var i = 0, l = pixels.data.length; i < l; i += 4) {
 				var r = pixels.data[i + 0];
 				var g = pixels.data[i + 1];
 				var b = pixels.data[i + 2];
@@ -223,11 +225,19 @@ var app = {
 			}
 			ctx.putImageData(imgData, 0, 0);
 			var dataurl = canvas.toDataURL("image/png");
-			console.log(imgData, pixels, dataurl);
+			// console.log(imgData, pixels, dataurl);
 
 			e = Date.now();
 			el_time.innerHTML = (e-s) + ' ms';
-			el_resize.innerHTML = (dataurl.length/1024) + ' kb';
+			el_resize.innerHTML = Math.round(dataurl.length/1024) + ' kb';
+
+			s = Date.now();
+			qrcode.callback = function(text) {
+				e = Date.now();
+				el_text.innerHTML = text;
+				el_time.innerHTML += ' / ' + (e-s) + ' ms';
+			};
+			qrcode.decode(dataurl);
 		}
 		img.src = URL.createObjectURL(file);
 	}
