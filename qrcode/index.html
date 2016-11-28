@@ -40,13 +40,25 @@
 	<div><span class="lbl">Error : &nbsp;</span><span id="t_error"></span></div>
 	<button onclick="app.clear()">Clear</button>
 	<br/><br/>
-	<div><input type="file" accept="image/*" onchange="app.handleFile(0,this.files[0])"><span>Local : &nbsp;</span></div>
-	<div><input type="file" accept="image/*" onchange="app.handleFile(1,this.files[0])"><span>Server : &nbsp;</span></div>
-	<div><input type="file" accept="image/*" onchange="app.handleFile(2,this.files[0])"><span>Hermite : &nbsp;</span></div>
-	<div><input type="file" accept="image/*" onchange="app.handleFile(3,this.files[0])"><span>Canvas: &nbsp;</span></div>
+	<div>
+		<input type="file" accept="image/*" onchange="app.handleFile(0,this.files[0])">
+		<span>Local : &nbsp;</span>
+	</div>
+	<div>
+		<input type="file" accept="image/*" onchange="app.handleFile(1,this.files[0])">
+		<span>Server : &nbsp;</span>
+	</div>
+	<div>
+		<input type="file" accept="image/*" onchange="app.handleFile(2,this.files[0])">
+		<span>Hermite : &nbsp;</span>
+	</div>
+	<div>
+		<input type="file" accept="image/*" onchange="app.handleFile(3,this.files[0])">
+		<span>Canvas: &nbsp;</span>
+	</div>
 	<div id="preview"></div>
 	<canvas id="canvas" style="display: none;"></canvas>
-	<a href="yutaka://qrreader/open">yutaka://yutaka://qrreader/open</a>
+	<a href="yutaka://qrreader/open">Open QR Code Reader</a>
 </div>
 
 <script src="jquery-3.1.1.min.js"></script>
