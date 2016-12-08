@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
+	<title>Page Transition</title>
+	<!-- <link rel="stylesheet" href="../assets/lib/svg-icons.css"> -->
+	<style>
+
+.alt-svg-back		{ background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20d%3D%22M5%2C3V0L1%2C4l4%2C4V5c0%2C0%2C6%2C0%2C6%2C3s-5%2C4-5%2C4v2c0%2C0%2C7-1%2C7-6C13%2C4%2C8%2C3%2C5%2C3z%22%2F%3E%3C%2Fsvg%3E");}	
+.png-back		{background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJJJREFUOMtjYEAD////b2AgFYA0AfF/sjSRpBFZExT8AeLXQHwciCcAsQOxGrGBM0CsS0gzKxBLA7ELELcC8VOo+Ccg1iY6cIBCXEC8Fqp5M05n4xCXgGr8TGqoC5OrsRGqcS+xGkABVQ/E/6AaXQlpUATiYiC+C9UA0lhKjE3I4CYQexDrxGdAvBSIfYGYCV0eAL8TDNuB31nNAAAAAElFTkSuQmCC");}
+
+		html, body, #app-view {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #f9f9f9;
+		}
+		header {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			/*bottom: auto;*/
+			display: flex;
+			box-sizing: border-box;
+			/*font-size: 22px;*/
+			background-color: #eee;
+			border-bottom: 1px solid #f00;
+			line-height: 44px;
+		}
+		footer {
+			position: fixed;
+			display: block;
+			box-sizing: border-box;
+			background-color: #eee;
+			border-top: 1px solid #f00;
+			line-height: 44px;
+			top: auto;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+		section {
+			margin: 44px 0;
+			height: calc(100% - 88px);
+			overflow: auto;
+		}
+		button {
+			background-color: #eee;
+			line-height: 32px;
+			/*height: 32px;*/
+			color: #f00;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+
+		}
+		li {
+			list-style: none;
+			line-height: 44px;
+			border-bottom: 1px solid #ccc;
+		}
+		.btn-back {
+			background-color: inherit;
+			border: 0 solid #fff;
+			line-height: 32px;
+			width: 44px;
+			height: 44px;
+			color: #00f;
+			text-align: center;
+		}
+		.page {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			visibility: hidden;
+			overflow: hidden;
+
+			-webkit-backface-visibility: hidden;
+			-moz-backface-visibility: hidden;
+			backface-visibility: hidden;
+			-webkit-transform: translate3d(0, 0, 0);
+			-moz-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+			-webkit-transform-style: preserve-3d;
+			-moz-transform-style: preserve-3d;
+			transform-style: preserve-3d;
+		}
+		.page-current { visibility: visible; z-index: 1; }
+		.to-left 	{-webkit-animation: toLeft .4s ease both; 	animation: toLeft .4s ease both;}
+		.from-left 	{-webkit-animation: fromLeft .4s ease both; animation: fromLeft .4s ease both;}
+		.to-right 	{-webkit-animation: toRight .4s ease both; 	animation: toRight .4s ease both;}
+		.from-right {-webkit-animation: fromRight .4s ease both; animation: fromRight .4s ease both;}
+		@-webkit-keyframes toLeft	{from {} to { -webkit-transform: translateX(-100%); }}
+		@-webkit-keyframes toRight	{from {} to { -webkit-transform: translateX(100%); }}
+		@-webkit-keyframes fromLeft {from { -webkit-transform: translateX(-100%); }}
+		@-webkit-keyframes fromRight{from { -webkit-transform: translateX(100%); } }
+		@keyframes toLeft  {from {} to { -webkit-transform: translateX(-100%); transform: translateX(-100%);}}
+		@keyframes toRight {from {} to { -webkit-transform: translateX(100%);  transform: translateX(100%);}}
+		@keyframes fromLeft  {from{ -webkit-transform: translateX(-100%); transform: translateX(-100%);}}
+		@keyframes fromRight {from{ -webkit-transform: translateX(100%);  transform: translateX(100%);}}
+	</style>
+</head>
+<body>
+
+<div class="page" id="login">
+	<header>
+		<div class="left"></div>
+		<div class="center">Page Login</div>
+		<div class="right"></div>
+	</header>
+	<section>
+		<button onclick="pt.gotoPage('home')">home page</button>
+	</section>
+</div>
+
+
+<div class="page" id="home">
+	<header>
+		<div class="left"><button class="btn-back">◀</button></div>
+		<div class="center">Page Home</div>
+		<div class="right"></div>
+	</header>
+	<section>
+		<button onclick="pt.gotoPage('list')">list page</button>
+		<button onclick="pt.gotoPage('sign')">sign page</button>
+	</section>
+</div>
+
+
+<div class="page" id="list">
+	<header>
+		<div class="left"><button class="btn-back">◀</button></div>
+		<div class="center">Page List</div>
+		<div class="right"></div>
+	</header>
+	<section>
+		<ul>
+			<li>aaaa 0</li>
+			<li>aaaa 1</li>
+			<li>aaaa 2</li>
+			<li>aaaa 3</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa</li>
+			<li>aaaa 97</li>
+			<li>aaaa 98</li>
+			<li>aaaa 99</li>
+		</ul>
+	</section>
+	<footer>
+		<button onclick="pt.gotoPage('detail')">detail page</button>
+	</footer>
+</div>
+
+
+<div class="page" id="detail">
+	<header>
+		<div class="left"><button class="btn-back">◀</button></div>
+		<div class="center">Page Detail</div>
+		<div class="right"></div>
+	</header>
+</div>
+
+
+<div class="page" id="sign">
+	<header>
+		<div class="left"><button class="btn-back">◀</button></div>
+		<div class="center">sign Detail</div>
+		<div class="right"></div>
+	</header>
+	<section style="border: 1px solid #f00;">
+		
+	</section>
+</div>
+
+
+
+<script src="../assets/lib/jquery-3.1.1.min.js"></script>
+<script>
+var pt = {
+
+	pages : ['login'],
+	current : 'login',
+	isAnimating : false,
+	endCurrPage : false,
+	endNextPage : false,
+	
+	init : function () {
+		var $pages = $('.page');
+		$pages.each( function() {
+			var $page = $( this );
+			$page.data('originalClassList', $page.attr('class'));
+			if($page.attr('id')==pt.current) $page.addClass('page-current');
+		});
+		var $backBtns = $('.btn-back');
+		$backBtns.each(function(){
+			console.log(this);
+			$(this).on('click', pt.goBack);
+		});
+	},
+
+	gotoPage : function (pageId) {
+		var current = pt.pages[pt.pages.length - 1];
+		pt.moveTo(current, pageId, false);
+		pt.pages.push(pageId);
+	},
+	goBack : function() {
+		var currPage = pt.pages[pt.pages.length - 1];
+		var nextPage = pt.pages[pt.pages.length - 2];
+		pt.moveTo(currPage, nextPage, true);
+		pt.pages.pop();
+	},
+
+	moveTo : function(currPage, nextPage, isBack) {
+		if( pt.isAnimating ) return;
+		pt.isAnimating = true;
+		var $currPage = $('#' + currPage);
+		var $nextPage = $('#' + nextPage).addClass('page-current');
+		var onEndAnimation = function ( $outpage, $inpage ) {
+			pt.endCurrPage = false;
+			pt.endNextPage = false;
+			$outpage.attr('class', $outpage.data('originalClassList'));
+			$inpage .attr('class', $inpage .data('originalClassList') + ' page-current');
+			pt.isAnimating = false;
+		};
+		$currPage.addClass(isBack ? 'to-right' : 'to-left').on('animationend', function() {
+			$currPage.off('animationend');
+			pt.endCurrPage = true;
+			if(pt.endNextPage) onEndAnimation($currPage, $nextPage);
+		});
+		$nextPage.addClass(isBack ? 'from-left' : 'from-right').on('animationend', function() {
+			$nextPage.off('animationend');
+			pt.endNextPage = true;
+			if(pt.endCurrPage) onEndAnimation($currPage, $nextPage);
+		});
+	},
+};
+pt.init();
+console.log(pt);
+</script>
+</body>
+</html>
