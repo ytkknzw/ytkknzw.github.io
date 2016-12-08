@@ -18,7 +18,7 @@
 			background-color: #f9f9f9;
 		}
 		header {
-			position: fixed;
+			position: absolute;
 			top: 0;
 			left: 0;
 			right: 0;
@@ -29,9 +29,10 @@
 			background-color: #eee;
 			border-bottom: 1px solid #f00;
 			line-height: 44px;
+			height: 44px;
 		}
 		footer {
-			position: fixed;
+			position: absolute;
 			display: block;
 			box-sizing: border-box;
 			background-color: #eee;
@@ -43,12 +44,16 @@
 			bottom: 0;
 		}
 		section {
-			margin: 44px 0;
-			height: calc(100% - 88px);
+			position: absolute;
+			top: 44px;
+			left: 0;
+			right: 0;
+			bottom: 44px;
 			overflow: auto;
+			-webkit-overflow-scrolling: touch;
 		}
 		button {
-			background-color: #eee;
+			/*background-color: #eee;*/
 			line-height: 32px;
 			/*height: 32px;*/
 			color: #f00;
