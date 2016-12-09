@@ -2,20 +2,38 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
+    <!-- <meta http-equiv="X-UA-Compatible" content="chrome=1"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">   -->
 
 	<title>Apps</title>
 
 	<style>
+html, body {
+  position: fixed;
+  overflow: hidden;
+}
 	</style>
 </head>
 <body>
 
-<input type="text" onfocus="blur()">
+<div>
+	<label>readonly</label>
+	<input type="text" readonly="readonly" value="text">
+</div>
+<div>
+	<label>focus blur</label>
+	<input type="text" onfocus="blur()" value="text">
+</div>
+<div>
+	<label>normal</label>
+	<input type="text" value="text">
+</div>
 
 <script>
-
+// document.addEventListener('focus', function(){
+//	document.activeElement.blur();
+// }, false);
 </script>
 </body>
 </html>
