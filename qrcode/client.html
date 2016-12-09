@@ -1,3 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR Code</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <meta name="apple-mobile-web-app-title" content="QR Test" /> 
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <link rel="apple-touch-icon" sizes="57x57" href="../_icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="../_icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../_icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../_icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../_icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../_icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../_icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../_icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../_icons/apple-icon-180x180.png">
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="../_icons/manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192"  href="../_icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../_icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../_icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../_icons/favicon-16x16.png">
+
+  <meta name="msapplication-TileImage" content="../_icons/ms-icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
+  <!-- <link rel="stylesheet" href="index.2.css"> -->
+  <style>
+
+.alt-svg-back   { background-image: url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpath%20d%3D%22M5%2C3V0L1%2C4l4%2C4V5c0%2C0%2C6%2C0%2C6%2C3s-5%2C4-5%2C4v2c0%2C0%2C7-1%2C7-6C13%2C4%2C8%2C3%2C5%2C3z%22%2F%3E%3C%2Fsvg%3E");} 
+.png-back   {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJJJREFUOMtjYEAD////b2AgFYA0AfF/sjSRpBFZExT8AeLXQHwciCcAsQOxGrGBM0CsS0gzKxBLA7ELELcC8VOo+Ccg1iY6cIBCXEC8Fqp5M05n4xCXgGr8TGqoC5OrsRGqcS+xGkABVQ/E/6AaXQlpUATiYiC+C9UA0lhKjE3I4CYQexDrxGdAvBSIfYGYCV0eAL8TDNuB31nNAAAAAElFTkSuQmCC");}
+
+* {
+  font-family: Arial;
+  font-size: 14px;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f9f9f9;
+}
+section {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  overflow: hidden;
+  background-color: #fff;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+header {
+  box-sizing: border-box;
+  position: absolute;
+  display: flex;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  justify-content: space-between;
+  align-items: stretch;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #f00;
+  line-height: 44px;
+}
+.header-center {
+  font-weight: bold;
+}
+.header-left {
+  padding: 0 4px;  
+}
+.header-right {
+  padding: 0 4px;  
+}
+footer {
+  box-sizing: border-box;
+  position: absolute;
+  display: block;
+  display: flex;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 44px;
+  line-height: 44px;
+  padding: 4px;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  border-top: 1px solid #f00;
+}
+main {
+  position: absolute;
+  top: 44px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+.main-with-footer {
+  bottom: 44px !important;
+}
+button {
+  box-sizing: border-box;
+  background-color: #eee;
+  border: 1px solid #f00;
+  border-radius: 4px;
+  height: 36px;
+  background-color: #fff;
+  color: #f00;
+}
+input[type=text], input[type=password] {
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  height: 36px;
+  padding: 4px 8px;
+}
+textarea {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 15px;
+  min-height: 88px;
+  background-color: #eee;
+  border: solid 0px #ccc;
+  padding: 8px;
+}
+ol, ul {
+  margin: 0;
+  padding: 0;
+
+}
+li {
+  box-sizing: border-box;
+  list-style: none;
+  border-bottom: 1px solid #ccc;
+  min-height: 44px;
+}
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+.item.chevron {
+  margin-right: 16px;
+}
+.item-2 {
+  box-sizing: border-box;
+  min-height: 44px;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+.chevron:after {
+  content: '▶︎';
+  position: absolute;
+  right: 8px;
+  color: #f00;
+  text-align: right;
+  vertical-align: middle;
+}
+.btn-back {
+  background-color: inherit;
+  border: 0 solid #fff;
+  line-height: 32px;
+  width: 44px;
+  height: 44px;
+  color: #f66;
+  text-align: center;
+}
+.page-current { visibility: visible; z-index: 1; }
+.to-left  {-webkit-animation: toLeft .4s ease both;   animation: toLeft .4s ease both;}
+.from-left  {-webkit-animation: fromLeft .4s ease both; animation: fromLeft .4s ease both;}
+.to-right   {-webkit-animation: toRight .4s ease both;  animation: toRight .4s ease both;}
+.from-right {-webkit-animation: fromRight .4s ease both; animation: fromRight .4s ease both;}
+@-webkit-keyframes toLeft {from {} to { -webkit-transform: translateX(-100%); }}
+@-webkit-keyframes toRight  {from {} to { -webkit-transform: translateX(100%); }}
+@-webkit-keyframes fromLeft {from { -webkit-transform: translateX(-100%); }}
+@-webkit-keyframes fromRight{from { -webkit-transform: translateX(100%); } }
+@keyframes toLeft  {from {} to { -webkit-transform: translateX(-100%); transform: translateX(-100%);}}
+@keyframes toRight {from {} to { -webkit-transform: translateX(100%);  transform: translateX(100%);}}
+@keyframes fromLeft  {from{ -webkit-transform: translateX(-100%); transform: translateX(-100%);}}
+@keyframes fromRight {from{ -webkit-transform: translateX(100%);  transform: translateX(100%);}}
+.lbl {
+  color: #444;
+  white-space: nowrap;
+}
+.dat {
+  padding-left: 8px;
+  text-align: right;
+}
+.c-6 {
+  float: left;
+  width: 49%;
+}
+.c-6 button {
+  width: 100%;
+  margin: 4px;
+}
+
+.dialog {
+  display: none;
+}
+.dlg-frame button {
+  min-width: 49%;
+  width: 49%;
+}
+#dialog-base {
+  z-index: 100;
+  background-color: rgba(0,0,0,.125);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.dlg-frame {
+  box-sizing: border-box;
+  width: calc(100% - 88px);
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 4px;
+  box-shadow: 0px 5px 10px rgba(0,0,0,.5);
+}
+.dlg-title {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+}
+.dlg-message {
+  margin: 8px 0 16px 0;
+  max-height: 256px;
+  overflow: auto;
+}
+.l-01 {
+  display: inline-block;
+  width: 110px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 4px 4px 0px 8px;
+  line-height: 22px;
+}
+.l-02 {
+  display: inline-block;
+  width: 50px;
+  padding: 4px 4px 0px 4px;
+  text-align: right;
+  color: #666;
+  line-height: 22px;
+}
+.l-03 {
+  display: inline-block;
+  width: 100px;
+  padding: 4px 8px 0px 4px;
+  line-height: 22px;
+}
+.l-04 {
+  display: inline-block;
+  width: 90px;
+  color: #666;
+  padding: 0px 8px 4px;
+  line-height: 21px;
+}
+.l-05 {
+  display: inline-block;
+  max-width: calc(100% - 110px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0px 8px 4px 4px;
+  line-height: 21px;
+}
+.spacer {
+  height: 200px;
+}
+  </style>
+</head>
+
+<body style="overflow-y: hidden;">
+
+  <section id="login">
+    <div style="text-align: center; width: 200px; margin: 80px auto;">
+      <h1 text="login.title" style="font-size: 32px;"></h1>
+      <p>
+        <input id="pic" type="text" placeholder="pic" value="pic01"></input>
+      </p>
+      <p>
+        <input id="password" type="password" placeholder="password"></input>
+      </p>
+      <p>
+        <select id="locale" onchange="app.changeLocale(this.value)" style="width: 100%; height: 32px;">
+          <option value="ja">日本語</option>
+          <option value="en">English</option>
+        </select>
+      </p>
+      <p>
+        <button text="shared.btn-login" onclick="app.login()" style="width: 100%;"></button>
+      </p>
+    </div>
+  </section>
+
+
+  <section id="home">
+    <header>
+      <div class="header-left"></div>
+      <div class="header-center" text="home.title">Home</div>
+      <div class="header-right"><button onclick="app.showDialog('dialog-logout')">Log Out</button></div>
+    </header>
+    <main>
+      <div class="item-2">
+        <div class="lbl" text="home.progress"></div>
+        <canvas id="myChart" sytle="height: 128px;"></canvas>
+      </div>
+      <div class="item chevron" onclick="app.gotoPage('period')">
+        <div class="lbl" text="home.ym"></div>
+        <div id="ym"></div>
+      </div>
+      <div class="item chevron" text="home.btn-list" onclick="app.gotoPage('list')"></div>
+      <div class="item chevron" text="home.btn-addition" onclick="app.gotoPage('addition')"></div>
+      <div class="item-2 chevron" onclick="app.gotoPage('signature')">
+        <div class="lbl" text="home.signature" style="padding: 0 0 8px 0;"></div>
+        <img class="list__item__thumbnail" src="" style="width: 95%;">
+      </div>
+    </main>
+  </section>
+
+
+  <section id="period">
+    <header>
+      <div class="header-left"><button class="btn-back" text="shared.btn-back"></button></div>
+      <div class="header-center" text="period.title"></div>
+      <div class="header-right"></div>
+    </header>
+    <main>
+      <ul id="list-period"></ul>
+      <div class="spacer"></div>
+    </main>
+  </section>
+
+
+  <section id="list">
+    <header>
+      <div class="header-left"><button class="btn-back" text="shared.btn-back"></button></div>
+      <div class="header-center" id="list-title" text="list.title"></div>
+      <div class="header-right"></div>
+    </header>
+    <main class="main-with-footer">
+      <ul id="list-data"></ul>
+      <div class="spacer"></div>
+    </main>
+    <footer style="display: flex; justify-content: space-between; padding: 4px;">
+      <input id="decoded-str" type="text" oninput="app.after_decode()"/>
+      <button onclick="app.searchData()" style="white-space: nowrap;">Search Data</button>
+    </footer>
+  </section>
+
+
+  <section id="detail">
+    <header>
+      <div class="header-left"><button class="btn-back" text="shared.btn-back"></button></div>
+      <div class="header-center" text="detail.title"></div>
+      <div class="header-right"></div>
+    </header>
+    <main class="main-with-footer">
+      <div class="item"><div class="lbl" text="detail.d-01"></div><div class="dat" id="d-01"></div></div>
+      <div class="item"><div class="lbl" text="detail.d-02"></div><div class="dat" id="d-02"></div></div>
+      <div class="item"><div class="lbl" text="detail.d-03"></div><div class="dat" id="d-03"></div></div>
+      <div class="item"><div class="lbl" text="detail.d-04"></div><div class="dat" id="d-04"></div></div>
+      <div class="item"><div class="lbl" text="detail.d-05"></div><div class="dat" id="d-05"></div></div>
+      <div class="item"><div class="lbl" text="detail.d-06"></div><div class="dat" id="d-06"></div></div>
+      <div class="item"><div class="lbl" text="detail.d-07"></div><div class="dat" id="d-07"></div></div>
+      <div class="item"><div class="lbl" text="detail.d-08"></div><div class="dat" id="d-08"></div></div>
+      <div class="item"><div class="lbl" text="detail.d-09"></div><div class="dat" id="d-09"></div></div>
+      <div class="item"><div class="lbl" text="detail.d-10"></div><div class="dat" id="d-10"></div></div>
+      <div class="item chevron" onclick="app.showFreeText()">
+        <div class="lbl" text="detail.d-11" style="color: #d66;"></div>
+        <div class="dat" id="d-11"></div>
+      </div>
+      <div class="spacer"></div>
+    </main>
+    <footer>
+      <button text="detail.btn-reg" style="margin: 0 8px; width: calc(100% - 16px);" 
+        onclick="app.showDialog('dialog-confirm')"></button>
+    </footer>
+  </section>
+
+
+  <section id="addition">
+    <header>
+      <div class="header-left"><button class="btn-back" text="shared.btn-back"></button></div>
+      <div class="header-center" text="addition.title"></div>
+      <div class="header-right"><button text="shared.btn-add" onclick="app.gotoPage('add-detail')"></button></div>
+    </header>
+    <main>
+      <ol id="list-list-addition"></ol>
+      <div class="spacer"></div>
+    </main>
+  </section>
+
+
+  <section id="add-detail">
+    <header>
+      <div class="header-left"><button class="btn-back" text="shared.btn-back"></button></div>
+      <div class="header-center" text="add-detail.title"></div>
+      <div class="header-right"><button text="shared.btn-save" onclick="app.saveAddition()"></button></div>
+    </header>
+    <main>
+      <div class="item-2">
+        <div class="my-label" text="add-detail.memo"></div>
+        <textarea id="memo"></textarea>
+      </div>
+      <div class="item">
+        <div class="lbl" text="add-detail.picture"></div>
+        <div class="right">
+          <button id="btn-take-photo" onclick="document.getElementById('file').click();">
+            <ons-icon icon="ion-camera"></ons-icon> 
+            <span text="add-detail.take-photo">Take Photo</span>
+          </button>
+          <button id="btn-remove-photo" style="display: none;" onclick="app.removePhoto()">
+            <ons-icon icon="ion-trash-b"></ons-icon>
+            <span text="add-detail.delete-photo">Delete Photo</span>
+          </button>
+        </div>
+      </div>
+      <div class="item-2">
+        <input id="file" type="file" accept="image/*" style="display: none;" 
+          onchange="app.handlePicture(this.files[0])">
+        <div id="picture-prop" style="font-size: 14px; line-height: 20px; padding: 0 0 8px 0;">
+        </div>
+        <img id="picture" style="width: 100%;"/>
+      </div>
+    </main>
+  </section>
+
+
+  <section id="signature">
+    <header>
+      <div class="header-left"><button class="btn-back" text="shared.btn-back">Back</button></div>
+      <div class="header-center" text="signature.title">Signature</div>
+      <div class="header-right"></div>
+    </header>
+    <main class="main-with-footer" style="touch-action: none;">
+    </main>
+    <footer>
+      <button>Color</button>
+      <button>Width</button>
+    </footer>
+  </section>
+
+
+
+
+  <div class="dialog" id="dialog-free-text">
+    <div class="dlg-frame">
+      <div class="dlg-title">Free Text</div>
+      <div class="dlg-message">
+        <textarea id="free-text" rows="5"></textarea>
+      </div>
+      <button text="shared.close" onclick="app.closeDialog()">Close</button>
+      <button text="home.ok" onclick="app.copyFreeText()">OK</button>
+    </div>
+  </div>
+
+
+  <div class="dialog" id="dialog-logout">
+    <div class="dlg-frame">
+      <div class="dlg-title" text="home.logout.title">LOG OUT</div>
+      <div class="dlg-message" text="home.logout.message">Are you sure?</div>
+      <button text="shared.close" onclick="app.closeDialog()">Close</button>
+      <button text="home.btn-logout" onclick="app.logout()">LOG OUT</button>
+    </div>
+  </div>
+
+
+  <div class="dialog" id="dialog-confirm">
+    <div class="dlg-frame">
+      <div class="dlg-title" text="detail.confirm.title">Confirm</div>
+      <div class="dlg-message" text="detail.confirm.message"></div>
+      <button text="shared.close" onclick="app.closeDialog()">Close</button>
+      <button text="shared.ok" onclick="app.confirmData()">OK</button>
+    </div>
+  </div>
+
+
+  <div class="dialog" id="dialog-alert">
+    <div class="dlg-frame">
+      <div class="dlg-title"></div>
+      <div class="dlg-message"></div>
+      <button text="shared.close" onclick="app.closeDialog()">Close</button>
+    </div>
+  </div>
+
+  <div class="dialog" id="dialog-sample">
+    <div class="dlg-frame">
+      <div class="dlg-title">Sample</div>
+      <div class="dlg-message">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
+      </div>
+      <button onclick="app.closeDialog()">Close</button>
+    </div>
+  </div>
+
+  <div id="dialog-base"></div>
+
+<script src="../assets/lib/Chart.bundle.min.js"></script>
+<script src="../assets/lib/jquery-3.1.1.min.js"></script>
+<!-- <script src="index.2.js"></script> -->
+<script>
 "use strict";
 
 var dat = [
@@ -879,31 +1414,6 @@ $backBtns.each(function(){
   console.log(this);
   $(this).on('click', app.goBack);
 });
-
-// for demo
-// var h = '';
-// for(var i=0; i<999; i++) {
-//   h += '<li class="item">' + i + '</li>';
-// }
-// $('#list-data').html(h);
-// $('.item').on('click', function(a,b,c){
-//   var index = $('.item').index(this);
-//   console.log(a,this,index);
-//   app.gotoPage('detail');
-// });
-
-// function addEL(event, target, func) {
-//   el(target).addEventListener(event, func, false);
-// }
-
-// addEL('click', 'locale', app.changeLocale);
-// addEL('click', 'shared.btn-login', app.login);
-// addEL('click', 'locale', app.changeLocale);
-// addEL('click', 'locale', app.changeLocale);
-// addEL('click', 'locale', app.changeLocale);
-
-
-
-
-
-
+</script>
+</body>
+</html>
