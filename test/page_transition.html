@@ -24,6 +24,9 @@
 			right: 0;
 			/*bottom: auto;*/
 			display: flex;
+			justify-content: space-between;
+			align-items: stretch;
+
 			box-sizing: border-box;
 			/*font-size: 22px;*/
 			background-color: #eee;
@@ -31,6 +34,7 @@
 			line-height: 44px;
 			height: 44px;
 		}
+
 		footer {
 			position: absolute;
 			display: block;
@@ -53,9 +57,10 @@
 			-webkit-overflow-scrolling: touch;
 		}
 		button {
-			/*background-color: #eee;*/
+			background-color: #eee;
+			border: 1px solid #ccc;
+			border-radius: 4px;
 			line-height: 32px;
-			/*height: 32px;*/
 			color: #f00;
 		}
 		ul {
@@ -109,19 +114,34 @@
 		@keyframes toRight {from {} to { -webkit-transform: translateX(100%);  transform: translateX(100%);}}
 		@keyframes fromLeft  {from{ -webkit-transform: translateX(-100%); transform: translateX(-100%);}}
 		@keyframes fromRight {from{ -webkit-transform: translateX(100%);  transform: translateX(100%);}}
+
+		.item {
+			box-sizing: border-box;
+			padding: 0 8px;
+			height: 44px;
+		}
 	</style>
 </head>
 <body>
 
 <div class="page" id="login">
-	<header>
-		<div class="left"></div>
-		<div class="center">Page Login</div>
-		<div class="right"></div>
-	</header>
-	<section>
+	<div style="margin: 0 auto; width: 300px;">
+		<h1>App Title</h1>
+		<p>
+			<input type="text">
+		</p>
+		<p>
+			<input type="password">
+		</p>
+		<p>
+			<select id="">
+				<option value="en">English</option>
+				<option value="ja"></option>
+			</select>
+		</p>
+		<hr/>
 		<button onclick="pt.gotoPage('home')">home page</button>
-	</section>
+	</div>
 </div>
 
 
@@ -142,43 +162,20 @@
 	<header>
 		<div class="left"><button class="btn-back">◀</button></div>
 		<div class="center">Page List</div>
-		<div class="right"></div>
+		<div class="right">a b</div>
 	</header>
 	<section>
-		<ul>
+		<ul id="data-list">
 			<li>aaaa 0</li>
 			<li>aaaa 1</li>
 			<li>aaaa 2</li>
-			<li>aaaa 3</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
-			<li>aaaa</li>
 			<li>aaaa 97</li>
 			<li>aaaa 98</li>
 			<li>aaaa 99</li>
 		</ul>
 	</section>
 	<footer>
+		<input type="text">
 		<button onclick="pt.gotoPage('detail')">detail page</button>
 	</footer>
 </div>
@@ -193,15 +190,48 @@
 </div>
 
 
+<div class="page" id="add-list">
+	<header>
+		<div class="left"><button class="btn-back">◀</button></div>
+		<div class="center">Page List</div>
+		<div class="right">a b</div>
+	</header>
+	<section>
+		<ul id="data-add-list">
+			<li>aaaa 0</li>
+			<li>aaaa 1</li>
+			<li>aaaa 2</li>
+			<li>aaaa 97</li>
+			<li>aaaa 98</li>
+			<li>aaaa 99</li>
+		</ul>
+	</section>
+	<footer>
+	</footer>
+</div>
+
+
+<div class="page" id="add-detail">
+	<header>
+		<div class="left"><button class="btn-back">◀</button></div>
+		<div class="center">Page Detail</div>
+		<div class="right"></div>
+	</header>
+</div>
+
+
 <div class="page" id="sign">
 	<header>
 		<div class="left"><button class="btn-back">◀</button></div>
 		<div class="center">sign Detail</div>
 		<div class="right"></div>
 	</header>
-	<section style="border: 1px solid #f00;">
+	<section>
 		
 	</section>
+	<footer>
+		tool
+	</footer>
 </div>
 
 
@@ -217,16 +247,30 @@ var pt = {
 	endNextPage : false,
 	
 	init : function () {
+
 		var $pages = $('.page');
 		$pages.each( function() {
 			var $page = $( this );
 			$page.data('originalClassList', $page.attr('class'));
 			if($page.attr('id')==pt.current) $page.addClass('page-current');
 		});
+
 		var $backBtns = $('.btn-back');
 		$backBtns.each(function(){
 			console.log(this);
 			$(this).on('click', pt.goBack);
+		});
+
+		// for demo
+		var h = '';
+		for(var i=0; i<999; i++) {
+			h += '<li class="item">' + i + '</li>';
+		}
+		$('#data-list').html(h);
+		$('.item').on('click', function(a,b,c){
+			var index = $('.item').index(this);
+			console.log(a,this,index);
+			pt.gotoPage('detail');
 		});
 	},
 
