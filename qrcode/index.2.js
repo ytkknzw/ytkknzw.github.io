@@ -242,33 +242,33 @@ var app = {
   },
   // login page
   login : function() {
-    // app.gotoPage('home');
-    $.ajax({
-      url: '/api/fac/client/authenticate',
-      method: 'POST',
-      data: {
-        account: $('#pic input').val(),
-        password: $('#password input').val()
-      }
-    })
-    .done(function(dat, b, c){
-      app.periods = [];
-      dat.forEach(function(row){
-        app.periods.push(row.ym);
-      });
-      app.pic = $('#pic input').val();
-      app.gotoPage('home');
-    })
-    .fail(function(a, b, c){
-      console.log(a, b, c);
-      ons.notification.alert({
-        title: 'Log in Failed',
-        message: 'check account and/or password again'
-      });
-    })
-    .always(function(){
+    app.gotoPage('home');
+    // $.ajax({
+    //   url: app.data_root + '/api/fac/client/authenticate',
+    //   method: 'POST',
+    //   data: {
+    //     account: $('#pic input').val(),
+    //     password: $('#password input').val()
+    //   }
+    // })
+    // .done(function(dat, b, c){
+    //   app.periods = [];
+    //   dat.forEach(function(row){
+    //     app.periods.push(row.ym);
+    //   });
+    //   app.pic = $('#pic input').val();
+    //   app.gotoPage('home');
+    // })
+    // .fail(function(a, b, c){
+    //   console.log(a, b, c);
+    //   ons.notification.alert({
+    //     title: 'Log in Failed',
+    //     message: 'check account and/or password again'
+    //   });
+    // })
+    // .always(function(){
 
-    });
+    // });
   },
   // period list page
   initPeriod : function() {
