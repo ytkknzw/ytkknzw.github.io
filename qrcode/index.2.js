@@ -242,6 +242,7 @@ var app = {
   },
   // login page
   login : function() {
+    alert();
     app.gotoPage('home');
     // $.ajax({
     //   url: app.data_root + '/api/fac/client/authenticate',
