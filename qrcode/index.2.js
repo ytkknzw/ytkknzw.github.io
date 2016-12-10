@@ -377,7 +377,7 @@ var dat = [
 
 var texts = {
   'en': {
-    'shared.btn-back': 'Back',
+    'shared.btn-back': '&#x3031; Back',
     'shared.btn-ok': 'OK',
     'shared.btn-yes': 'Yes',
     'shared.btn-no': 'No',
@@ -424,7 +424,7 @@ var texts = {
     'signature.title': 'Signature',
   },
   'ja': {
-    'shared.btn-back': '戻る',
+    'shared.btn-back': '&#x3031; 戻る',
     'shared.btn-yes': 'はい',
     'shared.btn-no': 'いいえ',
     'shared.btn-ok': 'OK',
@@ -494,7 +494,6 @@ var app = {
 
   gotoPage : function (pageId) {
     if(pageId == 'period') app.initPeriod();
-    else if(pageId == 'list') app.initList();
     else if(pageId == 'detail') app.initDetail();
     var current = app.pages[app.pages.length - 1];
     app.moveTo(current, pageId, false);
@@ -503,6 +502,7 @@ var app = {
   goBack : function() {
     var currPage = app.pages[app.pages.length - 1];
     var nextPage = app.pages[app.pages.length - 2];
+    if(currPage == 'period') app.initList();
     app.moveTo(currPage, nextPage, true);
     app.pages.pop();
   },
@@ -512,13 +512,15 @@ var app = {
     app.isAnimating = true;
     var $currPage = $('#' + currPage);
     var $nextPage = $('#' + nextPage).addClass('page-current');
-    var onEndAnimation = function ( $outpage, $inpage ) {
+    var onEndAnimation = function ( $cPage, $nPage ) {
       app.endCurrPage = false;
       app.endNextPage = false;
-      $outpage.attr('class', $outpage.data('originalClassList'));
-      $inpage .attr('class', $inpage .data('originalClassList') + ' page-current');
+      $cPage.removeAttr('class');
+      // $cPage.removeClass();
+      $nPage.attr('class', 'page-current');
+      // $nPage.addClass('page-current');
       app.isAnimating = false;
-      console.log('page move',$outpage, $inpage);
+      console.log('page move',$cPage, $nPage);
     };
     $currPage.addClass(isBack ? 'to-right' : 'to-left').on('animationend', function() {
       $currPage.off('animationend');

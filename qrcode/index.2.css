@@ -3,8 +3,8 @@
 .png-back   {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAOCAYAAAAfSC3RAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAAJJJREFUOMtjYEAD////b2AgFYA0AfF/sjSRpBFZExT8AeLXQHwciCcAsQOxGrGBM0CsS0gzKxBLA7ELELcC8VOo+Ccg1iY6cIBCXEC8Fqp5M05n4xCXgGr8TGqoC5OrsRGqcS+xGkABVQ/E/6AaXQlpUATiYiC+C9UA0lhKjE3I4CYQexDrxGdAvBSIfYGYCV0eAL8TDNuB31nNAAAAAElFTkSuQmCC");}
 
 * {
-  font-family: Arial;
-  font-size: 14px;
+  font-family: 'Apple SD Gothic Neo', 'Helvetica Neue', 'Hiragino Sans', Helvetica, Arial;
+  font-size: 15px;
 }
 html, body {
   margin: 0;
@@ -92,11 +92,20 @@ main {
 }
 button {
   box-sizing: border-box;
-  background-color: #eee;
+  height: 36px;
+  white-space: nowrap;
   border: 1px solid #f00;
   border-radius: 4px;
-  height: 36px;
+  /*background-color: #eee;*/
   background-color: #fff;
+  color: #f00;
+}
+header button {
+  box-sizing: border-box;
+  height: 36px;
+  white-space: nowrap;
+  background-color: inherit;
+  border: 0px solid #f00;
   color: #f00;
 }
 input[type=text], input[type=password] {
@@ -139,7 +148,7 @@ li {
   border-bottom: 1px solid #ddd;
 }
 .item.chevron {
-  margin-right: 16px;
+  /*margin-right: 16px;*/
 }
 .item-2 {
   box-sizing: border-box;
@@ -148,8 +157,11 @@ li {
   border-bottom: 1px solid #ddd;
 }
 .chevron:after {
-  content: '▶︎';
+  /*content: '❯';*/
+  content: '〉';
+
   position: absolute;
+  margin-left: -24px;
   right: 8px;
   color: #f00;
   text-align: right;
@@ -238,8 +250,8 @@ li {
 
 .l-01 {
   display: inline-block;
-  width: 110px;
-  font-size: 16px;
+  width: 120px;
+  font-size: 15px;
   font-weight: bold;
   padding: 4px 4px 0px 8px;
   /*border: 1px solid #00f;*/
