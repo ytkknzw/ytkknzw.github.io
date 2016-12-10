@@ -40,25 +40,20 @@
   <section id="login">
     <div style="text-align: center; width: 200px; margin: 80px auto;">
       <h1 text="login.title" style="font-size: 32px;"></h1>
-      <p>
-        <input id="pic" type="text" placeholder="pic" value="pic01"></input>
-      </p>
-      <p>
-        <input id="password" type="password" placeholder="password"></input>
-      </p>
+      <p><input id="pic" type="text" placeholder="pic" value="pic01"></input></p>
+      <p><input id="password" type="password" placeholder="password"></input></p>
       <p>
         <select id="locale" onchange="app.changeLocale(this.value)" style="width: 100%; height: 32px;">
           <option value="ja">日本語</option>
           <option value="en">English</option>
         </select>
       </p>
-      <p>
-        <button text="shared.btn-login" onclick="app.login()" style="width: 100%;"></button>
-      </p>
+      <p><button text="shared.btn-login" onclick="app.login()" style="width: 100%;"></button></p>
               
-      ✔&#x2714; ▷&#x25b7; ⊕&#x2295; ⊗&#x2297; 〉&#x3009; 〉&#x232a; ☀&#x2600; ☁&#x2601; ❄&#x2744; ↺&circlearrowleft; ⋮&vellip; ⎋&#x238b; ▸&blacktriangleright; ▿&triangledown; ❯&#x276f; ❮&#x276e;
+      <p>
+        ✔&#x2714; ▷&#x25b7; ⊕&#x2295; ⊗&#x2297; 〉&#x3009; 〉&#x232a; ☀&#x2600; ☁&#x2601; ❄&#x2744; ↺&circlearrowleft; ⋮&vellip; ⎋&#x238b; ▸&blacktriangleright; ▿&triangledown; ❯&#x276f; ❮&#x276e;
+      </p>
         <!-- <button onclick="app.showDialog('dialog-sample')" style="width: 100%;">show dialog logout</button> -->
-        <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore reprehenderit vel iusto nulla est quos quo error facilis, quasi distinctio! Expedita inventore odio suscipit enim facere, repellat. At, nesciunt, explicabo! -->
     </div>
   </section>
 
@@ -269,8 +264,8 @@
 
   <div id="dialog-base"></div>
 
-<script src="../_lib/Chart.bundle.min.js"></script>
-<script src="../_lib/jquery-3.1.1.min.js"></script>
+<script src="../assets/lib/Chart.bundle.min.js"></script>
+<script src="../assets/lib/jquery-3.1.1.min.js"></script>
 <script src="index.2.js"></script>
 </body>
 </html>
