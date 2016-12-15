@@ -11,24 +11,24 @@
   <meta name="apple-mobile-web-app-title" content="QR Test" /> 
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <link rel="apple-touch-icon" sizes="57x57" href="../_icons/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="../_icons/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="../_icons/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="../_icons/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="../_icons/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="../_icons/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="../_icons/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="../_icons/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="../_icons/apple-icon-180x180.png">
+  <link rel="apple-touch-icon" sizes="57x57" href="../assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="../assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="../assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="../assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="../assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="../assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="../assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/icons/apple-icon-180x180.png">
 
   <meta name="mobile-web-app-capable" content="yes">
-  <link rel="manifest" href="../_icons/manifest.json">
-  <link rel="icon" type="image/png" sizes="192x192"  href="../_icons/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="../_icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="../_icons/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="../_icons/favicon-16x16.png">
+  <link rel="manifest" href="../assets/icons/manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192"  href="../assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="../assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/favicon-16x16.png">
 
-  <meta name="msapplication-TileImage" content="../_icons/ms-icon-144x144.png">
+  <meta name="msapplication-TileImage" content="../assets/icons/ms-icon-144x144.png">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
 
@@ -41,35 +41,35 @@
     <div style="text-align: center; width: 200px; margin: 80px auto;">
       <h1 text="login.title" style="font-size: 32px;"></h1>
       <p><input id="pic" type="text" placeholder="pic" value="pic01"></input></p>
-      <p><input id="password" type="password" placeholder="password"></input></p>
+      <p><input id="password" type="password" placeholder="password" value="password"></input></p>
       <p>
         <select id="locale" onchange="app.changeLocale(this.value)" style="width: 100%; height: 32px;">
           <option value="ja">日本語</option>
           <option value="en">English</option>
         </select>
       </p>
-      <p><button text="shared.btn-login" onclick="app.login()" style="width: 100%;"></button></p>
+      <p><button text="common.btn-login" onclick="app.login()" style="width: 100%;"></button></p>
               
       <p>
-        ✔&#x2714; ▷&#x25b7; ⊕&#x2295; ⊗&#x2297; 〉&#x3009; 〉&#x232a; ☀&#x2600; ☁&#x2601; ❄&#x2744; ↺&circlearrowleft; ⋮&vellip; ⎋&#x238b; ▸&blacktriangleright; ▿&triangledown; ❯&#x276f; ❮&#x276e;
+        ✔&#x2714; ▷&#x25b7; ⊕&#x2295; ⊗&#x2297; 〈&#x2329;〈&#x3008; 〱&#x3031; 〉&#x3009; 〉&#x232a; ☀&#x2600; ☁&#x2601; ❄&#x2744; ↺&circlearrowleft; ⋮&vellip; ⎋&#x238b; ▸&blacktriangleright; ▿&triangledown; ❯&#x276f; ❮&#x276e;
       </p>
-        <!-- <button onclick="app.showDialog('dialog-sample')" style="width: 100%;">show dialog logout</button> -->
+        <!-- <button onclick="app.openDialog('dialog-sample')" style="width: 100%;">show dialog logout</button> -->
     </div>
   </section>
 
 
   <section id="home">
     <header>
-      <div class="header-left"></div>
       <div class="header-center" text="home.title">Home</div>
-      <div class="header-right"><button onclick="app.showDialog('dialog-logout')">Log Out</button></div>
+      <div class="header-left"></div>
+      <div class="header-right"><button text="common.btn-logout" onclick="app.openDialog('dialog-logout')"></button></div>
     </header>
     <main>
       <div class="item-2">
         <div class="lbl" text="home.progress"></div>
-        <canvas id="myChart" sytle="height: 128px;"></canvas>
+        <canvas id="myChart" style=""></canvas>
       </div>
-      <div class="item chevron" onclick="app.gotoPage('period')">
+      <div class="item chevron" onclick="app.showPeriod()">
         <div class="lbl" text="home.ym"></div>
         <div id="ym"></div>
       </div>
@@ -77,7 +77,7 @@
       <div class="item chevron" text="home.btn-addition" onclick="app.gotoPage('addition')"></div>
       <div class="item-2 chevron" onclick="app.gotoPage('signature')">
         <div class="lbl" text="home.signature" style="padding: 0 0 8px 0;"></div>
-        <img src="" style="width: 95%;">
+        <img src="" alt="signature" style="width: calc(100% - 24px);"/>
       </div>
     </main>
   </section>
@@ -85,8 +85,8 @@
 
   <section id="period">
     <header>
-      <div class="header-left"><button class="btn-back" text="shared.btn-back"></button></div>
       <div class="header-center" text="period.title"></div>
+      <div class="header-left"><button class="btn-back" text="common.btn-back"></button></div>
       <div class="header-right"></div>
     </header>
     <main>
@@ -96,27 +96,42 @@
   </section>
 
 
+  <section id="signature">
+    <header>
+      <div class="header-center" text="signature.title"></div>
+      <div class="header-left"><button class="btn-back" text="common.btn-back"></button></div>
+      <div class="header-right"><button text="common.btn-save" onclick="app.saveSignature()"></button></div>
+    </header>
+    <main class="main-with-footer" style="touch-action: none;">
+      <canvas id="canvas-sign" style="width:100%; height: 100%;"></canvas>
+    </main>
+    <footer>
+      <button text="common.btn-clear" style="width: 100%;" onclick="app.clearSignature()"></button>
+    </footer>
+  </section>
+
+
   <section id="list">
     <header>
-      <div class="header-left"><button class="btn-back" text="shared.btn-back"></button></div>
-      <div class="header-center" id="list-title" text="list.title"></div>
+      <div class="header-center" id="list-data-title" text="list.title"></div>
+      <div class="header-left"><button class="btn-back" text="common.btn-back"></button></div>
       <div class="header-right"></div>
     </header>
     <main class="main-with-footer">
       <ul id="list-data"></ul>
       <div class="spacer"></div>
     </main>
-    <footer style="display: flex; justify-content: space-between; padding: 4px;">
-      <input id="decoded-str" type="text" oninput="app.after_decode()"/>
-      <button onclick="app.searchData()" style="white-space: nowrap;">Search Data</button>
+    <footer style="display: flex; justify-content: space-between;">
+      <input id="search-key" type="text" style="margin: 4px;"/>
+      <button text="common.btn-search" onclick="app.searchData()" style="margin-right: 4px;"></button>
     </footer>
   </section>
 
 
   <section id="detail">
     <header>
-      <div class="header-left"><button class="btn-back" text="shared.btn-back"></button></div>
       <div class="header-center" text="detail.title"></div>
+      <div class="header-left"><button class="btn-back" text="common.btn-back"></button></div>
       <div class="header-right"></div>
     </header>
     <main class="main-with-footer">
@@ -137,20 +152,19 @@
       <div class="spacer"></div>
     </main>
     <footer>
-      <button text="detail.btn-reg" style="margin: 0 8px; width: calc(100% - 16px);" 
-        onclick="app.showDialog('dialog-confirm')"></button>
+      <button text="detail.btn-reg" style="width: 100%;" onclick="app.openDialog('dialog-confirm')"></button>
     </footer>
   </section>
 
 
   <section id="addition">
     <header>
-      <div class="header-left"><button class="btn-back" text="shared.btn-back"></button></div>
-      <div class="header-center" text="addition.title"></div>
-      <div class="header-right"><button text="shared.btn-add" onclick="app.gotoPage('add-detail')"></button></div>
+      <div class="header-center" id="list-addition-title" text="addition.title"></div>
+      <div class="header-left"><button class="btn-back" text="common.btn-back"></button></div>
+      <div class="header-right"><button text="common.btn-add" onclick="app.showAddDetail(-1)"></button></div>
     </header>
     <main>
-      <ol id="list-list-addition"></ol>
+      <ul id="list-addition"></ul>
       <div class="spacer"></div>
     </main>
   </section>
@@ -158,9 +172,12 @@
 
   <section id="add-detail">
     <header>
-      <div class="header-left"><button class="btn-back" text="shared.btn-back"></button></div>
       <div class="header-center" text="add-detail.title"></div>
-      <div class="header-right"><button text="shared.btn-save" onclick="app.saveAddition()"></button></div>
+      <div class="header-left"><button class="btn-back" text="common.btn-back"></button></div>
+      <div class="header-right">
+        <button text="common.btn-save" onclick="app.openDialog('dialog-addition-save')"></button>
+        <button id="btn-addition-del" text="common.btn-delete" onclick="app.openDialog('dialog-addition-del')"></button>
+      </div>
     </header>
     <main>
       <div class="item-2">
@@ -170,39 +187,19 @@
       <div class="item">
         <div class="lbl" text="add-detail.picture"></div>
         <div class="right">
-          <button id="btn-take-photo" onclick="document.getElementById('file').click();">
-            <ons-icon icon="ion-camera"></ons-icon> 
-            <span text="add-detail.take-photo">Take Photo</span>
-          </button>
-          <button id="btn-remove-photo" style="display: none;" onclick="app.removePhoto()">
-            <ons-icon icon="ion-trash-b"></ons-icon>
-            <span text="add-detail.delete-photo">Delete Photo</span>
-          </button>
+          <button text="add-detail.btn-take-photo" id="btn-take-photo" 
+            onclick="document.getElementById('file').click();"></button>
+          <button text="add-detail.btn-delete-photo" id="btn-remove-photo" 
+            style="display: none;" onclick="app.removePhoto()"></button>
         </div>
       </div>
       <div class="item-2">
         <input id="file" type="file" accept="image/*" style="display: none;" 
           onchange="app.handlePicture(this.files[0])">
-        <div id="picture-prop" style="font-size: 14px; line-height: 20px; padding: 0 0 8px 0;">
-        </div>
+        <div id="picture-prop" style="font-size: 14px; line-height: 20px; padding: 0 0 8px 0;"></div>
         <img id="picture" style="width: 100%;"/>
       </div>
     </main>
-  </section>
-
-
-  <section id="signature">
-    <header>
-      <div class="header-left"><button class="btn-back" text="shared.btn-back">Back</button></div>
-      <div class="header-center" text="signature.title">Signature</div>
-      <div class="header-right"></div>
-    </header>
-    <main class="main-with-footer" style="touch-action: none;">
-    </main>
-    <footer>
-      <button>Color</button>
-      <button>Width</button>
-    </footer>
   </section>
 
 
@@ -210,41 +207,61 @@
 
   <div class="dialog" id="dialog-free-text">
     <div class="dlg-frame">
-      <div class="dlg-title">Free Text</div>
+      <div class="dlg-title" text="dlg-free-text.title"></div>
       <div class="dlg-message">
         <textarea id="free-text" rows="5"></textarea>
       </div>
-      <button text="shared.close" onclick="app.closeDialog()">Close</button>
-      <button text="home.ok" onclick="app.copyFreeText()">OK</button>
+      <button text="common.btn-close" onclick="app.closeDialog()"></button>
+      <button text="common.btn-ok" onclick="app.copyFreeText()"></button>
     </div>
   </div>
 
 
   <div class="dialog" id="dialog-logout">
     <div class="dlg-frame">
-      <div class="dlg-title" text="home.logout.title">LOG OUT</div>
-      <div class="dlg-message" text="home.logout.message">Are you sure?</div>
-      <button text="shared.close" onclick="app.closeDialog()">Close</button>
-      <button text="home.btn-logout" onclick="app.logout()">LOG OUT</button>
+      <div class="dlg-title" text="dlg-logout.title"></div>
+      <div class="dlg-message" text="dlg-logout.message"></div>
+      <button text="common.btn-close" onclick="app.closeDialog()"></button>
+      <button text="common.btn-logout" onclick="app.logout()"></button>
     </div>
   </div>
 
 
   <div class="dialog" id="dialog-confirm">
     <div class="dlg-frame">
-      <div class="dlg-title" text="detail.confirm.title">Confirm</div>
-      <div class="dlg-message" text="detail.confirm.message"></div>
-      <button text="shared.close" onclick="app.closeDialog()">Close</button>
-      <button text="shared.ok" onclick="app.confirmData()">OK</button>
+      <div class="dlg-title" text="dlg-confirm.title"></div>
+      <div class="dlg-message" text="dlg-confirm.message"></div>
+      <button text="common.btn-close" onclick="app.closeDialog()"></button>
+      <button text="common.btn-ok" onclick="app.confirmData()"></button>
     </div>
   </div>
 
 
-  <div class="dialog" id="dialog-alert">
+  <div class="dialog" id="dialog-addition-save">
     <div class="dlg-frame">
-      <div class="dlg-title"></div>
-      <div class="dlg-message"></div>
-      <button text="shared.close" onclick="app.closeDialog()">Close</button>
+      <div class="dlg-title" text="dlg-addition-save.title"></div>
+      <div class="dlg-message" text="dlg-addition-save.message"></div>
+      <button text="common.btn-cancel" onclick="app.closeDialog()"></button>
+      <button text="common.btn-ok" onclick="app.saveAddition()"></button>
+    </div>
+  </div>
+
+
+  <div class="dialog" id="dialog-addition-del">
+    <div class="dlg-frame">
+      <div class="dlg-title" text="dlg-addition-del.title"></div>
+      <div class="dlg-message" text="dlg-addition-del.message"></div>
+      <button text="common.btn-cancel" onclick="app.closeDialog()"></button>
+      <button text="common.btn-ok" onclick="app.deleteAddition()"></button>
+    </div>
+  </div>
+
+
+  <div class="dialog" id="dialog-error">
+    <div class="dlg-frame">
+      <div class="dlg-title" text="dlg-error.title"></div>
+      <div class="dlg-message" id="error-message"></div>
+      <button text="common.btn-close" style="width: 100%;" onclick="app.closeDialog()"></button>
     </div>
   </div>
 
@@ -258,7 +275,7 @@
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus voluptatum enim consequatur dolor earum deleniti non iusto, repudiandae maiores veniam. Id accusantium unde sed officia ad necessitatibus aliquid, ab distinctio.
       </div>
-      <button onclick="app.closeDialog()">Close</button>
+      <button text="common.btn-close" style="width: 100%;" onclick="app.closeDialog()"></button>
     </div>
   </div>
 

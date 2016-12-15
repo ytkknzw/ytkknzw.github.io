@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">   -->
+
+	<title>Freehand</title>
+
+	<style>
+html, body {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	/*overflow: hidden;*/
+	overflow: auto;
+}
+	</style>
+</head>
+<body>
+<div style="padding: 50px; margin: 30px;">
+	<canvas id="canvas" width="500" height="400" style="border: 1px solid #ccc;"></canvas>
+</div>
+
+<script src="../assets/lib/jquery-3.1.1.min.js"></script>
+<script>
+	var $canvas = $('canvas');
+	console.log($canvas);
+
+	var canvas = document.getElementById('canvas'),
+		ctx = canvas.getContext("2d");
+	ctx.strokeStyle = "#000";
+	ctx.lineJoin    = "round";
+	ctx.lineWidth   = 5;
+
+	var enable = false;
+	var px, py, cx, cy;
+
+    $canvas.mousedown(function(e){
+		enable = true;
+		px = e.pageX - this.offsetLeft,
+		py = e.pageY - this.offsetTop
+		// console.log('mousedown', px, py);
+    });
+    $canvas.mousemove(function(e){
+      	if(!enable) return;
+		cx = e.pageX - this.offsetLeft;
+		cy = e.pageY - this.offsetTop;
+		// console.log('mousemove', cx, cy);
+		drawPoints();
+		px = cx;
+		py = cy;
+    });
+    $canvas.mouseup(function(e){
+      // console.log('mouseup', e);
+      endPoint(e);
+    });
+    $canvas.mouseleave(function(e){
+      // console.log('mouseleave', e);
+      endPoint(e);
+    });
+
+    var endPoint = function(e) {
+		cx = e.pageX - this.offsetLeft;
+		cy = e.pageY - this.offsetTop;
+		drawPoints();
+		enable = false;
+    };
+	var drawPoints = function(){
+	  if (!enable) return;
+	  console.log('draw', px, py, cx, cy);
+	  ctx.beginPath();
+	  ctx.moveTo(px, py);
+	  ctx.lineTo(cx, cy);
+	  ctx.closePath();
+	  ctx.stroke();
+	}
+</script>
+</body>
+</html>

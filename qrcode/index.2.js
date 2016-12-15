@@ -1,5 +1,7 @@
 "use strict";
 
+var DATA_ROOT = 'https://localhost';
+
 var dat = [
   {"id":0, "pic":"pic01","ym":"201512","cost_center":"E160","plant":"","profit_center":"","structure_code":"R5B","structure_text":"\u5668\u5177\u96fb\u5b50\u8a08\u7b97\u6a5f\u30fb\uff2c\uff21\uff2e\u8a2d\u50996\u5e74","product_category_code":"","product_category_txet":"","office_code":"","office_text":"","lend_to_code":"","lend_to_text":"","municipality_code":"0","municipality_text":"\u7533\u544a\u5bfe\u8c61\u5916","place":"","room":"\u95a2\u897f\u7269\u6d41","asset_class_code":"AFTOOL2","asset_class_text":"this is a pen. this is an apple. ahhh... pen apple... this is a pineapple. this a pen. ahhh... pinapple pen...","asset_code":"this is a pen. this is an apple. ahhh... pen apple...","asset_sub":"0000","asset_text":"this is a pen. this is an apple. ahhh... pen apple...","responsive_cost_center":"E160","serial_number":"600312","inventory_number":"600312 0000","quantity":"0","unit":"PC","inventory":"\u95a2\u897f\u7269\u6d41\u30bb\u30f3\u30bf","shelf":"X","checked":"","char30k":"this is a pen. this is an apple. ahhh... pen apple...","capitalize_date":"2000-08-31","inventory_date":null},
   {"id":20,"pic":"pic01","ym":"201512","cost_center":"E160","plant":"","profit_center":"","structure_code":"R5B","structure_text":"\u5668\u5177\u96fb\u5b50\u8a08\u7b97\u6a5f\u30fb\uff2c\uff21\uff2e\u8a2d\u50996\u5e74","product_category_code":"","product_category_txet":"","office_code":"","office_text":"","lend_to_code":"","lend_to_text":"","municipality_code":"0","municipality_text":"\u7533\u544a\u5bfe\u8c61\u5916","place":"","room":"\u95a2\u897f\u7269\u6d41","asset_class_code":"AFTOOL2","asset_class_text":"\u6709:\u5de5\u5177\u5668\u5177\u5099\u54c1(\u8ca9\u58f2)","asset_code":"600312","asset_sub":"0000","asset_text":"\uff2c\uff21\uff2e\u5de5\u4e8b \u95a2\u897f\u7269\u6d41\u30bb\u30f3\u30bf\u30fc","responsive_cost_center":"E160","serial_number":"600312","inventory_number":"600312 0000","quantity":"0","unit":"PC","inventory":"\u95a2\u897f\u7269\u6d41\u30bb\u30f3\u30bf","shelf":"X","checked":"","char30k":"","capitalize_date":"2000-08-31","inventory_date":null},
@@ -377,15 +379,20 @@ var dat = [
 
 var texts = {
   'en': {
-    'shared.btn-back': '&#x3031; Back',
-    'shared.btn-ok': 'OK',
-    'shared.btn-yes': 'Yes',
-    'shared.btn-no': 'No',
-    'shared.btn-cancel': 'Cancel',
-    'shared.btn-close': 'Close',
-    'shared.btn-login': 'Log In',
-    'shared.btn-add': 'Add',
-    'shared.btn-save': 'Save',
+    'common.btn-back': '&#x2329; Back',
+    'common.btn-ok': 'OK',
+    'common.btn-yes': 'Yes',
+    'common.btn-no': 'No',
+    'common.btn-cancel': 'Cancel',
+    'common.btn-close': 'Close',
+    'common.btn-login': 'Log In',
+    'common.btn-logout': 'Log Out',
+    'common.btn-add': 'Add',
+    'common.btn-save': 'Save',
+    'common.btn-delete': 'Delete',
+    'common.btn-clear': 'Clear',
+    'common.btn-search': 'Search',
+
     'login.title': 'Fixed Assets Check',
     'home.title': 'Home',
     'home.ym': 'Period',
@@ -397,8 +404,10 @@ var texts = {
     'home.btn-list': 'Data List',
     'home.btn-addition': 'Addition',
     'home.btn-settings': 'Settings',
-    'home.dlg-title': 'Log Out',
-    'home.dlg-message': 'Are you sure?',
+
+    'period.title': 'Operation Period',
+    'signature.title': 'Signature',
+
     'list.title': 'Data List (#)',
     'detail.title': 'Detail',
     'detail.d-01': 'Asset Class Code',
@@ -412,27 +421,41 @@ var texts = {
     'detail.d-09': 'Serial Number',
     'detail.d-10': 'Room',
     'detail.d-11': 'Description',
-    'detail.btn-reg': 'Confirm',
-    'detail.dlg-title': 'Save Data',
-    'detail.dlg-message': ' ',
-    'detail.dlg-btn-reg': 'Done',
-    'addition.title': 'Addition',
+
+    'addition.title': 'Addition (#)',
     'add-detail.title': 'Addition Detail',
     'add-detail.memo': 'Memo',
     'add-detail.picture': 'Picture',
-    'add-detail.': '',
-    'signature.title': 'Signature',
+    'add-detail.btn-take-photo': 'Choose/Take Photo',
+    'add-detail.btn-delete-photo': 'Delete Photo',
+
+    'dlg-free-text.title': 'Free Text',
+    'dlg-logout.title': 'Log Out',
+    'dlg-logout.message': 'Are you sure?',
+    'dlg-confirm.title': 'Save Data',
+    'dlg-confirm.message': ' ',
+    'dlg-confirm.btn-reg': 'Done',
+    'dlg-addition-save.title': 'Save Data',
+    'dlg-addition-save.message': 'Are you sure?',
+    'dlg-addition-del.title': 'Delete Data',
+    'dlg-addition-del.message': 'Are you sure to delete the data?',
+    'dlg-error.title': 'Eorror',
   },
   'ja': {
-    'shared.btn-back': '&#x3031; 戻る',
-    'shared.btn-yes': 'はい',
-    'shared.btn-no': 'いいえ',
-    'shared.btn-ok': 'OK',
-    'shared.btn-cancel': 'キャンセル',
-    'shared.btn-close': '閉じる',
-    'shared.btn-login': 'ログイン',
-    'shared.btn-add': '追加',
-    'shared.btn-save': '保存',
+    'common.btn-back': '&#x2329; 戻る',
+    'common.btn-yes': 'はい',
+    'common.btn-no': 'いいえ',
+    'common.btn-ok': 'OK',
+    'common.btn-cancel': 'キャンセル',
+    'common.btn-close': '閉じる',
+    'common.btn-login': 'ログイン',
+    'common.btn-logout': 'ログアウト',
+    'common.btn-add': '追加',
+    'common.btn-save': '保存',
+    'common.btn-delete': '削除',
+    'common.btn-clear': 'クリア',
+    'common.btn-search': '検索',
+
     'login.title': '固定資産管理',
     'home.title': 'ホーム',
     'home.ym': '期間',
@@ -444,9 +467,11 @@ var texts = {
     'home.btn-list': 'データ一覧',
     'home.btn-addition': '追加データ',
     'home.btn-settings': '設定',
-    'home.dlg-title': 'ログアウト',
-    'home.dlg-message': 'よろしいですか?',
-    'list.title': 'テータリスト (#)',
+
+    'period.title': '対象期間',
+    'signature.title': 'サイン',
+
+    'list.title': 'データ (#)',
     'detail.title': 'データ詳細',
     'detail.d-01': '資産クラス',
     'detail.d-02': '資産クラス名',
@@ -460,29 +485,43 @@ var texts = {
     'detail.d-10': '部屋',
     'detail.d-11': 'フリーテキスト',
     'detail.btn-reg': '確認',
-    'detail.dlg-title': 'データ登録',
-    'detail.dlg-message': ' ',
-    'detail.dlg-btn-reg': '確認完了',
-    'addition.title': '追加データ',
+
+    'addition.title': '追加データ (#)',
     'add-detail.title': '追加データ詳細',
     'add-detail.memo': 'メモ',
     'add-detail.picture': '写真',
-    'add-detail.': '',
-    'signature.title': 'サイン',
+    'add-detail.btn-take-photo': '写真選択・撮影',
+    'add-detail.btn-delete-photo': '写真削除',
+
+    'dlg-free-text.title': 'フリーテキスト',
+    'dlg-logout.title': 'ログアウト',
+    'dlg-logout.message': 'よろしいですか?',
+    'dlg-confirm.title': 'データ確認登録',
+    'dlg-confirm.message': ' ',
+    'dlg-confirm.btn-reg': '確認完了',
+    'dlg-addition-save.title': 'データ保存',
+    'dlg-addition-save.message': '保存します。よろしいですか?',
+    'dlg-addition-del.title': 'データ削除',
+    'dlg-addition-del.message': '削除します。よろしいですか?',
+    'dlg-error.title': 'エラー',
   }
 };
 var el = function(key){ return document.getElementById(key); };
 
 var app = {
 
-  data_root : 'https://localhost',
+  data_root : DATA_ROOT,
+
   locale : 'ja',
   texts  : {},
-  pic : '',
-  periods: ['201612', '201512', '201412'],
+
+  pic    : '',
+  periods: [],
   period : '',
+
   data   : dat, //[],
   data_index: -1,
+
   addition_data: [],
   addition_index : -1,
 
@@ -492,9 +531,20 @@ var app = {
   endCurrPage : false,
   endNextPage : false,
 
-  gotoPage : function (pageId) {
-    if(pageId == 'period') app.initPeriod();
-    else if(pageId == 'detail') app.initDetail();
+  init : function() {
+    app.changeLocale('ja');
+
+    $('section').each( function() {
+      var $page = $( this );
+      $page.data('originalClassList', $page.attr('class'));
+      if($page.attr('id')==app.current) $page.addClass('page-current');
+    });
+
+    $('.btn-back').each(function(){
+      $(this).on('click', app.goBack);
+    });
+  },
+  gotoPage : function(pageId) {
     var current = app.pages[app.pages.length - 1];
     app.moveTo(current, pageId, false);
     app.pages.push(pageId);
@@ -502,11 +552,9 @@ var app = {
   goBack : function() {
     var currPage = app.pages[app.pages.length - 1];
     var nextPage = app.pages[app.pages.length - 2];
-    if(currPage == 'period') app.initList();
     app.moveTo(currPage, nextPage, true);
     app.pages.pop();
   },
-
   moveTo : function(currPage, nextPage, isBack) {
     if( app.isAnimating ) return;
     app.isAnimating = true;
@@ -516,11 +564,8 @@ var app = {
       app.endCurrPage = false;
       app.endNextPage = false;
       $cPage.removeAttr('class');
-      // $cPage.removeClass();
       $nPage.attr('class', 'page-current');
-      // $nPage.addClass('page-current');
       app.isAnimating = false;
-      console.log('page move',$cPage, $nPage);
     };
     $currPage.addClass(isBack ? 'to-right' : 'to-left').on('animationend', function() {
       $currPage.off('animationend');
@@ -547,7 +592,7 @@ var app = {
       // console.log(key, app.texts[key]);
     });
   },
-  showDialog  : function(id) {
+  openDialog  : function(id) {
     $('#dialog-base')
       .html(el(id).innerHTML)
       .css({'display': 'flex'});
@@ -557,62 +602,55 @@ var app = {
       .html('')
       .css({'display': 'none'});
   },
+  handleError : function(err, b, c) {
+    console.log(err, b, c);
+    el('error-message').innerHTML = err.message;
+    app.openDialog('dialog-error');
+  },
+
   // login page
   login : function() {
-    // alert();
-    app.gotoPage('home');
-    // $.ajax({
-    //   url: app.data_root + '/api/fac/client/authenticate',
-    //   method: 'POST',
-    //   data: {
-    //     account: $('#pic input').val(),
-    //     password: $('#password input').val()
-    //   }
-    // })
-    // .done(function(dat, b, c){
-    //   app.periods = [];
-    //   dat.forEach(function(row){
-    //     app.periods.push(row.ym);
-    //   });
-    //   app.pic = $('#pic input').val();
-    //   app.gotoPage('home');
-    // })
-    // .fail(function(a, b, c){
-    //   console.log(a, b, c);
-    //   ons.notification.alert({
-    //     title: 'Log in Failed',
-    //     message: 'check account and/or password again'
-    //   });
-    // })
-    // .always(function(){
-
-    // });
+    $.ajax({
+      url: app.data_root + '/api/fac/auth/client',
+      method: 'POST',
+      data: {
+        account: $('#pic').val(),
+        password: $('#password').val()
+      },
+      error : app.handleError,
+      success : function(a, b, c) {
+        console.log('success', a, b, c);
+        app.periods = [];
+        a.forEach(function(row){
+          app.periods.push(row.ym);
+        });
+        console.log('login', $('#pic').val());
+        app.pic = $('#pic').val();
+        app.gotoPage('home');
+      }
+    });
   },
   // period list page
-  initPeriod : function() {
+  showPeriod : function() {
     var h = '', p;
     for(var i=0, ii=app.periods.length; i<ii; i++){
       p = app.periods[i];
-      h +='<li class="item" tappable onclick="app.changePeriod(' + p + ')">' + p + '</li>';
+      h +='<li class="item' + (p==app.period ? ' check' : '') + '" onclick="app.changePeriod(' + p + ')">' + p + '</li>';
     }
     el('list-period').innerHTML = h;
+    app.gotoPage('period');
   },
   changePeriod : function(p) {
     app.period = p;
     console.log(app.period, app.pic);
     $.ajax(app.data_root + '/api/fac/' + app.period + '/' + app.pic)
-    .fail(function(err, dat) {
-      console.log('load page error', err, dat);
-    })
-    .done(function(html, res, req) {
-      console.log('data', html);
-      app.data = html;
-      $('#ym').html(app.period);
-      app.drawChart();
-      app.goBack();
-    })
-    .always(function() {
-      // for dev and demo
+    .fail(app.handleError)
+    .done(function(json) {
+      el('ym').innerHTML = app.period;
+      app.data = json.data;
+      app.addition_data = json.addition;
+      app.initList();
+      app.initAdditionList();
       app.drawChart();
       app.goBack();
     });
@@ -650,38 +688,29 @@ var app = {
                 ],
                 borderWidth: 1
             }]
+        },
+        options: {
+          legend: {
+            position: ['top', 'bottom', 'left', 'right'][1]
+          }
         }
     };
     new Chart(document.getElementById("myChart"), conf);
   },
-  after_decode : function() {
-    var len = el('decoded-str').value.length;
-    console.log(len);
-    if(len > 11) {
-      var key = 'K830451-0000';
-      app.searchData(key);
-    }
-  },
   // list page
-  initList : function () {
+  initList : function() {
     var h = '';
     for(var i=0, ii=app.data.length; i<ii; i++){
       h += '<li class="chevron">' + app.buildListHtml(app.data[i]) + '</li>';
     }
-    console.log(h);
     el('list-data').innerHTML = h;
+
     var $list = $('#list-data>li');
     $list.on('click', function(a,b,c){
-      var index = $list.index(this);
-      console.log(a,this,index);
-      app.data_index = index;
-      app.gotoPage('detail');
+      app.showDetail($list.index(this));
     });
 
-    var $target = $('#list-title');
-    console.log($target);
-    var str = $target.html();
-    $target.html(str.replace('#', app.data.length));
+    el('list-data-title').innerHTML = app.texts['list.title'].replace('#', app.data.length);
   },
   updateList : function() {
     var index = app.data_index;
@@ -703,8 +732,8 @@ var app = {
     return h;
   },
   searchData : function() {
-    var key = 'K830451-0000';
-    var i;
+    var key = el('search-key').value;
+    var i = 0;
     // search data that matches the decoded text
     var found = app.data.filter(function(dat, index){
       if (key == dat.asset_code + '-' + dat.asset_sub){
@@ -716,18 +745,18 @@ var app = {
     console.log(found);
     // navigate to detail page
     if(found.length == 1) {
-      app.data_index = i;
-      nav.pushPage('detail.html', {data:app.data[i]});
+      app.showDetail(i);
     } else {
-      ons.notification.alert({
-        title : 'Data Search',
-        message : (found.length == 0 ? 'Not Found' : 'Multiple Data')
-      });
+      var msg = (found.length === 0 ? 'Not Found' 
+        : 'there are ' + found.length + ' ' + keys + ' in the list');
+      el('dlg-error-message').innerHTML = msg;
+      app.openDialog('dialog-error')
     }
   },
   // detail page
-  initDetail : function() {
-    var d = app.data[app.data_index];
+  showDetail : function(index) {
+    app.data_index = index;
+    var d = app.data[index];
     el('d-01').innerHTML = d.asset_class_code;
     el('d-02').innerHTML = d.asset_class_text;
     el('d-03').innerHTML = d.asset_code;
@@ -739,9 +768,10 @@ var app = {
     el('d-09').innerHTML = d.serial_number;
     el('d-10').innerHTML = d.room;
     el('d-11').innerHTML = d.char30k;
+    app.gotoPage('detail');
   },
   showFreeText : function() {
-    app.showDialog('dialog-free-text');
+    app.openDialog('dialog-free-text');
     $('#dialog-base #free-text').val(el('d-11').innerHTML);
   },
   copyFreeText : function() {
@@ -764,6 +794,44 @@ var app = {
     app.goBack();
   },
   // addition page
+  initAdditionList : function() {
+    var dat = app.addition_data, h = '';
+    for(var i=0, ii=dat.length; i<ii; i++){
+      h += '<li class="chevron">' + app.buildAdditionHtml(dat[i]) + '</li>';
+    }
+    el('list-addition').innerHTML = h;
+
+    var $list = $('#list-addition>li');
+    $list.on('click', function(){
+      app.showAddDetail($list.index(this));
+    });
+
+    el('list-addition-title').innerHTML = app.texts['addition.title'].replace('#', dat.length);
+  },
+  updateAddition : function() {
+    var index = app.addition_index;
+    var d = app.addition[index];
+    var h = app.buildAdditionHtml(d);
+    $('#list-addition').children().eq(index).html(h);
+    console.log(index, d, h);
+  },
+  buildAdditionHtml : function(dat) {
+    return '<div>' + dat.memo + '</div>';
+  },
+  showAddDetail : function(index) {
+    app.addition_index = index;
+    if(app.addition_index < 0) {
+      $('#btn-addition-del').hide();
+    } else {
+      $('#btn-addition-del').show();
+      var dat = app.addition_data[index];
+      el('memo').value = dat.memo;
+      if(dat.file_name && dat.file !== '') {
+        // el('picture').src = app.data_root + '/upload/fac/'
+      }
+    }
+    app.gotoPage('add-detail');
+  },
   handlePicture : function(file) {
     console.log(file);
     if(file){
@@ -789,6 +857,9 @@ var app = {
       el('picture').src = '';
   },
   saveAddition : function() {
+    if(app.addition_index >= 0) {
+
+    }
     // format request body
     var file = null;
     var fd = new FormData();
@@ -796,25 +867,32 @@ var app = {
     fd.append('file', file);
     // send data to server then get thumbnail in callback
     $.ajax({
-      url: '',
+      url: app.data_root + '/api/addition',
       method: 'POST',
       dataType : 'text',
       data : fd,
       processData : false,
       contentType : false,
     })
-    .fail(function(err, b, c) {
-      console.log(err,b,c);
-      ons.notification.alert({
-        title: 'Error',
-        message: '' + err.status + ' ' + c
-      });
-    })
+    .fail(app.handleError)
     .done(function(a, b, c) {
+      el('memo').innerHTML = '';
+      app.removePhoto();
+      app.updateAddition();
+      app.goBack();
+    });
+  },
+  deleteAddition : function() {
+    $.ajax({
+      url: app.data_root + '/api/addition',
+      method: 'DELETE',
+      data : app.data[app.data_index],
+    })
+    .fail(app.handleError)
+    .done(function(a, b, c) {
+      el('memo').innerHTML = '';
       app.removePhoto();
       app.goBack();
-    })
-    .always(function(a, b, c) {
     });
   },
   compressImage : function(img) {
@@ -862,50 +940,120 @@ var app = {
     // e = Date.now();
     // el_time.innerHTML = (e-s) + ' ms';
     // el_resize.innerHTML = Math.round(dataurl.length/1024) + ' kb';
+  },
+  // signature page
+  setupSignature : function() {
+    var _isTouchedOutside = false;
+    var _p0, _p1, _p2, _pStart, _pEnd; // All CGPoint
+
+    var midPoint = function(p1, p2){
+      return CGPointMake((p1.x + p2.x) * 0.5, (p1.y + p2.y) * 0.5);
+    }
+
+    var $canvas = $('#canvas-sign');
+    $canvas.mousedown(function(e){
+    - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+      _p2 = [[touches anyObject] previousLocationInView:self];
+      _p1 = [[touches anyObject] previousLocationInView:self];
+      _pStart = [[touches anyObject] locationInView:self];
+      _isTouchedOutside = (!CGRectContainsPoint(self.bounds, _pStart));
+    }
+    - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{    
+      if (!self.enable || _isTouchedOutside) return;
+      _p2 = _p1;
+      _p1 = [[touches anyObject] previousLocationInView:self];
+      _p0 = [[touches anyObject] locationInView:self];
+      _pStart = midPoint(_p1, _p2);
+      _pEnd   = midPoint(_p0, _p1);
+      drawPoints();
+    }
+    - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+      if (!self.enable || _isTouchedOutside) return;
+      _p2 = _p1;
+      _p1 = [[touches anyObject] previousLocationInView:self];
+      _p0 = [[touches anyObject] locationInView:self];
+      _pStart = midPoint(_p1, _p2);
+      _pEnd   = midPoint(_p0, _p1);
+      drawPoints();
+    }
+
+    var ctx = document.getElementById('canvas-sign').getContext("2d");
+    ctx.strokeStyle = "#df4b26";
+    ctx.lineJoin    = "round";
+    ctx.lineWidth   = 5;
+
+    var drawPoints = function(){
+      if (!self.enable) return;
+
+      ctx.beginPath();
+      CGContextMoveToPoint(ctx, _pStart.x, _pStart.y);
+      CGContextAddQuadCurveToPoint(ctx, _p1.x, _p1.y, _pEnd.x, _pEnd.y);
+      ctx.closePath();
+      ctx.stroke();
+    }
+
+  },
+  initSignature : function() {
+    console.log('initSignature');
+
+    var context = document.getElementById('canvas-sign').getContext("2d");
+    context.strokeStyle = "#df4b26";
+    context.lineJoin    = "round";
+    context.lineWidth   = 5;
+
+    var prev = {
+      x : 0,
+      y : 0
+    };
+
+    function redraw(){
+      for(var i=0; i < clickX.length; i++) {    
+        if(clickDrag[i] && i){
+           context.moveTo(clickX[i-1], clickY[i-1]);
+         } else {
+           context.moveTo(clickX[i]-1, clickY[i]);
+         }
+         context.lineTo(clickX[i], clickY[i]);
+         context.closePath();
+         context.stroke();
+      }
+    }
+
+    var $canvas = $('#canvas-sign');
+    $canvas.mousedown(function(e){
+      context.beginPath();
+      var mouseX = e.pageX - this.offsetLeft;
+      var mouseY = e.pageY - this.offsetTop;
+      paint = true;
+      addPoint(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
+      redraw();
+    });
+    $canvas.mousemove(function(e){
+      // console.log('mousemove', e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+      if(paint){
+        addPoint(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
+        redraw();
+      }
+    });
+    $canvas.mouseup(function(e){
+      // console.log('mouseup', e);
+      paint = false;
+    });
+    $canvas.mouseleave(function(e){
+      // console.log('mouseleave', e);
+      paint = false;
+    });
+  },
+  saveSignature : function() {
+
+  },
+  clearSignature : function() {
+
+  },
+  setColor : function(index) {
+
   }
 };
 
-
-
-app.changeLocale('ja');
-
-var $pages = $('section');
-$pages.each( function() {
-  var $page = $( this );
-  $page.data('originalClassList', $page.attr('class'));
-  if($page.attr('id')==app.current) $page.addClass('page-current');
-});
-
-var $backBtns = $('.btn-back');
-$backBtns.each(function(){
-  console.log(this);
-  $(this).on('click', app.goBack);
-});
-
-// for demo
-// var h = '';
-// for(var i=0; i<999; i++) {
-//   h += '<li class="item">' + i + '</li>';
-// }
-// $('#list-data').html(h);
-// $('.item').on('click', function(a,b,c){
-//   var index = $('.item').index(this);
-//   console.log(a,this,index);
-//   app.gotoPage('detail');
-// });
-
-// function addEL(event, target, func) {
-//   el(target).addEventListener(event, func, false);
-// }
-
-// addEL('click', 'locale', app.changeLocale);
-// addEL('click', 'shared.btn-login', app.login);
-// addEL('click', 'locale', app.changeLocale);
-// addEL('click', 'locale', app.changeLocale);
-// addEL('click', 'locale', app.changeLocale);
-
-
-
-
-
+app.init();
 
