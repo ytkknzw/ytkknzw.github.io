@@ -13,13 +13,14 @@
 <!-- <input type="file" onchange="handleFile(this.files[0])"> -->
 <!-- <canvas id="q-canvas"></canvas> -->
 
-<button onclick="start_qrcode()">START 12</button>
+<button onclick="start_qrcode()">START 123</button>
 <button onclick="$('#qr').html5_qrcode_stop()">STOP 1</button>
 <div id="txt"></div>
 
-<div id="qr" style="width: 300px; height:250px;"></div>
+<div id="qr" width="300px" height="250px"></div>
 
 <script src="jquery-3.1.1.min.js"></script>
+<script src="adapter.js"></script>
 <script src="jsqrcode-combined.js"></script>
 <script>
 
@@ -30,6 +31,7 @@
                 var currentElem = $(this);
                 var height = currentElem.height() || 250;
                 var width  = currentElem.width()  || 300;
+                console.log(width, height);
 
                 var vidElem = $('<video width="' + width + 'px" height="' + height + 'px"></video>').appendTo(currentElem);
                 var canvasElem = $('<canvas id="qr-canvas" width="' + (width - 2) + 'px" height="' + (height - 2) + 'px" style="display:block;"></canvas>').appendTo(currentElem);
@@ -41,7 +43,7 @@
 
                 var scan = function() {
                     if (localMediaStream) {
-                        context.drawImage(video, 0, 0, 307, 250);
+                        context.drawImage(video, 0, 0, 304, 250);
 
                         try {
                             qrcode.decode();
@@ -71,8 +73,11 @@
                 	console.log('deviceId', deviceId);
                 	var constraints = {
                 		video : {
-                			// facingMode: "environment",
-                			optional: [{sourceId: deviceId}]
+                			deviceId : deviceId
+                			// facingMode: {
+                			// 	exact : "environment"
+                			// }
+                			// optional: [{sourceId: deviceId}]
                 		}
                 	};
 					navigator.mediaDevices.getUserMedia(constraints)
