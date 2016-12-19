@@ -1,5 +1,6 @@
 "use strict";
 
+// var DATA_ROOT = 'https://php7-my3rd.rhcloud.com/';
 var DATA_ROOT = 'https://localhost';
 
 var dat = [
@@ -942,118 +943,90 @@ var app = {
     // el_resize.innerHTML = Math.round(dataurl.length/1024) + ' kb';
   },
   // signature page
-  setupSignature : function() {
-    var _isTouchedOutside = false;
-    var _p0, _p1, _p2, _pStart, _pEnd; // All CGPoint
-
-    var midPoint = function(p1, p2){
-      return CGPointMake((p1.x + p2.x) * 0.5, (p1.y + p2.y) * 0.5);
-    }
-
-    var $canvas = $('#canvas-sign');
-    $canvas.mousedown(function(e){
-    - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-      _p2 = [[touches anyObject] previousLocationInView:self];
-      _p1 = [[touches anyObject] previousLocationInView:self];
-      _pStart = [[touches anyObject] locationInView:self];
-      _isTouchedOutside = (!CGRectContainsPoint(self.bounds, _pStart));
-    }
-    - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{    
-      if (!self.enable || _isTouchedOutside) return;
-      _p2 = _p1;
-      _p1 = [[touches anyObject] previousLocationInView:self];
-      _p0 = [[touches anyObject] locationInView:self];
-      _pStart = midPoint(_p1, _p2);
-      _pEnd   = midPoint(_p0, _p1);
-      drawPoints();
-    }
-    - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-      if (!self.enable || _isTouchedOutside) return;
-      _p2 = _p1;
-      _p1 = [[touches anyObject] previousLocationInView:self];
-      _p0 = [[touches anyObject] locationInView:self];
-      _pStart = midPoint(_p1, _p2);
-      _pEnd   = midPoint(_p0, _p1);
-      drawPoints();
-    }
-
-    var ctx = document.getElementById('canvas-sign').getContext("2d");
-    ctx.strokeStyle = "#df4b26";
-    ctx.lineJoin    = "round";
-    ctx.lineWidth   = 5;
-
-    var drawPoints = function(){
-      if (!self.enable) return;
-
-      ctx.beginPath();
-      CGContextMoveToPoint(ctx, _pStart.x, _pStart.y);
-      CGContextAddQuadCurveToPoint(ctx, _p1.x, _p1.y, _pEnd.x, _pEnd.y);
-      ctx.closePath();
-      ctx.stroke();
-    }
-
-  },
   initSignature : function() {
     console.log('initSignature');
 
-    var context = document.getElementById('canvas-sign').getContext("2d");
-    context.strokeStyle = "#df4b26";
-    context.lineJoin    = "round";
-    context.lineWidth   = 5;
-
-    var prev = {
-      x : 0,
-      y : 0
-    };
-
-    function redraw(){
-      for(var i=0; i < clickX.length; i++) {    
-        if(clickDrag[i] && i){
-           context.moveTo(clickX[i-1], clickY[i-1]);
-         } else {
-           context.moveTo(clickX[i]-1, clickY[i]);
-         }
-         context.lineTo(clickX[i], clickY[i]);
-         context.closePath();
-         context.stroke();
-      }
-    }
-
     var $canvas = $('#canvas-sign');
-    $canvas.mousedown(function(e){
-      context.beginPath();
-      var mouseX = e.pageX - this.offsetLeft;
-      var mouseY = e.pageY - this.offsetTop;
-      paint = true;
-      addPoint(e.pageX - this.offsetLeft, e.pageY - this.offsetTop);
-      redraw();
-    });
-    $canvas.mousemove(function(e){
-      // console.log('mousemove', e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-      if(paint){
-        addPoint(e.pageX - this.offsetLeft, e.pageY - this.offsetTop, true);
-        redraw();
-      }
-    });
-    $canvas.mouseup(function(e){
-      // console.log('mouseup', e);
-      paint = false;
-    });
-    $canvas.mouseleave(function(e){
-      // console.log('mouseleave', e);
-      paint = false;
-    });
-  },
-  saveSignature : function() {
+    var enable = false;
+    var prev = {} , current = {};
+    var isTouch = 'ontouchend' in document;
+    console.log('isTouch', isTouch);
+    $canvas.attr('width', $canvas.width());
+    $canvas.attr('height', $canvas.height());
 
+    var canvas = el('canvas-sign'),
+      ctx = canvas.getContext("2d");
+    console.log('canvas', canvas);
+    ctx.strokeStyle = "#000";
+    ctx.lineJoin    = "round";
+    ctx.lineWidth   = 5;
+
+    var drawLine = function(){
+      if (!enable) return;
+      console.log('draw', prev.x, prev.y, current.x, current.y);
+      ctx.beginPath();
+      ctx.moveTo(prev.x, prev.y);
+      ctx.lineTo(current.x, current.y);
+      ctx.closePath();
+      ctx.stroke();
+    }
+    var getPoint = function(e) {
+      console.log(e);
+      e.preventDefault();
+      return {x: e.touches[0].pageX, y: e.touches[0].pageY - 44};
+    };
+    canvas.addEventListener((isTouch ? 'touchstart' : 'mousedown'), function(e){
+      enable = true;
+      prev = getPoint(e);
+    }, false);
+    canvas.addEventListener((isTouch ? 'touchmove' : 'mousemove'), function(e){
+      current = getPoint(e);
+      drawLine();
+      prev = current;
+    }, false);
+    canvas.addEventListener((isTouch ? 'touchend' : 'mouseup'), function(e){
+      current = getPoint(e);
+      drawLine();
+      enable = false;
+    }, false);
+    canvas.addEventListener((isTouch ? 'touchend' : 'mouseleave'), function(e){
+      current = getPoint(e);
+      drawLine();
+      enable = false;
+    }, false);
   },
   clearSignature : function() {
-
+    var canvas = el('canvas-sign');
+    var ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
   },
-  setColor : function(index) {
+  saveSignature : function() {
+    var dataURL = el('canvas-sign').toDataURL('image/png');
+    console.log(dataURL, dataURL.length);
 
-  }
+    var bin = atob(dataURL.replace(/^.*,/, ''));
+    var buffer = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) {
+        buffer[i] = bin.charCodeAt(i);
+    }
+    var blob = new Blob([buffer.buffer], {type: 'image/png'});
+
+    var fd = new FormData();
+    fd.append("image", blob);
+
+    $.ajax({
+      url: app.data_root + '/api/fac/' + app.period + '/' + app.pic,
+      method : 'POST',
+      data : fd,
+      success : function(dat) {
+
+      },
+      error: function(err) {
+
+      }
+    });
+  },
 };
 
 app.init();
-
+app.initSignature();

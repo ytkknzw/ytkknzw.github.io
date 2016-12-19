@@ -255,7 +255,7 @@ var app = {
 		img.src = URL.createObjectURL(file);
 	},
 
-	function resample_single(canvas, width, height, resize_canvas) {
+	resample_single : function(canvas, width, height, resize_canvas) {
 		var width_source = canvas.width;
 		var height_source = canvas.height;
 		width = Math.round(width);

@@ -4,28 +4,37 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
     <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">   -->
-
-	<title>Freehand</title>
-
 	<style>
-html, body {
-	width: 100%;
-	height: 100%;
-	position: fixed;
-	/*overflow: hidden;*/
-	overflow: auto;
-}
+		html, body {
+			width: 100%;
+			height: 100%;
+			/*position: fixed;*/
+			/*overflow: hidden;*/
+			/*overflow: auto;*/
+		}
 	</style>
+	<title>Freehand</title>
 </head>
 <body>
-<div style="padding: 50px; margin: 30px;">
+
 	<canvas id="canvas" width="500" height="400" style="border: 1px solid #ccc;"></canvas>
-</div>
+	<div>touch support: <span id="isTouch"></span></div>
+	<div>x: <span id="x"></span></div>
+	<div>y: <span id="y"></span></div>
 
 <script src="../assets/lib/jquery-3.1.1.min.js"></script>
 <script>
-	var $canvas = $('canvas');
-	console.log($canvas);
+
+	var isBezier = true;
+	var enable = false;
+	var px, py, cx, cy;
+	var isTouch = 'ontouchend' in document;
+	var $canvas = $('#canvas');
+	var $x = $('#x'),
+		$y = $('#y');
+
+	console.log(isTouch);
+	$('#isTouch').html(isTouch ? 'YES' : 'NO');
 
 	var canvas = document.getElementById('canvas'),
 		ctx = canvas.getContext("2d");
@@ -33,48 +42,95 @@ html, body {
 	ctx.lineJoin    = "round";
 	ctx.lineWidth   = 5;
 
-	var enable = false;
-	var px, py, cx, cy;
+    var _p0, _p1, _p2, _pStart, _pEnd, _pPrev; // All CGPoint
 
-    $canvas.mousedown(function(e){
-		enable = true;
-		px = e.pageX - this.offsetLeft,
-		py = e.pageY - this.offsetTop
-		// console.log('mousedown', px, py);
-    });
-    $canvas.mousemove(function(e){
-      	if(!enable) return;
-		cx = e.pageX - this.offsetLeft;
-		cy = e.pageY - this.offsetTop;
-		// console.log('mousemove', cx, cy);
-		drawPoints();
-		px = cx;
-		py = cy;
-    });
-    $canvas.mouseup(function(e){
-      // console.log('mouseup', e);
-      endPoint(e);
-    });
-    $canvas.mouseleave(function(e){
-      // console.log('mouseleave', e);
-      endPoint(e);
-    });
+    var midPoint = function(p1, p2){
+      return {x:((p1.x + p2.x) * 0.5), y:((p1.y + p2.y) * 0.5)};
+    }
 
-    var endPoint = function(e) {
-		cx = e.pageX - this.offsetLeft;
-		cy = e.pageY - this.offsetTop;
-		drawPoints();
-		enable = false;
-    };
-	var drawPoints = function(){
-	  if (!enable) return;
-	  console.log('draw', px, py, cx, cy);
-	  ctx.beginPath();
-	  ctx.moveTo(px, py);
-	  ctx.lineTo(cx, cy);
-	  ctx.closePath();
-	  ctx.stroke();
+	var drawLine = function(){
+		if (!enable) return;
+		console.log('draw', px, py, cx, cy);
+		$x.html(cx);
+		$y.html(cy);
+		ctx.beginPath();
+		ctx.moveTo(px, py);
+		ctx.lineTo(cx, cy);
+		ctx.closePath();
+		ctx.stroke();
 	}
+    var drawPoints = function(){
+		if (!enable) return;
+
+		ctx.beginPath();
+		ctx.moveTo(_pStart.x, _pStart.y);
+		ctx.quadraticCurveTo(_p1.x, _p1.y, _pEnd.x, _pEnd.y);
+		ctx.closePath();
+		ctx.stroke();
+    }
+
+
+    $canvas.on((isTouch ? 'touchstart' : 'mousedown'), function(e){
+    	e.preventDefault();
+		enable = true;
+		if(isBezier) {
+			_p2 = null;
+			_p1 = null;
+			_pStart = { x : e.pageX - this.offsetLeft, y : e.pageY - this.offsetTop};
+			_pPrev = _pStart;
+		} else {
+			px = e.pageX - this.offsetLeft,
+			py = e.pageY - this.offsetTop
+			console.log('mousedown', px, py);
+		}
+    });
+    $canvas.on((isTouch ? 'touchmove' : 'mousemove'), function(e){
+    	e.preventDefault();
+		if(isBezier){
+			_p2 = _p1;
+			_p1 = _pPrev;
+			_p0 = { x : e.pageX - this.offsetLeft, y : e.pageY - this.offsetTop};
+			_pStart = midPoint(_p1, _p2);
+			_pEnd   = midPoint(_p0, _p1);
+			drawPoints();
+			_pPrev = _p0;
+		} else {
+			cx = e.pageX - this.offsetLeft;
+			cy = e.pageY - this.offsetTop;
+			// console.log('mousemove', cx, cy);
+			drawLine();
+			px = cx;
+			py = cy;
+			$x.html(cx);
+			$y.html(cy);
+		}
+    });
+    $canvas.on((isTouch ? 'touchend' : 'mouseup'), function(e){
+    	e.preventDefault();
+    	if(isBezier) {
+			_p2 = _p1;
+			_p1 = _pPrev;
+			_p0 = { x : e.pageX - this.offsetLeft, y : e.pageY - this.offsetTop};
+			_pStart = midPoint(_p1, _p2);
+			_pEnd   = midPoint(_p0, _p1);
+			drawPoints();
+			_pPrev = _p0;
+    	} else {
+			cx = e.pageX - this.offsetLeft;
+			cy = e.pageY - this.offsetTop;
+			drawLine();
+    	}
+		enable = false;
+
+    });
+  //   $canvas.on((isTouch ? 'touchend' : 'mouseleave'), function(e){
+  //   	e.preventDefault();
+		// cx = e.pageX - this.offsetLeft;
+		// cy = e.pageY - this.offsetTop;
+		// drawLine();
+		// enable = false;
+  //   });
+
 </script>
 </body>
 </html>
