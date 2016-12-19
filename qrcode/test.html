@@ -12,7 +12,7 @@
 
 <!-- <input type="file" onchange="handleFile(this.files[0])"> -->
 <!-- <canvas id="q-canvas"></canvas> -->
-<button onclick="$('#qr').html5_qrcode_stop()">STOP</button>
+<button onclick="$('#qr').html5_qrcode_stop()">STOP 1</button>
 <div id="txt"></div>
 
 <div id="qr" style="width: 300px; height:250px;"></div>
@@ -75,9 +75,10 @@ console.log(navigator);
                     video.play();
                     $.data(currentElem[0], "timeout", setTimeout(scan, 1000));
                 };
-
-                // Call the getUserMedia method with our callback functions
-                if (navigator.getUserMedia) {
+                var errorCallback = function(error) {
+                    videoError(error, localMediaStream);
+                };
+                if (navigator.mediaDevices.getUserMedia) {
                 	var constraints = {
                 		video : {
                 			facingMode: {
@@ -85,9 +86,13 @@ console.log(navigator);
                 			}
                 		}
                 	};
-                    navigator.getUserMedia(constraints, successCallback, function(error) {
-                        videoError(error, localMediaStream);
-                    });
+					navigator.mediaDevices.getUserMedia(constraints)
+					.then(successCallback)
+					.catch(errorCallback)
+                }
+                // Call the getUserMedia method with our callback functions
+                else if (navigator.getUserMedia) {
+                    navigator.getUserMedia({video:true}, successCallback, errorCallback);
                 } else {
                     console.log('Native web camera streaming (getUserMedia) not supported in this browser.');
                     // Display a friendly "sorry" message to the user
