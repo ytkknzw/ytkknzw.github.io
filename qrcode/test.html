@@ -12,6 +12,8 @@
 
 <!-- <input type="file" onchange="handleFile(this.files[0])"> -->
 <!-- <canvas id="q-canvas"></canvas> -->
+
+<button onclick="start_qrcode()">START</button>
 <button onclick="$('#qr').html5_qrcode_stop()">STOP 1</button>
 <div id="txt"></div>
 
@@ -20,17 +22,7 @@
 <script src="jquery-3.1.1.min.js"></script>
 <script src="jsqrcode-combined.js"></script>
 <script>
-navigator.mediaDevices.enumerateDevices()
-.then(function(devices) {
-  devices.forEach(function(device) {
-    console.log(device.kind + ": " + device.label + " id = " + device.deviceId);
-  });
-})
-.catch(function(err) {
-  console.log(err.name + ": " + error.message);
-});
 
-console.log(navigator);
 (function($) {
     jQuery.fn.extend({
         html5_qrcode: function(qrcodeSuccess, qrcodeError, videoError) {
@@ -116,16 +108,31 @@ console.log(navigator);
     });
 })(jQuery);
 
-var done = function(a) {
-	console.log(a);
-	$('#txt').html(a);
-}
-var fail = function(a) {
-	console.log(a);
-	$('#txt').html(a);
-}
+var txt = '';
+navigator.mediaDevices.enumerateDevices()
+.then(function(devices) {
+  devices.forEach(function(device) {
+  	txt += device.kind + ": " + device.label + " id = " + device.deviceId + '<br/>';
+    // console.log(device.kind + ": " + device.label + " id = " + device.deviceId);
+  });
+  $('#txt').html(txt);
+})
+.catch(function(err) {
+  console.log(err.name + ": " + error.message);
+});
 
-$('#qr').html5_qrcode(done, fail, fail);
+
+function start_qrcode() {
+	var done = function(a) {
+		console.log(a);
+		$('#txt').html(a);
+	}
+	var fail = function(a) {
+		console.log(a);
+		$('#txt').html(a);
+	}
+	$('#qr').html5_qrcode(done, fail, fail);
+}
 
 </script>
 </body>
