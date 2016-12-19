@@ -20,6 +20,17 @@
 <script src="jquery-3.1.1.min.js"></script>
 <script src="jsqrcode-combined.js"></script>
 <script>
+navigator.mediaDevices.enumerateDevices()
+.then(function(devices) {
+  devices.forEach(function(device) {
+    console.log(device.kind + ": " + device.label + " id = " + device.deviceId);
+  });
+})
+.catch(function(err) {
+  console.log(err.name + ": " + error.message);
+});
+
+console.log(navigator);
 (function($) {
     jQuery.fn.extend({
         html5_qrcode: function(qrcodeSuccess, qrcodeError, videoError) {
@@ -67,7 +78,14 @@
 
                 // Call the getUserMedia method with our callback functions
                 if (navigator.getUserMedia) {
-                    navigator.getUserMedia({video: true}, successCallback, function(error) {
+                	var constraints = {
+                		video : {
+                			facingMode: {
+                				exact: "environment"
+                			}
+                		}
+                	};
+                    navigator.getUserMedia(constraints, successCallback, function(error) {
                         videoError(error, localMediaStream);
                     });
                 } else {
