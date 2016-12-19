@@ -73,9 +73,7 @@
                 if (navigator.mediaDevices.getUserMedia) {
                 	var constraints = {
                 		video : {
-                			facingMode: {
-                				exact: "environment"
-                			}
+                			facingMode: "environment"
                 		}
                 	};
 					navigator.mediaDevices.getUserMedia(constraints)
