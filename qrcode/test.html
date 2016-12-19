@@ -50,20 +50,17 @@
                         }
 
                         $.data(currentElem[0], "timeout", setTimeout(scan, 500));
-
                     } else {
                         $.data(currentElem[0], "timeout", setTimeout(scan, 500));
                     }
                 };//end snapshot function
 
                 window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
-                navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
                 var successCallback = function(stream) {
                     video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
                     localMediaStream = stream;
                     $.data(currentElem[0], "stream", stream);
-
                     video.play();
                     $.data(currentElem[0], "timeout", setTimeout(scan, 1000));
                 };
@@ -71,23 +68,21 @@
                     videoError(error, localMediaStream);
                 };
                 if (navigator.mediaDevices.getUserMedia) {
+                	console.log('deviceId', deviceId);
                 	var constraints = {
                 		video : {
-                			facingMode: "environment"
+                			// facingMode: "environment",
+                			optional: [{sourceId: deviceId}]
                 		}
                 	};
 					navigator.mediaDevices.getUserMedia(constraints)
 					.then(successCallback)
 					.catch(errorCallback)
                 }
-                // Call the getUserMedia method with our callback functions
-                else if (navigator.getUserMedia) {
-                    navigator.getUserMedia({video:true}, successCallback, errorCallback);
-                } else {
+                else {
                     console.log('Native web camera streaming (getUserMedia) not supported in this browser.');
                     // Display a friendly "sorry" message to the user
                 }
-
                 qrcode.callback = function (result) {
                     qrcodeSuccess(result, localMediaStream);
                 };
@@ -99,19 +94,22 @@
                 $(this).data('stream').getVideoTracks().forEach(function(videoTrack) {
                     videoTrack.stop();
                 });
-
                 clearTimeout($(this).data('timeout'));
             });
         }
     });
 })(jQuery);
 
+var deviceId;
 var txt = '';
 navigator.mediaDevices.enumerateDevices()
 .then(function(devices) {
   devices.forEach(function(device) {
   	txt += device.kind + ": " + device.label + " id = " + device.deviceId + '<br/>';
-    // console.log(device.kind + ": " + device.label + " id = " + device.deviceId);
+    if(device.label.endsWith('back')){
+    	alert(device.label);
+    	deviceId = device.deviceId;
+    }
   });
   $('#txt').html(txt);
 })
