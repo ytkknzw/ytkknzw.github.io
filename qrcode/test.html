@@ -111,7 +111,7 @@ navigator.mediaDevices.enumerateDevices()
 .then(function(devices) {
   devices.forEach(function(device) {
   	txt += device.kind + ": " + device.label + " id = " + device.deviceId + '<br/>';
-    if(device.label.endsWith('front')){
+    if(device.label.endsWith('back')){
     	alert(device.label);
     	deviceId = device.deviceId;
     }
