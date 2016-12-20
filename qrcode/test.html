@@ -74,9 +74,8 @@
                 	var constraints = {
                 		video : {
                 			deviceId : deviceId
-                			// facingMode: {
-                			// 	exact : "environment"
-                			// }
+                			// facingMode : 'environment'
+                			// facingMode: { exact : "environment" }
                 			// optional: [{sourceId: deviceId}]
                 		}
                 	};
@@ -109,17 +108,17 @@ var deviceId;
 var txt = '';
 navigator.mediaDevices.enumerateDevices()
 .then(function(devices) {
-  devices.forEach(function(device) {
-  	txt += device.kind + ": " + device.label + " id = " + device.deviceId + '<br/>';
-    if(device.label.endsWith('back')){
-    	alert(device.label);
-    	deviceId = device.deviceId;
-    }
-  });
-  $('#txt').html(txt);
+	devices.forEach(function(device) {
+		txt += device.kind + ": " + device.label + " id = " + device.deviceId + '<br/>';
+		if(device.label.endsWith('back')){
+			alert(device.label);
+			deviceId = device.deviceId;
+		}
+	});
+	$('#txt').html(txt);
 })
 .catch(function(err) {
-  console.log(err.name + ": " + error.message);
+	console.log(err.name + ": " + error.message);
 });
 
 

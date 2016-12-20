@@ -81,7 +81,7 @@
       align-items: stretch;
 
       /*font-size: 22px;*/
-      background-color: #f9f9f9;
+      background-color: #eee;
       border-bottom: 1px solid #f00;
       line-height: 44px;
     }
@@ -125,7 +125,7 @@
       /*padding: 4px;*/
       /*justify-content: space-around;*/
       justify-content: space-between;
-      background-color: #f9f9f9;
+      background-color: #eee;
       border-top: 1px solid #f00;
     }
     main {
@@ -201,9 +201,6 @@
       padding: 8px;
       border-bottom: 1px solid #ddd;
     }
-    .item.chevron {
-      /*margin-right: 16px;*/
-    }
     .item-2 {
       box-sizing: border-box;
       width: 100%;
@@ -211,9 +208,14 @@
       padding: 8px;
       border-bottom: 1px solid #ddd;
     }
-    .chevron:after {
+    .chevron {
+      padding-right: 24px;
+    }
+    .chevron:before {
       /*content: '❯';*/
       content: '〉';
+      display: flex;
+      align-items:center;
 
       position: absolute;
       margin-left: -24px;
@@ -221,6 +223,9 @@
       color: #f00;
       text-align: right;
       vertical-align: middle;
+    }
+    li.chevron:before {
+      height: 52px;
     }
     .check:after {
       content: '✔';
@@ -318,7 +323,7 @@
 
     .l-01 {
       display: inline-block;
-      width: 120px;
+      width: 110px;
       font-size: 15px;
       font-weight: bold;
       padding: 4px 4px 0px 8px;
@@ -336,7 +341,7 @@
     }
     .l-03 {
       display: inline-block;
-      width: 100px;
+      width: 90px;
       padding: 4px 8px 0px 4px;
       /*border: 1px solid #00f;*/
       line-height: 22px;
@@ -386,7 +391,7 @@
       </p>
       <p><button text="common.btn-login" onclick="app.login()" style="width: 100%;"></button></p>
               
-      <p>
+      <p style="display:none;">
         ✔&#x2714; ▷&#x25b7; ⊕&#x2295; ⊗&#x2297; 〈&#x2329;〈&#x3008; 〱&#x3031; 〉&#x3009; 〉&#x232a; ☀&#x2600; ☁&#x2601; ❄&#x2744; ↺&circlearrowleft; ⋮&vellip; ⎋&#x238b; ▸&blacktriangleright; ▿&triangledown; ❯&#x276f; ❮&#x276e;
       </p>
         <!-- <button onclick="app.openDialog('dialog-sample')" style="width: 100%;">show dialog logout</button> -->
