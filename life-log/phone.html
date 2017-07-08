@@ -89,10 +89,11 @@
 </head>
 <body>
 
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
     <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
-            <span class="mdl-layout-title">2017-12-31 Sun &nbsp;<input type="date" value="2017-12-31"></span>
+            <span class="mdl-layout-title">2017-12-31 Sun</span>
+            <input type="date" value="2017-12-31" style="display: none;">
 <!--             <div class="mdl-layout-spacer"></div>
             <nav class="mdl-navigation">
                 <a class="mdl-navigation__link" href="">Link</a>
@@ -102,12 +103,11 @@
             </nav>
  -->        </div>
 		<div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-			<a href="#scroll-tab-1" class="mdl-layout__tab is-active">Summary</a>
-			<a href="#scroll-tab-2" class="mdl-layout__tab">Money</a>
-			<a href="#scroll-tab-3" class="mdl-layout__tab">Activity</a>
-			<a href="#scroll-tab-4" class="mdl-layout__tab">Food</a>
-			<a href="#scroll-tab-5" class="mdl-layout__tab">Diary</a>
-			<a href="#scroll-tab-6" class="mdl-layout__tab">Time Line</a>
+			<a href="#scroll-tab-1" class="mdl-layout__tab is-active"><i class="material-icons">dashboard</i></a>
+			<a href="#scroll-tab-6" class="mdl-layout__tab"><i class="material-icons">alarm</i></a>
+			<a href="#scroll-tab-4" class="mdl-layout__tab"><i class="material-icons">restaurant</i></a>
+			<a href="#scroll-tab-5" class="mdl-layout__tab"><i class="material-icons">date_range</i></a>
+			<a href="#scroll-tab-2" class="mdl-layout__tab"><i class="material-icons">attach_money</i></a>
 		</div>
     </header>
     <div class="mdl-layout__drawer">
@@ -135,6 +135,8 @@
     <main class="mdl-layout__content">
 		<section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
 			<div class="page-content">
+				<div class="title" style="font-size: 22px;">Summary</div>
+
 				<div class="title">Activity</div>
 				<br/>
 				<div style="border-radius: 8px; height:16px; margin-left: 16px; background-color: white;">
@@ -224,27 +226,90 @@
 		</section>
 		<section class="mdl-layout__tab-panel" id="scroll-tab-2">
 			<div class="page-content">
-				<h1>Money</h1>
-			</div>
-		</section>
-		<section class="mdl-layout__tab-panel" id="scroll-tab-3">
-			<div class="page-content">
-				<h1>Activity</h1>
+				<div class="title" style="font-size: 22px;">Money</div>
+				<div style="text-align: right; padding: 0 16px; font-size: 22px; color: #666;">&yen; 3,780</div>
+				<!-- Colored FAB button -->
+				<button class="mdl-button mdl-js-button mdl-button--colored">
+				  <i class="material-icons">photo_camera</i> take picture
+				</button>
+				<!-- Colored raised button -->
+				<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+				  <i class="material-icons">photo_camera</i> take picture
+				</button>
+
 			</div>
 		</section>
 		<section class="mdl-layout__tab-panel" id="scroll-tab-4">
 			<div class="page-content">
-				<h1>Activity</h1>
+				<div class="title" style="font-size: 22px;">Food</div>
+				<br/>
+				<div style="border-radius: 8px; height:16px; margin-left: 16px;">
+					<div class="time-bar" style="float: left; width: 80px; background-color: blue;">&nbsp;</div>
+					<div class="time-bar" style="float: left; width: 120px; background-color: gold;">&nbsp;</div>
+					<div class="time-bar" style="float: left; width: 40px; background-color: red;">&nbsp;</div>
+				</div>
+				<br/>
+				<table id="sum" style="width: 100%;">
+					<tbody>
+						<tr>
+							<th>800</th>
+							<th>1200</th>
+							<th>400</th>
+							<th>2400</th>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th><span style="color: blue;">●</span> Protain</th>
+							<th><span style="color: gold;">●</span> Carb</th>
+							<th><span style="color: red;">●</span> Fat</th>
+							<th>Total</th>
+						</tr>
+					</tfoot>
+				</table>
+				<br/>
+				<ul>
+					<li>break fast</li>
+					<ul>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+					</ul>
+					<li>lunch</li>
+					<ul>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+					</ul>
+					<li>dinner</li>
+					<ul>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+					</ul>
+					<li>extra</li>
+					<ul>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+					</ul>
+				</ul>
 			</div>
 		</section>
 		<section class="mdl-layout__tab-panel" id="scroll-tab-5">
 			<div class="page-content">
-				<h1>Activity</h1>
+				<div class="title" style="font-size: 22px;">Diary</div>
+				<br/>
+				<div style="padding: 0 16px; color: #666; font-size: 15px;">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aspernatur, porro quam omnis? Quam sequi earum commodi soluta eaque itaque. Sunt quam atque amet, temporibus at ratione similique quaerat, distinctio.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aspernatur, porro quam omnis? Quam sequi earum commodi soluta eaque itaque. Sunt quam atque amet, temporibus at ratione similique quaerat, distinctio.</p>
+				</div>
+				<br/>
 			</div>
 		</section>
 		<section class="mdl-layout__tab-panel" id="scroll-tab-6">
 			<div class="page-content">
-				<div class="title">Detail</div>
+				<div class="title" style="font-size: 22px;">Time Line</div>
 				<div style="margin-top: 16px;">
 
 					<div style="float: left; width: 40px; border-right: solid 1px #99c; position: relative; top: 0;">
