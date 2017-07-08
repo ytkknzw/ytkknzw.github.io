@@ -1,15 +1,166 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Life Log</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
+    <!-- <link rel="stylesheet" href="../_lib/bs-3.3.7/css/bootstrap.css"> -->
+	<title>Life Log</title>
+	<style>
+		* {
+			font-family: Arial;
+		}
+		html, body {
+			width: 100%; height: 100%;
+			margin: 0; padding: 0;
+		}
+		#outer-frame {
+			box-sizing: border-box;
+			width: 1024px; height: 100%;
+			margin: 0 auto;
+			/*background-color: #eee;*/
+			/*border: solid 1px #333;*/
+		}
+		table {
+			border-collapse: collapse;
+		}
+		th, td {
+			border: solid 1px #ccc;
+			padding: 3px;
+		}
+		td {
+			height: 20px;
+		}
+		.m15 {
+			width: 2px;
+		}
+		tbody>tr:hover {
+			background-color: rgba(196,196,196,.5);
+		}
+		tbody>tr>th {
+			font-size: 8px;
+		}
+		.time-line {
+			padding: 8px;
+		}
+		.time {
+			float: left;
+			font-size: 4px;
+			border-radius: 8px;
+			margin-left: 1px;
+		}
+	</style>
 </head>
 <body>
 
-    <div class="wrapper">
-        <h1>Life Log</h1>
-    </div>
+	<div id="outer-frame">
+		<div id="header" style="">
+			<div id="memu" style="width: 44px; ">MENU</div>
+			<div id="date-selector" style="width: 200px;">2017 52th<br/><small>24/Dec - 31/Dec</small></div>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th rowspan="2"></th>
+					<!-- <th rowspan="2"></th> -->
+					<th colspan="4">0</th>
+					<th colspan="4">1</th>
+					<th colspan="4">2</th>
+					<th colspan="4">3</th>
+					<th colspan="4">4</th>
+					<th colspan="4">5</th>
+					<th colspan="4">6</th>
+					<th colspan="4">7</th>
+					<th colspan="4">8</th>
+					<th colspan="4">9</th>
+					<th colspan="4">10</th>
+					<th colspan="4">11</th>
+					<th colspan="4">12</th>
+					<th colspan="4">13</th>
+					<th colspan="4">14</th>
+					<th colspan="4">15</th>
+					<th colspan="4">16</th>
+					<th colspan="4">17</th>
+					<th colspan="4">18</th>
+					<th colspan="4">19</th>
+					<th colspan="4">20</th>
+					<th colspan="4">21</th>
+					<th colspan="4">22</th>
+					<th colspan="4">23</th>
+					<th rowspan="2">Memo</th>
+				</tr>
+				<tr>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr><th>1<br/>S</th><td colspan="96">memo</td><td>memo</td></tr>
+				<tr><th>2<br/>M</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>3<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>4<br/>W</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>5<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>6<br/>F</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>7<br/>S</th><td colspan="96">memo</td><td>something</td></tr>
 
+				<tr><th>1<br/>S</th><td colspan="96">memo</td><td>memo</td></tr>
+				<tr><th>2<br/>M</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>3<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>4<br/>W</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>5<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>6<br/>F</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>7<br/>S</th><td colspan="96">memo</td><td>something</td></tr>
+
+				<tr><th>1<br/>S</th><td colspan="96">memo</td><td>memo</td></tr>
+				<tr><th>2<br/>M</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>3<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>4<br/>W</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>5<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>6<br/>F</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>7<br/>S</th><td colspan="96">memo</td><td>something</td></tr>
+
+				<tr><th>1<br/>S</th><td colspan="96">memo</td><td>memo</td></tr>
+				<tr><th>2<br/>M</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>3<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>4<br/>W</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>5<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>6<br/>F</th><td colspan="96">memo</td><td>something</td></tr>
+				<tr><th>7<br/>S</th><td colspan="96">memo</td><td>something</td></tr>
+			</tbody>
+		</table>
+
+		<div class="time-line">
+			<div class="time t1" style="background-color: red; width: calc(10px * 8);">&nbsp;</div>
+			<div class="time t2" style="background-color: green; width: calc(10px * 12);">&nbsp;</div>
+			<div class="time t3" style="background-color: blue; width: calc(10px * 2);">&nbsp;</div>
+		</div>
+	</div>
+
+<!-- <script src="../_lib/jquery-3.1.1.min.js"></script> -->
+<!-- <script src="../_lib/bs-3.3.7/js/bootstrap.min.js"></script> -->
+<script>
+</script>
 </body>
 </html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
+    <!-- <link rel="stylesheet" href="../_lib/bs-3.3.7/css/bootstrap.css"> -->
+	<title>Life Log</title>
+	<style>
+		* {
+			font-family: Arial;
+		}
+		html, body {
+			width: 100%; height: 100%;
+			margin: 0; padding: 0;
+		}
+		#outer-frame {
+			box-sizing: border-box;
+			width: 100%; height: 100%;
+			margin: 0 auto;
+			/*background-color: #eee;*/
+			/*border: solid 1px #333;*/
+		}
+		table {
+			border-collapse: collapse;
+			box-sizing: border-box;
+			margin: 4px;
+			/*width: calc(100% - 8px);*/
+			/*border: solid 1px #99c;*/
+		}
+		td {
+			height: 30px;
+		}
+		.time {
+			height: 60px;
+			font-size: 8pt;
+			color: #669;
+			text-align: right;
+			padding-right: 4px;
+		}
+		.time-item {
+			position: relative;
+			box-sizing: border-box;
+			padding: 4px;
+			font-size: 10pt;
+			color: #333;
+			width: 100%;
+			border-radius: 4px;
+		}
+		.title {
+			padding: 16px 0px 4px 16px;
+			font-weight: bold;
+			font-size: 18px;
+			/*text-align: center;*/
+		}
+		.s {
+			font-size: 10px;
+			color: #666;
+		}
+		.time-bar {
+			width: 8px;
+			height: 8px;
+			font-size: 8px;
+			border-radius: 8px 8px 8px 8px;
+		}
+		#summary td {
+			/*height: 44px;*/
+			padding: 4px 8px;
+		}
+		#sum tfoot th {
+			width: 25%;
+			font-weight: normal;
+			color: #339;
+			font-size: 15px;
+		}
+		#sum tbody th {
+			font-family: Helvetica;
+			font-size: 22px;
+			color: #666;
+			font-weight: normal;
+		}
+	</style>
+</head>
+<body>
+
+	<div id="outer-frame">
+
+		<div id="header" style="">
+			<div id="memu" style="width: 44px; ">MENU</div>
+			<div id="date-selector" style="width: 200px;">2017 52th<br/><small>24/Dec - 31/Dec</small></div>
+		</div>
+
+		<div class="title">Activity</div>
+		<br/>
+		<div style="border-radius: 8px; height:16px; margin-left: 16px; background-color: white;">
+			<div class="time-bar" style="float: left; width: 80px; background-color: blue;">&nbsp;</div>
+			<div class="time-bar" style="float: left; width: 100px; background-color: gold;">&nbsp;</div>
+			<div class="time-bar" style="float: left; width: 20px; background-color: red;">&nbsp;</div>
+			<div class="time-bar" style="float: left; width: 35px; background-color: green;">&nbsp;</div>
+		</div>
+		<br/>
+		<table id="sum" style="width: 100%;">
+			<tbody>
+				<tr>
+					<th>7:30</th>
+					<th>10:00</th>
+					<th>2:00</th>
+					<th>3:50</th>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th><big style="color: blue;">●</big> sleep</th>
+					<th><big style="color: gold;">●</big> work</th>
+					<th><big style="color: red;">●</big> excercise</th>
+					<th><big style="color: green;">●</big> etc.</th>
+				</tr>
+			</tfoot>
+		</table>
+
+		<br/>
+		<div id="summary" style="display:none;">
+			<table>
+				<tr><td>sleep</td><td>
+					<div class="time-bar" style="width: 150px; background-color: blue;">&nbsp;</div>
+					<span class="s">7h 30m</span></td></tr>
+				<tr><td>work</td><td>
+					<div class="time-bar" style="width: 200px; background-color: gold;">&nbsp;</div>
+					<span class="s">10:00</span></td></tr>
+				<tr><td>exercise</td><td>
+					<div class="time-bar" style="width: 40px; background-color: red;">&nbsp;</div>
+					<span class="s">120 min</span></td></tr>
+				<tr><td>etc.</td><td>
+					<div class="time-bar" style="width: 70px; background-color: green;">&nbsp;</div>
+				<span class="s">3.5 h</span></td></tr>
+			</table>
+			<br/>
+		</div>
+
+		<div class="title">Food</div>
+		<br/>
+		<div style="border-radius: 8px; height:16px; margin-left: 16px;">
+			<div class="time-bar" style="float: left; width: 80px; background-color: blue;">&nbsp;</div>
+			<div class="time-bar" style="float: left; width: 120px; background-color: gold;">&nbsp;</div>
+			<div class="time-bar" style="float: left; width: 40px; background-color: red;">&nbsp;</div>
+		</div>
+		<table id="sum" style="width: 100%;">
+			<tbody>
+				<tr>
+					<th>800</th>
+					<th>1200</th>
+					<th>400</th>
+					<th>2400</th>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th><big style="color: blue;">●</big> Protain</th>
+					<th><big style="color: gold;">●</big> Carb</th>
+					<th><big style="color: red;">●</big> Fat</th>
+					<th>Total</th>
+				</tr>
+			</tfoot>
+		</table>
+		<br/>
+
+		<div class="title">Money</div>
+		<div style="text-align: right; padding: 0 16px; font-size: 22px; color: #666;">&yen; 3,780</div>
+		<!-- <br/> -->
+
+		<div class="title">Diary</div>
+		<div style="padding: 0 16px; color: #666; font-size: 15px;">
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aspernatur, porro quam omnis? Quam sequi earum commodi soluta eaque itaque. Sunt quam atque amet, temporibus at ratione similique quaerat, distinctio.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aspernatur, porro quam omnis? Quam sequi earum commodi soluta eaque itaque. Sunt quam atque amet, temporibus at ratione similique quaerat, distinctio.</p>
+		</div>
+		<br/>
+
+		<div class="title">Detail</div>
+		<div style="margin-top: 16px;">
+
+			<div style="float: left; width: 40px; border-right: solid 1px #99c; position: relative; top: 0;">
+				<div class="time">6:00</div>
+				<div class="time">7:00</div>
+				<div class="time">8:00</div>
+				<div class="time">9:00</div>
+				<div class="time">10:00</div>
+				<div class="time">11:00</div>
+				<div class="time">12:00</div>
+				<div class="time">13:00</div>
+				<div class="time">14:00</div>
+				<div class="time">15:00</div>
+				<div class="time">16:00</div>
+				<div class="time">17:00</div>
+				<div class="time">18:00</div>
+				<div class="time">19:00</div>
+				<div class="time">20:00</div>
+				<div class="time">21:00</div>
+				<div class="time">22:00</div>
+				<div class="time">23:00</div>
+				<div class="time">0:00</div>
+			</div>
+
+
+			<div style="float: left; margin-left: 6px; width: calc(100% - 52px - 64px);">
+				<div class="time-item" style="top: 100px; height: 90px; background-color: #ccf;">aaa</div>
+				<div class="time-item" style="top: 102px; height: 90px; background-color: #ccf;">aaa</div>
+				<div class="time-item" style="top: 201px; height: 100px; background-color: #ccf;">aaa</div>
+			</div>
+
+			<div style="float: left; margin-left: 4px; width: 60px;">
+				<div class="time-item" style="top: 0; height: 182px; background-color: #ccf;">aaa</div>
+				<div class="time-item" style="top: 201px; height: 100px; background-color: #ccf;">aaa</div>
+			</div>
+
+		</div>
+
+	</div>
+
+<!-- <script src="../_lib/jquery-3.1.1.min.js"></script> -->
+<!-- <script src="../_lib/bs-3.3.7/js/bootstrap.min.js"></script> -->
+<script>
+</script>
+</body>
+</html>
