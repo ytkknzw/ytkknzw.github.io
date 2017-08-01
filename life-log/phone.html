@@ -83,6 +83,26 @@
 			color: #666;
 			font-weight: normal;
 		}
+		.body {
+			width: 115px;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+		}
+		.wo-list {
+			display: block;
+			padding: 12px;
+			font-size: 15px;
+			text-decoration: none;
+			border-bottom: solid 1px #ccc;
+		}
+		.wo-cat {
+			color: #333;
+			font-size: 13px;
+			background-color: #ddd;
+			padding: 2px 8px;
+		}
 	</style>
 
 	<title>Life Log</title>
@@ -108,6 +128,7 @@
 			<a href="#scroll-tab-4" class="mdl-layout__tab"><i class="material-icons">restaurant</i></a>
 			<a href="#scroll-tab-5" class="mdl-layout__tab"><i class="material-icons">date_range</i></a>
 			<a href="#scroll-tab-2" class="mdl-layout__tab"><i class="material-icons">attach_money</i></a>
+			<a href="#scroll-tab-7" class="mdl-layout__tab">WO</a>
 		</div>
     </header>
     <div class="mdl-layout__drawer">
@@ -115,6 +136,7 @@
 	        <span class="mdl-layout-title" style="color: #fff;">Title</span>
     	</div>
         <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="#scroll-tab-7">Work Out</a>
         	<div style="padding: 12px 0px 0px 16px;border-top: solid 1px #ccc;">Display Unit</div>
             <a class="mdl-navigation__link" href="">Link</a>
             <a class="mdl-navigation__link" href="">Link</a>
@@ -347,6 +369,232 @@
 					</div>
 
 				</div>
+			</div>
+		</section>
+
+		<section class="mdl-layout__tab-panel" id="scroll-tab-7">
+			<div class="page-content">
+				<div class="title" style="font-size: 22px;">WORK OUT</div>
+				<table>
+					<tr>
+						<td><img class="body" src="../assets/img/body/back.jpg" alt=""></td>
+						<td><img class="body" src="../assets/img/body/chest.jpg" alt=""></td>
+						<td><img class="body" src="../assets/img/body/abdominal.jpg" alt=""></td>
+					</tr>
+					<tr>
+						<td><img class="body" src="../assets/img/body/biceps.jpg" alt=""></td>
+						<td><img class="body" src="../assets/img/body/triceps.jpg" alt=""></td>
+						<td><img class="body" src="../assets/img/body/shoulder.jpg" alt=""></td>
+					</tr>
+					<tr>
+						<td><img class="body" src="../assets/img/body/legs.jpg" alt=""></td>
+						<td><img class="body" src="../assets/img/body/calf.jpg" alt=""></td>
+						<td><img class="body" src="../assets/img/body/wrist.jpg" alt=""></td>
+					</tr>
+					<tr>
+						<td><img class="body" src="../assets/img/body/power.jpg" alt=""></td>
+					</tr>
+				</table>
+				<ul>
+					<li><a href="#">胸</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#bench-press">ベンチプレス</a></li>
+							<li><a class="wo-list" href="#incline-bench-press">インクラインベンチプレス</a></li>
+							<li><a class="wo-list" href="#decline-bench-press">デクラインベンチプレス</a></li>
+							<li><a class="wo-list" href="#bent-arm-pull-over">ベントアームプルオーバー</a></li>
+						</ul>
+						<li class="wo-cat">ダンベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">ダンベルフライ</a></li>
+							<li><a class="wo-list" href="#">インクラインダンベルフライ</a></li>
+							<li><a class="wo-list" href="#">ダンベルベンチプレス</a></li>
+							<li><a class="wo-list" href="#">インクラインダンベルベンチプレス</a></li>
+							<li><a class="wo-list" href="#">ダンベルプルオーバー</a></li>
+						</ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">バタフライマシン</a></li>
+							<li><a class="wo-list" href="#">ケーブルクロスオーバー</a></li>
+						</ul>
+						<li class="wo-cat">自重(器具なし)</li>
+						<ul>
+							<li><a class="wo-list" href="#">ディップス</a></li>
+							<li><a class="wo-list" href="#">プッシュアップ</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">背中</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">ベントオーバーローイング</a></li>
+							<li><a class="wo-list" href="#">デッドリフト</a></li>
+							<li><a class="wo-list" href="#">バックエクステンション</a></li>
+							<li><a class="wo-list" href="#">ベンドオーバー</a></li>
+							<li><a class="wo-list" href="#">ベントアームプルオーバー</a></li>
+						</ul>
+						<li class="wo-cat">ダンベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">ダンベルプルオーバー</a></li>
+							<li><a class="wo-list" href="#">ワンハンドローイング</a></li>
+						</ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">ラットプルダウン</a></li>
+							<li><a class="wo-list" href="#">シーテッドプーリーロー</a></li>
+						</ul>
+						<li class="wo-cat">自重(器具なし)</li>
+						<ul>
+							<li><a class="wo-list" href="#">チンニング</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">肩</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">スタンディングロー</a></li>
+							<li><a class="wo-list" href="#">バックプレス</a></li>
+							<li><a class="wo-list" href="#">フロントプレス</a></li>
+							<li><a class="wo-list" href="#">バーベルシュラッグ</a></li>
+							<li><a class="wo-list" href="#">ベントオーバーフロントプルアップ</a></li>
+							<li><a class="wo-list" href="#">プルアップトゥチェスト</a></li>
+						</ul>
+						<li class="wo-cat">ダンベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">サイドレイズ</a></li>
+							<li><a class="wo-list" href="#">ダンベルプレス</a></li>
+							<li><a class="wo-list" href="#">ベントオーバーラテラル</a></li>
+							<li><a class="wo-list" href="#">フロントレイズ</a></li>
+							<li><a class="wo-list" href="#">ダンベルシュラッグ</a></li>
+							<li><a class="wo-list" href="#">ワンハンドラテラル</a></li>
+						</ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">ケーブルサイドレイズ</a></li>
+							<li><a class="wo-list" href="#">ケーブルフロントレイズ</a></li>
+						</ul>
+						<li class="wo-cat">自重(器具なし)</li>
+						<ul>
+							<li><a class="wo-list" href="#">ハンドスタンドプッシュアップ</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">上腕三頭筋</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">フレンチプレス</a></li>
+							<li><a class="wo-list" href="#">トライセプスエクステンション</a></li>
+							<li><a class="wo-list" href="#">ナローグリップベンチプレス</a></li>
+						</ul>
+						<li class="wo-cat">ダンベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">ワンハンドトライセプスエクステンションスタンディング</a></li>
+							<li><a class="wo-list" href="#">ワンハンドトライセプスエクステンションライイング</a></li>
+							<li><a class="wo-list" href="#">トライセプスキックバック</a></li>
+						</ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">ケーブルトライセプスエクステンション</a></li>
+							<li><a class="wo-list" href="#">プレスダウン</a></li>
+						</ul>
+						<li class="wo-cat">自重(器具なし)</li>
+						<ul>
+							<li><a class="wo-list" href="#">ナロープッシュアップ</a></li>
+							<li><a class="wo-list" href="#">リバースプッシュアップ</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">上腕二頭筋</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">バーベルカール</a></li>
+							<li><a class="wo-list" href="#">プリーチャーズベンチカール</a></li>
+						</ul>
+						<li class="wo-cat">ダンベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">ダンベルカール</a></li>
+							<li><a class="wo-list" href="#">コンセントレーションカール</a></li>
+							<li><a class="wo-list" href="#">インクラインカール</a></li>
+							<li><a class="wo-list" href="#">ハンマーカール</a></li>
+							<li><a class="wo-list" href="#">ライイングダウンカール</a></li>
+						</ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">ケーブルカール</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">腹筋</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">プローンローリング</a></li>
+						</ul>
+						<li class="wo-cat">ダンベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">サイドベンド</a></li>
+						</ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">ケーブルクランチ</a></li>
+							<li><a class="wo-list" href="#">ロープクランチ</a></li>
+						</ul>
+						<li class="wo-cat">自重(器具なし)</li>
+						<ul>
+							<li><a class="wo-list" href="#">ストレートレッグクランチ</a></li>
+							<li><a class="wo-list" href="#">シットアップ</a></li>
+							<li><a class="wo-list" href="#">クランチ</a></li>
+							<li><a class="wo-list" href="#">ヒップレイズ</a></li>
+							<li><a class="wo-list" href="#">レッグレイズ</a></li>
+							<li><a class="wo-list" href="#">ハンギングレッグレイズ</a></li>
+							<li><a class="wo-list" href="#">ボディアーチ</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">足</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">フルスクワット</a></li>
+							<li><a class="wo-list" href="#">ランジ</a></li>
+							<li><a class="wo-list" href="#">フロントスクワット</a></li>
+							<li><a class="wo-list" href="#">ハックリフト</a></li>
+						</ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">レッグプレス</a></li>
+							<li><a class="wo-list" href="#">レッグエクステンション</a></li>
+							<li><a class="wo-list" href="#">レッグカール</a></li>
+						</ul>
+						<li class="wo-cat">自重(器具なし)</li>
+						<ul>
+							<li><a class="wo-list" href="#">ワンレッグスクワット</a></li>
+							<li><a class="wo-list" href="#">シッシースクワット</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">ふくらはぎ</a></li>
+					<ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">カーフレイズオンレッグプレスマシン</a></li>
+							<li><a class="wo-list" href="#">ケーブルカール</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">前腕部</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">リストカール</a></li>
+							<li><a class="wo-list" href="#">リストカールオンベンチ</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">全身パワー系</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">ハイクリーン</a></li>
+						</ul>
+					</ul>
+				</ul>
 			</div>
 		</section>
 
