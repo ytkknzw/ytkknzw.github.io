@@ -4,8 +4,12 @@
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
-    <!-- <link rel="stylesheet" href="../_lib/bs-3.3.7/css/bootstrap.css"> -->
-	<title>Life Log</title>
+	<link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="../assets/lib/mdl-1.3.0/material-icons.css">
+    <link rel="stylesheet" href="../assets/lib/mdl-1.3.0/material.min.css">
+	<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+
 	<style>
 		* {
 			font-family: Arial;
@@ -16,151 +20,232 @@
 		}
 		#outer-frame {
 			box-sizing: border-box;
-			width: 1024px; height: 100%;
+			width: 100%; height: 100%;
 			margin: 0 auto;
 			/*background-color: #eee;*/
 			/*border: solid 1px #333;*/
 		}
 		table {
 			border-collapse: collapse;
-		}
-		th, td {
-			border: solid 1px #ccc;
-			padding: 3px;
+			box-sizing: border-box;
+			margin: 4px;
+			/*width: calc(100% - 8px);*/
+			/*border: solid 1px #99c;*/
 		}
 		td {
-			height: 20px;
-		}
-		.m15 {
-			width: 2px;
-		}
-		tbody>tr:hover {
-			background-color: rgba(196,196,196,.5);
-		}
-		tbody>tr>th {
-			font-size: 8px;
-		}
-		.time-line {
-			padding: 8px;
+			height: 30px;
 		}
 		.time {
-			float: left;
-			font-size: 4px;
-			border-radius: 8px;
-			margin-left: 1px;
+			height: 60px;
+			font-size: 8pt;
+			color: #669;
+			text-align: right;
+			padding-right: 4px;
+		}
+		.time-item {
+			position: relative;
+			box-sizing: border-box;
+			padding: 4px;
+			font-size: 10pt;
+			color: #333;
+			width: 100%;
+			border-radius: 4px;
+		}
+		.title {
+			padding: 16px 0px 4px 16px;
+			font-weight: bold;
+			font-size: 18px;
+			/*text-align: center;*/
+		}
+		.s {
+			font-size: 10px;
+			color: #666;
+		}
+		.time-bar {
+			width: 8px;
+			height: 8px;
+			font-size: 8px;
+			border-radius: 8px 8px 8px 8px;
+		}
+		#summary td {
+			/*height: 44px;*/
+			padding: 4px 8px;
+		}
+		#sum tfoot th {
+			width: 25%;
+			font-weight: normal;
+			color: #339;
+			font-size: 15px;
+		}
+		#sum tbody th {
+			font-family: Helvetica;
+			font-size: 22px;
+			color: #666;
+			font-weight: normal;
+		}
+		.body {
+			width: 115px;
 		}
 	</style>
+
+	<title>Life Log</title>
 </head>
 <body>
 
-	<div id="outer-frame">
-		<div id="header" style="">
-			<div id="memu" style="width: 44px; ">MENU</div>
-			<div id="date-selector" style="width: 200px;">2017 52th<br/><small>24/Dec - 31/Dec</small></div>
-		</div>
-		<table>
-			<thead>
-				<tr>
-					<th rowspan="2"></th>
-					<!-- <th rowspan="2"></th> -->
-					<th colspan="4">0</th>
-					<th colspan="4">1</th>
-					<th colspan="4">2</th>
-					<th colspan="4">3</th>
-					<th colspan="4">4</th>
-					<th colspan="4">5</th>
-					<th colspan="4">6</th>
-					<th colspan="4">7</th>
-					<th colspan="4">8</th>
-					<th colspan="4">9</th>
-					<th colspan="4">10</th>
-					<th colspan="4">11</th>
-					<th colspan="4">12</th>
-					<th colspan="4">13</th>
-					<th colspan="4">14</th>
-					<th colspan="4">15</th>
-					<th colspan="4">16</th>
-					<th colspan="4">17</th>
-					<th colspan="4">18</th>
-					<th colspan="4">19</th>
-					<th colspan="4">20</th>
-					<th colspan="4">21</th>
-					<th colspan="4">22</th>
-					<th colspan="4">23</th>
-					<th rowspan="2">Memo</th>
-				</tr>
-				<tr>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-					<th class="m15"></th><th class="m15"></th><th class="m15"></th><th class="m15"></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr><th>1<br/>S</th><td colspan="96">memo</td><td>memo</td></tr>
-				<tr><th>2<br/>M</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>3<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>4<br/>W</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>5<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>6<br/>F</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>7<br/>S</th><td colspan="96">memo</td><td>something</td></tr>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title" id="target-date" onclick="alert();">2017-12-31 Sun</span>
+            <input type="date" value="2017-12-31" style="display: none;">
+<!--             <div class="mdl-layout-spacer"></div>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+            </nav>
+ -->        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+    	<div style="padding: 20px 16px 20px 16px; background-color: #ccc; height: 88px;">
+	        <span class="mdl-layout-title" style="color: #fff;">My Activity Log</span>
+    	</div>
+        <nav class="mdl-navigation">
+        	<div style="padding: 8px 16px;">Display Unit</div>
+            <a class="mdl-navigation__link" href="#scroll-tab-1">Summary</a>
+            <a class="mdl-navigation__link" href="#scroll-tab-6">Daily</a>
+        	<div style="padding: 8px 16px;border-top: solid 1px #ccc;">Display Unit</div>
+            <a class="mdl-navigation__link" href="#scroll-tab-7">Work Out</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+		<section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+			<div class="page-content">
+				<!-- <div class="title" style="font-size: 22px;">Summary</div> -->
 
-				<tr><th>1<br/>S</th><td colspan="96">memo</td><td>memo</td></tr>
-				<tr><th>2<br/>M</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>3<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>4<br/>W</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>5<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>6<br/>F</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>7<br/>S</th><td colspan="96">memo</td><td>something</td></tr>
+				<div class="title">Activity</div>
+				<br/>
+				<div style="border-radius: 8px; height:16px; margin-left: 16px; background-color: white;">
+					<div class="time-bar" style="float: left; width: 80px; background-color: blue;">&nbsp;</div>
+					<div class="time-bar" style="float: left; width: 100px; background-color: gold;">&nbsp;</div>
+					<div class="time-bar" style="float: left; width: 20px; background-color: red;">&nbsp;</div>
+					<div class="time-bar" style="float: left; width: 35px; background-color: green;">&nbsp;</div>
+				</div>
+				<br/>
+				<table id="sum" style="width: 100%;">
+					<tbody>
+						<tr>
+							<th>7:30</th>
+							<th>10:00</th>
+							<th>2:00</th>
+							<th>3:50</th>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th><span style="color: blue;">●</span> sleep</th>
+							<th><span style="color: gold;">●</span> work</th>
+							<th><span style="color: red;">●</span> excercise</th>
+							<th><span style="color: green;">●</span> etc.</th>
+						</tr>
+					</tfoot>
+				</table>
 
-				<tr><th>1<br/>S</th><td colspan="96">memo</td><td>memo</td></tr>
-				<tr><th>2<br/>M</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>3<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>4<br/>W</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>5<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>6<br/>F</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>7<br/>S</th><td colspan="96">memo</td><td>something</td></tr>
+				<br/>
+				<br/>
+				<!-- <div class="title" style="font-size: 22px;">Time Line</div> -->
+				<div style="margin-top: 0px;">
 
-				<tr><th>1<br/>S</th><td colspan="96">memo</td><td>memo</td></tr>
-				<tr><th>2<br/>M</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>3<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>4<br/>W</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>5<br/>T</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>6<br/>F</th><td colspan="96">memo</td><td>something</td></tr>
-				<tr><th>7<br/>S</th><td colspan="96">memo</td><td>something</td></tr>
-			</tbody>
-		</table>
+					<div style="float: left; width: 40px; border-right: solid 1px #99c; position: relative; top: 0;">
+						<div class="time">6:00</div>
+						<div class="time">7:00</div>
+						<div class="time">8:00</div>
+						<div class="time">9:00</div>
+						<div class="time">10:00</div>
+						<div class="time">11:00</div>
+						<div class="time">12:00</div>
+						<div class="time">13:00</div>
+						<div class="time">14:00</div>
+						<div class="time">15:00</div>
+						<div class="time">16:00</div>
+						<div class="time">17:00</div>
+						<div class="time">18:00</div>
+						<div class="time">19:00</div>
+						<div class="time">20:00</div>
+						<div class="time">21:00</div>
+						<div class="time">22:00</div>
+						<div class="time">23:00</div>
+						<div class="time">0:00</div>
+					</div>
 
-		<div class="time-line">
-			<div class="time t1" style="background-color: red; width: calc(10px * 8);">&nbsp;</div>
-			<div class="time t2" style="background-color: green; width: calc(10px * 12);">&nbsp;</div>
-			<div class="time t3" style="background-color: blue; width: calc(10px * 2);">&nbsp;</div>
-		</div>
-	</div>
 
-<!-- <script src="../_lib/jquery-3.1.1.min.js"></script> -->
-<!-- <script src="../_lib/bs-3.3.7/js/bootstrap.min.js"></script> -->
+					<div style="float: left; margin-left: 6px; width: calc(100% - 52px - 64px);">
+						<div class="time-item" style="top: 100px; height: 90px; background-color: #ccf;">aaa</div>
+						<div class="time-item" style="top: 102px; height: 90px; background-color: #ccf;">aaa</div>
+						<div class="time-item" style="top: 201px; height: 100px; background-color: #ccf;">aaa</div>
+					</div>
+
+					<div style="float: left; margin-left: 4px; width: 60px;">
+						<div class="time-item" style="top: 0; height: 182px; background-color: #ccf;">aaa</div>
+						<div class="time-item" style="top: 201px; height: 100px; background-color: #ccf;">aaa</div>
+					</div>
+
+				</div>
+
+			</div>
+		</section>
+		<section class="mdl-layout__tab-panel" id="scroll-tab-6">
+			<div class="page-content">
+				<div class="title" style="font-size: 22px;">Time Line</div>
+				<div style="margin-top: 16px;">
+
+					<div style="float: left; width: 40px; border-right: solid 1px #99c; position: relative; top: 0;">
+						<div class="time">6:00</div>
+						<div class="time">7:00</div>
+						<div class="time">8:00</div>
+						<div class="time">9:00</div>
+						<div class="time">10:00</div>
+						<div class="time">11:00</div>
+						<div class="time">12:00</div>
+						<div class="time">13:00</div>
+						<div class="time">14:00</div>
+						<div class="time">15:00</div>
+						<div class="time">16:00</div>
+						<div class="time">17:00</div>
+						<div class="time">18:00</div>
+						<div class="time">19:00</div>
+						<div class="time">20:00</div>
+						<div class="time">21:00</div>
+						<div class="time">22:00</div>
+						<div class="time">23:00</div>
+						<div class="time">0:00</div>
+					</div>
+
+
+					<div style="float: left; margin-left: 6px; width: calc(100% - 52px - 64px);">
+						<div class="time-item" style="top: 100px; height: 90px; background-color: #ccf;">aaa</div>
+						<div class="time-item" style="top: 102px; height: 90px; background-color: #ccf;">aaa</div>
+						<div class="time-item" style="top: 201px; height: 100px; background-color: #ccf;">aaa</div>
+					</div>
+
+					<div style="float: left; margin-left: 4px; width: 60px;">
+						<div class="time-item" style="top: 0; height: 182px; background-color: #ccf;">aaa</div>
+						<div class="time-item" style="top: 201px; height: 100px; background-color: #ccf;">aaa</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+    </main>
+</div>
+
+<script src="../assets/lib/mdl-1.3.0/material.min.js"></script>
 <script>
+
 </script>
+
+<script src="index.js"></script>
+
 </body>
 </html>
