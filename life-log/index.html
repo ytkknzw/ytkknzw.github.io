@@ -88,8 +88,9 @@
 		}
 		#target-date {
 			position: fixed;
-			top: -20px; left: -200px;
-			z-index: 10;
+			top: -40px;
+			/*left: -200px;*/
+			/*z-index: 10;*/
 		}
 	</style>
 
@@ -260,11 +261,12 @@ dispDate.onclick = function() {
 	inpDate.focus();
 };
 inpDate.onfocus = function() {
-	console.log('aaaa');
+	alert('focus');
+	this.blur();
 };
 inpDate.oninput = function(e) {
 	console.log(e);
-	console.log(this.value);
+	alert(this.value);
 	dispDate.innerHTML = this.value;
 	this.blur();
 };
