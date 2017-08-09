@@ -54,24 +54,8 @@ td {
 	font-size: 8px;
 	border-radius: 8px 8px 8px 8px;
 }
-#summary td {
-	/*height: 44px;*/
-	padding: 4px 8px;
-}
-#sum tfoot th {
-	width: 25%;
-	font-weight: normal;
-	color: #339;
-	font-size: 15px;
-}
-#sum tbody th {
-	font-family: Helvetica;
-	font-size: 22px;
-	color: #666;
-	font-weight: normal;
-}
 .body {
-	width: 115px;
+	width: 44px;
 }
 ul {
 	margin: 0;
