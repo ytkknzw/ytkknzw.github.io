@@ -18,6 +18,9 @@
 			border-style: none;
 			color: #fff;
 		}
+		td {
+			text-align: right;
+		}
 	</style>
 	<title>My Workout</title>
 </head>
@@ -49,27 +52,91 @@
     </div>
     <main class="mdl-layout__content">
 		<div class="page-content">
-			<div class="title" style="font-size: 22px;">WORK OUT</div>
+			<table style="width: 95%;">
+				<thead>
+					<tr>
+						<th colspan="7" style="text-align: left;">Bench Press</th>
+						<!-- <td><i class="material-icons">add</i></td> -->
+					</tr>
+				</thead>
+				<tr>
+					<td><big><b>45</b></big> kg</td>
+					<td>&times;</td>
+					<td><big><b>12</b></big> reps</td>
+					<td>=</td>
+					<td>540 kg</td>
+					<td>:</td>
+					<td>540 kg</td>
+					<td><i class="material-icons">edit</i></td>
+				</tr>
+				<tr>
+					<td><big><b>45</b></big> kg</td>
+					<td>&times;</td>
+					<td><big><b>12</b></big> reps</td>
+					<td>=</td>
+					<td>540 kg</td>
+					<td>:</td>
+					<td>1080 kg</td>
+					<td><i class="material-icons">edit</i></td>
+				</tr>
+				<tr>
+					<td colspan="7"></td>
+					<td><i class="material-icons">add</i></td>
+				</tr>
+			</table>
+
+			<table style="width: 95%;">
+				<thead>
+					<tr>
+						<th colspan="4" style="text-align: left;">ベンチプレス</th>
+						<!-- <td><i class="material-icons">add</i></td> -->
+					</tr>
+				</thead>
+				<tr>
+					<td><big><b>45</b></big> kg &times;</td>
+					<td><big><b>12</b></big> 回 =</td>
+					<td>540 kg :</td>
+					<td>540 kg</td>
+					<td><i class="material-icons">edit</i></td>
+				</tr>
+				<tr>
+					<td><big><b>45</b></big> kg &times;</td>
+					<td><big><b>12</b></big> 回 =</td>
+					<td>540 kg :</td>
+					<td>1080 kg</td>
+					<td><i class="material-icons">edit</i></td>
+				</tr>
+			</table>
+			<table style="width: 97%;">
+				<tr>
+					<th><button style="border: solid 1px #ccc; border-radius: 4px; padding: 8px; width: 100%;">Add</button></th>
+					<th><button style="border: solid 1px #ccc; border-radius: 4px; padding: 8px; width: 100%;">Edit</button></th>
+				</tr>
+			</table>
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--2-col">
+					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+						Add
+					</button>
+				</div>
+				<div class="mdl-cell mdl-cell--2-col">
+					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+						Edit
+					</button>
+				</div>
+			</div>
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--6-col">
 					ベンチプレス
 				</div>
-				<div class="mdl-cell mdl-cell--2-col">
+				<div class="mdl-cell mdl-cell--1-col">
 					<input type="number" style="width: 32px" value="45">kg x
-					<input type="number" style="width: 32px" value="12">reps
+				</div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<input type="number" style="width: 32px" value="12">reps =
 				</div>
 				<div class="mdl-cell mdl-cell--1-col" style="text-align: right">
 					540kg
-				</div>
-				<div class="mdl-cell mdl-cell--1-col" style="text-align: right">
-					<i class="material-icons">edit</i>
-				</div>
-				<div class="mdl-cell mdl-cell--2-col">
-					<input type="number" style="width: 32px">kg x
-					<input type="number" style="width: 32px">reps
-				</div>
-				<div class="mdl-cell mdl-cell--1-col" style="text-align: right">
-					9999kg
 				</div>
 				<div class="mdl-cell mdl-cell--1-col" style="text-align: right">
 					<i class="material-icons">edit</i>
