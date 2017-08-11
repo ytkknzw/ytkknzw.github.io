@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="LTX-A" /> 
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<link rel="manifest" href="manifest.json">
+
+	<link rel="stylesheet" href="../assets/lib/onsenui-2.5.2/css/onsenui.css">
+	<link rel="stylesheet" href="../assets/lib/onsenui-2.5.2/css/onsen-css-components.css">
+	<style>
+		#target-date {
+			font-size: 20px;
+			font-weight: 400;
+			background-color: transparent;
+			border-style: none;
+			color: #fff;
+		}
+		#cal td {
+			width: calc(100% / 7);
+			height: 44px;
+			text-align: center;
+			border-top: solid 1px #eee;
+		}
+		#list td {
+			text-align: right;
+		}
+		.event-title {
+			/*height: 44px;*/
+			font-size: 18px;
+			padding: 16px 0 6px 0;
+			font-weight: normal;
+			text-align: left;
+		}
+	</style>
+
+	<script src="../assets/lib/onsenui-2.5.2//js/onsenui.min.js"></script>
+
+	<title>My Workout</title>
+</head>
+<body>
+
+<ons-navigator id="myNavigator" page="home.html"></ons-navigator>
+
+<ons-template id="home.html">
+  <ons-page id="home">
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="app.fromTemplate();">
+        	<ons-icon icon="navicon"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">Aug 12, 2017</div>
+      <div class="right">
+        <ons-toolbar-button onclick="app.goToPage('list');">
+        	<ons-icon icon="pencil"></ons-icon> Edit
+        </ons-toolbar-button>
+      </div>
+    </ons-toolbar>
+
+	<table id="cal" style="width: 100%; border-collapse: collapse;">
+		<thead>
+			<tr style="font-size: 25px; height: 52px; background-color: #f9f9f9;">
+				<th colspan="4">August 2017</th>
+				<th><ons-icon icon="arrow-left"></ons-icon></th>
+				<th><ons-icon icon="circle"></ons-icon></th>
+				<th><ons-icon icon="arrow-right"></ons-icon></th>
+			</tr>
+			<tr style="height: 32px; background: #eee;">
+				<th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+			<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td>14</td></tr>
+			<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td>21</td></tr>
+			<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td>28</td></tr>
+			<tr><td>29</td><td>30</td><td>31</td><td></td><td></td><td></td><td></td></tr>
+		</tbody>
+	</table>
+
+	<div style="padding: 16px;">
+		<div style="font-size: 18px;">Memo</div>
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At perspiciatis possimus ratione fugit ipsa! Deserunt incidunt modi fugit possimus excepturi officia, impedit distinctio vitae eos, qui dicta blanditiis, nostrum cum!</p>
+
+		<table id="list" style="width: 100%;">
+			<tbody>
+				<tr><th class="event-title" colspan="6">Shoulder Press</th></tr>
+				<tr><td><span class="b">45</span> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
+					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td></tr>
+				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
+					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td></tr>
+				<tr><th class="event-title" colspan="6">Bench Press</th></tr>
+				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
+					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td></tr>
+				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
+					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td></tr>
+				<tr><th class="event-title" colspan="6">Dumbbell Press</th></tr>
+				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
+					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td></tr>
+				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
+					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td></tr>
+			</tbody>
+		</table>
+		<div style="height: 256px;">&nbsp;</div>
+	</div>
+  </ons-page>
+</ons-template>
+
+
+<ons-template id="list.html">
+  <ons-page id="list">
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Back</ons-back-button></div>
+      <div class="center">Aug 31, 2017 Edit</div>
+      <div class="right">
+        <ons-toolbar-button onclick="">
+        	<ons-icon icon="cog"></ons-icon> Mode
+        </ons-toolbar-button>
+      </div>
+    </ons-toolbar>
+
+	<div style="padding: 16px;">
+
+        <ons-button onclick="app.goToPage('');">Edit Memo</ons-button>
+        <ons-button onclick="app.goToPage('events');">Add Event</ons-button>
+		
+		<table id="list" style="width: 100%; ">
+			<tbody>
+				<tr><th class="event-title" colspan="7">Shoulder Press</th>
+					<td><i class="material-icons">add</i></td></tr>
+				<tr style="border-bottom: solid 1px #ccc; height: 32px;">
+					<td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
+					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td>
+					<td><i class="material-icons">edit</i></td></tr>
+				<tr style="border-bottom: solid 1px #ccc; height: 32px;">
+					<td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
+					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td>
+					<td><i class="material-icons">edit</i></td></tr>
+				<tr><td>&nbsp;</td></tr>
+
+				<tr><th class="event-title" colspan="7">Bench Press</th>
+					<td><i class="material-icons">add</i></td></tr>
+				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
+					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td>
+					<td><i class="material-icons">edit</i></td></tr>
+				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
+					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td>
+					<td><i class="material-icons">edit</i></td></tr>
+				<tr><td>&nbsp;</td></tr>
+
+				<tr><th class="event-title" colspan="7">Dumbbell Press</th>
+					<td><i class="material-icons">add</i></td></tr>
+				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
+					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td>
+					<td><i class="material-icons">edit</i></td></tr>
+				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
+					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td>
+					<td><i class="material-icons">edit</i></td></tr>
+				<tr><td>&nbsp;</td></tr>
+			</tbody>
+		</table>
+		<div style="height: 256px;">&nbsp;</div>
+	</div>
+
+  </ons-page>
+</ons-template>
+
+
+
+<ons-template id="events.html">
+  <ons-page id="events">
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Back</ons-back-button></div>
+      <div class="center">Aug 31, 2017</div>
+    </ons-toolbar>
+
+	<div style="padding: 16px;">
+		<input type="number"> kg &times; <input type="range" min="1" max="20">
+		<div class="mdl-grid">
+			<div class="mdl-cell mdl-cell--1-col">
+				<i class="material-icons">favorite</i> Favorite</div>
+			<div class="mdl-cell mdl-cell--1-col">
+				<img class="body" src="../assets/img/body/back.jpg" alt="back"> Back</div>
+			<div class="mdl-cell mdl-cell--1-col">
+				<img class="body" src="../assets/img/body/chest.jpg" alt=""> Chest</div>
+			<div class="mdl-cell mdl-cell--1-col">
+				<img class="body" src="../assets/img/body/abdominal.jpg" alt=""> Abs</div>
+			<div class="mdl-cell mdl-cell--1-col">
+				<img class="body" src="../assets/img/body/biceps.jpg" alt=""> Biceps</div>
+			<div class="mdl-cell mdl-cell--1-col">
+				<img class="body" src="../assets/img/body/triceps.jpg" alt=""> Triceps</div>
+			<div class="mdl-cell mdl-cell--1-col">
+				<img class="body" src="../assets/img/body/shoulder.jpg" alt=""> Shoulder</div>
+			<div class="mdl-cell mdl-cell--1-col">
+				<img class="body" src="../assets/img/body/legs.jpg" alt=""> Legs</div>
+			<div class="mdl-cell mdl-cell--1-col">
+				<img class="body" src="../assets/img/body/calf.jpg" alt=""> Calf</div>
+			<div class="mdl-cell mdl-cell--1-col">
+				<img class="body" src="../assets/img/body/wrist.jpg" alt=""> Wrist</div>
+			<div class="mdl-cell mdl-cell--1-col">
+				<img class="body" src="../assets/img/body/power.jpg" alt=""> Power</div>
+		</div>
+	</div>
+
+  </ons-page>
+</ons-template>
+
+
+
+<ons-template id="dialog.html">
+  <ons-page id="dialog">
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Back</ons-back-button></div>
+      <div class="center">Aug 31, 2017</div>
+    </ons-toolbar>
+
+	<div style="padding: 16px;">
+	</div>
+
+  </ons-page>
+</ons-template>
+
+
+<div style="display: none;" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+    <main class="mdl-layout__content">
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--6-col">
+					ベンチプレス
+				</div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<input type="number" style="width: 32px" value="45">kg x
+				</div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<input type="number" style="width: 32px" value="12">reps =
+				</div>
+				<div class="mdl-cell mdl-cell--1-col" style="text-align: right">
+					540kg
+				</div>
+				<div class="mdl-cell mdl-cell--1-col" style="text-align: right">
+					<i class="material-icons">edit</i>
+				</div>
+			</div>
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--6-col">
+					<select name="kg" id="kg" style="width: 40px">
+						<option value="">30</option>
+						<option value="">35</option>
+						<option value="">40</option>
+						<option value="">45</option>
+						<option value="">50</option>
+						<option value="">55</option>
+						<option value="">60</option>
+						<option value="">65</option>
+					</select>kg x
+					<select name="reps" id="reps" style="width: 40px">
+						<option value="">4</option>
+						<option value="">5</option>
+						<option value="">6</option>
+						<option value="">7</option>
+						<option value="">8</option>
+						<option value="">9</option>
+						<option value="">10</option>
+						<option value="">11</option>
+						<option value="">12</option>
+						<option value="">13</option>
+						<option value="">14</option>
+						<option value="">15</option>
+						<option value="">16</option>
+						<option value="">17</option>
+						<option value="">18</option>
+						<option value="">19</option>
+						<option value="">20</option>
+					</select>reps
+				</div>
+			</div>
+			<br/>
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--1-col">
+					<img class="body" src="../assets/img/body/back.jpg" alt="back"> Back</div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<img class="body" src="../assets/img/body/chest.jpg" alt=""> Chest</div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<img class="body" src="../assets/img/body/abdominal.jpg" alt=""> Abs</div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<img class="body" src="../assets/img/body/biceps.jpg" alt=""> Biceps</div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<img class="body" src="../assets/img/body/triceps.jpg" alt=""> Triceps</div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<img class="body" src="../assets/img/body/shoulder.jpg" alt=""> Shoulder</div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<img class="body" src="../assets/img/body/legs.jpg" alt=""> Legs</div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<img class="body" src="../assets/img/body/calf.jpg" alt=""> Calf</div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<img class="body" src="../assets/img/body/wrist.jpg" alt=""> Wrist</div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<img class="body" src="../assets/img/body/power.jpg" alt=""> Power</div>
+				<div class="mdl-cell mdl-cell--1-col">
+					<i class="material-icons">favorite</i> Favorite</div>
+			</div>
+
+
+			<ul>
+				<li><a href="#">胸</a></li>
+				<ul>
+					<li class="wo-cat">バーベル</li>
+					<ul>
+						<li><a class="wo-list" href="#bench-press">ベンチプレス</a></li>
+						<li><a class="wo-list" href="#incline-bench-press">インクラインベンチプレス</a></li>
+						<li><a class="wo-list" href="#decline-bench-press">デクラインベンチプレス</a></li>
+						<li><a class="wo-list" href="#bent-arm-pull-over">ベントアームプルオーバー</a></li>
+					</ul>
+					<li class="wo-cat">ダンベル</li>
+					<ul>
+						<li><a class="wo-list" href="#">ダンベルフライ</a></li>
+						<li><a class="wo-list" href="#">インクラインダンベルフライ</a></li>
+						<li><a class="wo-list" href="#">ダンベルベンチプレス</a></li>
+						<li><a class="wo-list" href="#">インクラインダンベルベンチプレス</a></li>
+						<li><a class="wo-list" href="#">ダンベルプルオーバー</a></li>
+					</ul>
+					<li class="wo-cat">マシン</li>
+					<ul>
+						<li><a class="wo-list" href="#">バタフライマシン</a></li>
+						<li><a class="wo-list" href="#">ケーブルクロスオーバー</a></li>
+					</ul>
+					<li class="wo-cat">自重(器具なし)</li>
+					<ul>
+						<li><a class="wo-list" href="#">ディップス</a></li>
+						<li><a class="wo-list" href="#">プッシュアップ</a></li>
+					</ul>
+				</ul>
+				<li><a href="#">背中</a></li>
+				<ul>
+					<li class="wo-cat">バーベル</li>
+					<ul>
+						<li><a class="wo-list" href="#">ベントオーバーローイング</a></li>
+						<li><a class="wo-list" href="#">デッドリフト</a></li>
+						<li><a class="wo-list" href="#">バックエクステンション</a></li>
+						<li><a class="wo-list" href="#">ベンドオーバー</a></li>
+						<li><a class="wo-list" href="#">ベントアームプルオーバー</a></li>
+					</ul>
+					<li class="wo-cat">ダンベル</li>
+					<ul>
+						<li><a class="wo-list" href="#">ダンベルプルオーバー</a></li>
+						<li><a class="wo-list" href="#">ワンハンドローイング</a></li>
+					</ul>
+					<li class="wo-cat">マシン</li>
+					<ul>
+						<li><a class="wo-list" href="#">ラットプルダウン</a></li>
+						<li><a class="wo-list" href="#">シーテッドプーリーロー</a></li>
+					</ul>
+					<li class="wo-cat">自重(器具なし)</li>
+					<ul>
+						<li><a class="wo-list" href="#">チンニング</a></li>
+					</ul>
+				</ul>
+				<li><a href="#">肩</a></li>
+				<ul>
+					<li class="wo-cat">バーベル</li>
+					<ul>
+						<li><a class="wo-list" href="#">スタンディングロー</a></li>
+						<li><a class="wo-list" href="#">バックプレス</a></li>
+						<li><a class="wo-list" href="#">フロントプレス</a></li>
+						<li><a class="wo-list" href="#">バーベルシュラッグ</a></li>
+						<li><a class="wo-list" href="#">ベントオーバーフロントプルアップ</a></li>
+						<li><a class="wo-list" href="#">プルアップトゥチェスト</a></li>
+					</ul>
+					<li class="wo-cat">ダンベル</li>
+					<ul>
+						<li><a class="wo-list" href="#">サイドレイズ</a></li>
+						<li><a class="wo-list" href="#">ダンベルプレス</a></li>
+						<li><a class="wo-list" href="#">ベントオーバーラテラル</a></li>
+						<li><a class="wo-list" href="#">フロントレイズ</a></li>
+						<li><a class="wo-list" href="#">ダンベルシュラッグ</a></li>
+						<li><a class="wo-list" href="#">ワンハンドラテラル</a></li>
+					</ul>
+					<li class="wo-cat">マシン</li>
+					<ul>
+						<li><a class="wo-list" href="#">ケーブルサイドレイズ</a></li>
+						<li><a class="wo-list" href="#">ケーブルフロントレイズ</a></li>
+					</ul>
+					<li class="wo-cat">自重(器具なし)</li>
+					<ul>
+						<li><a class="wo-list" href="#">ハンドスタンドプッシュアップ</a></li>
+					</ul>
+				</ul>
+				<li><a href="#">上腕三頭筋</a></li>
+				<ul>
+					<li class="wo-cat">バーベル</li>
+					<ul>
+						<li><a class="wo-list" href="#">フレンチプレス</a></li>
+						<li><a class="wo-list" href="#">トライセプスエクステンション</a></li>
+						<li><a class="wo-list" href="#">ナローグリップベンチプレス</a></li>
+					</ul>
+					<li class="wo-cat">ダンベル</li>
+					<ul>
+						<li><a class="wo-list" href="#">ワンハンドトライセプスエクステンションスタンディング</a></li>
+						<li><a class="wo-list" href="#">ワンハンドトライセプスエクステンションライイング</a></li>
+						<li><a class="wo-list" href="#">トライセプスキックバック</a></li>
+					</ul>
+					<li class="wo-cat">マシン</li>
+					<ul>
+						<li><a class="wo-list" href="#">ケーブルトライセプスエクステンション</a></li>
+						<li><a class="wo-list" href="#">プレスダウン</a></li>
+					</ul>
+					<li class="wo-cat">自重(器具なし)</li>
+					<ul>
+						<li><a class="wo-list" href="#">ナロープッシュアップ</a></li>
+						<li><a class="wo-list" href="#">リバースプッシュアップ</a></li>
+					</ul>
+				</ul>
+				<li><a href="#">上腕二頭筋</a></li>
+				<ul>
+					<li class="wo-cat">バーベル</li>
+					<ul>
+						<li><a class="wo-list" href="#">バーベルカール</a></li>
+						<li><a class="wo-list" href="#">プリーチャーズベンチカール</a></li>
+					</ul>
+					<li class="wo-cat">ダンベル</li>
+					<ul>
+						<li><a class="wo-list" href="#">ダンベルカール</a></li>
+						<li><a class="wo-list" href="#">コンセントレーションカール</a></li>
+						<li><a class="wo-list" href="#">インクラインカール</a></li>
+						<li><a class="wo-list" href="#">ハンマーカール</a></li>
+						<li><a class="wo-list" href="#">ライイングダウンカール</a></li>
+					</ul>
+					<li class="wo-cat">マシン</li>
+					<ul>
+						<li><a class="wo-list" href="#">ケーブルカール</a></li>
+					</ul>
+				</ul>
+				<li><a href="#">腹筋</a></li>
+				<ul>
+					<li class="wo-cat">バーベル</li>
+					<ul>
+						<li><a class="wo-list" href="#">プローンローリング</a></li>
+					</ul>
+					<li class="wo-cat">ダンベル</li>
+					<ul>
+						<li><a class="wo-list" href="#">サイドベンド</a></li>
+					</ul>
+					<li class="wo-cat">マシン</li>
+					<ul>
+						<li><a class="wo-list" href="#">ケーブルクランチ</a></li>
+						<li><a class="wo-list" href="#">ロープクランチ</a></li>
+					</ul>
+					<li class="wo-cat">自重(器具なし)</li>
+					<ul>
+						<li><a class="wo-list" href="#">ストレートレッグクランチ</a></li>
+						<li><a class="wo-list" href="#">シットアップ</a></li>
+						<li><a class="wo-list" href="#">クランチ</a></li>
+						<li><a class="wo-list" href="#">ヒップレイズ</a></li>
+						<li><a class="wo-list" href="#">レッグレイズ</a></li>
+						<li><a class="wo-list" href="#">ハンギングレッグレイズ</a></li>
+						<li><a class="wo-list" href="#">ボディアーチ</a></li>
+					</ul>
+				</ul>
+				<li><a href="#">足</a></li>
+				<ul>
+					<li class="wo-cat">バーベル</li>
+					<ul>
+						<li><a class="wo-list" href="#">フルスクワット</a></li>
+						<li><a class="wo-list" href="#">ランジ</a></li>
+						<li><a class="wo-list" href="#">フロントスクワット</a></li>
+						<li><a class="wo-list" href="#">ハックリフト</a></li>
+					</ul>
+					<li class="wo-cat">マシン</li>
+					<ul>
+						<li><a class="wo-list" href="#">レッグプレス</a></li>
+						<li><a class="wo-list" href="#">レッグエクステンション</a></li>
+						<li><a class="wo-list" href="#">レッグカール</a></li>
+					</ul>
+					<li class="wo-cat">自重(器具なし)</li>
+					<ul>
+						<li><a class="wo-list" href="#">ワンレッグスクワット</a></li>
+						<li><a class="wo-list" href="#">シッシースクワット</a></li>
+					</ul>
+				</ul>
+				<li><a href="#">ふくらはぎ</a></li>
+				<ul>
+					<li class="wo-cat">マシン</li>
+					<ul>
+						<li><a class="wo-list" href="#">カーフレイズオンレッグプレスマシン</a></li>
+						<li><a class="wo-list" href="#">ケーブルカール</a></li>
+					</ul>
+				</ul>
+				<li><a href="#">前腕部</a></li>
+				<ul>
+					<li class="wo-cat">バーベル</li>
+					<ul>
+						<li><a class="wo-list" href="#">リストカール</a></li>
+						<li><a class="wo-list" href="#">リストカールオンベンチ</a></li>
+					</ul>
+				</ul>
+				<li><a href="#">全身パワー系</a></li>
+				<ul>
+					<li class="wo-cat">バーベル</li>
+					<ul>
+						<li><a class="wo-list" href="#">ハイクリーン</a></li>
+					</ul>
+				</ul>
+			</ul>
+		</div>
+
+    </main>
+</div>
+-->
+
+<script src="index.js"></script>
+<script>
+var nav = document.querySelector('#myNavigator');
+var app = {
+  goToPage    : function(pageId) { nav.pushPage(pageId + '.html'); },
+  showDialog  : function(id) { document.getElementById(id).show(); },
+  hideDialog  : function(id) { document.getElementById(id).hide(); },
+  fromTemplate : function() {
+    var dialog = document.getElementById('dialog-3');
+    if (dialog) {
+      dialog.show();
+    } else {
+      ons.createDialog('dialog.html').then(function(dialog) {
+        dialog.show();
+      });
+    }
+  }
+};
+
+
+</script>
+</body>
+</html>
