@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-title" content="LTX-A" /> 
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+	<link rel="manifest" href="manifest.json">
+
+	<link rel="stylesheet" href="../assets/lib/onsenui-2.5.2/css/onsenui.css">
+	<link rel="stylesheet" href="../assets/lib/onsenui-2.5.2/css/onsen-css-components.css">
+	<style>
+	.time {
+		box-sizing: border-box;
+		height: 32px;
+		color: #169;
+		font-size: 8px;
+		text-align: right;
+		padding: 2px 8px;
+		border-right: solid 1px #ccf;
+	}
+	.act {
+		margin-left: 48px;
+		box-sizing: border-box;
+		position: absolute;
+		border-radius: 2px;
+		padding: 4px;
+		font-size: 15px;
+		width: calc(100% - 52px);
+		color: #333;
+	}
+	.time:nth-child(even) {
+		border-bottom: dotted 1px #ccc;
+	}
+	</style>
+
+	<script src="../assets/lib/onsenui-2.5.2//js/onsenui.min.js"></script>
+
+	<title>My Timeline</title>
+</head>
+<body>
+
+<ons-navigator id="myNavigator" page="home.html"></ons-navigator>
+
+
+<ons-template id="stats.html">
+  <ons-page id="stats">
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Back</ons-back-button></div>
+      <div class="center">Aug 31, 2017 Edit</div>
+      <div class="right">
+        <ons-toolbar-button onclick="app.showDialog('dlg-mode');">
+        	<ons-icon icon="add"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+    </ons-toolbar>
+
+  </ons-page>
+</ons-template>
+
+
+<ons-template id="home.html">
+  <ons-page id="home">
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="app.fromTemplate();">
+        	<ons-icon icon="navicon"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">Aug 12, 2017</div>
+      <div class="right">
+        <ons-toolbar-button onclick="app.goToPage('edit');">
+        	<ons-icon icon="pencil"></ons-icon> Edit
+        </ons-toolbar-button>
+      </div>
+    </ons-toolbar>
+
+	<div style="height: 64px; border: solid 0px #f00;">height 64px</div>
+	<div style="border: solid 0px #ccc; border-top: double 3px #ccc; border-bottom: double 1px #ccc;">
+		<div class="act" style="height: 29px; top: calc(70px + 0px); background-color: #ccf;">移動</div>
+		<div class="act" style="height: 29px; top: calc(70px + 32px); background-color: #cfc;">食事（自）</div>
+		<div class="act" style="height: 29px; top: calc(70px + 64px); background-color: #fcc;">ゲーム</div>
+		<div class="act" style="height: 62px; top: calc(70px + 128px); background-color: #ffc;">読書</div>
+		<div class="act" style="height: 125px; top: calc(70px + 512px); background-color: #fcf;">仕事</div>
+		<div style="border: solid 0px #0f0; width: 44px;" id="day-line">
+			<div class="time">0:00</div><div class="time">0:30</div>
+			<div class="time">1:00</div><div class="time">1:30</div>
+			<div class="time">2:00</div><div class="time">2:30</div>
+			<div class="time">3:00</div><div class="time">3:30</div>
+			<div class="time">4:00</div><div class="time">4:30</div>
+			<div class="time">5:00</div><div class="time">5:30</div>
+			<div class="time">6:00</div><div class="time">6:30</div>
+			<div class="time">7:00</div><div class="time">7:30</div>
+			<div class="time">8:00</div><div class="time">8:30</div>
+			<div class="time">9:00</div><div class="time">9:30</div>
+			<div class="time">10:00</div><div class="time">10:30</div>
+			<div class="time">11:00</div><div class="time">11:30</div>
+			<div class="time">12:00</div><div class="time">12:30</div>
+			<div class="time">13:00</div><div class="time">13:30</div>
+			<div class="time">14:00</div><div class="time">14:30</div>
+			<div class="time">15:00</div><div class="time">15:30</div>
+			<div class="time">16:00</div><div class="time">16:30</div>
+			<div class="time">17:00</div><div class="time">17:30</div>
+			<div class="time">18:00</div><div class="time">18:30</div>
+			<div class="time">19:00</div><div class="time">19:30</div>
+			<div class="time">20:00</div><div class="time">20:30</div>
+			<div class="time">21:00</div><div class="time">21:30</div>
+			<div class="time">22:00</div><div class="time">22:30</div>
+			<div class="time">23:00</div><div class="time">23:30</div>
+		</div>
+	</div>
+	<div style="height: 256px;"></div>
+  </ons-page>
+</ons-template>
+
+
+<ons-template id="edit.html">
+  <ons-page id="edit">
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Back</ons-back-button></div>
+      <div class="center">Aug 31, 2017</div>
+      <div class="right">
+        <ons-toolbar-button onclick="nav.popPage();">
+        	<ons-icon icon="save"></ons-icon> Save
+        </ons-toolbar-button>
+      </div>
+    </ons-toolbar>
+
+	<div class="list-title">Time</div>
+	<ul class="list">
+	  <li class="list-item">
+	    <div class="list-item__center">Start</div>
+	    <div class="list-item__right">12:00</div>
+	  </li>
+	  <li class="list-item">
+	    <div class="list-item__center">End</div>
+	    <div class="list-item__right">12:30</div>
+	  </li>
+	</ul>
+	<div class="list-title">Activity</div>
+	<ul class="list">
+	  <li class="list-item list-item--tappable">
+	    <div class="list-item__center">
+			<label class="radio-button">
+			  <input type="radio" class="radio-button__input" name="r" checked="checked">
+			  <div class="radio-button__checkmark"></div>
+			  Label 1
+			</label>
+	    </div>
+	  </li>
+	  <li class="list-item list-item--tappable">
+	    <div class="list-item__center">
+			<label class="radio-button">
+			  <input type="radio" class="radio-button__input" name="r">
+			  <div class="radio-button__checkmark"></div>
+			  Label 2
+			</label>
+	    </div>
+	  </li>
+	  <li class="list-item list-item--tappable">
+	    <div class="list-item__center">
+			<label class="radio-button">
+			  <input type="radio" class="radio-button__input" name="r">
+			  <div class="radio-button__checkmark"></div>
+
+			</label>
+	    </div>
+	    <div class="list-item__right">
+	    	<input type="text" value="" placeholder="something else" />
+	    </div>
+	  </li>
+	</ul>
+	<div class="list-title">Memo</div>
+	<ul class="list">
+	  <li class="list-item">
+	    <div class="list-item__center">
+	      <textarea name="" id="" cols="30" rows="10"></textarea>
+	    </div>
+	  </li>
+	</ul>
+  </ons-page>
+</ons-template>
+
+
+
+<ons-dialog id="dialog">
+  <div class="alert-dialog-container">
+	  <div class="alert-dialog-title">ベンチプレス</div>
+	  <div class="alert-dialog-content">
+		<input type="number" style="width: 32px" value="45">kg x
+		<input type="number" style="width: 32px" value="12">reps =
+		540kg
+	  </div>
+	  <div class="alert-dialog-footer alert-dialog-footer--rowfooter">
+	    <button class="alert-dialog-button alert-dialog-button--rowfooter" onclick="app.hideDialog('dialog')">Cancel</button>
+	    <button class="alert-dialog-button alert-dialog-button--rowfooter alert-dialog-button--primal" onclick="app.hideDialog('dialog')">OK</button>
+	  </div>
+  </div>
+</ons-dialog>
+
+<script src="index.js"></script>
+<script>
+var nav = document.querySelector('#myNavigator');
+var app = {
+  goToPage    : function(pageId) { nav.pushPage(pageId + '.html'); },
+  showDialog  : function(id) { document.getElementById(id).show(); },
+  hideDialog  : function(id) { document.getElementById(id).hide(); },
+  fromTemplate : function() {
+    var dialog = document.getElementById('dialog-3');
+    if (dialog) {
+      dialog.show();
+    } else {
+      ons.createDialog('dialog.html').then(function(dialog) {
+        dialog.show();
+      });
+    }
+  }
+};
+
+</script>
+</body>
+</html>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
+	<link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="../assets/lib/mdl-1.3.0/material-icons.css">
+    <link rel="stylesheet" href="../assets/lib/mdl-1.3.0/material.min.css">
+	<!-- <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+
+	<style>
+		* {
+			font-family: Arial;
+		}
+		html, body {
+			width: 100%; height: 100%;
+			margin: 0; padding: 0;
+		}
+		#outer-frame {
+			box-sizing: border-box;
+			width: 100%; height: 100%;
+			margin: 0 auto;
+			/*background-color: #eee;*/
+			/*border: solid 1px #333;*/
+		}
+		table {
+			border-collapse: collapse;
+			box-sizing: border-box;
+			margin: 4px;
+			/*width: calc(100% - 8px);*/
+			/*border: solid 1px #99c;*/
+		}
+		td {
+			height: 30px;
+		}
+		.time {
+			height: 60px;
+			font-size: 8pt;
+			color: #669;
+			text-align: right;
+			padding-right: 4px;
+		}
+		.time-item {
+			position: relative;
+			box-sizing: border-box;
+			padding: 4px;
+			font-size: 10pt;
+			color: #333;
+			width: 100%;
+			border-radius: 4px;
+		}
+		.title {
+			padding: 16px 0px 4px 16px;
+			font-weight: bold;
+			font-size: 18px;
+			/*text-align: center;*/
+		}
+		.s {
+			font-size: 10px;
+			color: #666;
+		}
+		.time-bar {
+			width: 8px;
+			height: 8px;
+			font-size: 8px;
+			border-radius: 8px 8px 8px 8px;
+		}
+		#summary td {
+			/*height: 44px;*/
+			padding: 4px 8px;
+		}
+		#sum tfoot th {
+			width: 25%;
+			font-weight: normal;
+			color: #339;
+			font-size: 15px;
+		}
+		#sum tbody th {
+			font-family: Helvetica;
+			font-size: 22px;
+			color: #666;
+			font-weight: normal;
+		}
+		.body {
+			width: 115px;
+		}
+		ul {
+			margin: 0;
+			padding: 0;
+		}
+		.wo-list {
+			display: block;
+			padding: 12px;
+			font-size: 15px;
+			text-decoration: none;
+			border-bottom: solid 1px #ccc;
+		}
+		.wo-cat {
+			color: #333;
+			font-size: 13px;
+			background-color: #ddd;
+			padding: 2px 8px;
+		}
+	</style>
+
+	<title>Life Log</title>
+</head>
+<body>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">2017-12-31 Sun</span>
+            <input type="date" value="2017-12-31" style="display: none;">
+<!--             <div class="mdl-layout-spacer"></div>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+                <a class="mdl-navigation__link" href="">Link</a>
+            </nav>
+ -->        </div>
+		<div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+			<a href="#scroll-tab-1" class="mdl-layout__tab is-active"><i class="material-icons">dashboard</i></a>
+			<a href="#scroll-tab-6" class="mdl-layout__tab"><i class="material-icons">alarm</i></a>
+			<a href="#scroll-tab-4" class="mdl-layout__tab"><i class="material-icons">restaurant</i></a>
+			<a href="#scroll-tab-5" class="mdl-layout__tab"><i class="material-icons">date_range</i></a>
+			<a href="#scroll-tab-2" class="mdl-layout__tab"><i class="material-icons">attach_money</i></a>
+			<a href="#scroll-tab-7" class="mdl-layout__tab">WO</a>
+		</div>
+    </header>
+    <div class="mdl-layout__drawer">
+    	<div style="padding: 20px 16px 20px 16px; background-color: #ccc; height: 88px;">
+	        <span class="mdl-layout-title" style="color: #fff;">Title</span>
+    	</div>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="#scroll-tab-7">Work Out</a>
+        	<div style="padding: 12px 0px 0px 16px;border-top: solid 1px #ccc;">Display Unit</div>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+        	<div style="padding: 12px 0px 0px 16px;border-top: solid 1px #ccc;">Stats</div>
+            <a class="mdl-navigation__link" href="">Sleep</a>
+            <a class="mdl-navigation__link" href="">Work</a>
+            <a class="mdl-navigation__link" href="">Excercise</a>
+            <a class="mdl-navigation__link" href="">etc.</a>
+        	<div style="padding: 12px 0px 0px 16px;border-top: solid 1px #ccc;">Display Unit</div>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+		<section class="mdl-layout__tab-panel is-active" id="scroll-tab-1">
+			<div class="page-content">
+				<div class="title" style="font-size: 22px;">Summary</div>
+
+				<div class="title">Activity</div>
+				<br/>
+				<div style="border-radius: 8px; height:16px; margin-left: 16px; background-color: white;">
+					<div class="time-bar" style="float: left; width: 80px; background-color: blue;">&nbsp;</div>
+					<div class="time-bar" style="float: left; width: 100px; background-color: gold;">&nbsp;</div>
+					<div class="time-bar" style="float: left; width: 20px; background-color: red;">&nbsp;</div>
+					<div class="time-bar" style="float: left; width: 35px; background-color: green;">&nbsp;</div>
+				</div>
+				<br/>
+				<table id="sum" style="width: 100%;">
+					<tbody>
+						<tr>
+							<th>7:30</th>
+							<th>10:00</th>
+							<th>2:00</th>
+							<th>3:50</th>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th><span style="color: blue;">●</span> sleep</th>
+							<th><span style="color: gold;">●</span> work</th>
+							<th><span style="color: red;">●</span> excercise</th>
+							<th><span style="color: green;">●</span> etc.</th>
+						</tr>
+					</tfoot>
+				</table>
+
+				<br/>
+				<div id="summary" style="display:none;">
+					<table>
+						<tr><td>sleep</td><td>
+							<div class="time-bar" style="width: 150px; background-color: blue;">&nbsp;</div>
+							<span class="s">7h 30m</span></td></tr>
+						<tr><td>work</td><td>
+							<div class="time-bar" style="width: 200px; background-color: gold;">&nbsp;</div>
+							<span class="s">10:00</span></td></tr>
+						<tr><td>exercise</td><td>
+							<div class="time-bar" style="width: 40px; background-color: red;">&nbsp;</div>
+							<span class="s">120 min</span></td></tr>
+						<tr><td>etc.</td><td>
+							<div class="time-bar" style="width: 70px; background-color: green;">&nbsp;</div>
+						<span class="s">3.5 h</span></td></tr>
+					</table>
+					<br/>
+				</div>
+
+				<div class="title">Food</div>
+				<br/>
+				<div style="border-radius: 8px; height:16px; margin-left: 16px;">
+					<div class="time-bar" style="float: left; width: 80px; background-color: blue;">&nbsp;</div>
+					<div class="time-bar" style="float: left; width: 120px; background-color: gold;">&nbsp;</div>
+					<div class="time-bar" style="float: left; width: 40px; background-color: red;">&nbsp;</div>
+				</div>
+				<table id="sum" style="width: 100%;">
+					<tbody>
+						<tr>
+							<th>800</th>
+							<th>1200</th>
+							<th>400</th>
+							<th>2400</th>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th><span style="color: blue;">●</span> Protain</th>
+							<th><span style="color: gold;">●</span> Carb</th>
+							<th><span style="color: red;">●</span> Fat</th>
+							<th>Total</th>
+						</tr>
+					</tfoot>
+				</table>
+				<br/>
+
+				<div class="title">Money</div>
+				<div style="text-align: right; padding: 0 16px; font-size: 22px; color: #666;">&yen; 3,780</div>
+				<!-- <br/> -->
+
+				<div class="title">Diary</div>
+				<div style="padding: 0 16px; color: #666; font-size: 15px;">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aspernatur, porro quam omnis? Quam sequi earum commodi soluta eaque itaque. Sunt quam atque amet, temporibus at ratione similique quaerat, distinctio.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aspernatur, porro quam omnis? Quam sequi earum commodi soluta eaque itaque. Sunt quam atque amet, temporibus at ratione similique quaerat, distinctio.</p>
+				</div>
+				<br/>
+
+			</div>
+		</section>
+		<section class="mdl-layout__tab-panel" id="scroll-tab-2">
+			<div class="page-content">
+				<div class="title" style="font-size: 22px;">Money</div>
+				<div style="text-align: right; padding: 0 16px; font-size: 22px; color: #666;">&yen; 3,780</div>
+				<!-- Colored FAB button -->
+				<button class="mdl-button mdl-js-button mdl-button--colored">
+				  <i class="material-icons">photo_camera</i> take picture
+				</button>
+				<!-- Colored raised button -->
+				<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+				  <i class="material-icons">photo_camera</i> take picture
+				</button>
+
+			</div>
+		</section>
+		<section class="mdl-layout__tab-panel" id="scroll-tab-4">
+			<div class="page-content">
+				<div class="title" style="font-size: 22px;">Food</div>
+				<br/>
+				<div style="border-radius: 8px; height:16px; margin-left: 16px;">
+					<div class="time-bar" style="float: left; width: 80px; background-color: blue;">&nbsp;</div>
+					<div class="time-bar" style="float: left; width: 120px; background-color: gold;">&nbsp;</div>
+					<div class="time-bar" style="float: left; width: 40px; background-color: red;">&nbsp;</div>
+				</div>
+				<br/>
+				<table id="sum" style="width: 100%;">
+					<tbody>
+						<tr>
+							<th>800</th>
+							<th>1200</th>
+							<th>400</th>
+							<th>2400</th>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<th><span style="color: blue;">●</span> Protain</th>
+							<th><span style="color: gold;">●</span> Carb</th>
+							<th><span style="color: red;">●</span> Fat</th>
+							<th>Total</th>
+						</tr>
+					</tfoot>
+				</table>
+				<br/>
+				<ul>
+					<li>break fast</li>
+					<ul>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+					</ul>
+					<li>lunch</li>
+					<ul>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+					</ul>
+					<li>dinner</li>
+					<ul>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+					</ul>
+					<li>extra</li>
+					<ul>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+						<li>aaaaa</li>
+					</ul>
+				</ul>
+			</div>
+		</section>
+		<section class="mdl-layout__tab-panel" id="scroll-tab-5">
+			<div class="page-content">
+				<div class="title" style="font-size: 22px;">Diary</div>
+				<br/>
+				<div style="padding: 0 16px; color: #666; font-size: 15px;">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aspernatur, porro quam omnis? Quam sequi earum commodi soluta eaque itaque. Sunt quam atque amet, temporibus at ratione similique quaerat, distinctio.</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat aspernatur, porro quam omnis? Quam sequi earum commodi soluta eaque itaque. Sunt quam atque amet, temporibus at ratione similique quaerat, distinctio.</p>
+				</div>
+				<br/>
+			</div>
+		</section>
+		<section class="mdl-layout__tab-panel" id="scroll-tab-6">
+			<div class="page-content">
+				<div class="title" style="font-size: 22px;">Time Line</div>
+				<div style="margin-top: 16px;">
+
+					<div style="float: left; width: 40px; border-right: solid 1px #99c; position: relative; top: 0;">
+						<div class="time">6:00</div>
+						<div class="time">7:00</div>
+						<div class="time">8:00</div>
+						<div class="time">9:00</div>
+						<div class="time">10:00</div>
+						<div class="time">11:00</div>
+						<div class="time">12:00</div>
+						<div class="time">13:00</div>
+						<div class="time">14:00</div>
+						<div class="time">15:00</div>
+						<div class="time">16:00</div>
+						<div class="time">17:00</div>
+						<div class="time">18:00</div>
+						<div class="time">19:00</div>
+						<div class="time">20:00</div>
+						<div class="time">21:00</div>
+						<div class="time">22:00</div>
+						<div class="time">23:00</div>
+						<div class="time">0:00</div>
+					</div>
+
+
+					<div style="float: left; margin-left: 6px; width: calc(100% - 52px - 64px);">
+						<div class="time-item" style="top: 100px; height: 90px; background-color: #ccf;">aaa</div>
+						<div class="time-item" style="top: 102px; height: 90px; background-color: #ccf;">aaa</div>
+						<div class="time-item" style="top: 201px; height: 100px; background-color: #ccf;">aaa</div>
+					</div>
+
+					<div style="float: left; margin-left: 4px; width: 60px;">
+						<div class="time-item" style="top: 0; height: 182px; background-color: #ccf;">aaa</div>
+						<div class="time-item" style="top: 201px; height: 100px; background-color: #ccf;">aaa</div>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<section class="mdl-layout__tab-panel" id="scroll-tab-7">
+			<div class="page-content">
+				<div class="title" style="font-size: 22px;">WORK OUT</div>
+				<table>
+					<tr>
+						<td><img class="body" src="../assets/img/body/back.jpg" alt=""></td>
+						<td><img class="body" src="../assets/img/body/chest.jpg" alt=""></td>
+						<td><img class="body" src="../assets/img/body/abdominal.jpg" alt=""></td>
+					</tr>
+					<tr>
+						<td><img class="body" src="../assets/img/body/biceps.jpg" alt=""></td>
+						<td><img class="body" src="../assets/img/body/triceps.jpg" alt=""></td>
+						<td><img class="body" src="../assets/img/body/shoulder.jpg" alt=""></td>
+					</tr>
+					<tr>
+						<td><img class="body" src="../assets/img/body/legs.jpg" alt=""></td>
+						<td><img class="body" src="../assets/img/body/calf.jpg" alt=""></td>
+						<td><img class="body" src="../assets/img/body/wrist.jpg" alt=""></td>
+					</tr>
+					<tr>
+						<td><img class="body" src="../assets/img/body/power.jpg" alt=""></td>
+					</tr>
+				</table>
+				<ul>
+					<li><a href="#">胸</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#bench-press">ベンチプレス</a></li>
+							<li><a class="wo-list" href="#incline-bench-press">インクラインベンチプレス</a></li>
+							<li><a class="wo-list" href="#decline-bench-press">デクラインベンチプレス</a></li>
+							<li><a class="wo-list" href="#bent-arm-pull-over">ベントアームプルオーバー</a></li>
+						</ul>
+						<li class="wo-cat">ダンベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">ダンベルフライ</a></li>
+							<li><a class="wo-list" href="#">インクラインダンベルフライ</a></li>
+							<li><a class="wo-list" href="#">ダンベルベンチプレス</a></li>
+							<li><a class="wo-list" href="#">インクラインダンベルベンチプレス</a></li>
+							<li><a class="wo-list" href="#">ダンベルプルオーバー</a></li>
+						</ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">バタフライマシン</a></li>
+							<li><a class="wo-list" href="#">ケーブルクロスオーバー</a></li>
+						</ul>
+						<li class="wo-cat">自重(器具なし)</li>
+						<ul>
+							<li><a class="wo-list" href="#">ディップス</a></li>
+							<li><a class="wo-list" href="#">プッシュアップ</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">背中</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">ベントオーバーローイング</a></li>
+							<li><a class="wo-list" href="#">デッドリフト</a></li>
+							<li><a class="wo-list" href="#">バックエクステンション</a></li>
+							<li><a class="wo-list" href="#">ベンドオーバー</a></li>
+							<li><a class="wo-list" href="#">ベントアームプルオーバー</a></li>
+						</ul>
+						<li class="wo-cat">ダンベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">ダンベルプルオーバー</a></li>
+							<li><a class="wo-list" href="#">ワンハンドローイング</a></li>
+						</ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">ラットプルダウン</a></li>
+							<li><a class="wo-list" href="#">シーテッドプーリーロー</a></li>
+						</ul>
+						<li class="wo-cat">自重(器具なし)</li>
+						<ul>
+							<li><a class="wo-list" href="#">チンニング</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">肩</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">スタンディングロー</a></li>
+							<li><a class="wo-list" href="#">バックプレス</a></li>
+							<li><a class="wo-list" href="#">フロントプレス</a></li>
+							<li><a class="wo-list" href="#">バーベルシュラッグ</a></li>
+							<li><a class="wo-list" href="#">ベントオーバーフロントプルアップ</a></li>
+							<li><a class="wo-list" href="#">プルアップトゥチェスト</a></li>
+						</ul>
+						<li class="wo-cat">ダンベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">サイドレイズ</a></li>
+							<li><a class="wo-list" href="#">ダンベルプレス</a></li>
+							<li><a class="wo-list" href="#">ベントオーバーラテラル</a></li>
+							<li><a class="wo-list" href="#">フロントレイズ</a></li>
+							<li><a class="wo-list" href="#">ダンベルシュラッグ</a></li>
+							<li><a class="wo-list" href="#">ワンハンドラテラル</a></li>
+						</ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">ケーブルサイドレイズ</a></li>
+							<li><a class="wo-list" href="#">ケーブルフロントレイズ</a></li>
+						</ul>
+						<li class="wo-cat">自重(器具なし)</li>
+						<ul>
+							<li><a class="wo-list" href="#">ハンドスタンドプッシュアップ</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">上腕三頭筋</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">フレンチプレス</a></li>
+							<li><a class="wo-list" href="#">トライセプスエクステンション</a></li>
+							<li><a class="wo-list" href="#">ナローグリップベンチプレス</a></li>
+						</ul>
+						<li class="wo-cat">ダンベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">ワンハンドトライセプスエクステンションスタンディング</a></li>
+							<li><a class="wo-list" href="#">ワンハンドトライセプスエクステンションライイング</a></li>
+							<li><a class="wo-list" href="#">トライセプスキックバック</a></li>
+						</ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">ケーブルトライセプスエクステンション</a></li>
+							<li><a class="wo-list" href="#">プレスダウン</a></li>
+						</ul>
+						<li class="wo-cat">自重(器具なし)</li>
+						<ul>
+							<li><a class="wo-list" href="#">ナロープッシュアップ</a></li>
+							<li><a class="wo-list" href="#">リバースプッシュアップ</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">上腕二頭筋</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">バーベルカール</a></li>
+							<li><a class="wo-list" href="#">プリーチャーズベンチカール</a></li>
+						</ul>
+						<li class="wo-cat">ダンベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">ダンベルカール</a></li>
+							<li><a class="wo-list" href="#">コンセントレーションカール</a></li>
+							<li><a class="wo-list" href="#">インクラインカール</a></li>
+							<li><a class="wo-list" href="#">ハンマーカール</a></li>
+							<li><a class="wo-list" href="#">ライイングダウンカール</a></li>
+						</ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">ケーブルカール</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">腹筋</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">プローンローリング</a></li>
+						</ul>
+						<li class="wo-cat">ダンベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">サイドベンド</a></li>
+						</ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">ケーブルクランチ</a></li>
+							<li><a class="wo-list" href="#">ロープクランチ</a></li>
+						</ul>
+						<li class="wo-cat">自重(器具なし)</li>
+						<ul>
+							<li><a class="wo-list" href="#">ストレートレッグクランチ</a></li>
+							<li><a class="wo-list" href="#">シットアップ</a></li>
+							<li><a class="wo-list" href="#">クランチ</a></li>
+							<li><a class="wo-list" href="#">ヒップレイズ</a></li>
+							<li><a class="wo-list" href="#">レッグレイズ</a></li>
+							<li><a class="wo-list" href="#">ハンギングレッグレイズ</a></li>
+							<li><a class="wo-list" href="#">ボディアーチ</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">足</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">フルスクワット</a></li>
+							<li><a class="wo-list" href="#">ランジ</a></li>
+							<li><a class="wo-list" href="#">フロントスクワット</a></li>
+							<li><a class="wo-list" href="#">ハックリフト</a></li>
+						</ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">レッグプレス</a></li>
+							<li><a class="wo-list" href="#">レッグエクステンション</a></li>
+							<li><a class="wo-list" href="#">レッグカール</a></li>
+						</ul>
+						<li class="wo-cat">自重(器具なし)</li>
+						<ul>
+							<li><a class="wo-list" href="#">ワンレッグスクワット</a></li>
+							<li><a class="wo-list" href="#">シッシースクワット</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">ふくらはぎ</a></li>
+					<ul>
+						<li class="wo-cat">マシン</li>
+						<ul>
+							<li><a class="wo-list" href="#">カーフレイズオンレッグプレスマシン</a></li>
+							<li><a class="wo-list" href="#">ケーブルカール</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">前腕部</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">リストカール</a></li>
+							<li><a class="wo-list" href="#">リストカールオンベンチ</a></li>
+						</ul>
+					</ul>
+					<li><a href="#">全身パワー系</a></li>
+					<ul>
+						<li class="wo-cat">バーベル</li>
+						<ul>
+							<li><a class="wo-list" href="#">ハイクリーン</a></li>
+						</ul>
+					</ul>
+				</ul>
+			</div>
+		</section>
+
+    </main>
+</div>
+
+<script src="../assets/lib/mdl-1.3.0/material.min.js"></script>
+<script>
+
+</script>
+
+<script src="index.js"></script>
+
+</body>
+</html>
