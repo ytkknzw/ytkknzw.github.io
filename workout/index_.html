@@ -3,16 +3,13 @@
 <head>
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
-	<meta name="mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-title" content="LTX-A" /> 
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
 	<link rel="manifest" href="manifest.json">
 
-	<link rel="stylesheet" href="../assets/lib/onsenui-2.5.2/css/onsenui.css">
-	<link rel="stylesheet" href="../assets/lib/onsenui-2.5.2/css/onsen-css-components.css">
+    <link rel="stylesheet" href="../assets/lib/mdl-1.3.0/material-icons.css">
+    <link rel="stylesheet" href="../assets/lib/mdl-1.3.0/material.min.css">
+
+	<link rel="stylesheet" href="./styles.css">
 	<style>
 		#target-date {
 			font-size: 20px;
@@ -21,214 +18,113 @@
 			border-style: none;
 			color: #fff;
 		}
-		#cal td {
-			width: calc(100% / 7);
-			height: 44px;
-			text-align: center;
-			border-top: solid 1px #eee;
-		}
-		#list td {
+		td {
 			text-align: right;
 		}
-		.event-title {
-			/*height: 44px;*/
-			font-size: 18px;
-			padding: 16px 0 6px 0;
-			font-weight: normal;
-			text-align: left;
-		}
 	</style>
-
-	<script src="../assets/lib/onsenui-2.5.2//js/onsenui.min.js"></script>
-
 	<title>My Workout</title>
 </head>
 <body>
 
-<ons-navigator id="myNavigator" page="home.html"></ons-navigator>
-
-<ons-template id="home.html">
-  <ons-page id="home">
-    <ons-toolbar>
-      <div class="left">
-        <ons-toolbar-button onclick="app.fromTemplate();">
-        	<ons-icon icon="navicon"></ons-icon>
-        </ons-toolbar-button>
-      </div>
-      <div class="center">Aug 12, 2017</div>
-      <div class="right">
-        <ons-toolbar-button onclick="app.goToPage('list');">
-        	<ons-icon icon="pencil"></ons-icon> Edit
-        </ons-toolbar-button>
-      </div>
-    </ons-toolbar>
-
-	<table id="cal" style="width: 100%; border-collapse: collapse;">
-		<thead>
-			<tr style="font-size: 25px; height: 52px; background-color: #f9f9f9;">
-				<th colspan="4">August 2017</th>
-				<th><ons-icon icon="arrow-left"></ons-icon></th>
-				<th><ons-icon icon="circle"></ons-icon></th>
-				<th><ons-icon icon="arrow-right"></ons-icon></th>
-			</tr>
-			<tr style="height: 32px; background: #eee;">
-				<th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
-			<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td>14</td></tr>
-			<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td>21</td></tr>
-			<tr><td>&nbsp;</td><td></td><td></td><td></td><td></td><td></td><td>28</td></tr>
-			<tr><td>29</td><td>30</td><td>31</td><td></td><td></td><td></td><td></td></tr>
-		</tbody>
-	</table>
-
-	<div style="padding: 16px;">
-		<div style="font-size: 18px;">Memo</div>
-		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At perspiciatis possimus ratione fugit ipsa! Deserunt incidunt modi fugit possimus excepturi officia, impedit distinctio vitae eos, qui dicta blanditiis, nostrum cum!</p>
-
-		<table id="list" style="width: 100%;">
-			<tbody>
-				<tr><th class="event-title" colspan="6">Shoulder Press</th></tr>
-				<tr><td><span class="b">45</span> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td></tr>
-				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td></tr>
-				<tr><th class="event-title" colspan="6">Bench Press</th></tr>
-				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td></tr>
-				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td></tr>
-				<tr><th class="event-title" colspan="6">Dumbbell Press</th></tr>
-				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td></tr>
-				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td></tr>
-			</tbody>
-		</table>
-		<div style="height: 256px;">&nbsp;</div>
-	</div>
-  </ons-page>
-</ons-template>
-
-
-<ons-template id="list.html">
-  <ons-page id="list">
-    <ons-toolbar>
-      <div class="left"><ons-back-button>Back</ons-back-button></div>
-      <div class="center">Aug 31, 2017 Edit</div>
-      <div class="right">
-        <ons-toolbar-button onclick="">
-        	<ons-icon icon="cog"></ons-icon> Mode
-        </ons-toolbar-button>
-      </div>
-    </ons-toolbar>
-
-	<div style="padding: 16px;">
-
-        <ons-button onclick="app.goToPage('');">Edit Memo</ons-button>
-        <ons-button onclick="app.goToPage('events');">Add Event</ons-button>
-		
-		<table id="list" style="width: 100%; ">
-			<tbody>
-				<tr><th class="event-title" colspan="7">Shoulder Press</th>
-					<td><i class="material-icons">add</i></td></tr>
-				<tr style="border-bottom: solid 1px #ccc; height: 32px;">
-					<td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td>
-					<td><i class="material-icons">edit</i></td></tr>
-				<tr style="border-bottom: solid 1px #ccc; height: 32px;">
-					<td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td>
-					<td><i class="material-icons">edit</i></td></tr>
-				<tr><td>&nbsp;</td></tr>
-
-				<tr><th class="event-title" colspan="7">Bench Press</th>
-					<td><i class="material-icons">add</i></td></tr>
-				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td>
-					<td><i class="material-icons">edit</i></td></tr>
-				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td>
-					<td><i class="material-icons">edit</i></td></tr>
-				<tr><td>&nbsp;</td></tr>
-
-				<tr><th class="event-title" colspan="7">Dumbbell Press</th>
-					<td><i class="material-icons">add</i></td></tr>
-				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td>
-					<td><i class="material-icons">edit</i></td></tr>
-				<tr><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td>
-					<td><i class="material-icons">edit</i></td></tr>
-				<tr><td>&nbsp;</td></tr>
-			</tbody>
-		</table>
-		<div style="height: 256px;">&nbsp;</div>
-	</div>
-
-  </ons-page>
-</ons-template>
-
-
-
-<ons-template id="events.html">
-  <ons-page id="events">
-    <ons-toolbar>
-      <div class="left"><ons-back-button>Back</ons-back-button></div>
-      <div class="center">Aug 31, 2017</div>
-    </ons-toolbar>
-
-	<div style="padding: 16px;">
-		<input type="number"> kg &times; <input type="range" min="1" max="20">
-		<div class="mdl-grid">
-			<div class="mdl-cell mdl-cell--1-col">
-				<i class="material-icons">favorite</i> Favorite</div>
-			<div class="mdl-cell mdl-cell--1-col">
-				<img class="body" src="../assets/img/body/back.jpg" alt="back"> Back</div>
-			<div class="mdl-cell mdl-cell--1-col">
-				<img class="body" src="../assets/img/body/chest.jpg" alt=""> Chest</div>
-			<div class="mdl-cell mdl-cell--1-col">
-				<img class="body" src="../assets/img/body/abdominal.jpg" alt=""> Abs</div>
-			<div class="mdl-cell mdl-cell--1-col">
-				<img class="body" src="../assets/img/body/biceps.jpg" alt=""> Biceps</div>
-			<div class="mdl-cell mdl-cell--1-col">
-				<img class="body" src="../assets/img/body/triceps.jpg" alt=""> Triceps</div>
-			<div class="mdl-cell mdl-cell--1-col">
-				<img class="body" src="../assets/img/body/shoulder.jpg" alt=""> Shoulder</div>
-			<div class="mdl-cell mdl-cell--1-col">
-				<img class="body" src="../assets/img/body/legs.jpg" alt=""> Legs</div>
-			<div class="mdl-cell mdl-cell--1-col">
-				<img class="body" src="../assets/img/body/calf.jpg" alt=""> Calf</div>
-			<div class="mdl-cell mdl-cell--1-col">
-				<img class="body" src="../assets/img/body/wrist.jpg" alt=""> Wrist</div>
-			<div class="mdl-cell mdl-cell--1-col">
-				<img class="body" src="../assets/img/body/power.jpg" alt=""> Power</div>
-		</div>
-	</div>
-
-  </ons-page>
-</ons-template>
-
-
-
-<ons-template id="dialog.html">
-  <ons-page id="dialog">
-    <ons-toolbar>
-      <div class="left"><ons-back-button>Back</ons-back-button></div>
-      <div class="center">Aug 31, 2017</div>
-    </ons-toolbar>
-
-	<div style="padding: 16px;">
-	</div>
-
-  </ons-page>
-</ons-template>
-
-
-<div style="display: none;" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+    <header class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+            <!-- <span class="mdl-layout-title">2017-12-31 Sun</span> -->
+            <input id="target-date" type="date" value="2017-12-31">
+            <div class="mdl-layout-spacer"></div>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href=""><i class="material-icons">add</i></a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+    	<div style="padding: 20px 16px 20px 16px; background-color: #ccc; height: 88px;">
+	        <span class="mdl-layout-title" style="color: #fff;">Title</span>
+    	</div>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="#scroll-tab-7">Work Out</a>
+        	<div style="padding: 12px 0px 0px 16px;border-top: solid 1px #ccc;">Display Unit</div>
+            <a class="mdl-navigation__link" href="">Link</a>
+        	<div style="padding: 12px 0px 0px 16px;border-top: solid 1px #ccc;">Stats</div>
+            <a class="mdl-navigation__link" href="">Sleep</a>
+            <a class="mdl-navigation__link" href="">Work</a>
+        </nav>
+    </div>
     <main class="mdl-layout__content">
+		<div class="page-content">
+			<table style="width: 95%;">
+				<thead>
+					<tr>
+						<th colspan="7" style="text-align: left;">Bench Press</th>
+						<!-- <td><i class="material-icons">add</i></td> -->
+					</tr>
+				</thead>
+				<tr>
+					<td><big><b>45</b></big> kg</td>
+					<td>&times;</td>
+					<td><big><b>12</b></big> reps</td>
+					<td>=</td>
+					<td>540 kg</td>
+					<td>:</td>
+					<td>540 kg</td>
+					<td><i class="material-icons">edit</i></td>
+				</tr>
+				<tr>
+					<td><big><b>45</b></big> kg</td>
+					<td>&times;</td>
+					<td><big><b>12</b></big> reps</td>
+					<td>=</td>
+					<td>540 kg</td>
+					<td>:</td>
+					<td>1080 kg</td>
+					<td><i class="material-icons">edit</i></td>
+				</tr>
+				<tr>
+					<td colspan="7"></td>
+					<td><i class="material-icons">add</i></td>
+				</tr>
+			</table>
+
+			<table style="width: 95%;">
+				<thead>
+					<tr>
+						<th colspan="4" style="text-align: left;">ベンチプレス</th>
+						<!-- <td><i class="material-icons">add</i></td> -->
+					</tr>
+				</thead>
+				<tr>
+					<td><big><b>45</b></big> kg &times;</td>
+					<td><big><b>12</b></big> 回 =</td>
+					<td>540 kg :</td>
+					<td>540 kg</td>
+					<td><i class="material-icons">edit</i></td>
+				</tr>
+				<tr>
+					<td><big><b>45</b></big> kg &times;</td>
+					<td><big><b>12</b></big> 回 =</td>
+					<td>540 kg :</td>
+					<td>1080 kg</td>
+					<td><i class="material-icons">edit</i></td>
+				</tr>
+			</table>
+			<table style="width: 97%;">
+				<tr>
+					<th><button style="border: solid 1px #ccc; border-radius: 4px; padding: 8px; width: 100%;">Add</button></th>
+					<th><button style="border: solid 1px #ccc; border-radius: 4px; padding: 8px; width: 100%;">Edit</button></th>
+				</tr>
+			</table>
+			<div class="mdl-grid">
+				<div class="mdl-cell mdl-cell--2-col">
+					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+						Add
+					</button>
+				</div>
+				<div class="mdl-cell mdl-cell--2-col">
+					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">
+						Edit
+					</button>
+				</div>
+			</div>
 			<div class="mdl-grid">
 				<div class="mdl-cell mdl-cell--6-col">
 					ベンチプレス
@@ -510,27 +406,10 @@
 
     </main>
 </div>
--->
 
+<script src="../assets/lib/mdl-1.3.0/material.min.js"></script>
 <script src="index.js"></script>
 <script>
-var nav = document.querySelector('#myNavigator');
-var app = {
-  goToPage    : function(pageId) { nav.pushPage(pageId + '.html'); },
-  showDialog  : function(id) { document.getElementById(id).show(); },
-  hideDialog  : function(id) { document.getElementById(id).hide(); },
-  fromTemplate : function() {
-    var dialog = document.getElementById('dialog-3');
-    if (dialog) {
-      dialog.show();
-    } else {
-      ons.createDialog('dialog.html').then(function(dialog) {
-        dialog.show();
-      });
-    }
-  }
-};
-
 
 </script>
 </body>
