@@ -16,7 +16,7 @@
 	<style>
 	.time {
 		box-sizing: border-box;
-		height: 32px;
+		height: 30px;
 		color: #169;
 		font-size: 8px;
 		text-align: right;
@@ -28,8 +28,8 @@
 		box-sizing: border-box;
 		position: absolute;
 		border-radius: 2px;
-		padding: 4px;
-		font-size: 15px;
+		padding: 6px;
+		font-size: 11px;
 		width: calc(100% - 52px);
 		color: #333;
 	}
@@ -45,6 +45,22 @@
 <body>
 
 <ons-navigator id="myNavigator" page="home.html"></ons-navigator>
+
+
+<ons-template id="setting.html">
+  <ons-page id="setting">
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Back</ons-back-button></div>
+      <div class="center">Setting</div>
+      <div class="right">
+        <ons-toolbar-button onclick="app.showDialog('dlg-mode');">
+        	<ons-icon icon="add"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+    </ons-toolbar>
+
+  </ons-page>
+</ons-template>
 
 
 <ons-template id="stats.html">
@@ -79,13 +95,10 @@
       </div>
     </ons-toolbar>
 
+<ons-gesture-detector>
+  <div id="detect-area">
 	<div style="height: 64px; border: solid 0px #f00;">height 64px</div>
-	<div style="border: solid 0px #ccc; border-top: double 3px #ccc; border-bottom: double 1px #ccc;">
-		<div class="act" style="height: 29px; top: calc(70px + 0px); background-color: #ccf;">移動</div>
-		<div class="act" style="height: 29px; top: calc(70px + 32px); background-color: #cfc;">食事（自）</div>
-		<div class="act" style="height: 29px; top: calc(70px + 64px); background-color: #fcc;">ゲーム</div>
-		<div class="act" style="height: 62px; top: calc(70px + 128px); background-color: #ffc;">読書</div>
-		<div class="act" style="height: 125px; top: calc(70px + 512px); background-color: #fcf;">仕事</div>
+	<div id="line" style="border: solid 0px #ccc; border-top: double 3px #ccc; border-bottom: double 1px #ccc;">
 		<div style="border: solid 0px #0f0; width: 44px;" id="day-line">
 			<div class="time">0:00</div><div class="time">0:30</div>
 			<div class="time">1:00</div><div class="time">1:30</div>
@@ -114,6 +127,9 @@
 		</div>
 	</div>
 	<div style="height: 256px;"></div>
+  </div>
+</ons-gesture-detector>
+
   </ons-page>
 </ons-template>
 
@@ -149,6 +165,51 @@
 			  <input type="radio" class="radio-button__input" name="r" checked="checked">
 			  <div class="radio-button__checkmark"></div>
 			  Label 1
+			</label>
+	    </div>
+	  </li>
+	  <li class="list-item list-item--tappable">
+	    <div class="list-item__center">
+			<label class="radio-button">
+			  <input type="radio" class="radio-button__input" name="r">
+			  <div class="radio-button__checkmark"></div>
+			  Label 2
+			</label>
+	    </div>
+	  </li>
+	  <li class="list-item list-item--tappable">
+	    <div class="list-item__center">
+			<label class="radio-button">
+			  <input type="radio" class="radio-button__input" name="r">
+			  <div class="radio-button__checkmark"></div>
+			  Label 2
+			</label>
+	    </div>
+	  </li>
+	  <li class="list-item list-item--tappable">
+	    <div class="list-item__center">
+			<label class="radio-button">
+			  <input type="radio" class="radio-button__input" name="r">
+			  <div class="radio-button__checkmark"></div>
+			  Label 2
+			</label>
+	    </div>
+	  </li>
+	  <li class="list-item list-item--tappable">
+	    <div class="list-item__center">
+			<label class="radio-button">
+			  <input type="radio" class="radio-button__input" name="r">
+			  <div class="radio-button__checkmark"></div>
+			  Label 2
+			</label>
+	    </div>
+	  </li>
+	  <li class="list-item list-item--tappable">
+	    <div class="list-item__center">
+			<label class="radio-button">
+			  <input type="radio" class="radio-button__input" name="r">
+			  <div class="radio-button__checkmark"></div>
+			  Label 2
 			</label>
 	    </div>
 	  </li>
@@ -204,6 +265,58 @@
 
 <script src="index.js"></script>
 <script>
+var dat = [
+	{ start: '4:00', end: '4:30', text: '移動', color: '#ccf', memo: '神楽坂ー池袋' },
+	{ start: '0:30', end: '0:30', text: '食事（自）', color: '#cfc', memo: '' },
+	{ start: '1:00', end: '1:30', text: 'ゲーム', color: '#fcc', memo: '' },
+	{ start: '2:00', end: '3:00', text: '読書', color: '#ffc', memo: '教養' },
+	{ start: '6:00', end: '10:00', text: '仕事', color: '#fcf', memo: '会社' }
+];
+
+document.addEventListener('init', function(event) {
+  var page = event.target;
+
+  if (page.id === 'home') {
+  	var line = document.getElementById('line');
+  	console.log(line);
+  	dat.forEach(function(d, i) {
+  		var s = d.start.split(':');
+  		var e = d.end.split(':');
+  		var h = parseInt(s[0]) * 2 + (s[1]=='00' ? 0 : 1);
+  		var a = parseInt(e[0]) * 2 + (e[1]=='00' ? 0 : 1);
+  		var css  = 'height: ' + ((a - h) * 30 - 3) + 'px;';
+  			css += 'top: ' + (70 + h * 30) + 'px;';
+  			css += 'background-color: ' + d.color + ';';
+  		var div = document.createElement('div');
+  		div.innerHTML = d.text + ' ： ' + d.memo;
+  		div.className = 'act';
+  		div.style = css;
+  		div.onclick = function(e) {
+  			e.preventDefault();
+  			console.log(d.text, 'd', d, 'i', i);
+	        nav.pushPage('edit.html', dat[i]);
+  		};
+  		line.append(div);
+  	});
+  	line.append();
+  } else if(page.id === 'list') {
+    page.querySelectorAll('.row').forEach(function(row) {
+      row.onclick = function(evt) {
+        nav.pushPage('edit.html', {data: {title: 'Page Edit'}});
+      };
+    });
+  } else {
+    // page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
+  }
+});
+
+document.addEventListener('swipeleft', function(event) {
+	if (event.target.matches('#detect-area')) {
+		console.log('Swipe left is detected.');
+	}
+});
+
+
 var nav = document.querySelector('#myNavigator');
 var app = {
   goToPage    : function(pageId) { nav.pushPage(pageId + '.html'); },
