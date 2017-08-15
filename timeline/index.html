@@ -3,11 +3,11 @@
 <head>
 	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
-	<meta name="mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-title" content="LTX-A" /> 
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta text="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">  
+	<meta text="mobile-web-app-capable" content="yes">
+	<meta text="apple-mobile-web-app-title" content="LTX-A" /> 
+	<meta text="apple-mobile-web-app-capable" content="yes">
+	<meta text="apple-mobile-web-app-status-bar-style" content="black">
 
 	<link rel="manifest" href="manifest.json">
 
@@ -45,6 +45,13 @@
 		border-radius: 14px;
 		float: left;
 		margin: 8px;
+	}
+	.act-btn {
+		font-size: 12px;
+		padding: 8px;
+		border-radius: 14px;
+		border-style: none;
+		margin: 0 8px;
 	}
 	</style>
 
@@ -160,55 +167,10 @@
 	  </li>
 	</ul>
 	<div class="list-title">Activity</div>
-	<ul class="list">
-	  <li class="list-item list-item--tappable">
-	    <div class="list-item__left">
-	      <div class="color-circle" style="background-color: #f00;"></div>
-	    </div>
-	    <div class="list-item__center">
-		  <label class="radio-button" for="r0" style="width: 100%;">Label 0</label>
-	    </div>
-	    <div class="list-item__right">
-		  <input type="radio" class="radio-button__input" name="r" id="r0">
-		  <div class="radio-button__checkmark"></div>
-	    </div>
-	  </li>
-	  <li class="list-item list-item--tappable">
-	    <div class="list-item__left">
-	      <div class="color-circle" style="background-color: #0f0;"></div>
-	    </div>
-	    <div class="list-item__center">
-		  <label class="radio-button" for="r1" style="width: 100%;">Label 1</label>
-	    </div>
-	    <div class="list-item__right">
-		  <input type="radio" class="radio-button__input" name="r" id="r1">
-		  <div class="radio-button__checkmark"></div>
-	    </div>
-	  </li>
-	  <li class="list-item list-item--tappable">
-	    <div class="list-item__left">
-	      <div class="color-circle" style="background-color: #00f;"></div>
-	    </div>
-	    <div class="list-item__center">
-		  <label class="radio-button" for="r2" style="width: 100%;">Label 2</label>
-	    </div>
-	    <div class="list-item__right">
-		  <input type="radio" class="radio-button__input" name="r" id="r2">
-		  <div class="radio-button__checkmark"></div>
-	    </div>
-	  </li>
-	  <li class="list-item list-item--tappable">
-	    <div class="list-item__left">
-	      <div class="color-circle" style="background-color: #ff0;"></div>
-	    </div>
-	    <div class="list-item__center">
-		  <label class="radio-button" for="r3" style="width: 100%;">Label 3</label>
-	    </div>
-	    <div class="list-item__right">
-		  <input type="radio" class="radio-button__input" name="r" id="r3">
-		  <div class="radio-button__checkmark"></div>
-	    </div>
-	  </li>
+	<div style="padding: 8px 16px;" id="activity-buttons">
+		<button class="button" style="background-color: #ff9999;">aaaa</button>
+		<button class="button" style="background-color: #ccccff;">aaaa</button>
+	</div>
 	  <li class="list-item">
 	    <div class="list-item__center">
 	      <button class="toolbar-button" style="width: 95%;" onclick="app.goToPage('setting')">
@@ -222,7 +184,7 @@
 	<ul class="list">
 	  <li class="list-item">
 	    <div class="list-item__center">
-	      <textarea name="" id="" rows="10" style="width: 100%;"></textarea>
+	      <textarea text="" id="" rows="10" style="width: 100%;"></textarea>
 	    </div>
 	  </li>
 	</ul>
@@ -282,7 +244,7 @@
 	  		<div class="color-circle-in-dlg" style="background-color: #ff0;"></div>
 	  		<div class="color-circle-in-dlg" style="background-color: #f0f;"></div>
 	  		<div class="color-circle-in-dlg" style="background-color: #0ff;"></div>
-	  		<input type="color" value="">
+	  		<input type="color" value="#ffffff">
 	  	</div>
 	  </div>
 	  <div class="alert-dialog-footer alert-dialog-footer--rowfooter">
@@ -295,37 +257,33 @@
 <script src="index.js"></script>
 <script>
 var dat = [
-	{ start: '4:00', end: '4:30', text: '移動', color: '#ccf', memo: '神楽坂ー池袋' },
-	{ start: '0:30', end: '0:30', text: '食事（自）', color: '#cfc', memo: '' },
-	{ start: '1:00', end: '1:30', text: 'ゲーム', color: '#fcc', memo: '' },
-	{ start: '2:00', end: '3:00', text: '読書', color: '#ffc', memo: '教養' },
-	{ start: '6:00', end: '10:00', text: '仕事', color: '#fcf', memo: '会社' }
+	{ start: '4:00', end: '4:30', activity: 3, memo: '神楽坂ー池袋' },
+	{ start: '0:30', end: '0:30', activity: 2, memo: '自' },
+	{ start: '1:00', end: '1:30', activity: 7, memo: '' },
+	{ start: '2:00', end: '3:00', activity: 5, memo: '教養' },
+	{ start: '6:00', end: '10:00', activity: 4, memo: '会社' }
+];
+var activity = [
+	{ key: 1, text: '睡眠', color: '#ccccff' },
+	{ key: 2, text: '食事', color: '#ccffcc' },
+	{ key: 3, text: '移動', color: '#ffcccc' },
+	{ key: 4, text: '仕事', color: '#9999cc' },
+	{ key: 5, text: '読書', color: '#99cc99' },
+	{ key: 6, text: 'ジム', color: '#cc9999' },
+	{ key: 7, text: 'ゲーム', color: '#9999ff' },
+	{ key: 8, text: 'Youtube', color: '#99ff99' },
+	{ key: 9, text: '買い物', color: '#ff9999' },
+	{ key: 10, text: '日記', color: '#cccccc' }
 ];
 
 document.addEventListener('init', function(event) {
   var page = event.target;
 
   if (page.id === 'home') {
-  	var line = document.getElementById('line');
-  	dat.forEach(function(d, i) {
-  		var s = d.start.split(':'),
-  			e = d.end.split(':'),
-  			h = parseInt(s[0]) * 2 + (s[1]=='00' ? 0 : 1),
-  			a = parseInt(e[0]) * 2 + (e[1]=='00' ? 0 : 1),
-  			css  = 'height: ' + ((a - h) * 30 - 3) + 'px;';
-  			css += 'top: ' + (70 + h * 30) + 'px;';
-  			css += 'background-color: ' + d.color + ';',
-  			div = document.createElement('div');
-  		div.innerHTML = d.text + ' ： ' + d.memo;
-  		div.className = 'act';
-  		div.style = css;
-  		div.onclick = function(e) {
-  			e.preventDefault();
-  			console.log(d.text, 'd', d, 'i', i);
-	        nav.pushPage('edit.html', dat[i]);
-  		};
-  		line.append(div);
-  	});
+  	app.showTimeline();
+  } else if(page.id === 'edit') {
+  	// console.log('init edit', event);
+  	app.showEdit(event.target.data);
   } else if(page.id === 'list') {
     page.querySelectorAll('.row').forEach(function(row) {
       row.onclick = function(evt) {
@@ -364,6 +322,47 @@ var app = {
   	inpCal.focus();
   	alert('calender?');
   	console.log('focus');
+  },
+  showTimeline : function() {
+  	var line = document.getElementById('line');
+  	dat.forEach(function(d, i) {
+  		var act = {};
+  		for(var i=0; i<activity.length; i++) {
+  			if(d.activity == activity[i].key) {
+  				act = activity[i]; break;
+  			}
+  		}
+  		var s = d.start.split(':'),
+  			e = d.end.split(':'),
+  			h = parseInt(s[0]) * 2 + (s[1]=='00' ? 0 : 1),
+  			a = parseInt(e[0]) * 2 + (e[1]=='00' ? 0 : 1),
+  			css  = 'height: ' + ((a - h) * 30 - 3) + 'px;';
+  			css += 'top: ' + (70 + h * 30) + 'px;';
+  			css += 'background-color: ' + act.color + ';',
+  			div = document.createElement('div');
+  		div.innerHTML = act.text + ' ： ' + d.memo;
+  		div.className = 'act';
+  		div.style = css;
+  		div.onclick = function(e) {
+			e.preventDefault();
+		    nav.pushPage('edit.html', { data: dat[i] } );
+  			// app.showEdit(i);
+  		};
+  		line.append(div);
+  	});
+  },
+  showEdit : function(data) {
+  	// var data = dat[dataIndex];
+  	var h = '';
+  	console.log('showEdit', data);
+  	activity.forEach(function(li, i) {
+	  h += '<label class="radio-button" style="margin: 8px;">'
+		+  '<input type="radio" class="radio-button__input" name="r">'
+		+  '<div class="radio-button__checkmark act-btn" style="background-color:' + li.color + '"></div>'
+		+  '' +  li.text + '</label>';
+  	});
+  	// document.getElementById('activity-list').innerHTML = h;
+  	document.getElementById('activity-buttons').innerHTML = h;
   }
 };
 
