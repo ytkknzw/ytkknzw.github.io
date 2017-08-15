@@ -36,6 +36,16 @@
 	.time:nth-child(even) {
 		border-bottom: dotted 1px #ccc;
 	}
+	.color-circle {
+		width: 16px; height: 16px;
+		border-radius: 8px;
+	}
+	.color-circle-in-dlg {
+		width: 28px; height: 28px;
+		border-radius: 14px;
+		float: left;
+		margin: 8px;
+	}
 	</style>
 
 	<script src="../assets/lib/onsenui-2.5.2//js/onsenui.min.js"></script>
@@ -46,21 +56,6 @@
 
 <ons-navigator id="myNavigator" page="home.html"></ons-navigator>
 
-
-<ons-template id="setting.html">
-  <ons-page id="setting">
-    <ons-toolbar>
-      <div class="left"><ons-back-button>Back</ons-back-button></div>
-      <div class="center">Setting</div>
-      <div class="right">
-        <ons-toolbar-button onclick="app.showDialog('dlg-mode');">
-        	<ons-icon icon="add"></ons-icon>
-        </ons-toolbar-button>
-      </div>
-    </ons-toolbar>
-
-  </ons-page>
-</ons-template>
 
 
 <ons-template id="stats.html">
@@ -87,13 +82,15 @@
         	<ons-icon icon="navicon"></ons-icon>
         </ons-toolbar-button>
       </div>
-      <div class="center">Aug 12, 2017</div>
+      <div class="center" onclick="app.showCalendar()">Aug 12, 2017</div>
       <div class="right">
         <ons-toolbar-button onclick="app.goToPage('edit');">
         	<ons-icon icon="pencil"></ons-icon> Edit
         </ons-toolbar-button>
       </div>
     </ons-toolbar>
+
+	<input type="date" id="inp-cal" value="" style="top: -40px; position: absolute;">
 
 <ons-gesture-detector>
   <div id="detect-area">
@@ -150,88 +147,73 @@
 	<ul class="list">
 	  <li class="list-item">
 	    <div class="list-item__center">Start</div>
-	    <div class="list-item__right">12:00</div>
+	    <div class="list-item__right">
+	    	<input type="time" value="12:00">
+	    </div>
 	  </li>
 	  <li class="list-item">
 	    <div class="list-item__center">End</div>
-	    <div class="list-item__right">12:30</div>
+	    <div class="list-item__right">
+	    	<input type="time" value="12:00">
+	    </div>
 	  </li>
 	</ul>
 	<div class="list-title">Activity</div>
 	<ul class="list">
 	  <li class="list-item list-item--tappable">
-	    <div class="list-item__center">
-			<label class="radio-button">
-			  <input type="radio" class="radio-button__input" name="r" checked="checked">
-			  <div class="radio-button__checkmark"></div>
-			  Label 1
-			</label>
+	    <div class="list-item__left">
+	      <div class="color-circle" style="background-color: #f00;"></div>
 	    </div>
-	  </li>
-	  <li class="list-item list-item--tappable">
 	    <div class="list-item__center">
-			<label class="radio-button">
-			  <input type="radio" class="radio-button__input" name="r">
-			  <div class="radio-button__checkmark"></div>
-			  Label 2
-			</label>
-	    </div>
-	  </li>
-	  <li class="list-item list-item--tappable">
-	    <div class="list-item__center">
-			<label class="radio-button">
-			  <input type="radio" class="radio-button__input" name="r">
-			  <div class="radio-button__checkmark"></div>
-			  Label 2
-			</label>
-	    </div>
-	  </li>
-	  <li class="list-item list-item--tappable">
-	    <div class="list-item__center">
-			<label class="radio-button">
-			  <input type="radio" class="radio-button__input" name="r">
-			  <div class="radio-button__checkmark"></div>
-			  Label 2
-			</label>
-	    </div>
-	  </li>
-	  <li class="list-item list-item--tappable">
-	    <div class="list-item__center">
-			<label class="radio-button">
-			  <input type="radio" class="radio-button__input" name="r">
-			  <div class="radio-button__checkmark"></div>
-			  Label 2
-			</label>
-	    </div>
-	  </li>
-	  <li class="list-item list-item--tappable">
-	    <div class="list-item__center">
-			<label class="radio-button">
-			  <input type="radio" class="radio-button__input" name="r">
-			  <div class="radio-button__checkmark"></div>
-			  Label 2
-			</label>
-	    </div>
-	  </li>
-	  <li class="list-item list-item--tappable">
-	    <div class="list-item__center">
-			<label class="radio-button">
-			  <input type="radio" class="radio-button__input" name="r">
-			  <div class="radio-button__checkmark"></div>
-			  Label 2
-			</label>
-	    </div>
-	  </li>
-	  <li class="list-item list-item--tappable">
-	    <div class="list-item__center">
-			<label class="radio-button">
-			  <input type="radio" class="radio-button__input" name="r">
-			  <div class="radio-button__checkmark"></div>
-
-			</label>
+		  <label class="radio-button" for="r0" style="width: 100%;">Label 0</label>
 	    </div>
 	    <div class="list-item__right">
-	    	<input type="text" value="" placeholder="something else" />
+		  <input type="radio" class="radio-button__input" name="r" id="r0">
+		  <div class="radio-button__checkmark"></div>
+	    </div>
+	  </li>
+	  <li class="list-item list-item--tappable">
+	    <div class="list-item__left">
+	      <div class="color-circle" style="background-color: #0f0;"></div>
+	    </div>
+	    <div class="list-item__center">
+		  <label class="radio-button" for="r1" style="width: 100%;">Label 1</label>
+	    </div>
+	    <div class="list-item__right">
+		  <input type="radio" class="radio-button__input" name="r" id="r1">
+		  <div class="radio-button__checkmark"></div>
+	    </div>
+	  </li>
+	  <li class="list-item list-item--tappable">
+	    <div class="list-item__left">
+	      <div class="color-circle" style="background-color: #00f;"></div>
+	    </div>
+	    <div class="list-item__center">
+		  <label class="radio-button" for="r2" style="width: 100%;">Label 2</label>
+	    </div>
+	    <div class="list-item__right">
+		  <input type="radio" class="radio-button__input" name="r" id="r2">
+		  <div class="radio-button__checkmark"></div>
+	    </div>
+	  </li>
+	  <li class="list-item list-item--tappable">
+	    <div class="list-item__left">
+	      <div class="color-circle" style="background-color: #ff0;"></div>
+	    </div>
+	    <div class="list-item__center">
+		  <label class="radio-button" for="r3" style="width: 100%;">Label 3</label>
+	    </div>
+	    <div class="list-item__right">
+		  <input type="radio" class="radio-button__input" name="r" id="r3">
+		  <div class="radio-button__checkmark"></div>
+	    </div>
+	  </li>
+	  <li class="list-item">
+	    <div class="list-item__center">
+	      <button class="toolbar-button" style="width: 95%;" onclick="app.goToPage('setting')">
+	      	<ons-icon icon="pencil"></ons-icon> 
+	      	Edit Activity List
+	      </button>
 	    </div>
 	  </li>
 	</ul>
@@ -239,7 +221,7 @@
 	<ul class="list">
 	  <li class="list-item">
 	    <div class="list-item__center">
-	      <textarea name="" id="" cols="30" rows="10"></textarea>
+	      <textarea name="" id="" rows="10" style="width: 100%;"></textarea>
 	    </div>
 	  </li>
 	</ul>
@@ -247,14 +229,57 @@
 </ons-template>
 
 
+<ons-template id="setting.html">
+  <ons-page id="setting">
+    <ons-toolbar>
+      <div class="left"><ons-back-button>Back</ons-back-button></div>
+      <div class="center">Setting</div>
+      <div class="right">
+        <ons-toolbar-button onclick="app.showDialog('dialog');">
+        	<ons-icon icon="plus"></ons-icon> Add
+        </ons-toolbar-button>
+      </div>
+    </ons-toolbar>
+
+	<div class="list-title">Activity</div>
+	<ul class="list">
+	  <li class="list-item" onclick="app.showDialog('dialog')">
+	    <div class="list-item__center">List 0</div>
+	    <div class="list-item__left">
+	      <div class="color-circle" style="background-color: #f00;"></div>
+	    </div>
+	  </li>
+	  <li class="list-item" onclick="app.showDialog('dialog')">
+	    <div class="list-item__center">List 1</div>
+	    <div class="list-item__left">
+	      <div class="color-circle" style="background-color: #0f0;"></div>
+	    </div>
+	  </li>
+	  <li class="list-item" onclick="app.showDialog('dialog')">
+	    <div class="list-item__center">List 2</div>
+	    <div class="list-item__left">
+	      <div class="color-circle" style="background-color: #00f;"></div>
+	    </div>
+	  </li>
+	</ul>
+
+  </ons-page>
+</ons-template>
+
 
 <ons-dialog id="dialog">
   <div class="alert-dialog-container">
-	  <div class="alert-dialog-title">ベンチプレス</div>
+	  <div class="alert-dialog-title">Color</div>
 	  <div class="alert-dialog-content">
-		<input type="number" style="width: 32px" value="45">kg x
-		<input type="number" style="width: 32px" value="12">reps =
-		540kg
+	  	<input type="text" class="text-input">
+	  	<div style="">
+	  		<div class="color-circle-in-dlg" style="background-color: #f00;"></div>
+	  		<div class="color-circle-in-dlg" style="background-color: #0f0;"></div>
+	  		<div class="color-circle-in-dlg" style="background-color: #00f;"></div>
+	  		<div class="color-circle-in-dlg" style="background-color: #ff0;"></div>
+	  		<div class="color-circle-in-dlg" style="background-color: #f0f;"></div>
+	  		<div class="color-circle-in-dlg" style="background-color: #0ff;"></div>
+	  	</div>
 	  </div>
 	  <div class="alert-dialog-footer alert-dialog-footer--rowfooter">
 	    <button class="alert-dialog-button alert-dialog-button--rowfooter" onclick="app.hideDialog('dialog')">Cancel</button>
@@ -331,6 +356,11 @@ var app = {
         dialog.show();
       });
     }
+  },
+  showCalendar : function() {
+  	var inpCal = document.getElementById('inp-cal');
+  	inpCal.focus();
+  	console.log('focus');
   }
 };
 
