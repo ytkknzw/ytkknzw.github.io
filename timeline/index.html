@@ -57,15 +57,14 @@
 <ons-navigator id="myNavigator" page="home.html"></ons-navigator>
 
 
-
 <ons-template id="stats.html">
   <ons-page id="stats">
     <ons-toolbar>
       <div class="left"><ons-back-button>Back</ons-back-button></div>
-      <div class="center">Aug 31, 2017 Edit</div>
+      <div class="center">Stats</div>
       <div class="right">
-        <ons-toolbar-button onclick="app.showDialog('dlg-mode');">
-        	<ons-icon icon="add"></ons-icon>
+        <ons-toolbar-button onclick="app.goToPage('setting');">
+        	<ons-icon icon="cog"></ons-icon>
         </ons-toolbar-button>
       </div>
     </ons-toolbar>
@@ -90,11 +89,13 @@
       </div>
     </ons-toolbar>
 
-	<input type="date" id="inp-cal" value="" style="top: -40px; position: absolute;">
 
 <ons-gesture-detector>
   <div id="detect-area">
-	<div style="height: 64px; border: solid 0px #f00;">height 64px</div>
+	<div style="height: 64px; border: solid 0px #f00;">
+		Aug 12, 2017
+		<input type="date" id="inp-cal" value="" style="display: block; width: 1px;">
+	</div>
 	<div id="line" style="border: solid 0px #ccc; border-top: double 3px #ccc; border-bottom: double 1px #ccc;">
 		<div style="border: solid 0px #0f0; width: 44px;" id="day-line">
 			<div class="time">0:00</div><div class="time">0:30</div>
@@ -269,16 +270,19 @@
 
 <ons-dialog id="dialog">
   <div class="alert-dialog-container">
-	  <div class="alert-dialog-title">Color</div>
+	  <div class="alert-dialog-title">アクティビティ</div>
 	  <div class="alert-dialog-content">
-	  	<input type="text" class="text-input">
-	  	<div style="">
+	  	<p>
+	  		<input type="text" class="text-input" style="text-align: center; border-bottom: solid 1px #ccc;" placeholder="activity">
+	  	</p>
+	  	<div style="padding: 8px 0 0 0;">
 	  		<div class="color-circle-in-dlg" style="background-color: #f00;"></div>
 	  		<div class="color-circle-in-dlg" style="background-color: #0f0;"></div>
 	  		<div class="color-circle-in-dlg" style="background-color: #00f;"></div>
 	  		<div class="color-circle-in-dlg" style="background-color: #ff0;"></div>
 	  		<div class="color-circle-in-dlg" style="background-color: #f0f;"></div>
 	  		<div class="color-circle-in-dlg" style="background-color: #0ff;"></div>
+	  		<input type="color" value="">
 	  	</div>
 	  </div>
 	  <div class="alert-dialog-footer alert-dialog-footer--rowfooter">
@@ -303,16 +307,15 @@ document.addEventListener('init', function(event) {
 
   if (page.id === 'home') {
   	var line = document.getElementById('line');
-  	console.log(line);
   	dat.forEach(function(d, i) {
-  		var s = d.start.split(':');
-  		var e = d.end.split(':');
-  		var h = parseInt(s[0]) * 2 + (s[1]=='00' ? 0 : 1);
-  		var a = parseInt(e[0]) * 2 + (e[1]=='00' ? 0 : 1);
-  		var css  = 'height: ' + ((a - h) * 30 - 3) + 'px;';
+  		var s = d.start.split(':'),
+  			e = d.end.split(':'),
+  			h = parseInt(s[0]) * 2 + (s[1]=='00' ? 0 : 1),
+  			a = parseInt(e[0]) * 2 + (e[1]=='00' ? 0 : 1),
+  			css  = 'height: ' + ((a - h) * 30 - 3) + 'px;';
   			css += 'top: ' + (70 + h * 30) + 'px;';
-  			css += 'background-color: ' + d.color + ';';
-  		var div = document.createElement('div');
+  			css += 'background-color: ' + d.color + ';',
+  			div = document.createElement('div');
   		div.innerHTML = d.text + ' ： ' + d.memo;
   		div.className = 'act';
   		div.style = css;
@@ -323,7 +326,6 @@ document.addEventListener('init', function(event) {
   		};
   		line.append(div);
   	});
-  	line.append();
   } else if(page.id === 'list') {
     page.querySelectorAll('.row').forEach(function(row) {
       row.onclick = function(evt) {
@@ -360,6 +362,7 @@ var app = {
   showCalendar : function() {
   	var inpCal = document.getElementById('inp-cal');
   	inpCal.focus();
+  	alert('calender?');
   	console.log('focus');
   }
 };
