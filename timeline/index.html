@@ -30,8 +30,21 @@
 		border-radius: 2px;
 		padding: 6px;
 		font-size: 11px;
-		width: calc(100% - 52px);
+		width: calc(100% - 52px - 52px);
 		color: #333;
+		text-shadow: 2px 2px 5px #999;
+	}
+	.feel {
+		box-sizing: border-box;
+		position: absolute;
+		right: 6px;
+		border-radius: 2px;
+		padding: 6px;
+		font-size: 13px;
+		width: 46px;
+		color: #fff;
+		text-shadow: 2px 2px 5px #999;
+		text-align: center;
 	}
 	.time:nth-child(even) {
 		border-bottom: dotted 1px #ccc;
@@ -205,26 +218,11 @@
     </ons-toolbar>
 
 	<div class="list-title">Activity</div>
-	<ul class="list">
-	  <li class="list-item" onclick="app.showDialog('dialog')">
-	    <div class="list-item__center">List 0</div>
-	    <div class="list-item__left">
-	      <div class="color-circle" style="background-color: #f00;"></div>
-	    </div>
-	  </li>
-	  <li class="list-item" onclick="app.showDialog('dialog')">
-	    <div class="list-item__center">List 1</div>
-	    <div class="list-item__left">
-	      <div class="color-circle" style="background-color: #0f0;"></div>
-	    </div>
-	  </li>
-	  <li class="list-item" onclick="app.showDialog('dialog')">
-	    <div class="list-item__center">List 2</div>
-	    <div class="list-item__left">
-	      <div class="color-circle" style="background-color: #00f;"></div>
-	    </div>
-	  </li>
-	</ul>
+	<div style="padding: 8px" id="">
+		<button class="act-btn" style="background-color: #ff0;" onclick="app.showDialog('dialog')">List 0</button>
+		<button class="act-btn" style="background-color: #f0f;" onclick="app.showDialog('dialog')">List 1</button>
+		<button class="act-btn" style="background-color: #0ff;" onclick="app.showDialog('dialog')">List 2</button>
+	</div>
 
   </ons-page>
 </ons-template>
@@ -263,6 +261,13 @@ var dat = [
 	{ start: '2:00', end: '3:00', activity: 5, memo: '教養' },
 	{ start: '6:00', end: '10:00', activity: 4, memo: '会社' }
 ];
+var feels = [
+	{ start: '4:00', duration: 1.5, value: 2 },
+	{ start: '0:30', duration: 0.5, value: 5 },
+	{ start: '1:00', duration: 1.0, value: 4 },
+	{ start: '2:00', duration: 2.0, value: 3 },
+	{ start: '8:00', duration: 2.0, value: 1 },
+];
 var activity = [
 	{ key: 1, text: '睡眠', color: '#ccccff' },
 	{ key: 2, text: '食事', color: '#ccffcc' },
@@ -275,6 +280,7 @@ var activity = [
 	{ key: 9, text: '買い物', color: '#ff9999' },
 	{ key: 10, text: '日記', color: '#cccccc' }
 ];
+var colors = ['#69c', '#9cf', '#cfc', '#fc6', '#f96'];
 
 document.addEventListener('init', function(event) {
   var page = event.target;
@@ -303,10 +309,13 @@ document.addEventListener('swipeleft', function(event) {
 
 
 var nav = document.querySelector('#myNavigator');
+
 var app = {
+
   goToPage    : function(pageId) { nav.pushPage(pageId + '.html'); },
   showDialog  : function(id) { document.getElementById(id).show(); },
   hideDialog  : function(id) { document.getElementById(id).hide(); },
+
   fromTemplate : function() {
     var dialog = document.getElementById('dialog-3');
     if (dialog) {
@@ -317,19 +326,21 @@ var app = {
       });
     }
   },
+
   showCalendar : function() {
   	var inpCal = document.getElementById('inp-cal');
   	inpCal.focus();
   	alert('calender?');
   	console.log('focus');
   },
+
   showTimeline : function() {
   	var line = document.getElementById('line');
   	dat.forEach(function(d, i) {
   		var act = {};
-  		for(var i=0; i<activity.length; i++) {
-  			if(d.activity == activity[i].key) {
-  				act = activity[i]; break;
+  		for(var j=0; j<activity.length; j++) {
+  			if(d.activity == activity[j].key) {
+  				act = activity[j]; break;
   			}
   		}
   		var s = d.start.split(':'),
@@ -350,18 +361,34 @@ var app = {
   		};
   		line.append(div);
   	});
+  	feels.forEach(function(d, i) {
+  		var s = d.start.split(':'),
+  			h = parseInt(s[0]) * 2 + (s[1]=='00' ? 0 : 1),
+  			e = d.duration,
+  			css  = 'height: ' + (e * 2 * 30 - 3) + 'px;';
+  			css += 'top: ' + (70 + h * 30) + 'px;';
+  			css += 'background-color: ' + colors[d.value - 1] + ';',
+  			div = document.createElement('div');
+  		div.innerHTML = d.value;
+  		div.className = 'feel';
+  		div.style = css;
+  		div.onclick = function(e) {
+			e.preventDefault();
+  		};
+  		line.append(div);
+  	});
   },
+
   showEdit : function(data) {
-  	// var data = dat[dataIndex];
-  	var h = '';
   	console.log('showEdit', data);
+  	var h = '';
   	activity.forEach(function(li, i) {
 	  h += '<label class="radio-button" style="margin: 8px;">'
-		+  '<input type="radio" class="radio-button__input" name="r">'
+		+  '<input type="radio" class="radio-button__input" name="r"' 
+		+  (li.key == data.activity ? ' checked' : '' ) + '>'
 		+  '<div class="radio-button__checkmark act-btn" style="background-color:' + li.color + '"></div>'
 		+  '' +  li.text + '</label>';
   	});
-  	// document.getElementById('activity-list').innerHTML = h;
   	document.getElementById('activity-buttons').innerHTML = h;
   }
 };
