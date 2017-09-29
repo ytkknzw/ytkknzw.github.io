@@ -16,8 +16,8 @@ var parts = [
         { key: 1303, en:"decline bench press", ja: "デクライン ベンチプレス" },
         { key: 1304, en:"bent-arm pullover", ja: "ベント アーム プルオーバー" }]},
     { key: 14, en:"self weight", ja: "自重", events: [
-        { key: 1401, en:"", ja: "プッシュアップ" },
-        { key: 1402, en:"", ja: "ディップス" }]} ]},
+        { key: 1401, en:"push up", ja: "プッシュアップ" },
+        { key: 1402, en:"dips", ja: "ディップス" }]} ]},
 { key: 2, en:"back", ja: "背中", img_path: "./img/back.jpg", categories: [
     { key: 21, en:"machine", ja: "マシン", events: [
         { key: 2101, en:"", ja: "ベントオーバー ローイング" },
@@ -116,4 +116,4 @@ var parts = [
 { key: 8, en:"wrist", ja: "前腕部", img_path: "./img/wrist.jpg", categories: [
     { key: 81, en:"machine", ja: "マシン", events: [
         { key: 70, en:"", ja: "リストカール" },
-        { key: 70, en:"", ja: "リストカール オン ベンチ" }]} ]};
+        { key: 70, en:"", ja: "リストカール オン ベンチ" }]} ]}];
