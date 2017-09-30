@@ -29,6 +29,7 @@
 			background-color: #f9f9f9;
 		}
 		.x { color: #00c; font-weight: bold; }
+		.b { font-size: 18px; font-weight: bold; }
 		#list td {
 			text-align: right;
 		}
@@ -43,7 +44,7 @@
 			float: left;
 			width: 80px;
 			text-align: center;
-			padding: 0; margin: 0;
+			padding: 0 8px; margin: 0;
 		}
 		.body {
 			width: 80px;
@@ -92,14 +93,6 @@
 				<th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th>
 			</tr>
 		</thead>
-		<tbody id="cal-body">
-<!-- 			<tr><td class="x">1</td><td>2</td><td>3</td><td class="x">4</td><td>5</td><td>6</td><td>7</td></tr>
-			<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-			<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
- -->		</tbody>
 	</table>
 
 	<div style="padding: 16px;">
@@ -107,24 +100,32 @@
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At perspiciatis possimus ratione fugit ipsa! Deserunt incidunt modi fugit possimus excepturi officia, impedit distinctio vitae eos, qui dicta blanditiis, nostrum cum!</p>
 
 		<table id="list" style="width: 100%;">
+			<thead>
+				<tr><td>#</td><td>weight</td><td>&times;</td><td>reps</td>
+					<td>=</td><td>sum</td><td>:</td><td>total</td></tr>
+			</thead>
 			<tbody>
 				<tr><th class="event-title" colspan="6">Shoulder Press</th></tr>
-				<tr><td>1</td><td><span class="b">45</span> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td></tr>
-				<tr><td>2</td><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td></tr>
+				<tr><td>1</td><td class="b">45.00</td><td>&times;</td><td>12</td>
+					<td>=</td><td>540</td><td>:</td><td>540</td></tr>
+				<tr><td>2</td><td class="b">45.00</td><td>&times;</td><td>12</td>
+					<td>=</td><td>540</td><td>:</td><td>540</td></tr>
 
 				<tr><th class="event-title" colspan="6">Bench Press</th></tr>
-				<tr><td>1</td><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td></tr>
-				<tr><td>2</td><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td></tr>
+				<tr><td>1</td><td class="b">20.00</td><td>&times;</td><td class="b">20</td>
+					<td>=</td><td>400</td><td>:</td><td>400</td></tr>
+				<tr><td>2</td><td class="b">50.00</td><td>&times;</td><td class="b">10</td>
+					<td>=</td><td>500</td><td>:</td><td>900</td></tr>
+				<tr><td>3</td><td class="b">50.00</td><td>&times;</td><td class="b">8</td>
+					<td>=</td><td>400</td><td>:</td><td>1300</td></tr>
+				<tr><td>4</td><td class="b">50.00</td><td>&times;</td><td class="b">6</td>
+					<td>=</td><td>300</td><td>:</td><td>1600</td></tr>
 
 				<tr><th class="event-title" colspan="6">Dumbbell Press</th></tr>
-				<tr><td>1</td><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td></tr>
-				<tr><td>2</td><td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td></tr>
+				<tr><td>1</td><td class="b">45.00</td><td>&times;</td><td class="b">12</td>
+					<td>=</td><td>540</td><td>:</td><td>540</td></tr>
+				<tr><td>2</td><td class="b">45.00</td><td>&times;</td><td class="b">12</td>
+					<td>=</td><td>540</td><td>:</td><td>540</td></tr>
 			</tbody>
 		</table>
 		<div style="height: 256px;">&nbsp;</div>
@@ -137,7 +138,7 @@
   <ons-page id="list">
     <ons-toolbar>
       <div class="left"><ons-back-button>Back</ons-back-button></div>
-      <div class="center">Aug 31, 2017 Edit</div>
+      <div class="center">Aug 31 Edit</div>
       <div class="right">
         <ons-toolbar-button onclick="app.showDialog('dlg-mode');">
         	<ons-icon icon="cog"></ons-icon>
@@ -175,42 +176,48 @@
 		  </div>
 		</div>
 		<div>&nbsp;</div>
-		<table id="list" style="width: 100%; ">
+		<table id="list" style="width: 100%;">
+			<thead>
+				<tr><td>#</td><td>weight</td><td>&times;</td><td>reps</td>
+					<td>=</td><td>sum</td><td>:</td><td>total</td></tr>
+			</thead>
 			<tbody>
-				<tr><th class="event-title" colspan="7">Shoulder Press</th>
-					<td colspan="2"><ons-icon icon="plus" onclick="app.showDialog('dialog');"></ons-icon></td></tr>
+				<tr><th class="event-title" colspan="8">Shoulder Press</th>
+					<td><ons-icon class="btn" icon="plus" onclick="app.showDialog('dialog');"></ons-icon></td></tr>
 				<tr style="border-bottom: solid 1px #ccc; height: 32px;"><td>1</td>
-					<td><big><b>45.00</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td>
-					<td><ons-icon icon="edit" onclick="app.showDialog('dialog');"></ons-icon></td></tr>
+					<td><big><b>45.00</b></big></td><td>&times;</td><td><big><b>12</b></big></td>
+					<td>=</td><td>540</td><td>:</td><td>540</td>
+					<td><ons-icon class="btn-edit" icon="pencil" onclick="app.showDialog('dialog');"></ons-icon>
+						<ons-icon class="btn-del" icon="minus" onclick="alert('del');"></ons-icon></td></tr>
 				<tr style="border-bottom: solid 1px #ccc; height: 32px;"><td>2</td>
-					<td><big><b>45.25</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>543 kg</td><td>:</td><td>1083 kg</td>
-					<td><ons-icon icon="pencil" onclick="app.showDialog('dialog');"></ons-icon></td></tr>
+					<td><big><b>45.25</b></big></td><td>&times;</td><td><big><b>12</b></big></td>
+					<td>=</td><td>543</td><td>:</td><td>1083</td>
+					<td><ons-icon class="btn-edit" icon="pencil" onclick="app.showDialog('dialog');"></ons-icon>
+						<ons-icon class="btn-del" icon="minus" onclick="alert('del');"></ons-icon></td></tr>
 				<tr><td>&nbsp;</td></tr>
 
 				<tr><th class="event-title" colspan="7">Bench Press</th>
 					<td colspan="2"><i class="material-icons">add</i></td></tr>
-				<tr><td>1</td>
-					<td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td>
-					<td><i class="material-icons">edit</i></td></tr>
-				<tr><td>2</td>
-					<td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td>
-					<td><i class="material-icons">edit</i></td></tr>
+				<tr style="border-bottom: solid 1px #ccc; height: 32px;"><td>1</td>
+					<td><big><b>45.00</b></big></td><td>&times;</td><td><big><b>12</b></big></td>
+					<td>=</td><td>540</td><td>:</td><td>540</td>
+					<td><ons-icon icon="edit" onclick="app.showDialog('dialog');"></ons-icon></td></tr>
+				<tr style="border-bottom: solid 1px #ccc; height: 32px;"><td>2</td>
+					<td><big><b>45.25</b></big></td><td>&times;</td><td><big><b>12</b></big></td>
+					<td>=</td><td>543</td><td>:</td><td>1083</td>
+					<td><ons-icon icon="pencil" onclick="app.showDialog('dialog');"></ons-icon></td></tr>
 				<tr><td>&nbsp;</td></tr>
 
 				<tr><th class="event-title" colspan="7">Dumbbell Press</th>
 					<td colspan="2"><i class="material-icons">add</i></td></tr>
-				<tr><td>1</td>
-					<td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>540 kg</td>
-					<td><i class="material-icons">edit</i></td></tr>
-				<tr><td>2</td>
-					<td><big><b>45</b></big> kg</td><td>&times;</td><td><big><b>12</b></big> reps</td>
-					<td>=</td><td>540 kg</td><td>:</td><td>1080 kg</td>
-					<td><i class="material-icons">edit</i></td></tr>
+				<tr style="border-bottom: solid 1px #ccc; height: 32px;"><td>1</td>
+					<td><big><b>45.00</b></big></td><td>&times;</td><td><big><b>12</b></big></td>
+					<td>=</td><td>540</td><td>:</td><td>540</td>
+					<td><ons-icon icon="edit" onclick="app.showDialog('dialog');"></ons-icon></td></tr>
+				<tr style="border-bottom: solid 1px #ccc; height: 32px;"><td>2</td>
+					<td><big><b>45.25</b></big></td><td>&times;</td><td><big><b>12</b></big></td>
+					<td>=</td><td>543</td><td>:</td><td>1083</td>
+					<td><ons-icon icon="pencil" onclick="app.showDialog('dialog');"></ons-icon></td></tr>
 				<tr><td>&nbsp;</td></tr>
 			</tbody>
 		</table>
@@ -228,52 +235,27 @@
   <ons-page id="events">
     <ons-toolbar>
       <div class="left"><ons-back-button>Back</ons-back-button></div>
-      <div class="center">Aug 31, 2017</div>
+      <div class="center">Add Event</div>
     </ons-toolbar>
 
-	<div style="padding: 16px;" id="part-buttons">
-		<div class="part-button">
-			<i class="material-icons">favorite</i> Favorite</div>
-
-		<div class="part-button">
-			<img class="body" src="../assets/img/body/back.jpg" alt="back"> Back</div>
-		<div class="part-button">
-			<img class="body" src="../assets/img/body/chest.jpg" alt=""> Chest</div>
-		<div class="part-button">
-			<img class="body" src="../assets/img/body/abdominal.jpg" alt=""> Abs</div>
-		<div class="part-button">
-			<img class="body" src="../assets/img/body/biceps.jpg" alt=""> Biceps</div>
-		<div class="part-button">
-			<img class="body" src="../assets/img/body/triceps.jpg" alt=""> Triceps</div>
-		<div class="part-button">
-			<img class="body" src="../assets/img/body/shoulder.jpg" alt=""> Shoulder</div>
-		<div class="part-button">
-			<img class="body" src="../assets/img/body/legs.jpg" alt=""> Legs</div>
-		<div class="part-button">
-			<img class="body" src="../assets/img/body/calf.jpg" alt=""> Calf</div>
-		<div class="part-button">
-			<img class="body" src="../assets/img/body/wrist.jpg" alt=""> Wrist</div>
-		<div class="part-button">
-			<img class="body" src="../assets/img/body/power.jpg" alt=""> Power</div>
+	<div style="width: 100%; height: 128px; overflow-x: scroll;">
+		<div style="padding: 16px; width: 960px;" id="part-buttons">
+		</div>
 	</div>
 
 	<div style="clear: both;"></div>
+
+	<ul class="list" id="event-list">
+	</ul>
+
 	<ul class="list">
-		<li class="list-item">
-			<div class="list-item__center">
-				aaa
-			</div>
-			<div class="list-item__right">
-				<img class="list-item__thumbnail" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAIAAAADnC86AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3wwJCB8v/9zErgAAABl0RVh0Q29tbWVudABDcmVhdGVkIHdpdGggR0lNUFeBDhcAAAAvSURBVFjD7c0BDQAACAMgtX+KJzWGm4MCdJK6MHVELBaLxWKxWCwWi8VisVj8MV7qBgI2A8rYpgAAAABJRU5ErkJggg==">
-			</div>
-		</li>
 		<li class="list-item list-item--tappable">
-			<div class="list-item__left">
-				<i class="material-icons">checkbox-blank</i>
-			</div>
 			<label for="s1" class="list-item__center">
 			  Checkbox
 			</label>
+			<div class="list-item__left">
+				<i class="material-icons">checkbox-blank</i>
+			</div>
 		</li>
   	</ul>
 
@@ -523,22 +505,48 @@ var app = {
     }
   },
   createPartButton: function (){
-  	var p = {}, img = '', h = '<div class="part-button"><i class="material-icons">favorite</i> Favorite</div>';
+  	var p = {}, img = '', h = '<div class="part-button" onclick="app.showFavoriteList();">'
+  		+ '<i class="material-icons">favorite</i> Favorite</div>';
   	for(var i=0, l=parts.length; i<l; i++) {
   		p = parts[i];
   		img = p.img_path.split('/')[2];
-  		h += '<div class="part-button">'
+  		h += '<div class="part-button" onclick="app.showEventsList('+ i +');">'
 		  + '<img class="body" src="../assets/img/body/' + img + '" alt="back"> ' + p.en + '</div>';
 	}
 	var el = document.getElementById('part-buttons');
-	console.log(el);
 	el.innerHTML = h;
+  },
+  showFavoriteList: function() {
+	var h = '';
+		var cat = parts[9].categories;
+  	for(var j=0, cl=cat.length; j<cl; j++) {
+  		var c = cat[j];
+  		h += '<li class="list-header">' + c.en + ' - ' + c.ja + '</li>'
+	  	for(var k=0, el=c.events.length; k<el; k++) {
+	  		var e = c.events[k];
+	  		h += '<li class="list-item list-item--tappable"><label for="s1" class="list-item__center">' + e.ja + '<br/>' + e.en + '</label></li>'
+	  	}
+  	}
+	var ul = document.getElementById('event-list');
+	ul.innerHTML = h;
+  },
+  showEventsList: function(index) {
+	var h = '';
+		var cat = parts[index].categories;
+  	for(var j=0, cl=cat.length; j<cl; j++) {
+  		var c = cat[j];
+  		h += '<li class="list-header">' + c.en + ' - ' + c.ja + '</li>'
+	  	for(var k=0, el=c.events.length; k<el; k++) {
+	  		var e = c.events[k];
+	  		h += '<li class="list-item list-item--tappable"><label for="s1" class="list-item__center">' + e.ja + '<br/>' + e.en + '</label></li>'
+	  	}
+  	}
+	var ul = document.getElementById('event-list');
+	ul.innerHTML = h;
   }
 };
 
-window.onload = function() {
-	// app.createPartButton();
-};
+
 
 const DAYS_IN_MONTH  = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 const MONTH_EN_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -550,7 +558,8 @@ class Calendar {
 		this.y = this.targetDate.getFullYear();
 		this.m = this.targetDate.getMonth();
 
-		let body = document.getElementById('cal-body');
+		let cal = document.getElementById('cal');
+		let body = document.createElement('tbody');
 		for(let r=0; r<6; r++){
 			let tr = document.createElement('tr');
 			for(let c=0; c<7; c++){
@@ -560,6 +569,7 @@ class Calendar {
 			}
 			body.append(tr);
 		}
+		cal.append(body);
 	}
 	isLeapYear() {
 		return ((this.y % 4 == 0) && (this.y % 100 != 0)) || (this.y % 400 == 0)
@@ -584,6 +594,8 @@ class Calendar {
 		// this.render();
 		let day1st = new Date(this.y, this.m, 1).getDay();
 		let days = DAYS_IN_MONTH[this.m] + (this.m==2 ? this.isLeapYear() : 0);
+
+
 		let rows = Math.ceil((day1st+days)/7);
 		console.log('rows', (day1st+days)/7, rows, 'day1st', day1st, (day1st+days));
 		let cells = document.querySelectorAll('#cal td');
@@ -609,8 +621,28 @@ class Calendar {
 	render() {
 	}
 };
-var calendar = new Calendar();
-calendar.changeMonth(0);
+
+	var calendar = null;
+
+document.addEventListener('init', function(event) {
+  var page = event.target;
+
+  if (page.id === 'page1') {
+    page.querySelector('#push-button').onclick = function() {
+      document.querySelector('#myNavigator').pushPage('page2.html', {data: {title: 'Page 2'}});
+    };
+  } else if (page.id === 'page2') {
+    page.querySelector('ons-toolbar .center').innerHTML = page.data.title;
+  } else if (page.id === 'home') {
+  	calendar = new Calendar();
+	calendar.changeMonth(0);
+  } else if (page.id === 'events') {
+    app.createPartButton();
+  }
+});
+window.onload = function() {
+	// app.createPartButton();
+};
 </script>
 </body>
 </html>
