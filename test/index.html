@@ -23,14 +23,31 @@
 			$result.html(err);
 		})
 	}
+
+
+	function vib(sec) {
+		var isVibrate = navigator.vibrate || navigator.webkitVibrate || navigator.mozVibrate || navigator.msVibrate;
+		$('#result').html("対応して" + (isVibrate ? "いる!" : "いない!"));
+		if(isVibrate) {
+			navigator.vibrate(sec);
+		}
+	}
 	</script>
 </head>
 <body style="padding: 16px;">
+	<h4>Download Speed</h4>
 	<div class="panel">
 		<button class="btn btn-default" onclick="test('5m')">5M</button>
 		<button class="btn btn-default" onclick="test('10m')">10M</button>
 		<button class="btn btn-default" onclick="test('20m')">20M</button>
 	</div>
 	<div class="well" style="font-family: monospace; text-align: right; font-size: 32px;" id="result"></div>
+	<br/>
+	<h4>Vibration</h4>
+	<button class="btn btn-default" onclick="vib(5000)">Vibrate 5sec</button>
+	<button class="btn btn-default" onclick="vib([1000,1000,1000,1000,1000])">Vibrate 1,1sec</button>
+	<button class="btn btn-default" onclick="vib(10000)">Vibrate Start</button>
+	<button class="btn btn-default" onclick="vib(0)">Vibrate Stop</button>
+
 </body>
 </html>

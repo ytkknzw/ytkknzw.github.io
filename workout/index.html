@@ -67,19 +67,20 @@
 
 <ons-template id="home.html">
   <ons-page id="home">
-    <ons-toolbar>
-      <div class="left">
-        <ons-toolbar-button onclick="app.fromTemplate();">
-        	<ons-icon icon="navicon"></ons-icon>
-        </ons-toolbar-button>
+    <div class="toolbar">
+      <div class="toolbar__left">
+        <span class="toolbar-button onclick="app.fromTemplate();">
+        	<i class="ion-navicon"></i>
+        </span>
       </div>
-      <div class="center">Aug 12, 2017</div>
-      <div class="right">
-        <ons-toolbar-button onclick="app.goToPage('list');">
-        	<ons-icon icon="pencil"></ons-icon> Edit
-        </ons-toolbar-button>
+      <div class="toolbar__center">Aug 12, 2017</div>
+      <div class="toolbar__right">
+        <span class="toolbar-button toolbar-button--outline" onclick="app.goToPage('edit');">
+        	Record Today <i class="ion-edit"></i>
+        </span>
       </div>
-    </ons-toolbar>
+    </div>
+
 
 	<table id="cal" style="width: 100%; border-collapse: collapse;">
 		<thead>
@@ -94,6 +95,28 @@
 			</tr>
 		</thead>
 	</table>
+
+
+	<div style="padding: 16px;">
+	</div>
+  </ons-page>
+</ons-template>
+
+<ons-template id="detail.html">
+  <ons-page id="detail">
+    <ons-toolbar>
+      <div class="left">
+        <ons-toolbar-button onclick="app.fromTemplate();">
+        	<ons-icon icon="navicon"></ons-icon>
+        </ons-toolbar-button>
+      </div>
+      <div class="center">Aug 12, 2017</div>
+      <div class="right">
+        <ons-toolbar-button onclick="app.goToPage('edit');">
+        	<ons-icon icon="pencil"></ons-icon> Edit
+        </ons-toolbar-button>
+      </div>
+    </ons-toolbar>
 
 	<div style="padding: 16px;">
 		<div style="font-size: 18px;">Memo</div>
@@ -134,8 +157,8 @@
 </ons-template>
 
 
-<ons-template id="list.html">
-  <ons-page id="list">
+<ons-template id="edit.html">
+  <ons-page id="edit">
     <ons-toolbar>
       <div class="left"><ons-back-button>Back</ons-back-button></div>
       <div class="center">Aug 31 Edit</div>
@@ -182,18 +205,20 @@
 					<td>=</td><td>sum</td><td>:</td><td>total</td></tr>
 			</thead>
 			<tbody>
-				<tr><th class="event-title" colspan="8">Shoulder Press</th>
-					<td><ons-icon class="btn" icon="plus" onclick="app.showDialog('dialog');"></ons-icon></td></tr>
-				<tr style="border-bottom: solid 1px #ccc; height: 32px;"><td>1</td>
+				<tr onclick="app.showDialog('dialog');"><th class="event-title" colspan="8">Shoulder Press</th>
+					<td><ons-icon class="btn" icon="plus"></ons-icon></td></tr>
+				<tr onclick="app.showDialog('dialog');" style="border-bottom: solid 1px #ccc; height: 32px;">
+					<td>1</td>
 					<td><big><b>45.00</b></big></td><td>&times;</td><td><big><b>12</b></big></td>
 					<td>=</td><td>540</td><td>:</td><td>540</td>
-					<td><ons-icon class="btn-edit" icon="pencil" onclick="app.showDialog('dialog');"></ons-icon>
-						<ons-icon class="btn-del" icon="minus" onclick="alert('del');"></ons-icon></td></tr>
-				<tr style="border-bottom: solid 1px #ccc; height: 32px;"><td>2</td>
+					<td><ons-icon class="btn-edit" icon="pencil"></ons-icon>
+						<ons-icon class="btn-del" icon="minus"></ons-icon></td></tr>
+				<tr onclick="app.showDialog('dialog');" style="border-bottom: solid 1px #ccc; height: 32px;">
+					<td>2</td>
 					<td><big><b>45.25</b></big></td><td>&times;</td><td><big><b>12</b></big></td>
 					<td>=</td><td>543</td><td>:</td><td>1083</td>
-					<td><ons-icon class="btn-edit" icon="pencil" onclick="app.showDialog('dialog');"></ons-icon>
-						<ons-icon class="btn-del" icon="minus" onclick="alert('del');"></ons-icon></td></tr>
+					<td><ons-icon class="btn-edit" icon="pencil"></ons-icon>
+						<ons-icon class="btn-del" icon="minus"></ons-icon></td></tr>
 				<tr><td>&nbsp;</td></tr>
 
 				<tr><th class="event-title" colspan="7">Bench Press</th>
@@ -279,212 +304,6 @@
 </ons-dialog>
 
 
-<div style="display: none;" class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
-    <main class="mdl-layout__content">
-			<ul>
-				<li><a href="#">胸</a></li>
-				<ul>
-					<li class="wo-cat">バーベル</li>
-					<ul>
-						<li><a class="wo-list" href="#bench-press">ベンチプレス</a></li>
-						<li><a class="wo-list" href="#incline-bench-press">インクラインベンチプレス</a></li>
-						<li><a class="wo-list" href="#decline-bench-press">デクラインベンチプレス</a></li>
-						<li><a class="wo-list" href="#bent-arm-pull-over">ベントアームプルオーバー</a></li>
-					</ul>
-					<li class="wo-cat">ダンベル</li>
-					<ul>
-						<li><a class="wo-list" href="#">ダンベルフライ</a></li>
-						<li><a class="wo-list" href="#">インクラインダンベルフライ</a></li>
-						<li><a class="wo-list" href="#">ダンベルベンチプレス</a></li>
-						<li><a class="wo-list" href="#">インクラインダンベルベンチプレス</a></li>
-						<li><a class="wo-list" href="#">ダンベルプルオーバー</a></li>
-					</ul>
-					<li class="wo-cat">マシン</li>
-					<ul>
-						<li><a class="wo-list" href="#">バタフライマシン</a></li>
-						<li><a class="wo-list" href="#">ケーブルクロスオーバー</a></li>
-					</ul>
-					<li class="wo-cat">自重(器具なし)</li>
-					<ul>
-						<li><a class="wo-list" href="#">ディップス</a></li>
-						<li><a class="wo-list" href="#">プッシュアップ</a></li>
-					</ul>
-				</ul>
-				<li><a href="#">背中</a></li>
-				<ul>
-					<li class="wo-cat">バーベル</li>
-					<ul>
-						<li><a class="wo-list" href="#">ベントオーバーローイング</a></li>
-						<li><a class="wo-list" href="#">デッドリフト</a></li>
-						<li><a class="wo-list" href="#">バックエクステンション</a></li>
-						<li><a class="wo-list" href="#">ベンドオーバー</a></li>
-						<li><a class="wo-list" href="#">ベントアームプルオーバー</a></li>
-					</ul>
-					<li class="wo-cat">ダンベル</li>
-					<ul>
-						<li><a class="wo-list" href="#">ダンベルプルオーバー</a></li>
-						<li><a class="wo-list" href="#">ワンハンドローイング</a></li>
-					</ul>
-					<li class="wo-cat">マシン</li>
-					<ul>
-						<li><a class="wo-list" href="#">ラットプルダウン</a></li>
-						<li><a class="wo-list" href="#">シーテッドプーリーロー</a></li>
-					</ul>
-					<li class="wo-cat">自重(器具なし)</li>
-					<ul>
-						<li><a class="wo-list" href="#">チンニング</a></li>
-					</ul>
-				</ul>
-				<li><a href="#">肩</a></li>
-				<ul>
-					<li class="wo-cat">バーベル</li>
-					<ul>
-						<li><a class="wo-list" href="#">スタンディングロー</a></li>
-						<li><a class="wo-list" href="#">バックプレス</a></li>
-						<li><a class="wo-list" href="#">フロントプレス</a></li>
-						<li><a class="wo-list" href="#">バーベルシュラッグ</a></li>
-						<li><a class="wo-list" href="#">ベントオーバーフロントプルアップ</a></li>
-						<li><a class="wo-list" href="#">プルアップトゥチェスト</a></li>
-					</ul>
-					<li class="wo-cat">ダンベル</li>
-					<ul>
-						<li><a class="wo-list" href="#">サイドレイズ</a></li>
-						<li><a class="wo-list" href="#">ダンベルプレス</a></li>
-						<li><a class="wo-list" href="#">ベントオーバーラテラル</a></li>
-						<li><a class="wo-list" href="#">フロントレイズ</a></li>
-						<li><a class="wo-list" href="#">ダンベルシュラッグ</a></li>
-						<li><a class="wo-list" href="#">ワンハンドラテラル</a></li>
-					</ul>
-					<li class="wo-cat">マシン</li>
-					<ul>
-						<li><a class="wo-list" href="#">ケーブルサイドレイズ</a></li>
-						<li><a class="wo-list" href="#">ケーブルフロントレイズ</a></li>
-					</ul>
-					<li class="wo-cat">自重(器具なし)</li>
-					<ul>
-						<li><a class="wo-list" href="#">ハンドスタンドプッシュアップ</a></li>
-					</ul>
-				</ul>
-				<li><a href="#">上腕三頭筋</a></li>
-				<ul>
-					<li class="wo-cat">バーベル</li>
-					<ul>
-						<li><a class="wo-list" href="#">フレンチプレス</a></li>
-						<li><a class="wo-list" href="#">トライセプスエクステンション</a></li>
-						<li><a class="wo-list" href="#">ナローグリップベンチプレス</a></li>
-					</ul>
-					<li class="wo-cat">ダンベル</li>
-					<ul>
-						<li><a class="wo-list" href="#">ワンハンドトライセプスエクステンションスタンディング</a></li>
-						<li><a class="wo-list" href="#">ワンハンドトライセプスエクステンションライイング</a></li>
-						<li><a class="wo-list" href="#">トライセプスキックバック</a></li>
-					</ul>
-					<li class="wo-cat">マシン</li>
-					<ul>
-						<li><a class="wo-list" href="#">ケーブルトライセプスエクステンション</a></li>
-						<li><a class="wo-list" href="#">プレスダウン</a></li>
-					</ul>
-					<li class="wo-cat">自重(器具なし)</li>
-					<ul>
-						<li><a class="wo-list" href="#">ナロープッシュアップ</a></li>
-						<li><a class="wo-list" href="#">リバースプッシュアップ</a></li>
-					</ul>
-				</ul>
-				<li><a href="#">上腕二頭筋</a></li>
-				<ul>
-					<li class="wo-cat">バーベル</li>
-					<ul>
-						<li><a class="wo-list" href="#">バーベルカール</a></li>
-						<li><a class="wo-list" href="#">プリーチャーズベンチカール</a></li>
-					</ul>
-					<li class="wo-cat">ダンベル</li>
-					<ul>
-						<li><a class="wo-list" href="#">ダンベルカール</a></li>
-						<li><a class="wo-list" href="#">コンセントレーションカール</a></li>
-						<li><a class="wo-list" href="#">インクラインカール</a></li>
-						<li><a class="wo-list" href="#">ハンマーカール</a></li>
-						<li><a class="wo-list" href="#">ライイングダウンカール</a></li>
-					</ul>
-					<li class="wo-cat">マシン</li>
-					<ul>
-						<li><a class="wo-list" href="#">ケーブルカール</a></li>
-					</ul>
-				</ul>
-				<li><a href="#">腹筋</a></li>
-				<ul>
-					<li class="wo-cat">バーベル</li>
-					<ul>
-						<li><a class="wo-list" href="#">プローンローリング</a></li>
-					</ul>
-					<li class="wo-cat">ダンベル</li>
-					<ul>
-						<li><a class="wo-list" href="#">サイドベンド</a></li>
-					</ul>
-					<li class="wo-cat">マシン</li>
-					<ul>
-						<li><a class="wo-list" href="#">ケーブルクランチ</a></li>
-						<li><a class="wo-list" href="#">ロープクランチ</a></li>
-					</ul>
-					<li class="wo-cat">自重(器具なし)</li>
-					<ul>
-						<li><a class="wo-list" href="#">ストレートレッグクランチ</a></li>
-						<li><a class="wo-list" href="#">シットアップ</a></li>
-						<li><a class="wo-list" href="#">クランチ</a></li>
-						<li><a class="wo-list" href="#">ヒップレイズ</a></li>
-						<li><a class="wo-list" href="#">レッグレイズ</a></li>
-						<li><a class="wo-list" href="#">ハンギングレッグレイズ</a></li>
-						<li><a class="wo-list" href="#">ボディアーチ</a></li>
-					</ul>
-				</ul>
-				<li><a href="#">足</a></li>
-				<ul>
-					<li class="wo-cat">バーベル</li>
-					<ul>
-						<li><a class="wo-list" href="#">フルスクワット</a></li>
-						<li><a class="wo-list" href="#">ランジ</a></li>
-						<li><a class="wo-list" href="#">フロントスクワット</a></li>
-						<li><a class="wo-list" href="#">ハックリフト</a></li>
-					</ul>
-					<li class="wo-cat">マシン</li>
-					<ul>
-						<li><a class="wo-list" href="#">レッグプレス</a></li>
-						<li><a class="wo-list" href="#">レッグエクステンション</a></li>
-						<li><a class="wo-list" href="#">レッグカール</a></li>
-					</ul>
-					<li class="wo-cat">自重(器具なし)</li>
-					<ul>
-						<li><a class="wo-list" href="#">ワンレッグスクワット</a></li>
-						<li><a class="wo-list" href="#">シッシースクワット</a></li>
-					</ul>
-				</ul>
-				<li><a href="#">ふくらはぎ</a></li>
-				<ul>
-					<li class="wo-cat">マシン</li>
-					<ul>
-						<li><a class="wo-list" href="#">カーフレイズオンレッグプレスマシン</a></li>
-						<li><a class="wo-list" href="#">ケーブルカール</a></li>
-					</ul>
-				</ul>
-				<li><a href="#">前腕部</a></li>
-				<ul>
-					<li class="wo-cat">バーベル</li>
-					<ul>
-						<li><a class="wo-list" href="#">リストカール</a></li>
-						<li><a class="wo-list" href="#">リストカールオンベンチ</a></li>
-					</ul>
-				</ul>
-				<li><a href="#">全身パワー系</a></li>
-				<ul>
-					<li class="wo-cat">バーベル</li>
-					<ul>
-						<li><a class="wo-list" href="#">ハイクリーン</a></li>
-					</ul>
-				</ul>
-			</ul>
-		</div>
-
-    </main>
-</div>
 
 <script src="index.js"></script>
 <script src="data.js"></script>
@@ -505,44 +324,44 @@ var app = {
     }
   },
   createPartButton: function (){
-  	var p = {}, img = '', h = '<div class="part-button" onclick="app.showFavoriteList();">'
-  		+ '<i class="material-icons">favorite</i> Favorite</div>';
+  	var p = {}, img = '', 
+  		h = '<div class="part-button" onclick="app.showFavoriteList();">'
+  		  + '<i class="material-icons">favorite</i> Favorite</div>';
   	for(var i=0, l=parts.length; i<l; i++) {
   		p = parts[i];
   		img = p.img_path.split('/')[2];
   		h += '<div class="part-button" onclick="app.showEventsList('+ i +');">'
 		  + '<img class="body" src="../assets/img/body/' + img + '" alt="back"> ' + p.en + '</div>';
 	}
-	var el = document.getElementById('part-buttons');
-	el.innerHTML = h;
+	document.getElementById('part-buttons').innerHTML = h;
   },
   showFavoriteList: function() {
-	var h = '';
-		var cat = parts[9].categories;
+	var h = '', cat = parts[9].categories;
   	for(var j=0, cl=cat.length; j<cl; j++) {
   		var c = cat[j];
   		h += '<li class="list-header">' + c.en + ' - ' + c.ja + '</li>'
 	  	for(var k=0, el=c.events.length; k<el; k++) {
 	  		var e = c.events[k];
-	  		h += '<li class="list-item list-item--tappable"><label for="s1" class="list-item__center">' + e.ja + '<br/>' + e.en + '</label></li>'
+	  		h += '<li class="list-item list-item--tappable">'
+	  		  +  '<label for="s1" class="list-item__center">' + e.ja + '<br/>' + e.en + '</label></li>'
 	  	}
   	}
-	var ul = document.getElementById('event-list');
-	ul.innerHTML = h;
+	document.getElementById('event-list').innerHTML = h;
   },
   showEventsList: function(index) {
-	var h = '';
-		var cat = parts[index].categories;
+	var h = '', cat = parts[index].categories;
   	for(var j=0, cl=cat.length; j<cl; j++) {
   		var c = cat[j];
   		h += '<li class="list-header">' + c.en + ' - ' + c.ja + '</li>'
 	  	for(var k=0, el=c.events.length; k<el; k++) {
 	  		var e = c.events[k];
-	  		h += '<li class="list-item list-item--tappable"><label for="s1" class="list-item__center">' + e.ja + '<br/>' + e.en + '</label></li>'
+	  		h += '<li class="list-item list-item--tappable" onclick="alert('+ e.key +')">'
+	  		  +  '<div class="list-item__center">'
+	  		  +  '<div class="list-item__title">' + e.en + '</div>'
+	  		  +  '<div class="list-item__subtitle">' + e.ja + '</div></div></li>';
 	  	}
   	}
-	var ul = document.getElementById('event-list');
-	ul.innerHTML = h;
+	document.getElementById('event-list').innerHTML = h;
   }
 };
 
@@ -622,10 +441,10 @@ class Calendar {
 	}
 };
 
-	var calendar = null;
+	let calendar = null;
 
 document.addEventListener('init', function(event) {
-  var page = event.target;
+  let page = event.target;
 
   if (page.id === 'page1') {
     page.querySelector('#push-button').onclick = function() {
