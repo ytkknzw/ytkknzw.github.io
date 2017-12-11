@@ -239,7 +239,7 @@
     </div>
 
 
-<script src="/assets/lib/jquery-3.2.1.min.js"></script>
+<script src="assets/lib/jquery-3.2.1.min.js"></script>
 <script>
     var list = [];
     window.onload = function () {
@@ -269,7 +269,7 @@
         dat.forEach( (j, i) => {
             h += `<div class="item card-1 ${j.priority}" data-index="${i}" data-data-id="${i}">`;
             if(j.image && j.image != ''){
-                h += `<img class="item-thumb thumb32" src="img/${j.image}" />`;
+                h += `<img class="item-thumb thumb32" src="data/img/${j.image}" />`;
             }
                 h += `<div>
                         <div class="item-title">${j.title}</div>
