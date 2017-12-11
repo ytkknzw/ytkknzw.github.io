@@ -1,0 +1,525 @@
+[{
+    "_id" : "5a2cd57066e9862036ee5772",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "0",
+    "details" : [ 
+        "map", 
+        "table", 
+        "timeline"
+    ],
+    "image" : "box-01.png",
+    "title" : "Information 01",
+    "subtitle" : "subtitle 01",
+    "description" : "description 01 description 01 description 01 description 01 ",
+    "status" : "0",
+    "priority" : "High",
+    "rank" : "2.9",
+    "tags" : "null",
+    "number" : "8591",
+    "quantity" : "38",
+    "unit" : "l",
+    "progress" : "37"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5773",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "0",
+    "details" : [ 
+        "map"
+    ],
+    "image" : "box-02.png",
+    "title" : "Information 02",
+    "subtitle" : "subtitle 02",
+    "description" : "description 02 description 02 description 02 description 02 ",
+    "status" : "1",
+    "priority" : "Low",
+    "rank" : "0.4",
+    "tags" : [ 
+        "0:abc", 
+        "2:123", 
+        "1:2017"
+    ],
+    "number" : "9644",
+    "quantity" : "45",
+    "unit" : "kg",
+    "progress" : "93"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5774",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "0",
+    "details" : [ 
+        "timeline"
+    ],
+    "image" : "box-03.png",
+    "title" : "Information 03",
+    "subtitle" : "subtitle 03",
+    "description" : "description 03 description 03description 03description 03",
+    "status" : "2",
+    "priority" : "Normal",
+    "rank" : "5",
+    "tags" : "null",
+    "number" : "1759",
+    "quantity" : "71",
+    "unit" : "g",
+    "progress" : "56"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5775",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "0",
+    "details" : [ 
+        "table", 
+        "profile"
+    ],
+    "image" : "box-04.png",
+    "title" : "Information 04",
+    "subtitle" : "subtitle 04",
+    "description" : "description 04description 04description 04description 04",
+    "status" : "3",
+    "priority" : "High",
+    "rank" : "2.9",
+    "tags" : [ 
+        "0:abc", 
+        "1:2017"
+    ],
+    "number" : "1742",
+    "quantity" : "19",
+    "unit" : "cm",
+    "progress" : "53"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5776",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "0",
+    "details" : [ 
+        "chart"
+    ],
+    "image" : "box-05.png",
+    "title" : "Information 05",
+    "subtitle" : "subtitle 05",
+    "description" : "description 05description 05description 05description 05",
+    "status" : "0",
+    "priority" : "Low",
+    "rank" : "4.2",
+    "tags" : "null",
+    "number" : "161",
+    "quantity" : "82",
+    "unit" : "ml",
+    "progress" : "86"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5777",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "0",
+    "details" : "null",
+    "image" : "box-06.png",
+    "title" : "Information 06",
+    "subtitle" : "subtitle 06",
+    "description" : "description 06description 06description 06description 06",
+    "status" : "1",
+    "priority" : "Low",
+    "rank" : "1.9",
+    "tags" : [ 
+        "2:123", 
+        "1:2017"
+    ],
+    "number" : "3727",
+    "quantity" : "35",
+    "unit" : "kg",
+    "progress" : "74"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5778",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "0",
+    "details" : "null",
+    "image" : "box-07.png",
+    "title" : "Information 07",
+    "subtitle" : "subtitle 07",
+    "description" : "description 07description 07description 07description 07",
+    "status" : "2",
+    "priority" : "Low",
+    "rank" : "0.6",
+    "tags" : "null",
+    "number" : "3261",
+    "quantity" : "42",
+    "unit" : "mm",
+    "progress" : "36"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5779",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "0",
+    "details" : "null",
+    "image" : "box-08.png",
+    "title" : "Information 08",
+    "subtitle" : "subtitle 08",
+    "description" : "description 08description 08description 08description 08",
+    "status" : "3",
+    "priority" : "Normal",
+    "rank" : "1.6",
+    "tags" : "null",
+    "number" : "1190",
+    "quantity" : "59",
+    "unit" : "m",
+    "progress" : "24"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee577a",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "1",
+    "details" : "null",
+    "image" : "box-09.png",
+    "title" : "Item Title 01",
+    "subtitle" : "subtitle 09",
+    "description" : "description 09description 09description 09description 09",
+    "status" : "0",
+    "priority" : "Normal",
+    "rank" : "1.3",
+    "tags" : "null",
+    "number" : "8368",
+    "quantity" : "43",
+    "unit" : "nm",
+    "progress" : "40"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee577b",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "1",
+    "details" : "null",
+    "image" : "box-10.png",
+    "title" : "Item Title 02",
+    "subtitle" : "subtitle 10",
+    "description" : "description 10description 10description 10description 10",
+    "status" : "1",
+    "priority" : "High",
+    "rank" : "4.8",
+    "tags" : "null",
+    "number" : "5285",
+    "quantity" : "3",
+    "unit" : "mile",
+    "progress" : "76"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee577c",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "1",
+    "details" : "null",
+    "image" : "box-01.png",
+    "title" : "Item Title 03",
+    "subtitle" : "subtitle 11",
+    "description" : "description 11description 11description 11description 11",
+    "status" : "2",
+    "priority" : "Low",
+    "rank" : "4",
+    "tags" : "null",
+    "number" : "1208",
+    "quantity" : "12",
+    "unit" : "lbs",
+    "progress" : "91"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee577d",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "1",
+    "details" : "null",
+    "image" : "box-02.png",
+    "title" : "Item Title 04",
+    "subtitle" : "subtitle 12",
+    "description" : "description 12description 12description 12description 12",
+    "status" : "3",
+    "priority" : "Normal",
+    "rank" : "2",
+    "tags" : "null",
+    "number" : "7211",
+    "quantity" : "82",
+    "unit" : "feet",
+    "progress" : "27"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee577e",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "1",
+    "details" : "null",
+    "image" : "box-03.png",
+    "title" : "Item Title 05",
+    "subtitle" : "subtitle 13",
+    "description" : "description 13description 13description 13description 13",
+    "status" : "0",
+    "priority" : "High",
+    "rank" : "2.1",
+    "tags" : "null",
+    "number" : "3840",
+    "quantity" : "19",
+    "unit" : "ha",
+    "progress" : "13"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee577f",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "1",
+    "details" : "null",
+    "image" : "box-04.png",
+    "title" : "Item Title 06",
+    "subtitle" : "subtitle 14",
+    "description" : "description 14description 14description 14description 14",
+    "status" : "1",
+    "priority" : "Low",
+    "rank" : "2.5",
+    "tags" : "null",
+    "number" : "6438",
+    "quantity" : "65",
+    "unit" : "a",
+    "progress" : "21"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5780",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "1",
+    "details" : "null",
+    "image" : "box-05.png",
+    "title" : "Item Title 07",
+    "subtitle" : "subtitle 15",
+    "description" : "description 15description 15description 15description 15",
+    "status" : "2",
+    "priority" : "Normal",
+    "rank" : "0.6",
+    "tags" : "null",
+    "number" : "4612",
+    "quantity" : "97",
+    "unit" : "t",
+    "progress" : "98"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5781",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "1",
+    "details" : "null",
+    "image" : "box-06.png",
+    "title" : "Item Title 08",
+    "subtitle" : "subtitle 16",
+    "description" : "description 16description 16description 16description 16",
+    "status" : "3",
+    "priority" : "High",
+    "rank" : "3.2",
+    "tags" : "null",
+    "number" : "9901",
+    "quantity" : "11",
+    "unit" : "m2",
+    "progress" : "28"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5782",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "2",
+    "details" : "null",
+    "image" : "box-07.png",
+    "title" : "Notification 01",
+    "subtitle" : "subtitle 17",
+    "description" : "description 17description 17description 17description 17",
+    "status" : "0",
+    "priority" : "Low",
+    "rank" : "0.6",
+    "tags" : "null",
+    "number" : "3079",
+    "quantity" : "30",
+    "unit" : "m3",
+    "progress" : "84"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5783",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "2",
+    "details" : "null",
+    "image" : "box-08.png",
+    "title" : "Notification 02",
+    "subtitle" : "subtitle 18",
+    "description" : "description 18description 18description 18description 18",
+    "status" : "1",
+    "priority" : "Normal",
+    "rank" : "1.5",
+    "tags" : "null",
+    "number" : "2732",
+    "quantity" : "79",
+    "unit" : "t",
+    "progress" : "88"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5784",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "2",
+    "details" : "null",
+    "image" : "box-09.png",
+    "title" : "Notification 03",
+    "subtitle" : "subtitle 19",
+    "description" : "description 19description 19description 19description 19",
+    "status" : "2",
+    "priority" : "High",
+    "rank" : "4.5",
+    "tags" : "null",
+    "number" : "1606",
+    "quantity" : "51",
+    "unit" : "mm",
+    "progress" : "3"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5785",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "2",
+    "details" : "null",
+    "image" : "",
+    "title" : "Notification 04",
+    "subtitle" : "subtitle 20",
+    "description" : "description 20description 20description 20description 20",
+    "status" : "3",
+    "priority" : "Low",
+    "rank" : "4.3",
+    "tags" : "null",
+    "number" : "8434",
+    "quantity" : "52",
+    "unit" : "kl",
+    "progress" : "34"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5786",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "2",
+    "details" : "null",
+    "image" : "",
+    "title" : "Notification 05",
+    "subtitle" : "subtitle 21",
+    "description" : "description 21description 21description 21description 21",
+    "status" : "0",
+    "priority" : "Normal",
+    "rank" : "2.1",
+    "tags" : "null",
+    "number" : "9915",
+    "quantity" : "50",
+    "unit" : "g",
+    "progress" : "61"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5787",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "2",
+    "details" : "null",
+    "image" : "",
+    "title" : "Notification 06",
+    "subtitle" : "subtitle 22",
+    "description" : "description 22description 22description 22description 22",
+    "status" : "1",
+    "priority" : "High",
+    "rank" : "3.2",
+    "tags" : "null",
+    "number" : "5040",
+    "quantity" : "75",
+    "unit" : "m",
+    "progress" : "41"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5788",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "2",
+    "details" : "null",
+    "image" : "",
+    "title" : "Notification 07",
+    "subtitle" : "subtitle 23",
+    "description" : "description 23description 23description 23description 23",
+    "status" : "2",
+    "priority" : "Low",
+    "rank" : "1.2",
+    "tags" : "null",
+    "number" : "9045",
+    "quantity" : "88",
+    "unit" : "l",
+    "progress" : "88"
+},
+
+
+{
+    "_id" : "5a2cd57066e9862036ee5789",
+    "hiduke" : "2017/12/10 15:33",
+    "created_by" : "kanazawa",
+    "item_type" : "2",
+    "details" : "null",
+    "image" : "",
+    "title" : "Notification 08",
+    "subtitle" : "subtitle 24",
+    "description" : "description 24description 24description 24description 24",
+    "status" : "3",
+    "priority" : "Normal",
+    "rank" : "3.9",
+    "tags" : "null",
+    "number" : "9609",
+    "quantity" : "41",
+    "unit" : "cm",
+    "progress" : "84"
+}]

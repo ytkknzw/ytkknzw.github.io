@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>lara 55</title>
+    <style>
+        html, body {
+            background-color: #f9f9f9;
+            /*color: #636b6f;*/
+            font-family: Helvetica, 'Helvetica Neue', system, sans-serif;
+            font-weight: 100;
+            width: 100%; height: 100%;
+            margin: 0; padding: 0;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        h3 {
+            /*background-color: #fff;*/
+            padding: 4px 8px;
+            border-left: solid 4px #ccc;
+            border-bottom: solid 1px #ccc;
+        }
+        a {
+            color: #636bff;
+            padding: 0 25px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+        }
+        #top-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: baseline;
+            box-sizing: border-box;
+            height: 44px;
+            max-height: 44px;
+            background-color: #fff;
+            border-bottom: solid 1px #ddd;
+        }
+        #top-bar > * {
+            /*border: solid 1px #f00;*/
+            white-space: nowrap;
+        }
+        .top-logo {
+            box-sizing: border-box;
+            font-size: 22px;
+            font-weight: 300;
+            padding: 7px 32px 0px 16px;
+            letter-spacing: .05em;
+        }
+        .top-menu {
+            flex-shrink: 10;
+            flex-grow: 10;
+
+        }
+        .top-user {
+            max-height: 44px;
+            font-size: 15px;
+            font-weight: 300;
+            padding: 11px 16px;
+            letter-spacing: .1em;
+        }
+        .top-search {
+            box-sizing: border-box;
+            border: solid 1px #ccc;
+            border-radius: 16px;
+            height: 32px;
+            font-size: 16px;
+            outline: none;
+            padding: 3px 16px 3px 32px;
+            margin: 4px 0px;
+            /*background-image: url();*/
+        }
+        .top-search:focus {
+            border: solid 1px #33f;
+            background-color: #eef;
+        }
+        #content-container {
+            box-sizing: border-box;
+            height: calc(100% - 44px);
+            /*max-height: calc(100% - 44px);*/
+            display: flex;
+            align-items: stretch;
+            flex-wrap: nowrap;
+            flex-direction: row;
+        }
+        #div-nav {
+            box-sizing: border-box;
+            width: 220px;
+            min-width: 220px;
+            border-right: solid 1px #ccc;
+            overflow: auto;
+            background-color: #fff;
+        }
+        #div-collection {
+            box-sizing: border-box;
+            width: 280px;
+            min-width: 280px;
+            border-right: solid 1px #ccc;
+            overflow: auto;
+        }
+        #div-content {
+            box-sizing: border-box;
+            overflow: auto;
+            padding: 24px;
+        }
+        .item:hover {
+            background-color: #eee;
+        }
+        .card {
+            /*border: solid 1px #ddd;*/
+            border-radius: 4px;
+            padding: 8px;
+            margin: 16px;
+            background-color: #fcfcfc;
+            cursor: pointer;
+            color: #666;
+            font-family: Arial;
+            box-shadow: 0 0 5px rgba(128, 128, 128, .5);
+        }
+        .card-1 {
+            display: flex;
+            border: solid 1px #ddd;
+            padding: 8px;
+            margin: -1px;
+            background-color: #fcfcfc;
+            cursor: pointer;
+            /*color: #666;*/
+            font-family: Arial;
+            font-size: 14px;
+        }
+        .item-title {
+            font-weight: 800;
+            font-size: 18px;
+        }
+        .item-subtitle {
+            font-weight: 200;
+            font-size: 13px;
+            color: #333;
+            line-height: 200%;
+        }
+        .item-description {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 190px;
+            font-size: 13px;
+            color: #999;
+        }
+        .item-thumb {
+            margin-right: 8px;
+        }
+        .thumb32 {
+            max-width: 64px; max-height: 64px;
+            /*max-width: 32px; max-height: 32px;*/
+        }
+        .High   { border-left: solid 8px #900; }
+        .Normal { border-left: solid 8px #ccc; }
+        .Low    { border-left: solid 8px #36f; }
+
+        .tbl-detail th, .tbl-detail td {
+            border: solid 1px #ccc;
+            padding: 8px 16px;
+        }
+        .tbl-detail th {
+            background-color: #eee;
+        }
+        .tbl-detail td {
+            background-color: #fff;
+        }
+        .tag {
+            display: inline-block;
+            /*line-height: 200%;*/
+            margin: 8px 4px 2px 0px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            background-color: #ccc;
+        }
+        .tag-0 { background-color: #f99; }
+        .tag-1 { background-color: #9f9; }
+        .tag-2 { background-color: #99f; }
+        .tag-3 { background-color: #f9f; }
+    </style>
+</head>
+<body>
+
+    <div id="top-bar">
+        <div class="top-bar-left top-logo">Lara 55</div>
+        <div class="top-bar-left top-menu">Home &nbsp; / &nbsp; Menu &nbsp; / &nbsp; Menu_Item</div>
+        <input class="top-bar-right top-search"/>
+        <div class="top-bar-right top-user">me@somewhere.localhost</div>
+    </div>
+
+    <div id="content-container">
+
+        <div id="div-nav">
+            <div style="padding: 8px; border-bottom: solid 1px #ccc; font-weight: 400;">Category 1</div>
+            <ul>
+                <li>Inbox (<b>123</b>)</li>
+                <li>Favorite (<b>9</b>)</li>
+                <li>Trash (<b>13</b>)</li>
+            </ul>
+            <div style="padding: 8px; border-top: solid 1px #ccc; border-bottom: solid 1px #ccc; font-weight: 400;">Category 2</div>
+            <ul>
+                <li>menu 01</li>
+                <li>menu 02</li>
+                <li>menu 03</li>
+            </ul>
+            <div style="padding: 8px; border-top: solid 1px #ccc; border-bottom: solid 1px #ccc; font-weight: 400;">Category 2</div>
+            <ul>
+                <li>menu 01</li>
+                <li>menu 02</li>
+                <li>menu 03</li>
+            </ul>
+        </div>
+
+        <div id="div-collection">
+        </div>
+
+        <div id="div-content">
+
+            <div style="min-height: 1000px;">
+                <div id="ts"></div>
+                <h2>Detail</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi voluptatum beatae natus doloribus dolore, rem vel cupiditate obcaecati quod, eum ratione aliquid minima libero debitis, aperiam. Repudiandae, id? Id, inventore.</p>
+                <div id="detail_section"></div>
+                <hr/>
+                <div id="disp"></div>
+                
+            </div>
+
+        </div>
+        
+    </div>
+
+
+<script src="/assets/lib/jquery-3.2.1.min.js"></script>
+<script>
+    var list = [];
+    window.onload = function () {
+        $.ajax({
+            method: 'GET',
+            // url: '/lara55/data/v0/info'
+            url: 'data/v0/info.json'
+        })
+        .done(function(data) {
+            list = data;
+            // console.log(data);
+            buildList(data);
+        })
+        .fail(function(dat, status, err) {
+            alert('faild: ' + err.message );
+        })
+        .always(function() {
+            var d = new Date();
+            ts.innerHTML = d.getFullYear() +'-'+ (d.getMonth() + 1) +'-'+ d.getDate() 
+                + ' ' + d.getHours() +':'+ d.getMinutes() +':'+ d.getSeconds();
+        });
+    }
+
+    function buildList(dat) {
+        var h = '';
+        console.log(dat);
+        dat.forEach( (j, i) => {
+            h += `<div class="item card-1 ${j.priority}" data-index="${i}" data-data-id="${i}">`;
+            if(j.image && j.image != ''){
+                h += `<img class="item-thumb thumb32" src="img/${j.image}" />`;
+            }
+                h += `<div>
+                        <div class="item-title">${j.title}</div>
+                        <div class="item-subtitle">${j.subtitle}</div>
+                        <div class="item-description">${j.description}</div>`;
+            if(j.tags != 'null') {
+                j.tags.forEach(t => {
+                    var s = t.split(':');
+                    h += `<span class="tag tag-${s[0]}">${s[1]}</span>`
+                })
+            }
+            h += `</div></div>` 
+        });
+        // console.log(h);
+        document.getElementById('div-collection').innerHTML = h;
+        $('.item').on('click', function() {
+            var i = $(this).data('index');
+            // getDetailInfo(list[i]._id);
+            buildDetail(list[i]);
+        });
+    }
+    function getDetailInfo(dataId) {
+        // alert(dataId);
+        $.ajax({
+            method: 'GET',
+            url: '/lara55/data/v0/info/' + dataId
+        })
+        .done(function(data) {
+            buildDetail(data);
+        })
+        .fail(function(dat, status, err) {
+            console.log(dat, status, err);
+            alert('faild: ' + err.message );
+        })
+        .always(function() {
+            // alert();
+        });
+    }
+    function buildDetail(data) {
+        console.log(data);
+        var h = '';
+
+        h += '<table class="tbl-detail">';
+        Object.keys(data).forEach(k => {
+            h += `<tr><th>${k}</th><td>${data[k]}</td></tr>`;
+        });
+        h += '</table>';
+        disp.innerHTML = h;
+
+        h = '';
+        if(data.details == 'null') {
+            h += '';            
+        } else {
+            for(var i=0,l=data.details.length; i<l; i++) {
+                var type = data.details[i];
+                h += '<h3>' + type.toUpperCase() + '</h3><div style="height: 60px"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic ipsam officiis, iusto iste quod molestiae, quis dolore sed, minus quos eius rem. Quaerat vel magnam quae tempora, ratione pariatur nam.</p></div>';
+                if(type == 'map') {
+                    // h += '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.2242118077083!2d139.76658941504868!3d35.69609978019081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188c034b8b099b%3A0x4174ea7521f708b1!2z56We55SwIOOBvuOBpOOChA!5e0!3m2!1sja!2sjp!4v1512892360815"  height="450" frameborder="0" style="border:0; width: 100%;" allowfullscreen></iframe>';
+                }
+            }
+        }
+        detail_section.innerHTML = h;
+    }
+
+</script>
+</body>
+</html>
