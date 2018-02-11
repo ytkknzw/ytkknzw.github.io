@@ -1,0 +1,17 @@
+{
+  "isError": false,
+  "detailInfo": {
+    "propertyName": "aaaa Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias deserunt, doloremque voluptate adipisci aliquid assumenda fuga officiis commodi pariatur nulla odio, praesentium autem tempora similique accusamus deleniti rem odit unde?",
+    "buildingName": "bb",
+    "roomName": "cc",
+    "devices": [{
+      "lvNumber": "lvNumber eee",
+      "itemName": "itemName fff",
+      "serialNumber": "serialNumber ggg"
+    }, {
+      "lvNumber": "333",
+      "itemName": "222",
+      "serialNumber": "111"
+    }]
+  }
+}
