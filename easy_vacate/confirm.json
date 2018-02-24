@@ -1,8 +1,0 @@
-{
-  "isError": true,
-  "detailInfo": {
-    "statusCode": 401,
-    "errorCode": "(ng error code)",
-    "errorMessage": "(ng message)"
-  }
-}
