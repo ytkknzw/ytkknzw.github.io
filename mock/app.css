@@ -21,7 +21,7 @@ img {
 }
 
 .app-header {
-  position: absolute;
+  position: fixed;
   display: flex;
   box-sizing: border-box;
   align-items: center;
