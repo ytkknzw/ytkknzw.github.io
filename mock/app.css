@@ -16,6 +16,7 @@ img {
 
 #app {
   position: relative;
+  display: flex;
 }
 
 .app-header {
@@ -23,7 +24,6 @@ img {
   display: flex;
   box-sizing: border-box;
   align-items: center;
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
   width: 100%; 
@@ -34,16 +34,14 @@ img {
 }
 
 .app-menu {
-  position: absolute;
+  position: relative;
   box-sizing: border-box;
-  top: 44px;
-  left: 0;
-  bottom: 0;
   width: 256px;
   overflow-y: auto;
-  margin: 0;
+  margin: 44px 0 0 0;
   padding: 0;
   background-color: #f3f3f3;
+  -webkit-overflow-scrolling: touch
   /*border-right: solid 1px #ddd;*/
 }
 .app-menu.hide {
@@ -51,16 +49,14 @@ img {
 }
 
 .app-content {
-  position: absolute;
+  /*position: absolute;*/
   box-sizing: border-box;
-  top: 44px;
-  left: 256px;
-  right: 0px;
-  bottom: 0;
-  margin: 0;
+  margin: 44px 0 0 0;
   padding: 12px;
   background-color: #fafafa;
   overflow: auto;
+  flex-grow: 1;
+  -webkit-overflow-scrolling: touch
 }
 
 .app-logo {
