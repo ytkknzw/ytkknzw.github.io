@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" href="./css/fontello.css">
-    <link rel="stylesheet" href="app.css">
-    <title>mock AC</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" href="./lib/handsontable/handsontable.full.min.css">
+  <link rel="stylesheet" href="./css/fontello.css">
+  <link rel="stylesheet" href="app.css">
+  <title>mock AC</title>
 </head>
 <body>
 
@@ -43,6 +44,8 @@
       <div class="menu-item">menu 1-b</div>
       <div class="menu-item">menu 1-c</div>
     </div>
+    <div class="menu-item">menu item 0</div>
+    <div class="menu-item">menu item 1</div>
     <!-- <div style="height: 900px;">a</div> -->
     <div class="menu-group-title">menu 2</div>
     <div class="menu-group">
@@ -50,13 +53,24 @@
       <div class="menu-item">menu 2-b</div>
       <div class="menu-item">menu 2-c</div>
     </div>
-    <div class="menu-item">menu 2-a</div>
-    <div class="menu-item">menu 2-a</div>
-    <div class="menu-group-title">menu 2</div>
+    <div class="menu-group-title">menu 3</div>
     <div class="menu-group">
-      <div class="menu-item">menu 2-a</div>
-      <div class="menu-item">menu 2-b</div>
-      <div class="menu-item">menu 2-c</div>
+      <div class="menu-item">menu 3-a</div>
+      <div class="menu-item">menu 3-b</div>
+      <!-- 
+      <div class="menu-group-title">menu 3-c</div>
+      <div class="menu-group">
+        <div class="menu-item">menu 3-c-1</div>
+        <div class="menu-item">menu 3-c-2</div>
+        <div class="menu-item">menu 3-c-3</div>
+      </div>
+       -->
+    </div>
+    <div class="menu-group-title">menu 4</div>
+    <div class="menu-group">
+      <div class="menu-item">menu 4-a</div>
+      <div class="menu-item">menu 4-b</div>
+      <div class="menu-item">menu 4-c</div>
     </div>
     <div class="menu-group-title">menu 2</div>
     <div class="menu-group">
@@ -64,46 +78,60 @@
       <div class="menu-item">menu 2-b</div>
       <div class="menu-item">menu 2-c</div>
     </div>
-    <div class="menu-group-title">menu 2</div>
-    <div class="menu-group">
-      <div class="menu-item">menu 2-a</div>
-      <div class="menu-item">menu 2-b</div>
-      <div class="menu-item">menu 2-c</div>
-    </div>
+    <div class="menu-item">menu item 3</div>
+    <div class="menu-item">menu item 4</div>
     <div class="app-copyright">
-      &copy; 2018
+      &copy; ME 2018
     </div>
   </div>
 
   <div class="app-content">
-    <h1>content</h1>
-    <div style="height: 900px;">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officiis sint provident sunt tempore ipsum aspernatur, consectetur voluptas libero vel deleniti odio blanditiis. Ullam unde commodi, illum obcaecati quis fugit.
-      <div>
+
+    <div class="content-header" style="height: 44px;">
+
+      <button class="primary">Save</button>
+      <button>Check</button>
+      <div style="display: inline-block; width: 16px;"></div>
+      <button>Undo</button>
+      <div style="display: inline-block; width: 16px;"></div>
+      <button class="btn-filter">Filter</button>
+
+      <div class="pagination">
+        <button>&laquo;</button>
+        <button>&lt;</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>&gt;</button>
+        <button>&raquo;</button>
+        <span>1 - 100 / 256</span>
+      </div>
+      <div style="display: inline-block; width: 16px;"></div>
+      <button>Download</button>
+
+    </div>
+
+    <div style="height: px;">
+      <div style="display: block;">
         <label for="t">Label</label>
-        <input type="text" id="t" value="i have a pen.">
+        <div class="form text">
+          <input type="text" id="t" value="i have a pen.">
+          <span>aa</span>
+        </div>
         <input type="radio">
         <input type="checkbox">
         <input type="local-datetime">
       </div>
-    </div>
-    <div style="height: 900px;">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officiis sint provident sunt tempore ipsum aspernatur, consectetur voluptas libero vel deleniti odio blanditiis. Ullam unde commodi, illum obcaecati quis fugit.
+      <div id="hot"></div>
     </div>
     <div>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic officiis sint provident sunt tempore ipsum aspernatur, consectetur voluptas libero vel deleniti odio blanditiis. Ullam unde commodi, illum obcaecati quis fugit.
     </div>
   </div>
 
-<!--   <div class="app-overlay" style="position: fixed; height: 100%; width: 100%; background-color: rgba(0,0,0,.05); z-index: 2; display: flex; align-items: center; justify-content: space-around;">
-    <div class="app-dialog" style="width: 512px; background-color: #fff;">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima velit modi asperiores cupiditate magni porro obcaecati, quae odio non, eveniet dolor rem neque nostrum, itaque. Ratione, aut sint! Eaque, est.
-    </div>
-  </div>
- -->
-
 </div>
 
+<script src="lib/handsontable/handsontable.full.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
