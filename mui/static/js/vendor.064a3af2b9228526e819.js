@@ -547,4 +547,3 @@ var i;"undefined"!=typeof self&&self,i=function(e,t,n){return function(e){var t=
  * author : Anatoli Papirovski : https://github.com/apapirovski
  */
 (function(){"use strict";var t={langLocaleCode:"ru-UA",cultureCode:"ru-UA",delimiters:{thousands:" ",decimal:","},abbreviations:{thousand:"тыс.",million:"млн",billion:"b",trillion:"t"},ordinal:function(){return"."},currency:{symbol:"₴",position:"postfix"},defaults:{currencyFormat:",4 a"},formats:{fourDigits:"4 a",fullWithTwoDecimals:",0.00 $",fullWithTwoDecimalsNoCurrency:",0.00",fullWithNoDecimals:",0 $"}};void 0!==e&&e.exports&&(e.exports=t),"undefined"!=typeof window&&window.numbro&&window.numbro.culture&&window.numbro.culture(t.cultureCode,t)}).call("undefined"==typeof window?this:window)}});
-//# sourceMappingURL=vendor.064a3af2b9228526e819.js.map
