@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "35114708a1be096c7f3cd21f9c93c94c",
-    "url": "/sake/img/gear.png"
+    "revision": "de231fef4cb1153eeb05f1383d865452",
+    "url": "/sake/img/back.png"
   },
   {
     "revision": "ccdc573f5a842edec2ac8ad6e0cd4a21",
@@ -12,15 +12,15 @@ self.__precacheManifest = [
     "url": "/sake/robots.txt"
   },
   {
-    "revision": "f830d1abbc220c12f2003c3ef53f4bc1",
-    "url": "/sake/img/placeholder.png"
+    "revision": "0e629f98f6293fbe2c6660593cb5fb44",
+    "url": "/sake/img/noImage.png"
   },
   {
-    "revision": "76103fc7c869bf41c06d",
+    "revision": "31cacff90b4fc3ed222d",
     "url": "/sake/js/index.js"
   },
   {
-    "revision": "80c429390286f33d1e69",
+    "revision": "3ce04660decce4e19a8f",
     "url": "/sake/js/chunk-vendors.js"
   },
   {
@@ -44,15 +44,19 @@ self.__precacheManifest = [
     "url": "/sake/img/search.png"
   },
   {
+    "revision": "f830d1abbc220c12f2003c3ef53f4bc1",
+    "url": "/sake/img/placeholder.png"
+  },
+  {
+    "revision": "35114708a1be096c7f3cd21f9c93c94c",
+    "url": "/sake/img/gear.png"
+  },
+  {
     "revision": "b727a25b7e6d063b583eb9551b5e7655",
     "url": "/sake/img/edit.png"
   },
   {
-    "revision": "de231fef4cb1153eeb05f1383d865452",
-    "url": "/sake/img/back.png"
-  },
-  {
-    "revision": "76103fc7c869bf41c06d",
+    "revision": "31cacff90b4fc3ed222d",
     "url": "/sake/css/index.css"
   }
 ];
