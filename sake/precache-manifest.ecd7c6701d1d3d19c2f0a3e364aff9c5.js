@@ -1,6 +1,6 @@
 self.__precacheManifest = [
   {
-    "revision": "1fc21aa2839eb88e9d3df75140a189f3",
+    "revision": "697b1827f1de5eeb884c8df1b79523ac",
     "url": "/sake/index.html"
   },
   {
@@ -13,39 +13,39 @@ self.__precacheManifest = [
   },
   {
     "revision": "b9155a1bb39b78ab3930",
-    "url": "/sake/js/chunk-vendors.js"
+    "url": "/sake/js/chunk-vendors.70cc00d1.js"
   },
   {
     "revision": "ccdc573f5a842edec2ac8ad6e0cd4a21",
     "url": "/sake/my-icons-collection.zip"
   },
   {
-    "revision": "3090af336cea7ccfd84b",
-    "url": "/sake/js/index.js"
+    "revision": "e3de95e729e6a348c410",
+    "url": "/sake/js/index.0ea73757.js"
   },
   {
     "revision": "468892bfd3f3c6d833b4",
-    "url": "/sake/js/memo.js"
+    "url": "/sake/js/memo.20cababf.js"
   },
   {
     "revision": "7795532e9b414b374552",
-    "url": "/sake/js/notfound.js"
+    "url": "/sake/js/notfound.9f7c0550.js"
   },
   {
     "revision": "1629eb536e928cea2785",
-    "url": "/sake/js/search.js"
+    "url": "/sake/js/search.0e0c1312.js"
   },
   {
     "revision": "5253779b5c7ff4b2f76b",
-    "url": "/sake/js/settings.js"
+    "url": "/sake/js/settings.6cc9953c.js"
   },
   {
     "revision": "3227f7a385e8e46b422e",
-    "url": "/sake/js/detail.js"
+    "url": "/sake/js/detail.5b7426e5.js"
   },
   {
     "revision": "9e54f9034ea5b03337d6",
-    "url": "/sake/js/edit.js"
+    "url": "/sake/js/edit.846bc14d.js"
   },
   {
     "revision": "879cc35873807dae563eadcabed7e743",
@@ -76,11 +76,11 @@ self.__precacheManifest = [
     "url": "/sake/img/edit.png"
   },
   {
-    "revision": "3090af336cea7ccfd84b",
-    "url": "/sake/css/index.css"
+    "revision": "e3de95e729e6a348c410",
+    "url": "/sake/css/index.70c9bab4.css"
   },
   {
     "revision": "9e54f9034ea5b03337d6",
-    "url": "/sake/css/edit.css"
+    "url": "/sake/css/edit.ec5db394.css"
   }
 ];
