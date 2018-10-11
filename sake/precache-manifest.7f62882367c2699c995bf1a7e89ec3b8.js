@@ -1,22 +1,22 @@
 self.__precacheManifest = [
   {
-    "revision": "35114708a1be096c7f3cd21f9c93c94c",
-    "url": "/sake/img/gear.png"
+    "revision": "de231fef4cb1153eeb05f1383d865452",
+    "url": "/sake/img/back.png"
   },
   {
-    "revision": "b9155a1bb39b78ab3930",
-    "url": "/sake/js/chunk-vendors.js"
+    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
+    "url": "/sake/robots.txt"
+  },
+  {
+    "revision": "35114708a1be096c7f3cd21f9c93c94c",
+    "url": "/sake/img/gear.png"
   },
   {
     "revision": "80a7d598759b33f10e1a",
     "url": "/sake/js/edit.js"
   },
   {
-    "revision": "ccdc573f5a842edec2ac8ad6e0cd4a21",
-    "url": "/sake/my-icons-collection.zip"
-  },
-  {
-    "revision": "99fade4d5f8572c6749b",
+    "revision": "17f55e17ef91bb0c33f4",
     "url": "/sake/js/index.js"
   },
   {
@@ -28,16 +28,20 @@ self.__precacheManifest = [
     "url": "/sake/js/search.js"
   },
   {
-    "revision": "68e072d1c7e05dc29701",
+    "revision": "5253779b5c7ff4b2f76b",
     "url": "/sake/js/settings.js"
   },
   {
-    "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
-    "url": "/sake/robots.txt"
+    "revision": "ccdc573f5a842edec2ac8ad6e0cd4a21",
+    "url": "/sake/my-icons-collection.zip"
   },
   {
     "revision": "3227f7a385e8e46b422e",
     "url": "/sake/js/detail.js"
+  },
+  {
+    "revision": "b9155a1bb39b78ab3930",
+    "url": "/sake/js/chunk-vendors.js"
   },
   {
     "revision": "323e8a0272225d8deddc211f1bf9e5ee",
@@ -68,11 +72,7 @@ self.__precacheManifest = [
     "url": "/sake/img/edit.png"
   },
   {
-    "revision": "de231fef4cb1153eeb05f1383d865452",
-    "url": "/sake/img/back.png"
-  },
-  {
-    "revision": "99fade4d5f8572c6749b",
+    "revision": "17f55e17ef91bb0c33f4",
     "url": "/sake/css/index.css"
   }
 ];
