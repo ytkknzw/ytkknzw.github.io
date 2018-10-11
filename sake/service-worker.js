@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.2/workbox-sw.js");
 
 importScripts(
-  "/sake/precache-manifest.1796cdcc49189b8bf9ef60aaa8d75528.js"
+  "/sake/precache-manifest.36225c38cce7630a2838c5a7610e953a.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "japanese_sake"});
