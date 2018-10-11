@@ -1,27 +1,35 @@
 self.__precacheManifest = [
   {
-    "revision": "de231fef4cb1153eeb05f1383d865452",
-    "url": "/sake/img/back.png"
+    "revision": "1fc21aa2839eb88e9d3df75140a189f3",
+    "url": "/sake/index.html"
   },
   {
     "revision": "b6216d61c03e6ce0c9aea6ca7808f7ca",
     "url": "/sake/robots.txt"
   },
   {
-    "revision": "b727a25b7e6d063b583eb9551b5e7655",
-    "url": "/sake/img/edit.png"
+    "revision": "de231fef4cb1153eeb05f1383d865452",
+    "url": "/sake/img/back.png"
   },
   {
-    "revision": "80a7d598759b33f10e1a",
-    "url": "/sake/js/edit.js"
+    "revision": "b9155a1bb39b78ab3930",
+    "url": "/sake/js/chunk-vendors.js"
   },
   {
-    "revision": "17f55e17ef91bb0c33f4",
+    "revision": "ccdc573f5a842edec2ac8ad6e0cd4a21",
+    "url": "/sake/my-icons-collection.zip"
+  },
+  {
+    "revision": "3090af336cea7ccfd84b",
     "url": "/sake/js/index.js"
   },
   {
-    "revision": "6f901c518f99d9e11cf9",
+    "revision": "468892bfd3f3c6d833b4",
     "url": "/sake/js/memo.js"
+  },
+  {
+    "revision": "7795532e9b414b374552",
+    "url": "/sake/js/notfound.js"
   },
   {
     "revision": "1629eb536e928cea2785",
@@ -32,20 +40,12 @@ self.__precacheManifest = [
     "url": "/sake/js/settings.js"
   },
   {
-    "revision": "ccdc573f5a842edec2ac8ad6e0cd4a21",
-    "url": "/sake/my-icons-collection.zip"
-  },
-  {
     "revision": "3227f7a385e8e46b422e",
     "url": "/sake/js/detail.js"
   },
   {
-    "revision": "b9155a1bb39b78ab3930",
-    "url": "/sake/js/chunk-vendors.js"
-  },
-  {
-    "revision": "323e8a0272225d8deddc211f1bf9e5ee",
-    "url": "/sake/index.html"
+    "revision": "9e54f9034ea5b03337d6",
+    "url": "/sake/js/edit.js"
   },
   {
     "revision": "879cc35873807dae563eadcabed7e743",
@@ -72,7 +72,15 @@ self.__precacheManifest = [
     "url": "/sake/img/gear.png"
   },
   {
-    "revision": "17f55e17ef91bb0c33f4",
+    "revision": "b727a25b7e6d063b583eb9551b5e7655",
+    "url": "/sake/img/edit.png"
+  },
+  {
+    "revision": "3090af336cea7ccfd84b",
     "url": "/sake/css/index.css"
+  },
+  {
+    "revision": "9e54f9034ea5b03337d6",
+    "url": "/sake/css/edit.css"
   }
 ];
