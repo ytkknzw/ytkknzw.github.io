@@ -8,8 +8,8 @@ self.__precacheManifest = [
     "url": "/sake/robots.txt"
   },
   {
-    "revision": "35114708a1be096c7f3cd21f9c93c94c",
-    "url": "/sake/img/gear.png"
+    "revision": "b727a25b7e6d063b583eb9551b5e7655",
+    "url": "/sake/img/edit.png"
   },
   {
     "revision": "80a7d598759b33f10e1a",
@@ -68,8 +68,8 @@ self.__precacheManifest = [
     "url": "/sake/img/noImage.png"
   },
   {
-    "revision": "b727a25b7e6d063b583eb9551b5e7655",
-    "url": "/sake/img/edit.png"
+    "revision": "35114708a1be096c7f3cd21f9c93c94c",
+    "url": "/sake/img/gear.png"
   },
   {
     "revision": "17f55e17ef91bb0c33f4",
