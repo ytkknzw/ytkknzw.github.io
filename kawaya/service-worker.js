@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/kawaya/precache-manifest.292eb380793c75a1e84db9dbc9d8f332.js"
+  "/kawaya/precache-manifest.7ea3f5a2472837b7d35d4006e354fad2.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "yamaya"});
