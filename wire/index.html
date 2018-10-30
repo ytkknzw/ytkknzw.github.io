@@ -4,15 +4,21 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name=theme-color content=#CC0000>
+  <link rel=manifest href=/kawaya/manifest.json>
+
   <title>Wire</title>
   <style>
     body {
       padding: 0;
       margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
     }
     .app-header {
       display: flex;
       position: fixed;
+      align-items: center;
+      padding: 0 8px;
       z-index: 2;
       box-sizing: border-box;
       height: 52px;
@@ -27,11 +33,29 @@
       bottom: 0;
       overflow-y: auto;
     }
+    .dialog-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      background-color: rgba(0, 0, 0, .2);
+      z-index: 10;
+    }
+    .dialog {
+      box-sizing: border-box;
+      box-shadow: 0px 0px 8px rgba(0, 0, 0, .4);
+      border-radius: 4px;
+      background-color: #fff;
+      width: calc(100% - 32px);
+      padding: 8px;
+    }
   </style>
 </head>
 <body>
   <div class="app-header">
-    <h1 style="font-size: 16px;">title</h1>
+    <h1 style="font-size: 16px;">Wire Title</h1>
   </div>
   <div class="app-body">
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae error, soluta. Eligendi ea enim architecto molestiae deleniti voluptatibus, necessitatibus aspernatur aliquam eos natus error ab ipsa, voluptatem dicta cumque explicabo!</p>
@@ -44,6 +68,14 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae error, soluta. Eligendi ea enim architecto molestiae deleniti voluptatibus, necessitatibus aspernatur aliquam eos natus error ab ipsa, voluptatem dicta cumque explicabo!</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae error, soluta. Eligendi ea enim architecto molestiae deleniti voluptatibus, necessitatibus aspernatur aliquam eos natus error ab ipsa, voluptatem dicta cumque explicabo!</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae error, soluta. Eligendi ea enim architecto molestiae deleniti voluptatibus, necessitatibus aspernatur aliquam eos natus error ab ipsa, voluptatem dicta cumque explicabo!</p>
+  </div>
+  <div class="dialog-overlay">
+    <div class="dialog">
+      <h1>Dialog</h1>
+      <div>
+        <button style="height: 44px; width: 100%; border: 1px solid #ddd; border-radius: 4px;" onclick="document.querySelector('.dialog-overlay').style.display = 'none'">Close</button>
+      </div>
+    </div>
   </div>
 </body>
 </html>
