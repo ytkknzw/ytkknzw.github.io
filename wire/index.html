@@ -5,7 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <meta name=theme-color content=#CC0000>
-  <link rel=manifest href=/manifest.json>
+  <link rel=manifest href=manifest.json>
 
   <title>Wire</title>
   <style>
@@ -23,8 +23,9 @@
       box-sizing: border-box;
       height: 52px;
       width: 100vw;
-      box-shadow: 0px 5px 8px rgba(128, 128, 128, .2);
-      background-color: #fff;
+      box-shadow: 0px 5px 12px rgba(0, 0, 0, .25);
+      background-color: #c00;
+      color: #fff;
     }
     .app-body {
       padding: 8px;
@@ -55,10 +56,11 @@
 </head>
 <body>
   <div class="app-header">
-    <h1 style="font-size: 16px;">Wire Title</h1>
+    <h1 style="font-size: 18px; text-shadow: 0px 0px 4px rgba(0, 0, 0, .5);">Wire Title</h1>
   </div>
   <div class="app-body">
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae error, soluta. Eligendi ea enim architecto molestiae deleniti voluptatibus, necessitatibus aspernatur aliquam eos natus error ab ipsa, voluptatem dicta cumque explicabo!</p>
+    <button style="height: 44px; width: 100%; border: 1px solid #ddd; border-radius: 4px;" onclick="document.querySelector('.dialog-overlay').style.display = 'flex'">Close</button>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae error, soluta. Eligendi ea enim architecto molestiae deleniti voluptatibus, necessitatibus aspernatur aliquam eos natus error ab ipsa, voluptatem dicta cumque explicabo!</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae error, soluta. Eligendi ea enim architecto molestiae deleniti voluptatibus, necessitatibus aspernatur aliquam eos natus error ab ipsa, voluptatem dicta cumque explicabo!</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae error, soluta. Eligendi ea enim architecto molestiae deleniti voluptatibus, necessitatibus aspernatur aliquam eos natus error ab ipsa, voluptatem dicta cumque explicabo!</p>
@@ -69,12 +71,18 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae error, soluta. Eligendi ea enim architecto molestiae deleniti voluptatibus, necessitatibus aspernatur aliquam eos natus error ab ipsa, voluptatem dicta cumque explicabo!</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae error, soluta. Eligendi ea enim architecto molestiae deleniti voluptatibus, necessitatibus aspernatur aliquam eos natus error ab ipsa, voluptatem dicta cumque explicabo!</p>
   </div>
-  <div class="dialog-overlay">
+  <div class="dialog-overlay" style="display: none;">
     <div class="dialog">
-      <h1>Dialog</h1>
-      <div>
-        <button style="height: 44px; width: 100%; border: 1px solid #ddd; border-radius: 4px;" onclick="document.querySelector('.dialog-overlay').style.display = 'none'">Close</button>
+      <h1 style="padding: 0 0 8px 0; margin: 0;">Dialog</h1>
+      <div style="max-height: calc(100vh - 128px); overflow: auto;">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere cum culpa dolorem fugiat est asperiores nam laboriosam possimus ipsam nemo. Dolore illo, accusamus reiciendis a quia delectus! Vel, impedit, odio!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate perferendis delectus doloribus quas ab, tempore, suscipit nihil laboriosam commodi praesentium animi fugit corporis nemo sit? Tempora laudantium molestiae necessitatibus cupiditate.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat dicta magni qui consequuntur est. Ex rem culpa dolore qui modi autem sed rerum, iure facere quas error repudiandae, maxime reprehenderit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut porro voluptatum asperiores quae provident? Placeat, provident, pariatur voluptatibus alias odio, quasi maxime officiis dolores nemo non aperiam quidem laboriosam. Impedit.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, reiciendis. Repellat officia, natus amet placeat impedit quae non iure. Dolor ratione nulla libero necessitatibus aut, sit possimus voluptatum, pariatur voluptate.</p>
       </div>
+      <button style="height: 44px; width: 49%; border: 1px solid #ddd; border-radius: 4px;" onclick="document.querySelector('.dialog-overlay').style.display = 'none'">Close</button>
+      <button style="height: 44px; width: 49%; border: 1px solid #ddd; border-radius: 4px;" onclick="document.querySelector('.dialog-overlay').style.display = 'none'">Done</button>
     </div>
   </div>
 </body>
