@@ -15,24 +15,21 @@
       font-family: -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", "Segoe UI", Arial, sans-serif;
     }
     .app-header {
+      height: 52px;
       display: flex;
-      position: fixed;
       align-items: center;
       padding: 0 8px;
-      z-index: 2;
       box-sizing: border-box;
-      height: 52px;
-      width: 100vw;
       box-shadow: 0px 5px 12px rgba(0, 0, 0, .25);
       background-color: #c00;
       color: #fff;
     }
     .app-body {
+      box-sizing: border-box;
       padding: 8px;
-      position: fixed;
-      top: 52px;
-      bottom: 0;
-      overflow-y: auto;
+      height: calc(100vh - 52px);
+      max-height: calc(100vh - 52px);
+      overflow: auto;
     }
     .dialog-overlay {
       position: fixed;
@@ -42,7 +39,7 @@
       display: flex;
       align-items: center;
       background-color: rgba(0, 0, 0, .2);
-      z-index: 10;
+      /*z-index: 10;*/
     }
     .dialog {
       box-sizing: border-box;
@@ -56,10 +53,10 @@
 </head>
 <body>
   <div class="app-header">
-    <h1 style="font-size: 18px; text-shadow: 0px 0px 4px rgba(0, 0, 0, .5);">Wire index.html</h1>
+    <h1 style="font-size: 18px; text-shadow: 0px 0px 4px rgba(0, 0, 0, .5);">Wire 2.html</h1>
   </div>
   <div class="app-body">
-    <button style="height: 44px; width: 100%; border: 1px solid #ddd; border-radius: 4px;" onclick="location.href = './2.html'">Go To 2.html</button>
+    <button style="height: 44px; width: 100%; border: 1px solid #ddd; border-radius: 4px;" onclick="location.href='./index.html'">Go Back To index.html</button>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae error, soluta. Eligendi ea enim architecto molestiae deleniti voluptatibus, necessitatibus aspernatur aliquam eos natus error ab ipsa, voluptatem dicta cumque explicabo!</p>
     <button style="height: 44px; width: 100%; border: 1px solid #ddd; border-radius: 4px;" onclick="document.querySelector('.dialog-overlay').style.display = 'flex'">Close</button>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae error, soluta. Eligendi ea enim architecto molestiae deleniti voluptatibus, necessitatibus aspernatur aliquam eos natus error ab ipsa, voluptatem dicta cumque explicabo!</p>
